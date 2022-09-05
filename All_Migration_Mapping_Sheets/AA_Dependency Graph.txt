@@ -1,0 +1,9 @@
+1-Mapping_Sheet_Merchants.Countries 
+2-Mapping_Sheet_Merchants.Cities 
+3-Mapping_Sheet_Merchants.Merchants
+3-Mapping_Sheet_Transactions.Banks
+4-Mapping_Sheet_Transactions.Withdrawal_All_Accounts_Related
+5-Mapping_Sheet_Transactions.Withdrawal_Requests
+6-Mapping_Sheet_Transactions.
+7-Mapping_Sheet_Transactions.
+8-Mapping_Sheet_Transactions.
