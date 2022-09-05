@@ -11,32 +11,10 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{64C1EA7D-0931-4E52-ADB6-38456EC42BF7}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{082F606E-547B-4DA2-B84C-EEC9D9181FC9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BI-SERVER2022.MerchantManagement]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{B9D50016-254B-4FFA-93E9-43C5A8D7EDAF}"
-      DTS:ObjectName="BI-SERVER2022.MerchantManagement">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BI-SERVER2022;Initial Catalog=MerchantManagement;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LocalHost.lol]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{F30254CD-1F48-4755-8B8F-9D6E5A9A7C44}"
-      DTS:ObjectName="LocalHost.lol">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;Initial Catalog=lol;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
