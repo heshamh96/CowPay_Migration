@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{9C82A319-A53F-4F9A-83E7-57A2D3DC2F5C}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{64C1EA7D-0931-4E52-ADB6-38456EC42BF7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -52,7 +52,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecuteProcessData
-          Executable="C:\Users\Administrator\Documents\cowpay_migration\Spark_env\Scripts\python.exe"
+          Executable="C:\Spark_env\Scripts\python.exe"
           Arguments="C:\Users\Administrator\Documents\cowpay_migration\Python_Scripts\Cities_Pipline.py"
           WindowStyle="Hidden" />
       </DTS:ObjectData>
@@ -99,27 +99,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="130.4,41.6"
-          Id="Package\Script Task"
-          TopLeft="144.000002452305,162.729414046924" />
-        <NodeLayout
           Size="351.2,41.6"
           Id="Package\Execute Process Task"
-          TopLeft="356.000006062644,162.729414046924" />
+          TopLeft="340.571434371325,72.18823630653" />
+        <NodeLayout
+          Size="130.4,41.6"
+          Id="Package\Script Task"
+          TopLeft="289.71429064809,175.576473050629" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="356.000006062644,183.529414046924">
+          TopLeft="516.171434371326,113.78823630653">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-81.6000036103386,0"
+              EndConnector="-161.257143723235,61.7882367440986"
               Start="0,0"
-              End="-74.1000036103386,0">
+              End="-161.257143723235,54.2882367440986">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-74.1000036103386,0" />
+                    End="0,26.8941183720493" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.8941183720493"
+                    Point2="0,30.8941183720493"
+                    Point3="-4,30.8941183720493" />
+                  <mssgle:LineSegment
+                    End="-157.257143723235,30.8941183720493" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-157.257143723235,30.8941183720493"
+                    Point2="-161.257143723235,30.8941183720493"
+                    Point3="-161.257143723235,34.8941183720493" />
+                  <mssgle:LineSegment
+                    End="-161.257143723235,54.2882367440986" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
