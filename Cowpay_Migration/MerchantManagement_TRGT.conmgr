@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="localhost.MerchantManagement.sa"
+  DTS:DTSID="{522441BA-20DA-431D-92DA-0935A6A60AC5}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=MerchantManagement;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAADkKpyzav0Up7d26Yt9m/QgFJet8E+DAaQE5qd1+M6MngAAAAAOgAAAAAIAACAAAAD27sFTjMib4pal4cvU6XeIFTk4+gVHURspIwXSajbLjnAAAACeoZJr7KHdo2nTAlfQQK7t1lU8DxUqknpXmriEVEMm5AFsAL30oOw+T9jPQQqSVvBUMZ2pyUD4ydQj5uEZ/LRWJ5Urg1436S7U/rdxzbA6LPgqylEYrqwO3+2CB/SocMa6v8WcprfioWP47on2XoSxQAAAAPpYCd1O5HkN/yQlFkzV8ocPKW35nZVAbrb9IslReqv1ckhjTGnqLU/4M7qvvRmn2eD3Gqn46tKL/iGUd1rcbKM=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

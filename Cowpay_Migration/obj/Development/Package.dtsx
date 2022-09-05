@@ -1,0 +1,2120 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/21/2022 11:22:07 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BI-SERVER2022"
+  DTS:CreatorName="BI-SERVER2022\admin"
+  DTS:DTSID="{965AFAFD-4B8F-4A0A-B7BC-A88A1C337A4B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{B316AC27-972E-488A-8819-1BA23F3CBC26}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BI-SERVER2022.MerchantManagement]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B9D50016-254B-4FFA-93E9-43C5A8D7EDAF}"
+      DTS:ObjectName="BI-SERVER2022.MerchantManagement">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=BI-SERVER2022;Initial Catalog=MerchantManagement;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.lol]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F30254CD-1F48-4755-8B8F-9D6E5A9A7C44}"
+      DTS:ObjectName="LocalHost.lol">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=lol;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{D8601F98-B14F-4F64-BBD5-D0C5BE46BD14}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\JSON Parser Transform"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="JSON Parser Transform; ZappySys LLC (c) All Rights Reserved; SSIS PowerPack; http://www.zappysys.com/support"
+              description="Parse incoming JSON String into columns. You can also parse and transform single JSON record into multiple rows by filtering data based on JSON Path (e.g. $.Customer.Orders[*])"
+              name="JSON Parser Transform"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="LoggingMode determines how much information is logged during Package Execution. Set Logging mode to Debugging for maximum log."
+                  expressionType="Notify"
+                  name="LoggingMode"
+                  typeConverter="ZappySys.PowerPack.Common.LoggingMode, ZappySys.PowerPack140, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When you enable this property it will prefix timestamp before Log messages."
+                  expressionType="Notify"
+                  name="PrefixTimestamp">false</property>
+                <property
+                  dataType="System.Null"
+                  expressionType="Notify"
+                  name="SelfRef"
+                  typeConverter="NOTBROWSABLE" />
+                <property
+                  dataType="System.Boolean"
+                  description="Treat empty string as NULL for any numeric data types"
+                  expressionType="Notify"
+                  name="TreatBlankNumberAsNull">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Treat empty string as NULL for bool data types"
+                  expressionType="Notify"
+                  name="TreatBlankBoolAsNull">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Treat empty string as NULL for any date/time data types"
+                  expressionType="Notify"
+                  name="TreatBlankDateAsNull">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Encoding of source file"
+                  expressionType="Notify"
+                  name="Encoding"
+                  typeConverter="ZappySys.Common.EncodingType, ZappySys.Common, Version=1.0.2020.11231, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.String"
+                  description="Character set for text (e.g. utf-8 )"
+                  expressionType="Notify"
+                  name="CharacterSet"></property>
+                <property
+                  dataType="System.String"
+                  description="Sample JSON data used to parse output columns."
+                  expressionType="Notify"
+                  name="SampleData"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">{"id":209,"merchantCode":"78d00363-2b44-4f67-a778-4c016f14f6ed","StatusTypeId":2,"moreSetting":{"callbackURL":"jkas","allowPaymentNotify":false,"allowOrderNotify":false},"limitationNBlocking":[],"financialConfig":{"comessions":[{"payMethodType":6,"fixedVal":10.0,"percentage":1.0,"isEnabled":true},{"payMethodType":2,"fixedVal":10.0,"percentage":10.0,"isEnabled":true},{"payMethodType":7,"fixedVal":10.0,"percentage":0.0,"isEnabled":true}],"autoWithdrawal":{"isEnabled":false,"peroidType":"Days","monthDay":0,"daysValue":0,"day":null},"b2b":{"isEnabled":false,"fixedVal":0.0,"percentage":0.0},"chashout":{"isEnabled":false,"values":[]}},"balanceConfiguration":{"AvailableBalanceThresholdDays":7}}</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Include all upstream parent columns into output except the one you selected to parse. By default only parsed columns from Input document is included in the output. If you wish to include all other upstream columns in the output too then check this option."
+                  expressionType="Notify"
+                  name="OutputAllUpstreamColumns">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Defines how to handle empty input. By default NULL or Empty input is skipped from parsing."
+                  expressionType="Notify"
+                  name="EmptyInputProcessingMode"
+                  typeConverter="ZappySys.Common.Data.EmptyInputProcessingMode, ZappySys.Common, Version=1.0.2020.11231, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.String"
+                  description="Defines how to handle empty input. By default NULL or Empty input is skipped from parsing."
+                  expressionType="Notify"
+                  name="TreatEmptyInputAs">{ }</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum JSON records to fetch. Set this value to 0 for all records"
+                  expressionType="Notify"
+                  name="MaxRows">0</property>
+                <property
+                  dataType="System.String"
+                  description="Enter expression here to filter data.(Example:  $.Users[*].UserName ) This will fetch User names from users records"
+                  expressionType="Notify"
+                  name="Filter"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Use this option to include parent properties (Non array) in the output along with Filtered Rows"
+                  expressionType="Notify"
+                  name="IncludeParentColumns">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="By default child and parent information is not included in the output if children not found for specified expression. For example if you want to extract all orders from all customers nodes then you can type $.Customers[*].Orders[*]. This will fetch all orders from all customers. By default customers records without orders wont be included in the output. If you want to include those customers where orders not found then check this option (Output null information for order attributes). This behavior is similar to LEFT OUTER JOIN in SQL (Left side is parent, right side is child). This option is ***resource intensive*** so only check if you really care about this behavior."
+                  expressionType="Notify"
+                  name="IncludeParentColumnsWhenChildMissing">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set this option to true if you want to output parent columns which are array. By default any parent column which is an array is not included in output. See also FilterForParentColumnsWithArrayType property if you set this property"
+                  expressionType="Notify"
+                  name="IncludeParentColumnsWithArrayType">false</property>
+                <property
+                  dataType="System.String"
+                  description="Filter expression to extract value form parent"
+                  expressionType="Notify"
+                  name="FilterForParentColumnsWithArrayType"></property>
+                <property
+                  dataType="System.String"
+                  description="Prefix for parent column name. This option is only valid if you have set IncludeParentColumns=True"
+                  expressionType="Notify"
+                  name="ParentColumnPrefix">P_</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Throw error if property name specified in filter expression is missing. By default it will ignore any missing property errors."
+                  expressionType="Notify"
+                  name="ThrowErrorIfPropertyMissing">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="This property how many nested levels should be scanned to fetch various properties. 0=Scan all child levels."
+                  expressionType="Notify"
+                  name="MaxLevelsToScan">0</property>
+                <property
+                  dataType="System.String"
+                  description="List comma separated property names from JSON document which you want to exclude from output. Specify parent property name to exclude all child nodes."
+                  expressionType="Notify"
+                  name="ExcludedProperties"></property>
+                <property
+                  dataType="System.String"
+                  description="Property level separator used in generated property name (separator for outer properties - Above selected filter node). Use this if default separator is producing duplicate property name which is conflicting with existing name."
+                  expressionType="Notify"
+                  name="LevelSeparator">_</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Enables deep array flattening for selected filtered hierarchy. When you turn on this property it will flatten each property of each array item and expose as column (e.g. If you have Filter set as $.customers[*] and for each customer you have an array of Addresses then you may see output columns like Addresses.1.City, Addresses.1.State, Addresses.2.City, Addresses.2.State .... Addresses.N.City, Addresses.N.State). You can control how many array items you want to flatten by setting MaxArrayItemsToFlatten property."
+                  expressionType="Notify"
+                  name="EnableArrayFlattening">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum number of array items to flatten. inner array flattening. Adjust this property to control how many columns being generated. This option is ignored if you set EnableArrayFlattening=false"
+                  expressionType="Notify"
+                  name="MaxArrayItemsToFlatten">10</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies how custom date formatted strings are parsed when reading JSON."
+                  expressionType="Notify"
+                  name="DateFormatString"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how date formatted strings, e.g. Date(1198908717056) and 2012-03-21T05:40Z, are parsed when reading JSON."
+                  expressionType="Notify"
+                  name="DateParseHandling"
+                  typeConverter="ZappySys.Common.DateParseHandling, ZappySys.Common, Version=1.0.2020.11231, Culture=neutral, PublicKeyToken=1903265a93eae502">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indent JSON output so its easy to read."
+                  expressionType="Notify"
+                  name="IndentOutput">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Output as raw JSON document rather than parsing individual fields. This option is helpful if you have documents stored in a file and you want to pass them downstream as raw JSON string rather than parsing into columns."
+                  expressionType="Notify"
+                  name="OutputRawDocument">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When this property is true then Column is converted to Row. Pivoted names will appear under  Pivot_Name column and values will appear under Pivot_Value field."
+                  expressionType="Notify"
+                  name="EnablePivot">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Array Transformation you want to apply. Useful for case when you have 2-Dimensional arrays with rows/columns in separate arrays."
+                  expressionType="Notify"
+                  name="ArrayTransformationType"
+                  typeConverter="ZappySys.Json.ArrayTransformType, ZappySys.Json, Version=1.0.2020.11231, Culture=neutral, PublicKeyToken=1903265a93eae502">0</property>
+                <property
+                  dataType="System.String"
+                  description="Filter expression to use to extract column names for array transformation."
+                  expressionType="Notify"
+                  name="ArrayTransColumnNameFilter"></property>
+                <property
+                  dataType="System.String"
+                  description="Filter expression for row values (Not applicable for simple array transformation)."
+                  expressionType="Notify"
+                  name="ArrayTransRowValueFilter"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="When you have 2D array but don't have column list specified in a separate array then use this option (e.g. { arr: [[10,11],[21,22]] } )."
+                  expressionType="Notify"
+                  name="ArrayTransEnableCustomColumns">false</property>
+                <property
+                  dataType="System.String"
+                  description="When you have 2D array but don't have column list specified in a separate array then use specify column names here. Use comma separated list (e.g col1,col2,col3 ). Column name Order must match value order."
+                  expressionType="Notify"
+                  name="ArrayTransCustomColumns"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Metadata scan mode controls how data type and length is determined. By default few records scanned to determine datatype/length. Changing ScanMode affects length/datatype accuracy."
+                  expressionType="Notify"
+                  name="MetaDataScanMode"
+                  typeConverter="ZappySys.Common.Data.MetaDataScanMode, ZappySys.Common, Version=1.0.2020.11231, Culture=neutral, PublicKeyToken=1903265a93eae502">4</property>
+                <property
+                  dataType="System.Int32"
+                  description="Length for all string column. This option is only valid for MetaDataScanMode=Custom"
+                  expressionType="Notify"
+                  name="MetaDataCustomLength">1000</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">ZappySys.JsonParserTransform</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput]"
+                  errorRowDisposition="FailComponent"
+                  name="JsonParserTransformInput"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Settings]"
+                      cachedDataType="nText"
+                      cachedName="Settings"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Settings]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Id]"
+                      cachedDataType="i8"
+                      cachedName="Id"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Id]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[MasterMerchantId]"
+                      cachedDataType="i8"
+                      cachedName="MasterMerchantId"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MasterMerchantId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[MasterMerchantId]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[MerchantCode]"
+                      cachedDataType="guid"
+                      cachedName="MerchantCode"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[MerchantCode]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[UserId]"
+                      cachedDataType="guid"
+                      cachedName="UserId"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[UserId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[UserId]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="Name"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Name]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Mobile]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Mobile"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Mobile]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Mobile]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Email"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Email]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[CountryId]"
+                      cachedDataType="i2"
+                      cachedName="CountryId"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CountryId]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[CityId]"
+                      cachedDataType="i2"
+                      cachedName="CityId"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CityId]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Address"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Address]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[OptionalAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="OptionalAddress"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OptionalAddress]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[OptionalAddress]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[NationalId]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="NationalId"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NationalId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[NationalId]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[CommercialRegistrationNum]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="CommercialRegistrationNum"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CommercialRegistrationNum]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CommercialRegistrationNum]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[TaxId]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="TaxId"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TaxId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[TaxId]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[AttachamentImages]"
+                      cachedDataType="nText"
+                      cachedName="AttachamentImages"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AttachamentImages]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[AttachamentImages]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[SocialLinks]"
+                      cachedDataType="nText"
+                      cachedName="SocialLinks"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[SocialLinks]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[SocialLinks]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[StatusTypeId]"
+                      cachedDataType="i2"
+                      cachedName="StatusTypeId"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusTypeId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[StatusTypeId]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[IsWebsite]"
+                      cachedDataType="bool"
+                      cachedName="IsWebsite"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsWebsite]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[IsWebsite]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CreatedDate]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[UpdatedDate]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[DeletedDate]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[IsDeleted]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Logo]"
+                      cachedDataType="nText"
+                      cachedName="Logo"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Logo]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Logo]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[AboutUs]"
+                      cachedDataType="nText"
+                      cachedName="AboutUs"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AboutUs]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[AboutUs]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[TermsAndConditions]"
+                      cachedDataType="nText"
+                      cachedName="TermsAndConditions"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TermsAndConditions]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[TermsAndConditions]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          expressionType="Notify"
+                          name="IncludeDownStream">true</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput]"
+                  errorOrTruncationOperation="Error"
+                  errorRowDisposition="FailComponent"
+                  name="JsonParserTransformOutput"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[TermsAndConditions]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[TermsAndConditions]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[TermsAndConditions]"
+                      name="TermsAndConditions" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[AboutUs]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[AboutUs]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[AboutUs]"
+                      name="AboutUs" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Logo]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Logo]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Logo]"
+                      name="Logo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[IsDeleted]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[DeletedDate]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[UpdatedDate]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CreatedDate]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[IsWebsite]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[IsWebsite]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[IsWebsite]"
+                      name="IsWebsite" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[StatusTypeId]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[StatusTypeId]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[StatusTypeId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[StatusTypeId]"
+                      name="StatusTypeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[SocialLinks]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[SocialLinks]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[SocialLinks]"
+                      name="SocialLinks" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[AttachamentImages]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[AttachamentImages]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[AttachamentImages]"
+                      name="AttachamentImages" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[TaxId]"
+                      dataType="wstr"
+                      length="9"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[TaxId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[TaxId]"
+                      name="TaxId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CommercialRegistrationNum]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CommercialRegistrationNum]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[CommercialRegistrationNum]"
+                      name="CommercialRegistrationNum" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[NationalId]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[NationalId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[NationalId]"
+                      name="NationalId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[OptionalAddress]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[OptionalAddress]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[OptionalAddress]"
+                      name="OptionalAddress" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Address]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Address]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CityId]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CityId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[CityId]"
+                      name="CityId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CountryId]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[CountryId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[CountryId]"
+                      name="CountryId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Email]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Email]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Mobile]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Mobile]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Mobile]"
+                      name="Mobile" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Name]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Name]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[UserId]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[UserId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[UserId]"
+                      name="UserId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[MerchantCode]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[MerchantCode]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[MerchantCode]"
+                      name="MerchantCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[MasterMerchantId]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[MasterMerchantId]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[MasterMerchantId]"
+                      name="MasterMerchantId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Id]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[Id]"
+                      mappedColumnId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[id]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[merchantCode]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[merchantCode]"
+                      length="144"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[merchantCode]"
+                      name="merchantCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[moreSetting.callbackURL]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[moreSetting.callbackURL]"
+                      length="16"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[moreSetting.callbackURL]"
+                      name="moreSetting.callbackURL" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[moreSetting.allowPaymentNotify]"
+                      dataType="bool"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[moreSetting.allowPaymentNotify]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[moreSetting.allowPaymentNotify]"
+                      name="moreSetting.allowPaymentNotify" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[moreSetting.allowOrderNotify]"
+                      dataType="bool"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[moreSetting.allowOrderNotify]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[moreSetting.allowOrderNotify]"
+                      name="moreSetting.allowOrderNotify" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[limitationNBlocking]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[limitationNBlocking]"
+                      length="8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[limitationNBlocking]"
+                      name="limitationNBlocking" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.comessions]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.comessions]"
+                      length="1288"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.comessions]"
+                      name="financialConfig.comessions" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.autoWithdrawal.isEnabled]"
+                      dataType="bool"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.autoWithdrawal.isEnabled]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.autoWithdrawal.isEnabled]"
+                      name="financialConfig.autoWithdrawal.isEnabled" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.autoWithdrawal.peroidType]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.autoWithdrawal.peroidType]"
+                      length="16"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.autoWithdrawal.peroidType]"
+                      name="financialConfig.autoWithdrawal.peroidType" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.autoWithdrawal.monthDay]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.autoWithdrawal.monthDay]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.autoWithdrawal.monthDay]"
+                      name="financialConfig.autoWithdrawal.monthDay" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.autoWithdrawal.daysValue]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.autoWithdrawal.daysValue]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.autoWithdrawal.daysValue]"
+                      name="financialConfig.autoWithdrawal.daysValue" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.autoWithdrawal.day]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.autoWithdrawal.day]"
+                      length="1020"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.autoWithdrawal.day]"
+                      name="financialConfig.autoWithdrawal.day" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.b2b.isEnabled]"
+                      dataType="bool"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.b2b.isEnabled]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.b2b.isEnabled]"
+                      name="financialConfig.b2b.isEnabled" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.b2b.fixedVal]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.b2b.fixedVal]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.b2b.fixedVal]"
+                      name="financialConfig.b2b.fixedVal" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.b2b.percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.b2b.percentage]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.b2b.percentage]"
+                      name="financialConfig.b2b.percentage" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.chashout.isEnabled]"
+                      dataType="bool"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.chashout.isEnabled]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.chashout.isEnabled]"
+                      name="financialConfig.chashout.isEnabled" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.chashout.values]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.chashout.values]"
+                      length="8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[financialConfig.chashout.values]"
+                      name="financialConfig.chashout.values" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[balanceConfiguration.AvailableBalanceThresholdDays]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[balanceConfiguration.AvailableBalanceThresholdDays]"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].Columns[balanceConfiguration.AvailableBalanceThresholdDays]"
+                      name="balanceConfiguration.AvailableBalanceThresholdDays" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[merchantCode]"
+                      dataType="wstr"
+                      length="144"
+                      name="merchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[StatusTypeId]"
+                      dataType="i8"
+                      name="StatusTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[moreSetting.callbackURL]"
+                      dataType="wstr"
+                      length="16"
+                      name="moreSetting.callbackURL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[moreSetting.allowPaymentNotify]"
+                      dataType="bool"
+                      name="moreSetting.allowPaymentNotify" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[moreSetting.allowOrderNotify]"
+                      dataType="bool"
+                      name="moreSetting.allowOrderNotify" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[limitationNBlocking]"
+                      dataType="wstr"
+                      length="8"
+                      name="limitationNBlocking" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.comessions]"
+                      dataType="wstr"
+                      length="1288"
+                      name="financialConfig.comessions" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.autoWithdrawal.isEnabled]"
+                      dataType="bool"
+                      name="financialConfig.autoWithdrawal.isEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.autoWithdrawal.peroidType]"
+                      dataType="wstr"
+                      length="16"
+                      name="financialConfig.autoWithdrawal.peroidType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.autoWithdrawal.monthDay]"
+                      dataType="i8"
+                      name="financialConfig.autoWithdrawal.monthDay" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.autoWithdrawal.daysValue]"
+                      dataType="i8"
+                      name="financialConfig.autoWithdrawal.daysValue" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.autoWithdrawal.day]"
+                      dataType="wstr"
+                      length="1020"
+                      name="financialConfig.autoWithdrawal.day" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.b2b.isEnabled]"
+                      dataType="bool"
+                      name="financialConfig.b2b.isEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.b2b.fixedVal]"
+                      dataType="r8"
+                      name="financialConfig.b2b.fixedVal" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.b2b.percentage]"
+                      dataType="r8"
+                      name="financialConfig.b2b.percentage" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.chashout.isEnabled]"
+                      dataType="bool"
+                      name="financialConfig.chashout.isEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[financialConfig.chashout.values]"
+                      dataType="wstr"
+                      length="8"
+                      name="financialConfig.chashout.values" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransformOutput].ExternalColumns[balanceConfiguration.AvailableBalanceThresholdDays]"
+                      dataType="i8"
+                      name="balanceConfiguration.AvailableBalanceThresholdDays" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output]"
+                  isErrorOut="true"
+                  name="JsonParserTransform Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[TermsAndConditions]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[TermsAndConditions]"
+                      name="TermsAndConditions" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[AboutUs]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[AboutUs]"
+                      name="AboutUs" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Logo]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Logo]"
+                      name="Logo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[IsWebsite]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[IsWebsite]"
+                      name="IsWebsite" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[StatusTypeId]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[StatusTypeId]"
+                      name="StatusTypeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[SocialLinks]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[SocialLinks]"
+                      name="SocialLinks" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[AttachamentImages]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[AttachamentImages]"
+                      name="AttachamentImages" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[TaxId]"
+                      dataType="wstr"
+                      length="9"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[TaxId]"
+                      name="TaxId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[CommercialRegistrationNum]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[CommercialRegistrationNum]"
+                      name="CommercialRegistrationNum" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[NationalId]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[NationalId]"
+                      name="NationalId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[OptionalAddress]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[OptionalAddress]"
+                      name="OptionalAddress" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Address]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[CityId]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[CityId]"
+                      name="CityId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[CountryId]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[CountryId]"
+                      name="CountryId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Mobile]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Mobile]"
+                      name="Mobile" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[UserId]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[UserId]"
+                      name="UserId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[MerchantCode]"
+                      name="MerchantCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[MasterMerchantId]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[MasterMerchantId]"
+                      name="MasterMerchantId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Id]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[id]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[merchantCode]"
+                      dataType="wstr"
+                      length="144"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[merchantCode]"
+                      name="merchantCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[moreSetting.callbackURL]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[moreSetting.callbackURL]"
+                      name="moreSetting.callbackURL" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[moreSetting.allowPaymentNotify]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[moreSetting.allowPaymentNotify]"
+                      name="moreSetting.allowPaymentNotify" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[moreSetting.allowOrderNotify]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[moreSetting.allowOrderNotify]"
+                      name="moreSetting.allowOrderNotify" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[limitationNBlocking]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[limitationNBlocking]"
+                      name="limitationNBlocking" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.comessions]"
+                      dataType="wstr"
+                      length="1288"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.comessions]"
+                      name="financialConfig.comessions" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.autoWithdrawal.isEnabled]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.autoWithdrawal.isEnabled]"
+                      name="financialConfig.autoWithdrawal.isEnabled" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.autoWithdrawal.peroidType]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.autoWithdrawal.peroidType]"
+                      name="financialConfig.autoWithdrawal.peroidType" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.autoWithdrawal.monthDay]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.autoWithdrawal.monthDay]"
+                      name="financialConfig.autoWithdrawal.monthDay" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.autoWithdrawal.daysValue]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.autoWithdrawal.daysValue]"
+                      name="financialConfig.autoWithdrawal.daysValue" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.autoWithdrawal.day]"
+                      dataType="wstr"
+                      length="1020"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.autoWithdrawal.day]"
+                      name="financialConfig.autoWithdrawal.day" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.b2b.isEnabled]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.b2b.isEnabled]"
+                      name="financialConfig.b2b.isEnabled" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.b2b.fixedVal]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.b2b.fixedVal]"
+                      name="financialConfig.b2b.fixedVal" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.b2b.percentage]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.b2b.percentage]"
+                      name="financialConfig.b2b.percentage" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.chashout.isEnabled]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.chashout.isEnabled]"
+                      name="financialConfig.chashout.isEnabled" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.chashout.values]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[financialConfig.chashout.values]"
+                      name="financialConfig.chashout.values" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[balanceConfiguration.AvailableBalanceThresholdDays]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[balanceConfiguration.AvailableBalanceThresholdDays]"
+                      name="balanceConfiguration.AvailableBalanceThresholdDays" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[ErrorColumnName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[ErrorColumnName]"
+                      name="ErrorColumnName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[ErrorRawData]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\JSON Parser Transform.Outputs[JsonParserTransform Error Output].Columns[ErrorRawData]"
+                      name="ErrorRawData" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.lol]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.lol]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Merchants]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BI-SERVER2022.MerchantManagement]"
+                  connectionManagerRefId="Package.ConnectionManagers[BI-SERVER2022.MerchantManagement]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MasterMerchantId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MasterMerchantId]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MasterMerchantId]"
+                      name="MasterMerchantId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      name="MerchantCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[UserId]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[UserId]"
+                      name="UserId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Mobile]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Mobile]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Mobile]"
+                      name="Mobile"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryId]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CountryId]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryId]"
+                      name="CountryId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityId]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityId]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityId]"
+                      name="CityId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OptionalAddress]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OptionalAddress]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OptionalAddress]"
+                      name="OptionalAddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NationalId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NationalId]"
+                      length="14"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NationalId]"
+                      name="NationalId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CommercialRegistrationNum]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CommercialRegistrationNum]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CommercialRegistrationNum]"
+                      name="CommercialRegistrationNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TaxId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TaxId]"
+                      length="9"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TaxId]"
+                      name="TaxId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AttachamentImages]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AttachamentImages]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AttachamentImages]"
+                      name="AttachamentImages"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[SocialLinks]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SocialLinks]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[SocialLinks]"
+                      name="SocialLinks"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusTypeId]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusTypeId]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusTypeId]"
+                      name="StatusTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Settings]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Settings]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Settings]"
+                      name="Settings"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsWebsite]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsWebsite]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsWebsite]"
+                      name="IsWebsite"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Logo]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Logo]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Logo]"
+                      name="Logo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AboutUs]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AboutUs]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AboutUs]"
+                      name="AboutUs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TermsAndConditions]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TermsAndConditions]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TermsAndConditions]"
+                      name="TermsAndConditions"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MasterMerchantId]"
+                      dataType="i8"
+                      name="MasterMerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                      dataType="guid"
+                      name="UserId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="150"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Mobile]"
+                      dataType="wstr"
+                      length="20"
+                      name="Mobile" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="100"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CountryId]"
+                      dataType="i2"
+                      name="CountryId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityId]"
+                      dataType="i2"
+                      name="CityId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="250"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OptionalAddress]"
+                      dataType="wstr"
+                      length="250"
+                      name="OptionalAddress" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NationalId]"
+                      dataType="wstr"
+                      length="14"
+                      name="NationalId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CommercialRegistrationNum]"
+                      dataType="wstr"
+                      length="20"
+                      name="CommercialRegistrationNum" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TaxId]"
+                      dataType="wstr"
+                      length="9"
+                      name="TaxId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AttachamentImages]"
+                      dataType="nText"
+                      name="AttachamentImages" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SocialLinks]"
+                      dataType="nText"
+                      name="SocialLinks" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusTypeId]"
+                      dataType="i2"
+                      name="StatusTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Settings]"
+                      dataType="nText"
+                      name="Settings" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsWebsite]"
+                      dataType="bool"
+                      name="IsWebsite" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Logo]"
+                      dataType="nText"
+                      name="Logo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AboutUs]"
+                      dataType="nText"
+                      name="AboutUs" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TermsAndConditions]"
+                      dataType="nText"
+                      name="TermsAndConditions" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MasterMerchantId]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MasterMerchantId]"
+                      name="MasterMerchantId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      name="MerchantCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                      name="UserId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Mobile]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Mobile]"
+                      name="Mobile" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CountryId]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CountryId]"
+                      name="CountryId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityId]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityId]"
+                      name="CityId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OptionalAddress]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OptionalAddress]"
+                      name="OptionalAddress" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NationalId]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NationalId]"
+                      name="NationalId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CommercialRegistrationNum]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CommercialRegistrationNum]"
+                      name="CommercialRegistrationNum" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TaxId]"
+                      dataType="wstr"
+                      length="9"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TaxId]"
+                      name="TaxId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AttachamentImages]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AttachamentImages]"
+                      name="AttachamentImages" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SocialLinks]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SocialLinks]"
+                      name="SocialLinks" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusTypeId]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusTypeId]"
+                      name="StatusTypeId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Settings]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Settings]"
+                      name="Settings" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsWebsite]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsWebsite]"
+                      name="IsWebsite" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Logo]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Logo]"
+                      name="Logo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AboutUs]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AboutUs]"
+                      name="AboutUs" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TermsAndConditions]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TermsAndConditions]"
+                      name="TermsAndConditions" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\JSON Parser Transform.Inputs[JsonParserTransformInput]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Process Task"
+      DTS:CreationName="Microsoft.ExecuteProcess"
+      DTS:Description="Execute Process Task"
+      DTS:DTSID="{D1367549-9FC3-46DE-9715-FBDDF2D0BFDC}"
+      DTS:ExecutableType="Microsoft.ExecuteProcess"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Process Task"
+      DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecuteProcessData
+          Executable="C:\Users\Administrator\Documents\cowpay_migration\Spark_env\Scripts\python.exe"
+          Arguments="C:\Users\Administrator\Documents\cowpay_migration\Python_Scripts\Cities_Pipline.py"
+          WindowStyle="Hidden" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{C0EFADD0-317C-46FF-838B-69C496D7E912}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_23c2873be3ab49ca8a65104c1c284a5e"
+          VSTAMajorVersion="15"
+          VSTAMinorVersion="0"
+          Language="CSharp" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{982DFC61-393B-464B-9FAA-6A80A8D13371}"
+      DTS:From="Package\Execute Process Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Script Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="294.85714787853,40.3764711545001" />
+        <NodeLayout
+          Size="130.4,41.6"
+          Id="Package\Script Task"
+          TopLeft="313.142862475648,230.023532637758" />
+        <NodeLayout
+          Size="351.2,41.6"
+          Id="Package\Execute Process Task"
+          TopLeft="137.714288059546,95.435295456091" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="313.314288059546,137.035295456091">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.0285744161023,92.9882371816668"
+              Start="0,0"
+              End="65.0285744161023,85.4882371816668">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.4941185908334" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.4941185908334"
+                    Point2="0,46.4941185908334"
+                    Point3="4,46.4941185908334" />
+                  <mssgle:LineSegment
+                    End="61.0285744161023,46.4941185908334" />
+                  <mssgle:CubicBezierSegment
+                    Point1="61.0285744161023,46.4941185908334"
+                    Point2="65.0285744161023,46.4941185908334"
+                    Point3="65.0285744161023,50.4941185908334" />
+                  <mssgle:LineSegment
+                    End="65.0285744161023,85.4882371816668" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Data Flow Task\JSON Parser Transform"
+          TopLeft="218.285718003098,191.482355626644" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="214.285717934978,75.247059878841" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="289.085717934978,116.847059878841">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.2000000681196,74.6352957478032"
+              Start="0,0"
+              End="23.2000000681196,67.1352957478032">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.3176478739016" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.3176478739016"
+                    Point2="0,37.3176478739016"
+                    Point3="4,37.3176478739016" />
+                  <mssgle:LineSegment
+                    End="19.2000000681196,37.3176478739016" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.2000000681196,37.3176478739016"
+                    Point2="23.2000000681196,37.3176478739016"
+                    Point3="23.2000000681196,41.3176478739016" />
+                  <mssgle:LineSegment
+                    End="23.2000000681196,67.1352957478032" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="232.571432532096,286.305886368273" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
