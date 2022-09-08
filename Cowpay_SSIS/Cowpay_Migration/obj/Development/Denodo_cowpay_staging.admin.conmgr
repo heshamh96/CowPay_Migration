@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Denodo_cowpay_staging.admin"
+  DTS:DTSID="{BECF5C49-6EEC-487E-B17B-87E71AD3C5F9}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=admin;Dsn=Sys_Denodo_Cowpay;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

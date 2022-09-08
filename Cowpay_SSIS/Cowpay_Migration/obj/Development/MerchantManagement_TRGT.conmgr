@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="localhost.MerchantManagement.sa"
   DTS:DTSID="{522441BA-20DA-431D-92DA-0935A6A60AC5}"
@@ -8,7 +8,7 @@
       DTS:ConnectionString="Data Source=localhost;User ID=python;Initial Catalog=MerchantManagement;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5vBrXrNQOEyteBSbVYwXAAAAAAACAAAAAAAQZgAAAAEAACAAAAAxDq8elRp53FQu6ZJNkUrKQz6mszFFk9BMaP3Tjg+W/AAAAAAOgAAAAAIAACAAAACf9+c+aAo0z38XOpRUaM9UmEGBWBz9Yy2MC6+qbeQWFoAAAAD1riALNnQUlKad6LAm0cuNEm1Ob01rXjacBuhAdZp2q+yICEF1lClAoYaRc41o62NrjXVkto3lVXGJxzjUVFNXeGkRUlH15b0eHYYhyg9o6cqqN1nQnksN5/MjbhuPDF4mryw2xlJa+T67GBgJ6/r+hLbV/dxkVFcwaeUiDXHNS0AAAABdnLr0imtAagxW1fCM34nczSiEiwnpvgeMYFi50F+MMFUoO5XGyx9e8mnlDZw7uExWjcL4rxKIM3klsAVDiIm9</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5vBrXrNQOEyteBSbVYwXAAAAAAACAAAAAAAQZgAAAAEAACAAAADlV9M2ZsLSbl/dL6wfAaMCxCMdbc875VNpkgO7mL/FhQAAAAAOgAAAAAIAACAAAADgtpMgaDTXnDD+aQm3cfM+IiecK1NePJH99LUEQv68U4AAAACMlXiaTo+v9kaUxG4KNE/sL29iSuekOCiehUt3BoD8uME+yxXGqnnkiDjwi4ed0HWb9k9NnwipxcVw03tjGRg2BNwFxjAKZWuzs3mlkr+mQ47blB0VT24domIP/7jBOSWr71ohxDPWt8fOpyR/NGRAnaYLmY3f0fwgp8ndvBnNekAAAAC+IPXmNjgwqi5+T4JaoIWHQFwMrjsp0N/qRSqtgU3OzdC99IKfUtZ5NbkBIDMDVBxDsDH4uUScqZyI5klDtGcP</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

@@ -4,8 +4,20 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
-        <UserIDs />
-        <UserPasswords />
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>{522441BA-20DA-431D-92DA-0935A6A60AC5}</Id>
+            <Name>{522441BA-20DA-431D-92DA-0935A6A60AC5}</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5vBrXrNQOEyteBSbVYwXAAAAAABOAAAAewA1ADIAMgA0ADQAMQBCAEEALQAyADAARABBAC0ANAAzADEARAAtADkAMgBEAEEALQAwADkAMwA1AEEANgBBADYAMABBAEMANQB9AAAAEGYAAAABAAAgAAAAHTT5Y3WRiOGgJqwjCbL6MEgN+m+HxWtt6bC1dLo5fC8AAAAADoAAAAACAAAgAAAA1LClQ612Sa7SBEbnoxrRXY7YZYV6a99VYK1KjNMczwkQAAAAxG/3LVgX0yojDY6hq3TWNUAAAABjhvK6uTjkrLklPB2IWUrzJVn6HYNTd8ge/CWOnNebZmgaoXetkjA9GKa+6nRz3FClfUSJecTlp5nrHKmkFhs0</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>{522441BA-20DA-431D-92DA-0935A6A60AC5}</Id>
+            <Name>{522441BA-20DA-431D-92DA-0935A6A60AC5}</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5vBrXrNQOEyteBSbVYwXAAAAAABOAAAAewA1ADIAMgA0ADQAMQBCAEEALQAyADAARABBAC0ANAAzADEARAAtADkAMgBEAEEALQAwADkAMwA1AEEANgBBADYAMABBAEMANQB9AAAAEGYAAAABAAAgAAAAJeGE5IgvMfecUy7Q/KjTkh+7qsXNgM+vIQlX3OvEmhEAAAAADoAAAAACAAAgAAAABPEJnb9HALWzNqnLKv0JCacr3vTmGchWbkmDtn3HvMAQAAAASOYOlg4LFzd1bQj83tzZJ0AAAADd36Msa1YxzQcFdU40ure4dyUZzO+lQpVqY3C1CFx27AGxjhFkec6Kk9Mi6wS1DIwk57fYPa09sViY7QBAZGMi</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
         <OfflineMode>false</OfflineMode>
         <ProgressReporting>true</ProgressReporting>
         <ParameterConfigurationSensitiveValues>
