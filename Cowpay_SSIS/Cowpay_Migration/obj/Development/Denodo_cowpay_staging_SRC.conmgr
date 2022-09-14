@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Denodo_cowpay_staging_SRC"
+  DTS:DTSID="{BECF5C49-6EEC-487E-B17B-87E71AD3C5F9}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=admin;Dsn=Sys_Denodo_Cowpay;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAADrYw++hgIgwfuNWgbEFAOyHCiKj+2+YwweMecGlv1oZwAAAAAOgAAAAAIAACAAAACyu0JB/zo95g9bXZXCkpCCKL1E+jtOime/ixlbmhdGInAAAABaVDQCFZUUYy6tpbs29cbyeDLvelXvLmzag3wHJ78fPAUabHuIHsUAoO3KaRojhGJvkr6je3krSuwodGEZN3U6NKijwTZjfbEPnMRLYjljquZfGmWgiQ60DSLyuhLooFu7i/lOXSi2RTrNY8TRVuPiQAAAANP5VCqztlilLxN+TnFSMCnPm8h0Z5OWV7n9hhwDbsvfBg/iYS5oPgvVdnRw59W2NBzzG1w6ENs14VaonokM6jc=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -2,13 +2,18 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Cowpay_Migration</Name>
-    <LastWriteTime>2022-09-05T13:10:15.0752685Z</LastWriteTime>
+    <LastWriteTime>2022-09-14T12:43:26.831606Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Merchants_Module.dtsx</Name>
-      <LastWriteTime>2022-09-05T13:10:14.9974091Z</LastWriteTime>
+      <LastWriteTime>2022-09-14T12:43:26.8160059Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pre_Executions.dtsx</Name>
+      <LastWriteTime>2022-09-14T12:43:26.8001925Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
