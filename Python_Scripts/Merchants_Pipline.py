@@ -38,9 +38,7 @@ result = cursor.fetchall()
 settings_dict={'id':[],'json_settings':[]}
 for row in result:
     settings_id=row[0]
-    settings_data = [
-           
-    {
+    settings_data = {
         "id": "",
         "merchantCode": row[1],
         "StatusTypeId": row[1],
@@ -54,10 +52,7 @@ for row in result:
         "b2b":{"isEnabled":"","fixedVal":"","percentage":""},
         "chashout":{"isEnabled":"","values":[]}},
          "balanceConfiguration":{"m_available_balance":row[13]}
-         },
-          
-  
-]
+         }
     settings_dict['id'].append(settings_id)
     settings_dict['json_settings'].append(json.dumps(settings_data))
 #s_json = json.dumps(settings_list)
@@ -123,6 +118,8 @@ u_json =pd.DataFrame(Urls_dict)
 #list
 
 
+import json
+
 select_Usersss= """SELECT id,m_commercial_registry_file,m_tax_id_file,m_personal_id_file FROM cowpay_staging.users where is_merchant=1"""
 
 cursor = conn_mysql.cursor()
@@ -132,14 +129,12 @@ image_dict={'id':[],'json_image':[]}
 for row in result:
     image_id=row[0]
 
-    image_data = [
-      {      
+    image_data = {      
     
         "m_commercial_registry_file": [row[1]],
         "m_tax_id_file": [row[2]],"m_personal_id_file": [row[3]]
         
     }
-        ]
     image_dict['id'].append(image_id)
     image_dict['json_image'].append(json.dumps(image_data))
 #s_json = json.dumps(settings_list)
@@ -152,6 +147,7 @@ i_json =pd.DataFrame(image_dict)
     #print(data)
 #Urls_json = json.dumps(Urls)
 #Urls_json
+
 
 
 final=my_data.merge(s_json ,on='id').merge(u_json,on='id').merge(i_json,on='id')
