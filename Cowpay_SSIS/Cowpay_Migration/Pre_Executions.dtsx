@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pre_Executions"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{C664FB67-D3F3-44B5-94E8-C21D33F864C1}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{34114D07-35BF-471B-9236-AD9E58D01D89}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,6 +21,7 @@
       DTS:refId="Package\Dangerouse, Do Not Use !"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{9501C85A-A34C-4B24-B921-F4948CB208B9}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -2979,7 +2980,7 @@ group by bank_name</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="308,41.6"
           Id="Package\Dangerouse, Do Not Use !\Create LKPs (doesn't reverse the Destroy LKPs !)"
@@ -2992,15 +2993,15 @@ group by bank_name</property>
           HeaderHeight="43.2"
           IsExpanded="False"
           PanelSize="318.4,212"
-          Size="318,43"
+          Size="318.4,43.2"
           Id="Package\Dangerouse, Do Not Use !"
           TopLeft="5.71428581159941,44.0470594412728" />
         <NodeLayout
-          Size="104,42"
+          Size="104,41.6"
           Id="Package\Merchants_LKPs\Cities"
           TopLeft="108.914288876981,84.4176481656137" />
         <NodeLayout
-          Size="122,42"
+          Size="121.6,41.6"
           Id="Package\Merchants_LKPs\Countries"
           TopLeft="92.9142886045029,5.5" />
         <EdgeLayout
@@ -3028,8 +3029,8 @@ group by bank_name</property>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="220,181"
-          Size="178,43"
+          PanelSize="220,180.8"
+          Size="179.2,43.2"
           Id="Package\Merchants_LKPs"
           TopLeft="495.42857986567,102.023530449917" />
         <NodeLayout
@@ -3040,9 +3041,9 @@ group by bank_name</property>
           HeaderHeight="43.2"
           IsExpanded="False"
           PanelSize="288.8,117.6"
-          Size="289,43"
+          Size="288.8,43.2"
           Id="Package\PaymentIntegrationManagement_Stage"
-          TopLeft="300.57143369013,298.400003792258" />
+          TopLeft="300.57143369013,297.788239077796" />
         <NodeLayout
           Size="106.4,41.6"
           Id="Package\Transactions_LKP\Banks"
@@ -3086,9 +3087,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3110,9 +3109,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3134,9 +3131,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3158,9 +3153,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3182,48 +3175,46 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
           PanelSize="263.2,440.8"
-          Size="263,43"
+          Size="184.8,43.2"
           Id="Package\Transactions_LKP"
           TopLeft="433.142864519236,182.164708044455" />
         <NodeLayout
-          Size="202,42"
+          Size="201.6,41.6"
           Id="Package\Truncate Cowpay's Tables"
           TopLeft="565.142866767183,18.2117645686061" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="584.42857986567,145.023530449917">
+          TopLeft="585.02857986567,145.223530449917">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-19.7857153464339,37.141177594538"
+              EndConnector="-59.4857153464339,36.941177594538"
               Start="0,0"
-              End="-19.7857153464339,29.641177594538">
+              End="-59.4857153464339,29.441177594538">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.570588797269" />
+                    End="0,14.470588797269" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.570588797269"
-                    Point2="0,18.570588797269"
-                    Point3="-4,18.570588797269" />
+                    Point1="0,14.470588797269"
+                    Point2="0,18.470588797269"
+                    Point3="-4,18.470588797269" />
                   <mssgle:LineSegment
-                    End="-15.7857153464339,18.570588797269" />
+                    End="-55.4857153464339,18.470588797269" />
                   <mssgle:CubicBezierSegment
-                    Point1="-15.7857153464339,18.570588797269"
-                    Point2="-19.7857153464339,18.570588797269"
-                    Point3="-19.7857153464339,22.570588797269" />
+                    Point1="-55.4857153464339,18.470588797269"
+                    Point2="-59.4857153464339,18.470588797269"
+                    Point3="-59.4857153464339,22.470588797269" />
                   <mssgle:LineSegment
-                    End="-19.7857153464339,29.641177594538" />
+                    End="-59.4857153464339,29.441177594538" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3234,30 +3225,30 @@ group by bank_name</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="564.742864519236,225.364708044455">
+          TopLeft="525.542864519236,225.364708044455">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-119.771430829107,73.0352957478031"
+              EndConnector="-80.571430829106,72.423531033341"
               Start="0,0"
-              End="-119.771430829107,65.5352957478031">
+              End="-80.571430829106,64.923531033341">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5176478739016" />
+                    End="0,32.2117655166705" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,32.5176478739016"
-                    Point2="0,36.5176478739016"
-                    Point3="-4,36.5176478739016" />
+                    Point1="0,32.2117655166705"
+                    Point2="0,36.2117655166705"
+                    Point3="-4,36.2117655166705" />
                   <mssgle:LineSegment
-                    End="-115.771430829107,36.5176478739016" />
+                    End="-76.571430829106,36.2117655166705" />
                   <mssgle:CubicBezierSegment
-                    Point1="-115.771430829107,36.5176478739016"
-                    Point2="-119.771430829107,36.5176478739016"
-                    Point3="-119.771430829107,40.5176478739016" />
+                    Point1="-76.571430829106,36.2117655166705"
+                    Point2="-80.571430829106,36.2117655166705"
+                    Point3="-80.571430829106,40.2117655166705" />
                   <mssgle:LineSegment
-                    End="-119.771430829107,65.5352957478031" />
+                    End="-80.571430829106,64.923531033341" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3268,30 +3259,30 @@ group by bank_name</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="666.142866767183,60.2117645686061">
+          TopLeft="665.942866767183,59.8117645686061">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-81.7142869015131,41.8117658813109"
+              EndConnector="-80.914286901513,42.2117658813109"
               Start="0,0"
-              End="-81.7142869015131,34.3117658813109">
+              End="-80.914286901513,34.7117658813109">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.9058829406555" />
+                    End="0,17.1058829406555" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.9058829406555"
-                    Point2="0,20.9058829406555"
-                    Point3="-4,20.9058829406555" />
+                    Point1="0,17.1058829406555"
+                    Point2="0,21.1058829406555"
+                    Point3="-4,21.1058829406555" />
                   <mssgle:LineSegment
-                    End="-77.7142869015131,20.9058829406555" />
+                    End="-76.914286901513,21.1058829406555" />
                   <mssgle:CubicBezierSegment
-                    Point1="-77.7142869015131,20.9058829406555"
-                    Point2="-81.7142869015131,20.9058829406555"
-                    Point3="-81.7142869015131,24.9058829406555" />
+                    Point1="-76.914286901513,21.1058829406555"
+                    Point2="-80.914286901513,21.1058829406555"
+                    Point3="-80.914286901513,25.1058829406555" />
                   <mssgle:LineSegment
-                    End="-81.7142869015131,34.3117658813109" />
+                    End="-80.914286901513,34.7117658813109" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3307,7 +3298,7 @@ group by bank_name</property>
     design-time-name="Package\Merchants_LKPs\Cities">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="124.8,41.6"
           Id="Package\Merchants_LKPs\Cities\Cities_Src"
@@ -3335,9 +3326,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3349,11 +3338,11 @@ group by bank_name</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="144,42"
+          Size="144,41.6"
           Id="Package\Merchants_LKPs\Countries\Countries_Src"
           TopLeft="60,60" />
         <NodeLayout
-          Size="164,42"
+          Size="164,41.6"
           Id="Package\Merchants_LKPs\Countries\Countries_cowpay"
           TopLeft="269.142861385735,65.2941149444316" />
         <EdgeLayout
@@ -3385,18 +3374,18 @@ group by bank_name</property>
     design-time-name="Package\PaymentIntegrationManagement_Stage\PaymentLinkTypes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="207.2,41.6"
           Id="Package\PaymentIntegrationManagement_Stage\PaymentLinkTypes\PaymentLinkTypes_cowpay"
-          TopLeft="285.714290579971,654.964710378152" />
+          TopLeft="414.514290579971,251.764710378152" />
         <NodeLayout
           Size="192.8,41.6"
           Id="Package\PaymentIntegrationManagement_Stage\PaymentLinkTypes\PaymentLink_Types_Src"
-          TopLeft="24.0000004087176,658.400005396675" />
+          TopLeft="152.800000408718,255.200005396675" />
         <EdgeLayout
           Id="Package\PaymentIntegrationManagement_Stage\PaymentLinkTypes.Paths[ODBC Source Output]"
-          TopLeft="216.800000408718,677.482357887413">
+          TopLeft="345.600000408718,274.282357887413">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3413,9 +3402,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3425,7 +3412,7 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP\Banks">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="127.2,41.6"
           Id="Package\Transactions_LKP\Banks\Banks_Src"
@@ -3453,9 +3440,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
