@@ -5,6 +5,10 @@
   DTS:CreationName="ODBC">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="uid=admin;Dsn=Sys_Denodo_Cowpay;" />
+      DTS:ConnectionString="uid=admin;Dsn=Sys_Denodo_Cowpay;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAABrGNet3lE2XQxmWo2rg1f5J+RTlLr5oNkBKq+h9zHLJAAAAAAOgAAAAAIAACAAAABvXgqC0qOPmfVeCqfqi1HngYVo/GseRyeeEoS6aX9GcHAAAADnyc7eCYhq8UtXkej3LeFdzClEgOBodo61xPpUAZGXGWbb4yUhAnsgA8DZmLAKxVLdWATNNfRI0npAPzKttWIlbhgVCk7W4+3E01Cc9BGLNN5GrztFLNta8ZFs1VTBtfDsruZeAkEDVP5vZ43ozEU0QAAAAB7lirnXkMQ/nzXsbAnRfspQNf2ZS9Cr7/hpk0IOj+pINji5u4zKXPjsLj84cQEyN2aJCz8KrutyHTXhSKYA/AA=</DTS:Password>
+    </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{D6B19635-2F45-428F-8523-AC9E95469C58}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{D5659E90-BB79-4878-B2DC-691F2079FFAA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -66,7 +66,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecuteProcessData
-          Executable="C:\Users\Administrator\Desktop\batch_file.bat"
+          Executable="C:\Users\Administrator\Documents\cowpay_migration\Batches\Mechants_batch.bat"
           WindowStyle="Hidden" />
       </DTS:ObjectData>
     </DTS:Executable>
