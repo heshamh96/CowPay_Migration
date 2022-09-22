@@ -1,18 +1,20 @@
 
 import pandas as pd
-import mysql.connector as lol
+#import mysql.connector as lol
 import json
 import collections
+import sys
 from sys import path
-import pyodbc 
-from sqlalchemy import create_engine
+import os
+#sys.path.append(os.path.abspath("C:\Users\Administrator\Documents\cowpay_migration\Python_Scripts"))
+sys.path.insert(0, r'C:\Users\Administrator\Documents\cowpay_migration\Python_Scripts')
+
+#import pyodbc 
+from Cowpay_Connections import cnxn_str 
 
 
-conn_mysql = lol.connect(user='root', password='P@ssw0rd',host='localhost',database='cowpay_staging')
-conn_sql = pyodbc.connect('Driver={SQL Server};''Server=BI-SERVER2022;''Database=Staging_Migration;''Trusted_Connection=yes;')
-
-cursor = conn_mysql.cursor()
-my_data = pd.read_sql("select *, case when block = 0 and is_merchant = 1 then 'approved' when block = 1 and is_merchant = 1 then 'Suspended' end as status from cowpay_staging.users where is_merchant=1;",conn_mysql)
+#conn_mysql = lol.connect(user='root', password='P@ssw0rd',host='localhost',database='cowpay_staging')
+my_data = pd.read_sql("select *, case when block = 0 and is_merchant = 1 then 'approved' when block = 1 and is_merchant = 1 then 'Suspended' end as status from CowPay_Production_Simulation.[dbo].[Users] where is_merchant=1",cnxn_str)
 my_data.to_dict()
 #my_data
 #my_data.style.hide_index()

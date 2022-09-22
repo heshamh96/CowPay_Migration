@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pre_Executions"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{58168A24-20D6-4C18-AF1B-3367360045EC}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{FD7473A2-5F7D-4D15-80F3-E35B659C345C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3317,9 +3317,9 @@ group by bank_name</property>
           TopLeft="45.0285718956774,21.1294127342199" />
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="288.8,117.6"
-          Size="288.8,160.8"
+          Size="288.8,43.2"
           Id="Package\PaymentIntegrationManagement_Stage"
           TopLeft="104.1428589164,400.717652286048" />
         <NodeLayout
@@ -3484,9 +3484,9 @@ group by bank_name</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="360,509.6"
-          Size="360,552.8"
+          Size="360,43.2"
           Id="Package\Transactions_LKP"
           TopLeft="433.142864519236,182.164708044455" />
         <NodeLayout
@@ -3529,30 +3529,30 @@ group by bank_name</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="433.142864519236,458.564708044455">
+          TopLeft="613.142864519236,225.364708044455">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-40.2000056028362,22.5529442415931"
+              EndConnector="-364.600005602836,175.352944241593"
               Start="0,0"
-              End="-32.7000056028362,22.5529442415931">
+              End="-364.600005602836,167.852944241593">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-16.1000028014181,0" />
+                    End="0,83.6764721207965" />
                   <mssgle:CubicBezierSegment
-                    Point1="-16.1000028014181,0"
-                    Point2="-20.1000028014181,0"
-                    Point3="-20.1000028014181,4" />
+                    Point1="0,83.6764721207965"
+                    Point2="0,87.6764721207965"
+                    Point3="-4,87.6764721207965" />
                   <mssgle:LineSegment
-                    End="-20.1000028014181,18.5529442415931" />
+                    End="-360.600005602836,87.6764721207965" />
                   <mssgle:CubicBezierSegment
-                    Point1="-20.1000028014181,18.5529442415931"
-                    Point2="-20.1000028014181,22.5529442415931"
-                    Point3="-24.1000028014181,22.5529442415931" />
+                    Point1="-360.600005602836,87.6764721207965"
+                    Point2="-364.600005602836,87.6764721207965"
+                    Point3="-364.600005602836,91.6764721207965" />
                   <mssgle:LineSegment
-                    End="-32.7000056028362,22.5529442415931" />
+                    End="-364.600005602836,167.852944241593" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3811,7 +3811,7 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP\Currency">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="161.6,41.6"
           Id="Package\Transactions_LKP\Currency\Currency_cowpay"
@@ -3839,9 +3839,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3964,7 +3962,7 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP\PGWTypes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="191.2,41.6"
           Id="Package\Transactions_LKP\PGWTypes\Payment_Gateways_Src"
@@ -3992,9 +3990,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
