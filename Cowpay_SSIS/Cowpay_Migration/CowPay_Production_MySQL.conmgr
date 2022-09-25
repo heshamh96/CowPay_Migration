@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CowPay_Production_MySQL"
+  DTS:DTSID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Dsn=CowPay_Production;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

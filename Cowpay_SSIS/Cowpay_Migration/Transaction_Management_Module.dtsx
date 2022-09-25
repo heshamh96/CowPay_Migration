@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{05D7E68D-50C9-4F08-BFB1-C6E55C05B89B}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{A436525A-D079-4274-A757-AA3894C42370}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -695,23 +695,20 @@
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[MobileNumber]" />
                     <inputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
-                      cachedDataType="dbTimeStamp2"
+                      cachedDataType="dbTimeStamp"
                       cachedName="CreatedDate"
-                      cachedScale="7"
                       externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
                     <inputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
-                      cachedDataType="dbTimeStamp2"
+                      cachedDataType="dbTimeStamp"
                       cachedName="UpdatedDate"
-                      cachedScale="7"
                       externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
                     <inputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
-                      cachedDataType="dbTimeStamp2"
+                      cachedDataType="dbTimeStamp"
                       cachedName="DeletedDate"
-                      cachedScale="7"
                       externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
                     <inputColumn
@@ -927,33 +924,30 @@
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
-                      dataType="dbTimeStamp2"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
                       name="CreatedDate"
-                      scale="7"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
-                      dataType="dbTimeStamp2"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
                       name="UpdatedDate"
-                      scale="7"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
-                      dataType="dbTimeStamp2"
+                      dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
                       name="DeletedDate"
-                      scale="7"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[isDeleted]"
@@ -973,6 +967,15 @@
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[old_wallet_id]"
                       name="old_wallet_id"
                       precision="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[rn]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[rn]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[rn]"
+                      name="rn"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -1005,19 +1008,16 @@
                       name="MobileNumber" />
                     <externalMetadataColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
-                      dataType="dbTimeStamp2"
-                      name="CreatedDate"
-                      scale="7" />
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
                     <externalMetadataColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
-                      dataType="dbTimeStamp2"
-                      name="UpdatedDate"
-                      scale="7" />
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
                     <externalMetadataColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
-                      dataType="dbTimeStamp2"
-                      name="DeletedDate"
-                      scale="7" />
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
                     <externalMetadataColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[isDeleted]"
                       dataType="i4"
@@ -1027,6 +1027,10 @@
                       dataType="numeric"
                       name="old_wallet_id"
                       precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[rn]"
+                      dataType="i8"
+                      name="rn" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1034,6 +1038,11 @@
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[rn]"
+                      dataType="i8"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[rn]"
+                      name="rn" />
                     <outputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[WalletCode]"
                       dataType="guid"
@@ -1068,22 +1077,19 @@
                       name="MobileNumber" />
                     <outputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
-                      dataType="dbTimeStamp2"
+                      dataType="dbTimeStamp"
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
-                      name="CreatedDate"
-                      scale="7" />
+                      name="CreatedDate" />
                     <outputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
-                      dataType="dbTimeStamp2"
+                      dataType="dbTimeStamp"
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
-                      name="UpdatedDate"
-                      scale="7" />
+                      name="UpdatedDate" />
                     <outputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
-                      dataType="dbTimeStamp2"
+                      dataType="dbTimeStamp"
                       lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
-                      name="DeletedDate"
-                      scale="7" />
+                      name="DeletedDate" />
                     <outputColumn
                       refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[isDeleted]"
                       dataType="i4"
@@ -1197,39 +1203,41 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="208,41.6"
+          Id="Package\MobileWallets STG to TRGT"
+          TopLeft="35.4285720319168,221.458826635288" />
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\MobileWallets_Prepared STG to STG"
+          TopLeft="13.1428573666789,76.4705893077651" />
+        <NodeLayout
           Size="144.8,41.6"
           Id="Package\Truncate_STG"
           TopLeft="144.571431033465,14.6823531470909" />
         <NodeLayout
-          Size="248.8,41.6"
-          Id="Package\MobileWallets_Prepared STG to STG"
-          TopLeft="110.857144745029,126.023531179197" />
+          Size="152,41.6"
+          Id="Package\Truncate_TRGT"
+          TopLeft="65.1428582522336,141.929413755212" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="216.971431033465,56.2823531470909">
+          TopLeft="144.571431033465,35.4823531470909">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="18.2857137115635,69.7411780321062"
+              EndConnector="-7.02857366678612,40.9882361606742"
               Start="0,0"
-              End="18.2857137115635,62.2411780321062">
+              End="-7.02857366678612,33.4882361606742">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.8705890160531" />
+                    End="-3.02857366678612,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,30.8705890160531"
-                    Point2="0,34.8705890160531"
-                    Point3="4,34.8705890160531" />
+                    Point1="-3.02857366678612,0"
+                    Point2="-7.02857366678612,0"
+                    Point3="-7.02857366678612,4" />
                   <mssgle:LineSegment
-                    End="14.2857137115635,34.8705890160531" />
-                  <mssgle:CubicBezierSegment
-                    Point1="14.2857137115635,34.8705890160531"
-                    Point2="18.2857137115635,34.8705890160531"
-                    Point3="18.2857137115635,38.8705890160531" />
-                  <mssgle:LineSegment
-                    End="18.2857137115635,62.2411780321062" />
+                    End="-7.02857366678612,33.4882361606742" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1238,40 +1246,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="208,41.6"
-          Id="Package\MobileWallets STG to TRGT"
-          TopLeft="162.857145630584,347.482357814485" />
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\Truncate_TRGT"
-          TopLeft="199.42857482482,242.870591641462" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="235.257144745029,167.623531179197">
+          TopLeft="139.342857809456,118.070589307765">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="40.1714300797911,75.2470604622653"
+              EndConnector="0,23.8588244474468"
               Start="0,0"
-              End="40.1714300797911,67.7470604622653">
+              End="0,16.3588244474468">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.6235302311326" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.6235302311326"
-                    Point2="0,37.6235302311326"
-                    Point3="4,37.6235302311326" />
-                  <mssgle:LineSegment
-                    End="36.1714300797911,37.6235302311326" />
-                  <mssgle:CubicBezierSegment
-                    Point1="36.1714300797911,37.6235302311326"
-                    Point2="40.1714300797911,37.6235302311326"
-                    Point3="40.1714300797911,41.6235302311326" />
-                  <mssgle:LineSegment
-                    End="40.1714300797911,67.7470604622653" />
+                    End="0,16.3588244474468" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1282,30 +1270,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="275.42857482482,284.470591641462">
+          TopLeft="140.285715142075,183.529413755212">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8.57142919423643,63.0117661730228"
+              EndConnector="0,37.9294128800759"
               Start="0,0"
-              End="-8.57142919423643,55.5117661730228">
+              End="0,30.4294128800759">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.5058830865114" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.5058830865114"
-                    Point2="0,31.5058830865114"
-                    Point3="-4,31.5058830865114" />
-                  <mssgle:LineSegment
-                    End="-4.57142919423643,31.5058830865114" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4.57142919423643,31.5058830865114"
-                    Point2="-8.57142919423643,31.5058830865114"
-                    Point3="-8.57142919423643,35.5058830865114" />
-                  <mssgle:LineSegment
-                    End="-8.57142919423643,55.5117661730228" />
+                    End="0,30.4294128800759" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1318,82 +1294,18 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\MobileWallets_Prepared STG to STG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="209.6,41.6"
-          Id="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared"
-          TopLeft="164.571431374063,34.870588724341" />
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
-          TopLeft="178.857145903062,170.682355334932" />
-        <EdgeLayout
-          Id="Package\MobileWallets_Prepared STG to STG.Paths[OLE DB Source Output]"
-          TopLeft="267.514288638563,76.470588724341">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,94.2117666105911"
-              Start="0,0"
-              End="0,86.7117666105911">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,86.7117666105911" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\MobileWallets STG to TRGT">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="168,41.6"
-          Id="Package\MobileWallets STG to TRGT\MobileWallets_STG"
-          TopLeft="274.4,64.8" />
-        <NodeLayout
           Size="175.2,41.6"
           Id="Package\MobileWallets STG to TRGT\MobileWallets_TRGT"
           TopLeft="278.4,239.2" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\MobileWallets STG to TRGT\MobileWallets_STG"
+          TopLeft="274.4,64.8" />
         <EdgeLayout
           Id="Package\MobileWallets STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="362.2,106.4">
@@ -1442,6 +1354,70 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\MobileWallets_Prepared STG to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
+          TopLeft="178.857145903062,170.682355334932" />
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared"
+          TopLeft="164.571431374063,34.870588724341" />
+        <EdgeLayout
+          Id="Package\MobileWallets_Prepared STG to STG.Paths[OLE DB Source Output]"
+          TopLeft="267.514288638563,76.470588724341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,94.2117666105911"
+              Start="0,0"
+              End="0,86.7117666105911">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.7117666105911" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

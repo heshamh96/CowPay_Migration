@@ -8,7 +8,7 @@
       DTS:ConnectionString="Data Source=localhost;User ID=python;Initial Catalog=MerchantManagement;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAADvPrHviiWpWGvza8P9Dd26ibR7/dznK5lZi0l/ghMeeAAAAAAOgAAAAAIAACAAAAB+bZ+U7tFlX+W6fNpPZNyZpSRdgUdaimAcXKeVvGMGoIAAAAAkf3YfuFcVoDYUCkhEJNZswMjtSd6aORXNoHrQxC0nbWPZ+2rAn+LrCom9PP9l3OFqcQC7wOZltAfGOLDiD0xsCMYxPXLJWaxhIe+T2lvfeviYnAnNXfquB3K8/Bc0LQ57esBZAvMNvKCnab3k+53MBNT7FLQqV7T8wg5a/R9/SEAAAAC+nDsI9BYuplaJQXEjpCs23swFQ9imVC7OgTsNvPkt9nUZp8cdPgQh8+fsEr7kORGqwerdjRjJkWN0eSXxyCpw</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAACN1T4NCh/+Rf7M/QBgbvpVca+tzRZbTMpxGY37X/LXhgAAAAAOgAAAAAIAACAAAACnmhNk/X4sBZ8Y53lhUsdfSD0WaX1MsXqrcSmTeuPxYoAAAADVek3FDkWg4qmLX0GPT8CFElvepqH1M7LnxhE+UAyxme0Sh38KL9LFsyHgrUw9qosXT7OFSrCii0lke8VxRjPJCHapDHrN/WnSBuIiC72H3+LU+xjEHSVVTZm8JphKyo1pT3o44DwjsS+ZlW9oGBluwqwkcqiikkznl8OzRTi9e0AAAAAysUDGVLsj0CegSYg72uRvWCKOtkhkxn+khEZCarldW59OfeP5RrmE/UF+UnScOlNow0rBa+qiz/NNw1aTzkQJ</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
