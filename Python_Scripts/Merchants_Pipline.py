@@ -4,7 +4,6 @@ import json
 import collections
 import sys
 from sys import path
-import pyarabic.araby as araby
 import os
 from decimal import *
 #sys.path.append("module_path")
