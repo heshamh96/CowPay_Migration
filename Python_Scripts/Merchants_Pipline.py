@@ -1,26 +1,25 @@
-
 import pandas as pd
 #import mysql.connector as lol
 import json
 import collections
 import sys
 from sys import path
+import pyarabic.araby as araby
 import os
-#sys.path.append(os.path.abspath("C:\Users\Administrator\Documents\cowpay_migration\Python_Scripts"))
-sys.path.insert(0, r'C:\Users\Administrator\Documents\cowpay_migration\Python_Scripts')
+from decimal import *
+#sys.path.append("module_path")
+import sys
+from sqlalchemy import create_engine
 
-#import pyodbc 
-from Cowpay_Connections import cnxn_str 
 
+import connections as c
 
 #conn_mysql = lol.connect(user='root', password='P@ssw0rd',host='localhost',database='cowpay_staging')
-my_data = pd.read_sql("select *, case when block = 0 and is_merchant = 1 then 'approved' when block = 1 and is_merchant = 1 then 'Suspended' end as status from CowPay_Production_Simulation.[dbo].[Users] where is_merchant=1",cnxn_str)
-my_data.to_dict()
-#my_data
-#my_data.style.hide_index()
-#print(my_data.to_string(index=False))
-#df1 = my_data.to_string(index=False)
-#print(df1)
+my_data = pd.read_sql("select *, case when block = 0 and is_merchant = 1 then 'approved' when block = 1 and is_merchant = 1 then 'Suspended' end as status from CowPay_Production_Simulation.[dbo].[Users] where is_merchant=1",c.cnxn)
+#print text.encode('utf8')
+#my_data.to_csv('d.csv',encoding='utf-8-sig')
+#my_data.to_csv('d.csv',encoding='utf8')
+
 
 class create_dict(dict): 
   
@@ -31,10 +30,18 @@ class create_dict(dict):
     # Function to add key:value 
     def add(self, key, value): 
         self[key] = value
+        
+
+class JSONEncoder(json.JSONEncoder):
+    def default (self, obj):
+        if isinstance(obj, Decimal):
+            return float(obj)
+        return json.JSONEncoder.default(self, obj)
+
 
 mydict = create_dict()
-settings = """select id, null,null ,null,m_callback_url,m_payments_notification,m_orders_notification,m_cowpay_payatfawry_percentage_commission,m_cowpay_payatfawry_fixed_commission,m_cowpay_credit_card_percentage_commission,m_cowpay_credit_card_fixed_commission,m_cowpay_collect_percentage_commission,m_cowpay_collect_fixed_commission,m_available_balance,m_commercial_registry_file,m_tax_id_file,m_personal_id_file from cowpay_staging.users where is_merchant=1"""
-cursor = conn_mysql.cursor()
+settings = """select id, null,null ,null,m_callback_url,m_payments_notification,m_orders_notification,m_cowpay_payatfawry_percentage_commission,m_cowpay_payatfawry_fixed_commission,m_cowpay_credit_card_percentage_commission,m_cowpay_credit_card_fixed_commission,m_cowpay_collect_percentage_commission,m_cowpay_collect_fixed_commission,m_available_balance,m_commercial_registry_file,m_tax_id_file,m_personal_id_file from CowPay_Production_Simulation.dbo.users where is_merchant=1"""
+cursor = c.cnxn.cursor()
 cursor.execute(settings)
 result = cursor.fetchall()
 settings_dict={'id':[],'json_settings':[]}
@@ -56,7 +63,18 @@ for row in result:
          "balanceConfiguration":{"m_available_balance":row[13]}
          }
     settings_dict['id'].append(settings_id)
-    settings_dict['json_settings'].append(json.dumps(settings_data))
+    #class DecimalEncoder(json.JSONEncoder):
+        #def default(self, obj):
+       
+           #if isinstance(obj, Decimal):
+               #return str(obj)
+        
+           #return json.JSONEncoder.default(self, obj)
+
+
+
+
+    settings_dict['json_settings'].append(json.dumps(settings_data , cls = JSONEncoder))
 #s_json = json.dumps(settings_list)
 
 s_json =pd.DataFrame(settings_dict)
@@ -69,8 +87,8 @@ s_json =pd.DataFrame(settings_dict)
 #df2
 
 
-select_Users = """SELECT id,m_facebook,m_twitter,m_linked_in,m_instagram,m_website FROM cowpay_staging.users where is_merchant=1"""
-cursor = conn_mysql.cursor()
+select_Users = """SELECT id,m_facebook,m_twitter,m_linked_in,m_instagram,m_website FROM CowPay_Production_Simulation.dbo.users where is_merchant=1"""
+cursor = c.cnxn.cursor()
 cursor.execute(select_Users)
 result = cursor.fetchall()
 Urls_dict={'id':[],'Urls_settings':[]}
@@ -120,11 +138,11 @@ u_json =pd.DataFrame(Urls_dict)
 #list
 
 
-import json
 
-select_Usersss= """SELECT id,m_commercial_registry_file,m_tax_id_file,m_personal_id_file FROM cowpay_staging.users where is_merchant=1"""
 
-cursor = conn_mysql.cursor()
+select_Usersss= """SELECT id,m_commercial_registry_file,m_tax_id_file,m_personal_id_file FROM CowPay_Production_Simulation.dbo.users where is_merchant=1"""
+
+cursor = c.cnxn.cursor()
 cursor.execute(select_Usersss)
 result = cursor.fetchall()
 image_dict={'id':[],'json_image':[]}
@@ -153,6 +171,10 @@ i_json =pd.DataFrame(image_dict)
 
 
 final=my_data.merge(s_json ,on='id').merge(u_json,on='id').merge(i_json,on='id')
+
+#final.to_csv('final.csv', encoding='utf-8-sig')
+#lol.to_csv('vat_vs_withholding.csv',encoding='utf-8')
+#final.to_csv
 #final.to_csv('final.csv',encoding='utf-8-sig')
 #lol.to_csv('vat_vs_withholding.csv',encoding='utf-8')
 #final.to_csv
