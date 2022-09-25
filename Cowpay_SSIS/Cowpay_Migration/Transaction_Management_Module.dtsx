@@ -1,0 +1,1449 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/25/2022 4:52:40 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BI-SERVER2022"
+  DTS:CreatorName="BI-SERVER2022\admin"
+  DTS:DTSID="{6A9D8602-EDDA-4E69-AA75-71A3BEBC81A3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Transaction_Management_Module"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{05D7E68D-50C9-4F08-BFB1-C6E55C05B89B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\MobileWallets STG to TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1049169D-F756-47F8-81FF-872F3B79C02A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MobileWallets STG to TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\MobileWallets STG to TRGT\MobileWallets_STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="MobileWallets_STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MobileWallets]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[WalletCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[WalletCode]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[WalletCode]"
+                      name="WalletCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[HolderName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[HolderName]"
+                      length="150"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[HolderName]"
+                      name="HolderName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[MobileNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[MobileNumber]"
+                      length="11"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[MobileNumber]"
+                      name="MobileNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[IsDefault]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDefault]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[IsDefault]"
+                      name="IsDefault"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[MerchantID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantID]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[MerchantID]"
+                      name="MerchantID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[IsMerchantAccount]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]"
+                      name="IsMerchantAccount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[old_wallet_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[old_wallet_ID]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[old_wallet_ID]"
+                      name="old_wallet_ID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[WalletCode]"
+                      dataType="guid"
+                      name="WalletCode" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[HolderName]"
+                      dataType="wstr"
+                      length="150"
+                      name="HolderName" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[MobileNumber]"
+                      dataType="wstr"
+                      length="11"
+                      name="MobileNumber" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDefault]"
+                      dataType="bool"
+                      name="IsDefault" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantID]"
+                      dataType="i8"
+                      name="MerchantID" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[IsMerchantAccount]"
+                      dataType="bool"
+                      name="IsMerchantAccount" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].ExternalColumns[old_wallet_ID]"
+                      dataType="i4"
+                      name="old_wallet_ID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[WalletCode]"
+                      dataType="guid"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[WalletCode]"
+                      name="WalletCode" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[HolderName]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[HolderName]"
+                      name="HolderName" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[MobileNumber]"
+                      dataType="wstr"
+                      length="11"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[MobileNumber]"
+                      name="MobileNumber" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[IsDefault]"
+                      dataType="bool"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[IsDefault]"
+                      name="IsDefault" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[MerchantID]"
+                      dataType="i8"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[MerchantID]"
+                      name="MerchantID" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[IsMerchantAccount]"
+                      dataType="bool"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[IsMerchantAccount]"
+                      name="IsMerchantAccount" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[old_wallet_ID]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[old_wallet_ID]"
+                      name="old_wallet_ID" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="MobileWallets_TRGT"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MobileWallets]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Connections[OleDbConnection]"
+                  connectionManagerID="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TransactionManagement]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[WalletCode]"
+                      cachedDataType="guid"
+                      cachedName="WalletCode"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[WalletCode]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[WalletCode]" />
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[HolderName]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="HolderName"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[HolderName]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[HolderName]" />
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[MobileNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="MobileNumber"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MobileNumber]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[MobileNumber]" />
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[IsDefault]"
+                      cachedDataType="bool"
+                      cachedName="IsDefault"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDefault]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[IsDefault]" />
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantID]"
+                      cachedDataType="i8"
+                      cachedName="MerchantID"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantID]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[MerchantID]" />
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].Columns[IsMerchantAccount]"
+                      cachedDataType="bool"
+                      cachedName="IsMerchantAccount"
+                      externalMetadataColumnId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsMerchantAccount]"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[WalletCode]"
+                      dataType="guid"
+                      name="WalletCode" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[HolderName]"
+                      dataType="wstr"
+                      length="150"
+                      name="HolderName" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MobileNumber]"
+                      dataType="wstr"
+                      length="11"
+                      name="MobileNumber" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDefault]"
+                      dataType="bool"
+                      name="IsDefault" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantID]"
+                      dataType="i8"
+                      name="MerchantID" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsMerchantAccount]"
+                      dataType="bool"
+                      name="IsMerchantAccount" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\MobileWallets STG to TRGT.Paths[OLE DB Source Output]"
+              endId="Package\MobileWallets STG to TRGT\MobileWallets_TRGT.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\MobileWallets STG to TRGT\MobileWallets_STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\MobileWallets_Prepared STG to STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7F16B53B-D38D-460F-B964-2A757E91543B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MobileWallets_Prepared STG to STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="STG_Mobile_Wallets"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MobileWallets]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[WalletCode]"
+                      cachedDataType="guid"
+                      cachedName="WalletCode"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[WalletCode]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[WalletCode]" />
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[HolderName]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="HolderName"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[HolderName]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[HolderName]" />
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[IsDefault]"
+                      cachedDataType="i4"
+                      cachedName="IsDefault"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[IsDefault]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[IsDefault]" />
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[MerchantID]"
+                      cachedDataType="i8"
+                      cachedName="MerchantID"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[MerchantID]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[MerchantID]" />
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[IsMerchantAccount]"
+                      cachedDataType="i4"
+                      cachedName="IsMerchantAccount"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[IsMerchantAccount]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]" />
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[MobileNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="MobileNumber"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[MobileNumber]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[MobileNumber]" />
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="CreatedDate"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="UpdatedDate"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="DeletedDate"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[isDeleted]"
+                      cachedDataType="i4"
+                      cachedName="isDeleted"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[isDeleted]" />
+                    <inputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].Columns[old_wallet_id]"
+                      cachedDataType="numeric"
+                      cachedName="old_wallet_id"
+                      cachedPrecision="20"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[old_wallet_ID]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[old_wallet_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[WalletCode]"
+                      dataType="guid"
+                      name="WalletCode" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[HolderName]"
+                      dataType="wstr"
+                      length="150"
+                      name="HolderName" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[MobileNumber]"
+                      dataType="wstr"
+                      length="11"
+                      name="MobileNumber" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[IsDefault]"
+                      dataType="bool"
+                      name="IsDefault" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[MerchantID]"
+                      dataType="i8"
+                      name="MerchantID" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[IsMerchantAccount]"
+                      dataType="bool"
+                      name="IsMerchantAccount" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input].ExternalColumns[old_wallet_ID]"
+                      dataType="i4"
+                      name="old_wallet_ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="vw_MobileWallets_Prepared"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Mobile_Wallets_Prepared]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[WalletCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[WalletCode]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[WalletCode]"
+                      name="WalletCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[HolderName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HolderName]"
+                      length="150"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[HolderName]"
+                      name="HolderName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[IsDefault]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDefault]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[IsDefault]"
+                      name="IsDefault"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[MerchantID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantID]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[MerchantID]"
+                      name="MerchantID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsMerchantAccount]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]"
+                      name="IsMerchantAccount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[MobileNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MobileNumber]"
+                      length="11"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[MobileNumber]"
+                      name="MobileNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[isDeleted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[isDeleted]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[isDeleted]"
+                      name="isDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[old_wallet_id]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_wallet_id]"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].Columns[old_wallet_id]"
+                      name="old_wallet_id"
+                      precision="20"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[WalletCode]"
+                      dataType="guid"
+                      name="WalletCode" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HolderName]"
+                      dataType="wstr"
+                      length="150"
+                      name="HolderName" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDefault]"
+                      dataType="i4"
+                      name="IsDefault" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantID]"
+                      dataType="i8"
+                      name="MerchantID" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsMerchantAccount]"
+                      dataType="i4"
+                      name="IsMerchantAccount" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MobileNumber]"
+                      dataType="wstr"
+                      length="11"
+                      name="MobileNumber" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="CreatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="UpdatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp2"
+                      name="DeletedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[isDeleted]"
+                      dataType="i4"
+                      name="isDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_wallet_id]"
+                      dataType="numeric"
+                      name="old_wallet_id"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[WalletCode]"
+                      dataType="guid"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[WalletCode]"
+                      name="WalletCode" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[HolderName]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[HolderName]"
+                      name="HolderName" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDefault]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDefault]"
+                      name="IsDefault" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantID]"
+                      dataType="i8"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantID]"
+                      name="MerchantID" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[IsMerchantAccount]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[IsMerchantAccount]"
+                      name="IsMerchantAccount" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[MobileNumber]"
+                      dataType="wstr"
+                      length="11"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[MobileNumber]"
+                      name="MobileNumber" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[isDeleted]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[isDeleted]"
+                      name="isDeleted" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[old_wallet_id]"
+                      dataType="numeric"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[old_wallet_id]"
+                      name="old_wallet_id"
+                      precision="20" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\MobileWallets_Prepared STG to STG.Paths[OLE DB Source Output]"
+              endId="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate_STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{41547249-1E34-4004-950A-DDB9FF71FBFC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate_STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate_TRGT"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{dc648677-28f8-43fc-93ae-950ca0e032a8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate_TRGT"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3624A3DE-6EC1-41BD-BAD2-5E3467B73152}"
+      DTS:From="Package\Truncate_STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\MobileWallets_Prepared STG to STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{3C68F01D-1B3C-41BD-B5C0-77F001675C78}"
+      DTS:From="Package\MobileWallets_Prepared STG to STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Truncate_TRGT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0862C81A-0DF5-43D5-8C0F-2769EF05B862}"
+      DTS:From="Package\Truncate_TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\MobileWallets STG to TRGT" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\Truncate_STG"
+          TopLeft="144.571431033465,14.6823531470909" />
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\MobileWallets_Prepared STG to STG"
+          TopLeft="110.857144745029,126.023531179197" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="216.971431033465,56.2823531470909">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.2857137115635,69.7411780321062"
+              Start="0,0"
+              End="18.2857137115635,62.2411780321062">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.8705890160531" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.8705890160531"
+                    Point2="0,34.8705890160531"
+                    Point3="4,34.8705890160531" />
+                  <mssgle:LineSegment
+                    End="14.2857137115635,34.8705890160531" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.2857137115635,34.8705890160531"
+                    Point2="18.2857137115635,34.8705890160531"
+                    Point3="18.2857137115635,38.8705890160531" />
+                  <mssgle:LineSegment
+                    End="18.2857137115635,62.2411780321062" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\MobileWallets STG to TRGT"
+          TopLeft="162.857145630584,347.482357814485" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Truncate_TRGT"
+          TopLeft="199.42857482482,242.870591641462" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="235.257144745029,167.623531179197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="40.1714300797911,75.2470604622653"
+              Start="0,0"
+              End="40.1714300797911,67.7470604622653">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.6235302311326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.6235302311326"
+                    Point2="0,37.6235302311326"
+                    Point3="4,37.6235302311326" />
+                  <mssgle:LineSegment
+                    End="36.1714300797911,37.6235302311326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="36.1714300797911,37.6235302311326"
+                    Point2="40.1714300797911,37.6235302311326"
+                    Point3="40.1714300797911,41.6235302311326" />
+                  <mssgle:LineSegment
+                    End="40.1714300797911,67.7470604622653" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="275.42857482482,284.470591641462">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.57142919423643,63.0117661730228"
+              Start="0,0"
+              End="-8.57142919423643,55.5117661730228">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5058830865114" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5058830865114"
+                    Point2="0,31.5058830865114"
+                    Point3="-4,31.5058830865114" />
+                  <mssgle:LineSegment
+                    End="-4.57142919423643,31.5058830865114" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.57142919423643,31.5058830865114"
+                    Point2="-8.57142919423643,31.5058830865114"
+                    Point3="-8.57142919423643,35.5058830865114" />
+                  <mssgle:LineSegment
+                    End="-8.57142919423643,55.5117661730228" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\MobileWallets_Prepared STG to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared"
+          TopLeft="164.571431374063,34.870588724341" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
+          TopLeft="178.857145903062,170.682355334932" />
+        <EdgeLayout
+          Id="Package\MobileWallets_Prepared STG to STG.Paths[OLE DB Source Output]"
+          TopLeft="267.514288638563,76.470588724341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,94.2117666105911"
+              Start="0,0"
+              End="0,86.7117666105911">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.7117666105911" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\MobileWallets STG to TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\MobileWallets STG to TRGT\MobileWallets_STG"
+          TopLeft="274.4,64.8" />
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\MobileWallets STG to TRGT\MobileWallets_TRGT"
+          TopLeft="278.4,239.2" />
+        <EdgeLayout
+          Id="Package\MobileWallets STG to TRGT.Paths[OLE DB Source Output]"
+          TopLeft="362.2,106.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,132.8"
+              Start="0,0"
+              End="0,125.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,125.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MobileWallets STG to TRGT\MobileWallets_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MobileWallets STG to TRGT\MobileWallets_TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
