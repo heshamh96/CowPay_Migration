@@ -11,12 +11,1066 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{A436525A-D079-4274-A757-AA3894C42370}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{7EC70D91-CC46-4E1B-9413-712DA51FCD91}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Customers STG to TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FFD628A2-93A0-48E8-97D0-60C4C5B10F63}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Customers STG to TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Customers STG to TRGT\Customers_STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Customers_STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Customers STG to TRGT\Customers_STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      name="MerchantId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="100"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="50"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantProfileId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantProfileId]"
+                      length="50"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantProfileId]"
+                      name="MerchantProfileId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Mobile]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Mobile]"
+                      length="50"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Mobile]"
+                      name="Mobile"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Old_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_id]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Old_id]"
+                      name="Old_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="50"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantProfileId]"
+                      dataType="wstr"
+                      length="50"
+                      name="MerchantProfileId" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Mobile]"
+                      dataType="wstr"
+                      length="50"
+                      name="Mobile" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_id]"
+                      dataType="i4"
+                      name="Old_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i8"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      dataType="i8"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      name="MerchantId" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[MerchantProfileId]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[MerchantProfileId]"
+                      name="MerchantProfileId" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Mobile]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Mobile]"
+                      name="Mobile" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Old_id]"
+                      dataType="i4"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Old_id]"
+                      name="Old_id" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Customers STG to TRGT\Customers_TRGT"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Customers_TRGT"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Customers STG to TRGT\Customers_TRGT.Connections[OleDbConnection]"
+                  connectionManagerID="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TransactionManagement]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i8"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantId]"
+                      cachedDataType="i8"
+                      cachedName="MerchantId"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantId]" />
+                    <inputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantProfileId]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MerchantProfileId"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantProfileId]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantProfileId]" />
+                    <inputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[Mobile]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Mobile"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Mobile]" />
+                    <inputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="50"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantProfileId]"
+                      dataType="wstr"
+                      length="50"
+                      name="MerchantProfileId" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
+                      dataType="wstr"
+                      length="50"
+                      name="Mobile" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Customers STG to TRGT\Customers_TRGT.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customers STG to TRGT\Customers_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customers STG to TRGT\Customers_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customers STG to TRGT\Customers_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Customers STG to TRGT.Paths[OLE DB Source Output]"
+              endId="Package\Customers STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Customers STG to TRGT\Customers_STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Customers_Prepared STG to STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1E1E9ED9-1204-4439-947B-067C211871D6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Customers_Prepared STG to STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Customers_Prepared STG to STG\STG_Customers"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="STG_Customers"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Customers_Prepared STG to STG\STG_Customers.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].Columns[MerchantId]"
+                      cachedDataType="i8"
+                      cachedName="MerchantId"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]" />
+                    <inputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].Columns[MerchantProfileId]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="MerchantProfileId"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[MerchantProfileId]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[MerchantProfileId]" />
+                    <inputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].Columns[Mobile]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="Mobile"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[Mobile]" />
+                    <inputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="i4"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].Columns[old_Customer_Id]"
+                      cachedDataType="i4"
+                      cachedName="old_Customer_Id"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[Old_id]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[old_Customer_Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="50"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[MerchantProfileId]"
+                      dataType="wstr"
+                      length="50"
+                      name="MerchantProfileId" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
+                      dataType="wstr"
+                      length="50"
+                      name="Mobile" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input].ExternalColumns[Old_id]"
+                      dataType="i4"
+                      name="Old_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Customers_Prepared STG to STG\STG_Customers.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customers_Prepared STG to STG\STG_Customers.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\STG_Customers.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customers_Prepared STG to STG\STG_Customers.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="vw_Customers_Prepared"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CUstomers_Prepared]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      name="MerchantId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="255"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="191"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[MerchantProfileId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantProfileId]"
+                      length="64"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[MerchantProfileId]"
+                      name="MerchantProfileId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[Mobile]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Mobile]"
+                      length="11"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[Mobile]"
+                      name="Mobile"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[old_Customer_Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_Customer_Id]"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].Columns[old_Customer_Id]"
+                      name="old_Customer_Id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="191"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantProfileId]"
+                      dataType="wstr"
+                      length="64"
+                      name="MerchantProfileId" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Mobile]"
+                      dataType="wstr"
+                      length="11"
+                      name="Mobile" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="i4"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_Customer_Id]"
+                      dataType="i4"
+                      name="old_Customer_Id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      dataType="i8"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      name="MerchantId" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantProfileId]"
+                      dataType="wstr"
+                      length="64"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantProfileId]"
+                      name="MerchantProfileId" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[Mobile]"
+                      dataType="wstr"
+                      length="11"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[Mobile]"
+                      name="Mobile" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="i4"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[old_Customer_Id]"
+                      dataType="i4"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[old_Customer_Id]"
+                      name="old_Customer_Id" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Customers_Prepared STG to STG.Paths[OLE DB Source Output]"
+              endId="Package\Customers_Prepared STG to STG\STG_Customers.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Customers_Prepared STG to STG\vw_Customers_Prepared.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\MobileWallets STG to TRGT"
       DTS:CreationName="Microsoft.Pipeline"
@@ -1143,7 +2197,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1160,7 +2214,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -1176,11 +2230,11 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{3C68F01D-1B3C-41BD-B5C0-77F001675C78}"
+      DTS:DTSID="{3062D431-8006-4C4A-BEE0-AAC4CDFDDA10}"
       DTS:From="Package\MobileWallets_Prepared STG to STG"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Truncate_TRGT" />
+      DTS:To="Package\Customers_Prepared STG to STG" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -1189,6 +2243,22 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\MobileWallets STG to TRGT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{9517CDB6-5E26-4E8C-BED0-D49C1D5B96E2}"
+      DTS:From="Package\MobileWallets STG to TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Customers STG to TRGT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{99F6C05B-E601-4CAB-9D05-B5F4DFDF39E2}"
+      DTS:From="Package\Customers_Prepared STG to STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Truncate_TRGT" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1201,65 +2271,43 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="208,41.6"
           Id="Package\MobileWallets STG to TRGT"
-          TopLeft="35.4285720319168,221.458826635288" />
+          TopLeft="16.0000002724788,264.282356647637" />
         <NodeLayout
           Size="248.8,41.6"
           Id="Package\MobileWallets_Prepared STG to STG"
-          TopLeft="13.1428573666789,76.4705893077651" />
+          TopLeft="442.285721817796,76.4705893077651" />
         <NodeLayout
           Size="144.8,41.6"
           Id="Package\Truncate_STG"
-          TopLeft="144.571431033465,14.6823531470909" />
+          TopLeft="573.714295484582,14.6823531470909" />
         <NodeLayout
           Size="152,41.6"
           Id="Package\Truncate_TRGT"
-          TopLeft="65.1428582522336,141.929413755212" />
+          TopLeft="45.7142864927955,184.752943767561" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="144.571431033465,35.4823531470909">
+          TopLeft="573.714295484582,35.4823531470909">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-7.02857366678612,40.9882361606742"
+              EndConnector="-7.02857366678609,40.9882361606742"
               Start="0,0"
-              End="-7.02857366678612,33.4882361606742">
+              End="-7.02857366678609,33.4882361606742">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-3.02857366678612,0" />
+                    End="-3.02857366678609,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-3.02857366678612,0"
-                    Point2="-7.02857366678612,0"
-                    Point3="-7.02857366678612,4" />
+                    Point1="-3.02857366678609,0"
+                    Point2="-7.02857366678609,0"
+                    Point3="-7.02857366678609,4" />
                   <mssgle:LineSegment
-                    End="-7.02857366678612,33.4882361606742" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="139.342857809456,118.070589307765">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23.8588244474468"
-              Start="0,0"
-              End="0,16.3588244474468">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.3588244474468" />
+                    End="-7.02857366678609,33.4882361606742" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1270,18 +2318,116 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="140.285715142075,183.529413755212">
+          TopLeft="120.857143382637,226.352943767561">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37.9294128800759"
+              EndConnector="0,37.929412880076"
               Start="0,0"
-              End="0,30.4294128800759">
+              End="0,30.429412880076">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.4294128800759" />
+                    End="0,30.429412880076" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="234.4,41.6"
+          Id="Package\Customers_Prepared STG to STG"
+          TopLeft="482.857151080151,153.176472613061" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="566.685721817795,118.070589307765">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.3714292623557,35.1058833052957"
+              Start="0,0"
+              End="33.3714292623557,27.6058833052957">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5529416526479" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5529416526479"
+                    Point2="0,17.5529416526479"
+                    Point3="4,17.5529416526479" />
+                  <mssgle:LineSegment
+                    End="29.3714292623557,17.5529416526479" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.3714292623557,17.5529416526479"
+                    Point2="33.3714292623557,17.5529416526479"
+                    Point3="33.3714292623557,21.5529416526479" />
+                  <mssgle:LineSegment
+                    End="33.3714292623557,27.6058833052957" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Customers STG to TRGT"
+          TopLeft="28.0000004768371,338.305887097553" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="122.200000374658,305.882356647637">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.4235304499169"
+              Start="0,0"
+              End="0,24.9235304499169">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.9235304499169" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="482.857151080151,173.976472613061">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-285.142864587356,31.5764711544998"
+              Start="0,0"
+              End="-277.642864587356,31.5764711544998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-138.571432293678,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-138.571432293678,0"
+                    Point2="-142.571432293678,0"
+                    Point3="-142.571432293678,4" />
+                  <mssgle:LineSegment
+                    End="-142.571432293678,27.5764711544998" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-142.571432293678,27.5764711544998"
+                    Point2="-142.571432293678,31.5764711544998"
+                    Point3="-146.571432293678,31.5764711544998" />
+                  <mssgle:LineSegment
+                    End="-277.642864587356,31.5764711544998" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1418,6 +2564,158 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Customers_Prepared STG to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\Customers_Prepared STG to STG\vw_Customers_Prepared"
+          TopLeft="191.428574688581,44.0470594412728" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Customers_Prepared STG to STG\STG_Customers"
+          TopLeft="232.571432532097,180.470590766326" />
+        <EdgeLayout
+          Id="Package\Customers_Prepared STG to STG.Paths[OLE DB Source Output]"
+          TopLeft="289.028574688581,85.6470594412728">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.9428578435159,94.8235313250532"
+              Start="0,0"
+              End="19.9428578435159,87.3235313250532">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.4117656625266" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.4117656625266"
+                    Point2="0,47.4117656625266"
+                    Point3="4,47.4117656625266" />
+                  <mssgle:LineSegment
+                    End="15.9428578435159,47.4117656625266" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.9428578435159,47.4117656625266"
+                    Point2="19.9428578435159,47.4117656625266"
+                    Point3="19.9428578435159,51.4117656625266" />
+                  <mssgle:LineSegment
+                    End="19.9428578435159,87.3235313250532" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customers_Prepared STG to STG\vw_Customers_Prepared">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customers_Prepared STG to STG\STG_Customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Customers STG to TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Customers STG to TRGT\Customers_STG"
+          TopLeft="227.2,64" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Customers STG to TRGT\Customers_TRGT"
+          TopLeft="234.4,221.6" />
+        <EdgeLayout
+          Id="Package\Customers STG to TRGT.Paths[OLE DB Source Output]"
+          TopLeft="303.6,105.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.8,116"
+              Start="0,0"
+              End="10.8,108.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,54"
+                    Point2="0,58"
+                    Point3="4,58" />
+                  <mssgle:LineSegment
+                    End="6.80000000000001,58" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.80000000000001,58"
+                    Point2="10.8,58"
+                    Point3="10.8,62" />
+                  <mssgle:LineSegment
+                    End="10.8,108.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customers STG to TRGT\Customers_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customers STG to TRGT\Customers_TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
