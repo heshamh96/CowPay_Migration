@@ -11,12 +11,1218 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{4450CBE2-BC4A-4D4B-BFC3-DFCE92C86D5B}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{E58C9DAA-6F8C-43AB-A6A2-FC6610AB6FFA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\BankAccounts STG to TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{ce62f133-4c21-4790-b1a0-fd310ea15f7c}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="BankAccounts STG to TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\BankAccounts STG to TRGT\Customers_STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Customers_STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[BankAccounts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\BankAccounts STG to TRGT\Customers_STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[BankAccountCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[BankAccountCode]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[BankAccountCode]"
+                      name="BankAccountCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      name="MerchantCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[BankId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[BankId]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[BankId]"
+                      name="BankId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[HolderName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[HolderName]"
+                      length="150"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[HolderName]"
+                      name="HolderName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                      length="50"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                      name="AccountNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsDefault]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDefault]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsDefault]"
+                      name="IsDefault"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantID]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantID]"
+                      name="MerchantID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[IsMerchantAccount]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]"
+                      name="IsMerchantAccount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[old_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[old_id]"
+                      name="old_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[BankAccountCode]"
+                      dataType="guid"
+                      name="BankAccountCode" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[BankId]"
+                      dataType="i4"
+                      name="BankId" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[HolderName]"
+                      dataType="wstr"
+                      length="150"
+                      name="HolderName" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="50"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDefault]"
+                      dataType="bool"
+                      name="IsDefault" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantID]"
+                      dataType="i8"
+                      name="MerchantID" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[IsMerchantAccount]"
+                      dataType="bool"
+                      name="IsMerchantAccount" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      dataType="i4"
+                      name="old_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[BankAccountCode]"
+                      dataType="guid"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[BankAccountCode]"
+                      name="BankAccountCode" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      name="MerchantCode" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[BankId]"
+                      dataType="i4"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[BankId]"
+                      name="BankId" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[HolderName]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[HolderName]"
+                      name="HolderName" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                      name="AccountNumber" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[IsDefault]"
+                      dataType="bool"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[IsDefault]"
+                      name="IsDefault" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[MerchantID]"
+                      dataType="i8"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[MerchantID]"
+                      name="MerchantID" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[IsMerchantAccount]"
+                      dataType="bool"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[IsMerchantAccount]"
+                      name="IsMerchantAccount" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      dataType="i4"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      name="old_id" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\BankAccounts STG to TRGT\Customers_TRGT"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Customers_TRGT"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[BankAccounts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Connections[OleDbConnection]"
+                  connectionManagerID="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TransactionManagement]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i8"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[BankAccountCode]"
+                      cachedDataType="guid"
+                      cachedName="BankAccountCode"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[BankAccountCode]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[BankAccountCode]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantCode]"
+                      cachedDataType="guid"
+                      cachedName="MerchantCode"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantCode]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[BankId]"
+                      cachedDataType="i4"
+                      cachedName="BankId"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[BankId]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[BankId]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[HolderName]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="HolderName"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[HolderName]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[HolderName]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[AccountNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="AccountNumber"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[AccountNumber]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[IsDefault]"
+                      cachedDataType="bool"
+                      cachedName="IsDefault"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDefault]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsDefault]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantID]"
+                      cachedDataType="i8"
+                      cachedName="MerchantID"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantID]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[MerchantID]" />
+                    <inputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].Columns[IsMerchantAccount]"
+                      cachedDataType="bool"
+                      cachedName="IsMerchantAccount"
+                      externalMetadataColumnId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsMerchantAccount]"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[BankAccountCode]"
+                      dataType="guid"
+                      name="BankAccountCode" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[BankId]"
+                      dataType="i4"
+                      name="BankId" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[HolderName]"
+                      dataType="wstr"
+                      length="150"
+                      name="HolderName" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="50"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDefault]"
+                      dataType="bool"
+                      name="IsDefault" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantID]"
+                      dataType="i8"
+                      name="MerchantID" />
+                    <externalMetadataColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsMerchantAccount]"
+                      dataType="bool"
+                      name="IsMerchantAccount" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\BankAccounts STG to TRGT\Customers_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\BankAccounts STG to TRGT\Customers_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\BankAccounts STG to TRGT.Paths[OLE DB Source Output]"
+              endId="Package\BankAccounts STG to TRGT\Customers_TRGT.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\BankAccounts STG to TRGT\Customers_STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Bank_Accounts_Prepared STG to STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{61A0A406-2173-4D5A-B679-CAD31F85E855}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Bank_Accounts_Prepared STG to STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="STG_BankAccounts"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[BankAccounts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[BankAccountCode]"
+                      cachedDataType="guid"
+                      cachedName="BankAccountCode"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[BankAccountCode]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[BankAccountCode]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[MerchantCode]"
+                      cachedDataType="guid"
+                      cachedName="MerchantCode"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[MerchantCode]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[BankId]"
+                      cachedDataType="i4"
+                      cachedName="BankId"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[BankId]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[BankId]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[HolderName]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="HolderName"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[HolderName]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[HolderName]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[AccountNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="AccountNumber"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[AccountNumber]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[IsDefault]"
+                      cachedDataType="i2"
+                      cachedName="IsDefault"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[IsDefault]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[IsDefault]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[MerchantID]"
+                      cachedDataType="i8"
+                      cachedName="MerchantID"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[MerchantID]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[MerchantID]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[IsMerchantAccount]"
+                      cachedDataType="i4"
+                      cachedName="IsMerchantAccount"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[IsMerchantAccount]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="i4"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].Columns[old_id]"
+                      cachedDataType="numeric"
+                      cachedName="old_id"
+                      cachedPrecision="20"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[old_id]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[old_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[BankAccountCode]"
+                      dataType="guid"
+                      name="BankAccountCode" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[BankId]"
+                      dataType="i4"
+                      name="BankId" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[HolderName]"
+                      dataType="wstr"
+                      length="150"
+                      name="HolderName" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="50"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[IsDefault]"
+                      dataType="bool"
+                      name="IsDefault" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[MerchantID]"
+                      dataType="i8"
+                      name="MerchantID" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[IsMerchantAccount]"
+                      dataType="bool"
+                      name="IsMerchantAccount" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input].ExternalColumns[old_id]"
+                      dataType="i4"
+                      name="old_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="vw_BankAccounts_Prepared"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Bank_Accounts_Prepared]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[BankAccountCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[BankAccountCode]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[BankAccountCode]"
+                      name="BankAccountCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      name="MerchantCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[BankId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[BankId]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[BankId]"
+                      name="BankId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[HolderName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HolderName]"
+                      length="191"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[HolderName]"
+                      name="HolderName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                      length="64"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                      name="AccountNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[IsDefault]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDefault]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[IsDefault]"
+                      name="IsDefault"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[MerchantID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantID]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[MerchantID]"
+                      name="MerchantID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsMerchantAccount]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[IsMerchantAccount]"
+                      name="IsMerchantAccount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[old_id]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].Columns[old_id]"
+                      name="old_id"
+                      precision="20"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[BankAccountCode]"
+                      dataType="guid"
+                      name="BankAccountCode" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[BankId]"
+                      dataType="i4"
+                      name="BankId" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HolderName]"
+                      dataType="wstr"
+                      length="191"
+                      name="HolderName" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="64"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDefault]"
+                      dataType="i2"
+                      name="IsDefault" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantID]"
+                      dataType="i8"
+                      name="MerchantID" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsMerchantAccount]"
+                      dataType="i4"
+                      name="IsMerchantAccount" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="i4"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      dataType="numeric"
+                      name="old_id"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[BankAccountCode]"
+                      dataType="guid"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[BankAccountCode]"
+                      name="BankAccountCode" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      name="MerchantCode" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[BankId]"
+                      dataType="i4"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[BankId]"
+                      name="BankId" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[HolderName]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[HolderName]"
+                      name="HolderName" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                      dataType="wstr"
+                      length="64"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                      name="AccountNumber" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDefault]"
+                      dataType="i2"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDefault]"
+                      name="IsDefault" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantID]"
+                      dataType="i8"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantID]"
+                      name="MerchantID" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[IsMerchantAccount]"
+                      dataType="i4"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[IsMerchantAccount]"
+                      name="IsMerchantAccount" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="i4"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      dataType="numeric"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      name="old_id"
+                      precision="20" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Bank_Accounts_Prepared STG to STG.Paths[OLE DB Source Output]"
+              endId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Customers STG to TRGT"
       DTS:CreationName="Microsoft.Pipeline"
@@ -2197,7 +3403,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[BankAccounts]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2214,7 +3420,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[BankAccounts]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2251,6 +3457,22 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\Customers STG to TRGT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{817D5B1B-A689-46AD-B0F7-0E6F98A99A94}"
+      DTS:From="Package\Customers_Prepared STG to STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Bank_Accounts_Prepared STG to STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{CB3959FB-74C8-4028-86D8-F01D0C01526D}"
+      DTS:From="Package\Customers STG to TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\BankAccounts STG to TRGT" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2267,7 +3489,7 @@
         <NodeLayout
           Size="208,41.6"
           Id="Package\MobileWallets STG to TRGT"
-          TopLeft="16.0000002724788,264.282356647637" />
+          TopLeft="38.2857149377165,154.164708044455" />
         <NodeLayout
           Size="248.8,41.6"
           Id="Package\MobileWallets_Prepared STG to STG"
@@ -2279,7 +3501,7 @@
         <NodeLayout
           Size="152,41.6"
           Id="Package\Truncate_TRGT"
-          TopLeft="45.7142864927955,184.752943767561" />
+          TopLeft="68.0000011580333,52.0000007292801" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="573.714295484582,35.4823531470909">
@@ -2310,18 +3532,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="120.857143382637,226.352943767561">
+          TopLeft="120.000001158033,93.6000007292801">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37.929412880076"
+              EndConnector="22.2857137796832,60.5647073151745"
               Start="0,0"
-              End="0,30.429412880076">
+              End="22.2857137796832,53.0647073151745">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.429412880076" />
+                    End="0,20.6044123467896" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.6044123467896"
+                    Point2="0,24.6044123467896"
+                    Point3="4,24.6044123467896" />
+                  <mssgle:LineSegment
+                    End="18.2857137796832,24.6044123467896" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.2857137796832,24.6044123467896"
+                    Point2="22.2857137796832,24.6044123467896"
+                    Point3="22.2857137796832,28.6044123467896" />
+                  <mssgle:LineSegment
+                    End="22.2857137796832,53.0647073151745" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2336,7 +3570,7 @@
           TopLeft="482.857151080151,153.176472613061" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="566.685721817795,118.070589307765">
+          TopLeft="566.685721817796,118.070589307765">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2371,21 +3605,85 @@
         <NodeLayout
           Size="192.8,41.6"
           Id="Package\Customers STG to TRGT"
-          TopLeft="28.0000004768371,338.305887097553" />
+          TopLeft="38.2857149377161,231.858826781144" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="122.200000374658,305.882356647637">
+          TopLeft="138.485714937716,195.764708044455">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32.4235304499169"
+              EndConnector="0,36.0941187366897"
               Start="0,0"
-              End="0,24.9235304499169">
+              End="0,28.5941187366897">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.9235304499169" />
+                    End="0,28.5941187366897" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="255.2,41.6"
+          Id="Package\Bank_Accounts_Prepared STG to STG"
+          TopLeft="476.571436687392,239.811768069152" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="602.114293883772,194.776472613061">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.035295456091"
+              Start="0,0"
+              End="0,37.535295456091">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.535295456091" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="208.8,41.6"
+          Id="Package\BankAccounts STG to TRGT"
+          TopLeft="46.8571436551153,301.600004229826" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="134.685714937716,273.458826781144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.5714287173992,28.1411774486818"
+              Start="0,0"
+              End="16.5714287173992,20.6411774486818">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.0705887243409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.0705887243409"
+                    Point2="0,14.0705887243409"
+                    Point3="4,14.0705887243409" />
+                  <mssgle:LineSegment
+                    End="12.5714287173992,14.0705887243409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.5714287173992,14.0705887243409"
+                    Point2="16.5714287173992,14.0705887243409"
+                    Point3="16.5714287173992,18.0705887243409" />
+                  <mssgle:LineSegment
+                    End="16.5714287173992,20.6411774486818" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2666,6 +3964,158 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Customers STG to TRGT\Customers_TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Bank_Accounts_Prepared STG to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared"
+          TopLeft="308.8,102.4" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts"
+          TopLeft="317.6,291.2" />
+        <EdgeLayout
+          Id="Package\Bank_Accounts_Prepared STG to STG.Paths[OLE DB Source Output]"
+          TopLeft="414.4,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.4,147.2"
+              Start="0,0"
+              End="-12.4,139.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,69.6"
+                    Point2="0,73.6"
+                    Point3="-4,73.6" />
+                  <mssgle:LineSegment
+                    End="-8.39999999999998,73.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.39999999999998,73.6"
+                    Point2="-12.4,73.6"
+                    Point3="-12.4,77.6" />
+                  <mssgle:LineSegment
+                    End="-12.4,139.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\BankAccounts STG to TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\BankAccounts STG to TRGT\Customers_TRGT"
+          TopLeft="234.4,221.6" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\BankAccounts STG to TRGT\Customers_STG"
+          TopLeft="227.2,64" />
+        <EdgeLayout
+          Id="Package\BankAccounts STG to TRGT.Paths[OLE DB Source Output]"
+          TopLeft="303.6,105.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.8,116"
+              Start="0,0"
+              End="10.8,108.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,54"
+                    Point2="0,58"
+                    Point3="4,58" />
+                  <mssgle:LineSegment
+                    End="6.80000000000001,58" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.80000000000001,58"
+                    Point2="10.8,58"
+                    Point3="10.8,62" />
+                  <mssgle:LineSegment
+                    End="10.8,108.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\BankAccounts STG to TRGT\Customers_TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\BankAccounts STG to TRGT\Customers_STG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

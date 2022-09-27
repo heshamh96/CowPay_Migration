@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Populate Cowpay_Production_Simulation_DB"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{3D6F3879-C5C2-45DB-BDA4-2107EA385550}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{6A250F61-17D4-4D3D-B050-71679423170A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2319,7 +2319,7 @@ FROM cowpay.customers</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{28101059-0598-41FF-B844-A6309379F260}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[bank_accounts]&#xA;truncate table [dbo].[mobile_wallets]&#xA;truncate table [dbo].[Users]&#xA;truncate table [dbo].[customers]&#xA;truncate table [dbo].[cards]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[bank_accounts]&#xA;truncate table [dbo].[mobile_wallets]&#xA;truncate table [dbo].[Users]&#xA;truncate table [dbo].[customers]&#xA;truncate table [dbo].[cards]&#xA;truncate table [dbo].[withdrawal_requests]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -4452,6 +4452,690 @@ FROM cowpay.customers</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Withdawal_Requests"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BC8CCDE9-E2F8-4D78-8B9B-C958DA159EE8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Withdawal_Requests"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Withdawal_Requests\withdrawal_requests"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="withdrawal_requests"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[withdrawal_requests]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Withdawal_Requests\withdrawal_requests.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[merchant_id]"
+                      cachedDataType="i4"
+                      cachedName="merchant_id"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_id]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[amount]"
+                      cachedDataType="numeric"
+                      cachedName="amount"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[amount]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[account_id]"
+                      cachedDataType="i8"
+                      cachedName="account_id"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[account_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[account_id]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[status]"
+                      cachedDataType="wstr"
+                      cachedLength="13"
+                      cachedName="status"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedDataType="nText"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[handled_by]"
+                      cachedDataType="ui4"
+                      cachedName="handled_by"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[handled_by]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_by]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[handled_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="handled_at"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[handled_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_at]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[updated_at]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[merchant_reference_id]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="merchant_reference_id"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[merchant_reference_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_reference_id]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[available_balance_before]"
+                      cachedDataType="r8"
+                      cachedName="available_balance_before"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[available_balance_before]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_before]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[available_balance_after]"
+                      cachedDataType="r8"
+                      cachedName="available_balance_after"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[available_balance_after]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_after]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[withdrawal_requests_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="withdrawal_requests_date"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[withdrawal_requests_date]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[withdrawal_requests_date]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="type"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[model]"
+                      cachedDataType="wstr"
+                      cachedLength="199"
+                      cachedName="model"
+                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[model]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[model]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
+                      dataType="i4"
+                      name="merchant_id" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      dataType="numeric"
+                      name="amount"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[account_id]"
+                      dataType="i8"
+                      name="account_id" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      dataType="wstr"
+                      length="13"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[handled_by]"
+                      dataType="i8"
+                      name="handled_by" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[handled_at]"
+                      dataType="dbTimeStamp"
+                      name="handled_at" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[merchant_reference_id]"
+                      dataType="wstr"
+                      length="191"
+                      name="merchant_reference_id" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[available_balance_before]"
+                      dataType="r8"
+                      name="available_balance_before" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[available_balance_after]"
+                      dataType="r8"
+                      name="available_balance_after" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[withdrawal_requests_date]"
+                      dataType="dbTimeStamp"
+                      name="withdrawal_requests_date" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="3"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[model]"
+                      dataType="wstr"
+                      length="199"
+                      name="model" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Withdawal_Requests\withdrawal_requests.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Withdawal_Requests\withdrawal_requests.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\withdrawal_requests.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Withdawal_Requests\withdrawal_requests.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System)"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="Withdrawal_Requests (Successfull Only) (has Transactions in the Src System)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">SELECT w.*,t.type,t.model FROM cowpay.withdrawal_requests w join transactions t on w.id=t.model_id ;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_id]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_id]"
+                      name="merchant_id" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[amount]"
+                      name="amount"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[account_id]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[account_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[account_id]"
+                      name="account_id" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[status]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[status]"
+                      length="13"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[description]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_by]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_by]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_by]"
+                      name="handled_by" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_at]"
+                      name="handled_at" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_reference_id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
+                      length="191"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_reference_id]"
+                      name="merchant_reference_id" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_before]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_before]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_before]"
+                      name="available_balance_before" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_after]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_after]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_after]"
+                      name="available_balance_after" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[withdrawal_requests_date]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[withdrawal_requests_date]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[withdrawal_requests_date]"
+                      name="withdrawal_requests_date" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[type]"
+                      length="3"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[model]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[model]"
+                      length="199"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[model]"
+                      name="model" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[id]"
+                      dataType="ui4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
+                      dataType="i4"
+                      name="merchant_id" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      dataType="numeric"
+                      name="amount"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[account_id]"
+                      dataType="i8"
+                      name="account_id" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[status]"
+                      dataType="wstr"
+                      length="13"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_by]"
+                      dataType="ui4"
+                      name="handled_by" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_at]"
+                      dataType="dbTimeStamp"
+                      name="handled_at" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
+                      dataType="wstr"
+                      length="191"
+                      name="merchant_reference_id" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_before]"
+                      dataType="r8"
+                      name="available_balance_before" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_after]"
+                      dataType="r8"
+                      name="available_balance_after" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[withdrawal_requests_date]"
+                      dataType="dbTimeStamp"
+                      name="withdrawal_requests_date" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="3"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[model]"
+                      dataType="wstr"
+                      length="199"
+                      name="model" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[merchant_id]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[merchant_id]"
+                      name="merchant_id" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[amount]"
+                      name="amount"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[account_id]"
+                      dataType="i8"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[account_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[account_id]"
+                      name="account_id" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[status]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[status]"
+                      length="13"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[description]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[handled_by]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_by]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[handled_by]"
+                      name="handled_by" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[handled_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[handled_at]"
+                      name="handled_at" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[merchant_reference_id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
+                      length="191"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[merchant_reference_id]"
+                      name="merchant_reference_id" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[available_balance_before]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_before]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[available_balance_before]"
+                      name="available_balance_before" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[available_balance_after]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_after]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[available_balance_after]"
+                      name="available_balance_after" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[withdrawal_requests_date]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[withdrawal_requests_date]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[withdrawal_requests_date]"
+                      name="withdrawal_requests_date" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[type]"
+                      length="3"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[model]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[model]"
+                      length="199"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[model]"
+                      name="model" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Withdawal_Requests.Paths[ODBC Source Output]"
+              endId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -4494,6 +5178,14 @@ FROM cowpay.customers</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\cards" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{0579C19A-5576-47B8-A0D9-692FE1EECB4F}"
+      DTS:From="Package\cards"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Withdawal_Requests" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -4508,27 +5200,55 @@ FROM cowpay.customers</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="148.8,41.6"
+          Id="Package\bank_accounts"
+          TopLeft="400.57143539312,261.223533075326" />
+        <NodeLayout
+          Size="103.2,41.6"
+          Id="Package\cards"
+          TopLeft="529.714294735266,306.541179344811" />
+        <NodeLayout
           Size="128,41.6"
           Id="Package\Customers"
-          TopLeft="191.428574688581,140.094119611826" />
+          TopLeft="185.714288876982,97.2705895994774" />
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\mobile_wallets"
+          TopLeft="323.428576936527,208.611767631584" />
         <NodeLayout
           Size="156.8,41.6"
           Id="Package\Truncate_Tables"
-          TopLeft="174.285717253782,48.9411771569698" />
+          TopLeft="3.42857148695926,45.2705888701971" />
+        <NodeLayout
+          Size="104,41.6"
+          Id="Package\Users"
+          TopLeft="288.000004904611,158.44706104569" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="254.057145971181,90.5411771569698">
+          TopLeft="160.228571486959,66.0705888701971">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49.5529424548562"
+              EndConnector="25.4857173900223,52.0000007292804"
               Start="0,0"
-              End="0,42.0529424548562">
+              End="17.9857173900223,52.0000007292804">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.0529424548562" />
+                    End="8.74285869501115,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.74285869501115,0"
+                    Point2="12.7428586950112,0"
+                    Point3="12.7428586950112,4" />
+                  <mssgle:LineSegment
+                    End="12.7428586950112,48.0000007292804" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.7428586950112,48.0000007292804"
+                    Point2="12.7428586950112,52.0000007292804"
+                    Point3="16.7428586950112,52.0000007292804" />
+                  <mssgle:LineSegment
+                    End="17.9857173900223,52.0000007292804" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4537,28 +5257,26 @@ FROM cowpay.customers</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="104,41.6"
-          Id="Package\Users"
-          TopLeft="204.571432055259,215.952944205129" />
-        <NodeLayout
-          Size="148,41.6"
-          Id="Package\mobile_wallets"
-          TopLeft="178.857145903062,294.258827656281" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="256.00000337192,181.694119611826">
+          TopLeft="313.714288876982,118.070589599477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.2588245933031"
+              EndConnector="26.2857160276291,40.3764714462121"
               Start="0,0"
-              End="0,26.7588245933031">
+              End="26.2857160276291,32.8764714462121">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.7588245933031" />
+                    End="22.2857160276291,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.2857160276291,0"
+                    Point2="26.2857160276291,0"
+                    Point3="26.2857160276291,4" />
+                  <mssgle:LineSegment
+                    End="26.2857160276291,32.8764714462121" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4569,18 +5287,24 @@ FROM cowpay.customers</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="254.714288979161,257.552944205129">
+          TopLeft="392.000004904611,179.24706104569">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.7058834511516"
+              EndConnector="5.42857203191681,29.3647065858944"
               Start="0,0"
-              End="0,29.2058834511516">
+              End="5.42857203191681,21.8647065858944">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.2058834511516" />
+                    End="1.42857203191681,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="1.42857203191681,0"
+                    Point2="5.42857203191681,0"
+                    Point3="5.42857203191681,4" />
+                  <mssgle:LineSegment
+                    End="5.42857203191681,21.8647065858944" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4589,24 +5313,54 @@ FROM cowpay.customers</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="148.8,41.6"
-          Id="Package\bank_accounts"
-          TopLeft="182.285717390022,369.505887535122" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="254.771431646542,335.858827656281">
+          TopLeft="471.428576936527,229.411767631584">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.647059878841"
+              EndConnector="3.54285845659251,31.8117654437425"
               Start="0,0"
-              End="0,26.147059878841">
+              End="3.54285845659251,24.3117654437425">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.147059878841" />
+                    End="-0.457141543407488,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-0.457141543407488,0"
+                    Point2="3.54285845659251,0"
+                    Point3="3.54285845659251,4" />
+                  <mssgle:LineSegment
+                    End="3.54285845659251,24.3117654437425" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="549.37143539312,282.023533075326">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.9428593421463,24.5176462694842"
+              Start="0,0"
+              End="31.9428593421463,17.0176462694842">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.9428593421463,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.9428593421463,0"
+                    Point2="31.9428593421463,0"
+                    Point3="31.9428593421463,4" />
+                  <mssgle:LineSegment
+                    End="31.9428593421463,17.0176462694842" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4616,35 +5370,29 @@ FROM cowpay.customers</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="103.2,41.6"
-          Id="Package\cards"
-          TopLeft="196.57143191902,444.188240098788" />
+          Size="176,41.6"
+          Id="Package\Withdawal_Requests"
+          TopLeft="396.00000674384,361.552946247114" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="256.685717390022,411.105887535122">
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="529.714294735266,327.341179344811">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8.51428547100176,33.0823525636666"
+              EndConnector="-45.7142879914263,34.2117669023035"
               Start="0,0"
-              End="-8.51428547100176,25.5823525636666">
+              End="-45.7142879914263,26.7117669023035">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.5411762818333" />
+                    End="-41.7142879914263,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.5411762818333"
-                    Point2="0,16.5411762818333"
-                    Point3="-4,16.5411762818333" />
+                    Point1="-41.7142879914263,0"
+                    Point2="-45.7142879914263,0"
+                    Point3="-45.7142879914263,4" />
                   <mssgle:LineSegment
-                    End="-4.51428547100176,16.5411762818333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4.51428547100176,16.5411762818333"
-                    Point2="-8.51428547100176,16.5411762818333"
-                    Point3="-8.51428547100176,20.5411762818333" />
-                  <mssgle:LineSegment
-                    End="-8.51428547100176,25.5823525636666" />
+                    End="-45.7142879914263,26.7117669023035" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4657,195 +5405,10 @@ FROM cowpay.customers</property>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Customers">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="166.4,41.6"
-          Id="Package\Customers\Customers_MySQL"
-          TopLeft="127.428573598667,68.5176480197577" />
-        <NodeLayout
-          Size="167.2,41.6"
-          Id="Package\Customers\Customers_MSSQL"
-          TopLeft="122.857144949388,225.129414922061" />
-        <EdgeLayout
-          Id="Package\Customers.Paths[ODBC Source Output]"
-          TopLeft="208.542859274027,110.117648019758">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,115.011766902303"
-              Start="0,0"
-              End="0,107.511766902303">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,107.511766902303" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Customers\Customers_MSSQL">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Users">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="142.4,41.6"
-          Id="Package\Users\Users_MySQL"
-          TopLeft="316.8,97.6" />
-        <NodeLayout
-          Size="143.2,41.6"
-          Id="Package\Users\Users_MSSQL"
-          TopLeft="302.4,263.2" />
-        <EdgeLayout
-          Id="Package\Users.Paths[ODBC Source Output]"
-          TopLeft="388,139.2">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-13.9999999999999,124"
-              Start="0,0"
-              End="-13.9999999999999,116.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,58"
-                    Point2="0,62"
-                    Point3="-4,62" />
-                  <mssgle:LineSegment
-                    End="-9.99999999999989,62" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-9.99999999999989,62"
-                    Point2="-13.9999999999999,62"
-                    Point3="-13.9999999999999,66" />
-                  <mssgle:LineSegment
-                    End="-13.9999999999999,116.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\mobile_wallets">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="187.2,41.6"
-          Id="Package\mobile_wallets\Mobile_Wallets_MySQL"
-          TopLeft="252.8,126.4" />
-        <NodeLayout
-          Size="186.4,41.6"
-          Id="Package\mobile_wallets\mobile_wallets_MSSQL"
-          TopLeft="248.8,305.6" />
-        <EdgeLayout
-          Id="Package\mobile_wallets.Paths[ODBC Source Output]"
-          TopLeft="344.2,168">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,137.6"
-              Start="0,0"
-              End="0,130.1">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,130.1" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\mobile_wallets\Mobile_Wallets_MySQL">
-    <Properties>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\mobile_wallets\mobile_wallets_MSSQL">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Users\Users_MySQL">
-    <Properties>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Users\Users_MSSQL">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\bank_accounts">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="186.4,41.6"
           Id="Package\bank_accounts\bank_accounts_MySQL"
@@ -4873,22 +5436,14 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\bank_accounts\bank_accounts_MySQL">
-    <Properties>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\bank_accounts\bank_accounts_MSSQL">
     <Properties>
@@ -4902,11 +5457,21 @@ FROM cowpay.customers</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\bank_accounts\bank_accounts_MySQL">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\cards">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="141.6,41.6"
           Id="Package\cards\cards_MySQL"
@@ -4946,12 +5511,27 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\cards\cards_MSSQL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\cards\cards_MySQL">
     <Properties>
@@ -4962,8 +5542,249 @@ FROM cowpay.customers</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Customers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\Customers\Customers_MySQL"
+          TopLeft="127.428573598667,68.5176480197577" />
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Customers\Customers_MSSQL"
+          TopLeft="122.857144949388,225.129414922061" />
+        <EdgeLayout
+          Id="Package\Customers.Paths[ODBC Source Output]"
+          TopLeft="208.542859274027,110.117648019758">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,115.011766902303"
+              Start="0,0"
+              End="0,107.511766902303">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,107.511766902303" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\cards\cards_MSSQL">
+    design-time-name="Package\Customers\Customers_MSSQL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\mobile_wallets">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\mobile_wallets\Mobile_Wallets_MySQL"
+          TopLeft="252.8,126.4" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\mobile_wallets\mobile_wallets_MSSQL"
+          TopLeft="248.8,305.6" />
+        <EdgeLayout
+          Id="Package\mobile_wallets.Paths[ODBC Source Output]"
+          TopLeft="344.2,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,137.6"
+              Start="0,0"
+              End="0,130.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,130.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\mobile_wallets\mobile_wallets_MSSQL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\mobile_wallets\Mobile_Wallets_MySQL">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Users">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\Users\Users_MySQL"
+          TopLeft="316.8,97.6" />
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\Users\Users_MSSQL"
+          TopLeft="302.4,263.2" />
+        <EdgeLayout
+          Id="Package\Users.Paths[ODBC Source Output]"
+          TopLeft="388,139.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-13.9999999999999,124"
+              Start="0,0"
+              End="-13.9999999999999,116.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58"
+                    Point2="0,62"
+                    Point3="-4,62" />
+                  <mssgle:LineSegment
+                    End="-9.99999999999989,62" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9.99999999999989,62"
+                    Point2="-13.9999999999999,62"
+                    Point3="-13.9999999999999,66" />
+                  <mssgle:LineSegment
+                    End="-13.9999999999999,116.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Users\Users_MSSQL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Users\Users_MySQL">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Withdawal_Requests">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="443.2,41.6"
+          Id="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System)"
+          TopLeft="161.714288468264,48.3294124425076" />
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\Withdawal_Requests\withdrawal_requests"
+          TopLeft="242.285718411816,186.588237910947" />
+        <EdgeLayout
+          Id="Package\Withdawal_Requests.Paths[ODBC Source Output]"
+          TopLeft="383.314288468264,89.9294124425076">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-53.4285700564481,96.6588254684396"
+              Start="0,0"
+              End="-53.4285700564481,89.1588254684396">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.3294127342198" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.3294127342198"
+                    Point2="0,48.3294127342198"
+                    Point3="-4,48.3294127342198" />
+                  <mssgle:LineSegment
+                    End="-49.4285700564481,48.3294127342198" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49.4285700564481,48.3294127342198"
+                    Point2="-53.4285700564481,48.3294127342198"
+                    Point3="-53.4285700564481,52.3294127342198" />
+                  <mssgle:LineSegment
+                    End="-53.4285700564481,89.1588254684396" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Withdawal_Requests\withdrawal_requests">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
