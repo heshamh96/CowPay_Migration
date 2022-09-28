@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Populate Cowpay_Production_Simulation_DB"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{6A250F61-17D4-4D3D-B050-71679423170A}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{04F98B1D-995A-434F-B3C0-C0D494DA8688}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1326,6 +1326,723 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\CashOuts"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2D1B9F32-3B82-4AAE-9EEE-15BB781D405C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CashOuts"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\CashOuts\cashouts"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="cashouts"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[cashouts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CashOuts\cashouts.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[merchant_code]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="merchant_code"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[merchant_code]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[merchant_code]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[uuid]"
+                      cachedDataType="wstr"
+                      cachedLength="36"
+                      cachedName="uuid"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[uuid]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[uuid]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedDataType="nText"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[cashoutable_type]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="cashoutable_type"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[cashoutable_type]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[cashoutable_type]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[cashoutable_id]"
+                      cachedDataType="ui8"
+                      cachedName="cashoutable_id"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[cashoutable_id]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[cashoutable_id]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[commissions_on_customer]"
+                      cachedDataType="i1"
+                      cachedName="commissions_on_customer"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[commissions_on_customer]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[commissions_on_customer]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[amount]"
+                      cachedDataType="numeric"
+                      cachedName="amount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[amount]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[fees_amount]"
+                      cachedDataType="numeric"
+                      cachedName="fees_amount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[fees_amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[fees_amount]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[vat_amount]"
+                      cachedDataType="numeric"
+                      cachedName="vat_amount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[vat_amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[vat_amount]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[cashout_amount]"
+                      cachedDataType="numeric"
+                      cachedName="cashout_amount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[cashout_amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[cashout_amount]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[status]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="status"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[handled_by]"
+                      cachedDataType="ui8"
+                      cachedName="handled_by"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[handled_by]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[handled_by]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[handled_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="handled_at"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[handled_at]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[handled_at]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[updated_at]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="numeric"
+                      name="id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[merchant_code]"
+                      dataType="wstr"
+                      length="191"
+                      name="merchant_code" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[uuid]"
+                      dataType="wstr"
+                      length="36"
+                      name="uuid" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[cashoutable_type]"
+                      dataType="wstr"
+                      length="191"
+                      name="cashoutable_type" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[cashoutable_id]"
+                      dataType="numeric"
+                      name="cashoutable_id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[commissions_on_customer]"
+                      dataType="i2"
+                      name="commissions_on_customer" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      dataType="numeric"
+                      name="amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[fees_amount]"
+                      dataType="numeric"
+                      name="fees_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[vat_amount]"
+                      dataType="numeric"
+                      name="vat_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[cashout_amount]"
+                      dataType="numeric"
+                      name="cashout_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      dataType="wstr"
+                      length="9"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[handled_by]"
+                      dataType="numeric"
+                      name="handled_by"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[handled_at]"
+                      dataType="dbTimeStamp"
+                      name="handled_at" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CashOuts\cashouts.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CashOuts\cashouts.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CashOuts\cashouts.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CashOuts\cashouts.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CashOuts\cashouts.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CashOuts\Cashouts_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="Cashouts_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">`cashouts`</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CashOuts\Cashouts_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[merchant_code]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      length="191"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[merchant_code]"
+                      name="merchant_code" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[uuid]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[uuid]"
+                      length="36"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[uuid]"
+                      name="uuid" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[description]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[cashoutable_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[cashoutable_type]"
+                      length="191"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[cashoutable_type]"
+                      name="cashoutable_type" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[cashoutable_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[cashoutable_id]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[cashoutable_id]"
+                      name="cashoutable_id" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[commissions_on_customer]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[commissions_on_customer]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[commissions_on_customer]"
+                      name="commissions_on_customer" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[amount]"
+                      name="amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[fees_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[fees_amount]"
+                      name="fees_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[vat_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[vat_amount]"
+                      name="vat_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[cashout_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[cashout_amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[cashout_amount]"
+                      name="cashout_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[status]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      length="9"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[handled_by]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[handled_by]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[handled_by]"
+                      name="handled_by" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[handled_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[handled_at]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[handled_at]"
+                      name="handled_at" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      name="updated_at" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      dataType="ui8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      dataType="wstr"
+                      length="191"
+                      name="merchant_code" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[uuid]"
+                      dataType="wstr"
+                      length="36"
+                      name="uuid" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[cashoutable_type]"
+                      dataType="wstr"
+                      length="191"
+                      name="cashoutable_type" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[cashoutable_id]"
+                      dataType="ui8"
+                      name="cashoutable_id" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[commissions_on_customer]"
+                      dataType="i1"
+                      name="commissions_on_customer" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      dataType="numeric"
+                      name="amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount]"
+                      dataType="numeric"
+                      name="fees_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount]"
+                      dataType="numeric"
+                      name="vat_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[cashout_amount]"
+                      dataType="numeric"
+                      name="cashout_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      dataType="wstr"
+                      length="9"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[handled_by]"
+                      dataType="ui8"
+                      name="handled_by" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[handled_at]"
+                      dataType="dbTimeStamp"
+                      name="handled_at" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[merchant_code]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      length="191"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[merchant_code]"
+                      name="merchant_code" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[uuid]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[uuid]"
+                      length="36"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[uuid]"
+                      name="uuid" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[description]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[cashoutable_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[cashoutable_type]"
+                      length="191"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[cashoutable_type]"
+                      name="cashoutable_type" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[cashoutable_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[cashoutable_id]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[cashoutable_id]"
+                      name="cashoutable_id" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[commissions_on_customer]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[commissions_on_customer]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[commissions_on_customer]"
+                      name="commissions_on_customer" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[amount]"
+                      name="amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[fees_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[fees_amount]"
+                      name="fees_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[vat_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[vat_amount]"
+                      name="vat_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[cashout_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[cashout_amount]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[cashout_amount]"
+                      name="cashout_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[status]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[status]"
+                      length="9"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[handled_by]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[handled_by]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[handled_by]"
+                      name="handled_by" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[handled_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[handled_at]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[handled_at]"
+                      name="handled_at" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\CashOuts.Paths[ODBC Source Output]"
+              endId="Package\CashOuts\cashouts.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\CashOuts\Cashouts_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Customers"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -2306,6 +3023,778 @@ FROM cowpay.customers</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Transactions"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{893D09E3-3FD7-4B47-997F-FF63AE6B9A1F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transactions"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Transactions\transactions"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="transactions"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[transactions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transactions\transactions.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[added_to_merchant_available_balance]"
+                      cachedDataType="i1"
+                      cachedName="added_to_merchant_available_balance"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[added_to_merchant_available_balance]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[added_to_merchant_available_balance]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[amount]"
+                      cachedDataType="numeric"
+                      cachedName="amount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[amount]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[fees_amount]"
+                      cachedDataType="numeric"
+                      cachedName="fees_amount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[fees_amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[fees_amount]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[vat_amount]"
+                      cachedDataType="numeric"
+                      cachedName="vat_amount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[vat_amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[vat_amount]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[merchant_net_amount]"
+                      cachedDataType="numeric"
+                      cachedName="merchant_net_amount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[merchant_net_amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[merchant_net_amount]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[merchant_code]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="merchant_code"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[merchant_code]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[merchant_code]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[accountant_id]"
+                      cachedDataType="ui4"
+                      cachedName="accountant_id"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[accountant_id]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[accountant_id]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[transaction_number]"
+                      cachedDataType="wstr"
+                      cachedLength="199"
+                      cachedName="transaction_number"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[transaction_number]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[transaction_number]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[transaction_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="transaction_date"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[transaction_date]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[transaction_date]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[model_id]"
+                      cachedDataType="ui8"
+                      cachedName="model_id"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[model_id]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[model_id]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[model]"
+                      cachedDataType="wstr"
+                      cachedLength="199"
+                      cachedName="model"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[model]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[model]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedDataType="nText"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="type"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[environment]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="environment"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[environment]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[environment]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[updated_at]" />
+                    <inputColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].Columns[deleted_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="deleted_at"
+                      externalMetadataColumnId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[deleted_at]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[added_to_merchant_available_balance]"
+                      dataType="i2"
+                      name="added_to_merchant_available_balance" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      dataType="numeric"
+                      name="amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[fees_amount]"
+                      dataType="numeric"
+                      name="fees_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[vat_amount]"
+                      dataType="numeric"
+                      name="vat_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[merchant_net_amount]"
+                      dataType="numeric"
+                      name="merchant_net_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[merchant_code]"
+                      dataType="wstr"
+                      length="191"
+                      name="merchant_code" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[accountant_id]"
+                      dataType="i8"
+                      name="accountant_id" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[transaction_number]"
+                      dataType="wstr"
+                      length="199"
+                      name="transaction_number" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[transaction_date]"
+                      dataType="dbTimeStamp"
+                      name="transaction_date" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[model_id]"
+                      dataType="numeric"
+                      name="model_id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[model]"
+                      dataType="wstr"
+                      length="199"
+                      name="model" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="3"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[environment]"
+                      dataType="wstr"
+                      length="11"
+                      name="environment" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\transactions.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transactions\transactions.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Transactions\transactions.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transactions\transactions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transactions\transactions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transactions\transactions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transactions\transactions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transactions\Transactions_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="Transactions_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">`transactions`</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transactions\Transactions_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[added_to_merchant_available_balance]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[added_to_merchant_available_balance]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[added_to_merchant_available_balance]"
+                      name="added_to_merchant_available_balance" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[amount]"
+                      name="amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[fees_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[fees_amount]"
+                      name="fees_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[vat_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[vat_amount]"
+                      name="vat_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[merchant_net_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_net_amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[merchant_net_amount]"
+                      name="merchant_net_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[merchant_code]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      length="191"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[merchant_code]"
+                      name="merchant_code" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[accountant_id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[accountant_id]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[accountant_id]"
+                      name="accountant_id" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[transaction_number]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[transaction_number]"
+                      length="199"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[transaction_number]"
+                      name="transaction_number" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[transaction_date]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[transaction_date]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[transaction_date]"
+                      name="transaction_date" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[model_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[model_id]"
+                      name="model_id" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[model]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[model]"
+                      length="199"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[model]"
+                      name="model" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[description]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[type]"
+                      length="3"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[environment]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[environment]"
+                      length="11"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[environment]"
+                      name="environment" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[deleted_at]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].Columns[deleted_at]"
+                      name="deleted_at" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      dataType="ui4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[added_to_merchant_available_balance]"
+                      dataType="i1"
+                      name="added_to_merchant_available_balance" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      dataType="numeric"
+                      name="amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount]"
+                      dataType="numeric"
+                      name="fees_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount]"
+                      dataType="numeric"
+                      name="vat_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_net_amount]"
+                      dataType="numeric"
+                      name="merchant_net_amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      dataType="wstr"
+                      length="191"
+                      name="merchant_code" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[accountant_id]"
+                      dataType="ui4"
+                      name="accountant_id" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[transaction_number]"
+                      dataType="wstr"
+                      length="199"
+                      name="transaction_number" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[transaction_date]"
+                      dataType="dbTimeStamp"
+                      name="transaction_date" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      dataType="ui8"
+                      name="model_id" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[model]"
+                      dataType="wstr"
+                      length="199"
+                      name="model" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="3"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[environment]"
+                      dataType="wstr"
+                      length="11"
+                      name="environment" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[added_to_merchant_available_balance]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[added_to_merchant_available_balance]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[added_to_merchant_available_balance]"
+                      name="added_to_merchant_available_balance" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[amount]"
+                      name="amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[fees_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[fees_amount]"
+                      name="fees_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[vat_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[vat_amount]"
+                      name="vat_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[merchant_net_amount]"
+                      dataType="numeric"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_net_amount]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[merchant_net_amount]"
+                      name="merchant_net_amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[merchant_code]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      length="191"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[merchant_code]"
+                      name="merchant_code" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[accountant_id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[accountant_id]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[accountant_id]"
+                      name="accountant_id" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[transaction_number]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[transaction_number]"
+                      length="199"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[transaction_number]"
+                      name="transaction_number" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[transaction_date]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[transaction_date]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[transaction_date]"
+                      name="transaction_date" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[model_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[model_id]"
+                      name="model_id" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[model]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[model]"
+                      length="199"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[model]"
+                      name="model" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[description]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[type]"
+                      length="3"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[type]"
+                      name="type" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[environment]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[environment]"
+                      length="11"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[environment]"
+                      name="environment" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output].ExternalColumns[deleted_at]"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[deleted_at]"
+                      name="deleted_at" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Transactions.Paths[ODBC Source Output]"
+              endId="Package\Transactions\transactions.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\Transactions\Transactions_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Truncate_Tables"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -2319,7 +3808,7 @@ FROM cowpay.customers</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{28101059-0598-41FF-B844-A6309379F260}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[bank_accounts]&#xA;truncate table [dbo].[mobile_wallets]&#xA;truncate table [dbo].[Users]&#xA;truncate table [dbo].[customers]&#xA;truncate table [dbo].[cards]&#xA;truncate table [dbo].[withdrawal_requests]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[bank_accounts]&#xA;truncate table [dbo].[mobile_wallets]&#xA;truncate table [dbo].[Users]&#xA;truncate table [dbo].[customers]&#xA;truncate table [dbo].[cards]&#xA;truncate table [dbo].[withdrawal_requests]&#xA;truncate table [dbo].[cashouts]&#xA;truncate table [dbo].[transactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -4543,13 +6032,13 @@ FROM cowpay.customers</property>
                       cachedDataType="ui4"
                       cachedName="id"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[id]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[id]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[id]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[merchant_id]"
                       cachedDataType="i4"
                       cachedName="merchant_id"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_id]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[merchant_id]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[amount]"
                       cachedDataType="numeric"
@@ -4557,89 +6046,75 @@ FROM cowpay.customers</property>
                       cachedPrecision="12"
                       cachedScale="2"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[amount]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[amount]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[account_id]"
                       cachedDataType="i8"
                       cachedName="account_id"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[account_id]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[account_id]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[account_id]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[status]"
                       cachedDataType="wstr"
                       cachedLength="13"
                       cachedName="status"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[status]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[status]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[status]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[description]"
                       cachedDataType="nText"
                       cachedName="description"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[description]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[description]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[description]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[handled_by]"
                       cachedDataType="ui4"
                       cachedName="handled_by"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[handled_by]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_by]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[handled_by]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[handled_at]"
                       cachedDataType="dbTimeStamp"
                       cachedName="handled_at"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[handled_at]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_at]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[handled_at]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[created_at]"
                       cachedDataType="dbTimeStamp"
                       cachedName="created_at"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[created_at]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[created_at]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[updated_at]"
                       cachedDataType="dbTimeStamp"
                       cachedName="updated_at"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[updated_at]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[updated_at]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[merchant_reference_id]"
                       cachedDataType="wstr"
                       cachedLength="191"
                       cachedName="merchant_reference_id"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[merchant_reference_id]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_reference_id]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[merchant_reference_id]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[available_balance_before]"
                       cachedDataType="r8"
                       cachedName="available_balance_before"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[available_balance_before]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_before]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[available_balance_before]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[available_balance_after]"
                       cachedDataType="r8"
                       cachedName="available_balance_after"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[available_balance_after]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_after]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[available_balance_after]" />
                     <inputColumn
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[withdrawal_requests_date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="withdrawal_requests_date"
                       externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[withdrawal_requests_date]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[withdrawal_requests_date]" />
-                    <inputColumn
-                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[type]"
-                      cachedDataType="wstr"
-                      cachedLength="3"
-                      cachedName="type"
-                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[type]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[type]" />
-                    <inputColumn
-                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].Columns[model]"
-                      cachedDataType="wstr"
-                      cachedLength="199"
-                      cachedName="model"
-                      externalMetadataColumnId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[model]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[model]" />
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[withdrawal_requests_date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4703,16 +6178,6 @@ FROM cowpay.customers</property>
                       refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[withdrawal_requests_date]"
                       dataType="dbTimeStamp"
                       name="withdrawal_requests_date" />
-                    <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[type]"
-                      dataType="wstr"
-                      length="3"
-                      name="type" />
-                    <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input].ExternalColumns[model]"
-                      dataType="wstr"
-                      length="199"
-                      name="model" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4742,11 +6207,11 @@ FROM cowpay.customers</property>
               </outputs>
             </component>
             <component
-              refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System)"
+              refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests)"
               componentClassID="Attunity.SSISODBCSrc"
               contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
               description="ODBC Source"
-              name="Withdrawal_Requests (Successfull Only) (has Transactions in the Src System)"
+              name="Withdrawal_Requests (All Requests)"
               usesDispositions="true"
               version="7">
               <properties>
@@ -4759,7 +6224,7 @@ FROM cowpay.customers</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   expressionType="Notify"
-                  name="SqlCommand">SELECT w.*,t.type,t.model FROM cowpay.withdrawal_requests w join transactions t on w.id=t.model_id ;</property>
+                  name="SqlCommand">SELECT * FROM cowpay.withdrawal_requests</property>
                 <property
                   dataType="System.Int32"
                   description="Specify the number of rows fetched per batch."
@@ -4811,7 +6276,7 @@ FROM cowpay.customers</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Connections[ODBCConnection]"
+                  refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Connections[ODBCConnection]"
                   connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
                   connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
                   description="The ODBC runtime connection"
@@ -4819,305 +6284,267 @@ FROM cowpay.customers</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output]"
+                  refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output]"
                   errorRowDisposition="FailComponent"
                   name="ODBC Source Output"
                   truncationRowDisposition="FailComponent">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[id]"
                       dataType="ui4"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[id]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[id]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[id]"
                       name="id" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[merchant_id]"
                       dataType="i4"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_id]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[merchant_id]"
                       name="merchant_id" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[amount]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[amount]"
                       dataType="numeric"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[amount]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[amount]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[amount]"
                       name="amount"
                       precision="12"
                       scale="2" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[account_id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[account_id]"
                       dataType="i8"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[account_id]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[account_id]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[account_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[account_id]"
                       name="account_id" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[status]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[status]"
                       dataType="wstr"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[status]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[status]"
                       length="13"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[status]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[status]"
                       name="status" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[description]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[description]"
                       dataType="nText"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[description]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[description]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[description]"
                       name="description" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_by]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[handled_by]"
                       dataType="ui4"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_by]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_by]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[handled_by]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[handled_by]"
                       name="handled_by" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_at]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[handled_at]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_at]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[handled_at]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[handled_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[handled_at]"
                       name="handled_at" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[created_at]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[created_at]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[created_at]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[created_at]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[created_at]"
                       name="created_at" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[updated_at]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[updated_at]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[updated_at]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[updated_at]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[updated_at]"
                       name="updated_at" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_reference_id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[merchant_reference_id]"
                       dataType="wstr"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
                       length="191"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[merchant_reference_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[merchant_reference_id]"
                       name="merchant_reference_id" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_before]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[available_balance_before]"
                       dataType="r8"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_before]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_before]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[available_balance_before]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[available_balance_before]"
                       name="available_balance_before" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_after]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[available_balance_after]"
                       dataType="r8"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_after]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[available_balance_after]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[available_balance_after]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[available_balance_after]"
                       name="available_balance_after" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[withdrawal_requests_date]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[withdrawal_requests_date]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[withdrawal_requests_date]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[withdrawal_requests_date]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[withdrawal_requests_date]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].Columns[withdrawal_requests_date]"
                       name="withdrawal_requests_date" />
-                    <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[type]"
-                      dataType="wstr"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[type]"
-                      length="3"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[type]"
-                      name="type" />
-                    <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[model]"
-                      dataType="wstr"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[model]"
-                      length="199"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].Columns[model]"
-                      name="model" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[id]"
                       dataType="ui4"
                       name="id" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
                       dataType="i4"
                       name="merchant_id" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[amount]"
                       dataType="numeric"
                       name="amount"
                       precision="12"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[account_id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[account_id]"
                       dataType="i8"
                       name="account_id" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[status]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[status]"
                       dataType="wstr"
                       length="13"
                       name="status" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[description]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[description]"
                       dataType="nText"
                       name="description" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_by]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[handled_by]"
                       dataType="ui4"
                       name="handled_by" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_at]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[handled_at]"
                       dataType="dbTimeStamp"
                       name="handled_at" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[created_at]"
                       dataType="dbTimeStamp"
                       name="created_at" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[updated_at]"
                       dataType="dbTimeStamp"
                       name="updated_at" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
                       dataType="wstr"
                       length="191"
                       name="merchant_reference_id" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_before]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[available_balance_before]"
                       dataType="r8"
                       name="available_balance_before" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_after]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[available_balance_after]"
                       dataType="r8"
                       name="available_balance_after" />
                     <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[withdrawal_requests_date]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[withdrawal_requests_date]"
                       dataType="dbTimeStamp"
                       name="withdrawal_requests_date" />
-                    <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[type]"
-                      dataType="wstr"
-                      length="3"
-                      name="type" />
-                    <externalMetadataColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[model]"
-                      dataType="wstr"
-                      length="199"
-                      name="model" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output]"
+                  refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output]"
                   isErrorOut="true"
                   name="ODBC Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[id]"
                       dataType="ui4"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[id]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[id]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[id]"
                       name="id" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[merchant_id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[merchant_id]"
                       dataType="i4"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[merchant_id]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[merchant_id]"
                       name="merchant_id" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[amount]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[amount]"
                       dataType="numeric"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[amount]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[amount]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[amount]"
                       name="amount"
                       precision="12"
                       scale="2" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[account_id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[account_id]"
                       dataType="i8"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[account_id]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[account_id]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[account_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[account_id]"
                       name="account_id" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[status]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[status]"
                       dataType="wstr"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[status]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[status]"
                       length="13"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[status]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[status]"
                       name="status" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[description]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[description]"
                       dataType="nText"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[description]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[description]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[description]"
                       name="description" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[handled_by]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[handled_by]"
                       dataType="ui4"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_by]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[handled_by]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[handled_by]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[handled_by]"
                       name="handled_by" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[handled_at]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[handled_at]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[handled_at]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[handled_at]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[handled_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[handled_at]"
                       name="handled_at" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[created_at]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[created_at]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[created_at]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[created_at]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[created_at]"
                       name="created_at" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[updated_at]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[updated_at]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[updated_at]"
                       name="updated_at" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[merchant_reference_id]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[merchant_reference_id]"
                       dataType="wstr"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
                       length="191"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[merchant_reference_id]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[merchant_reference_id]"
                       name="merchant_reference_id" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[available_balance_before]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[available_balance_before]"
                       dataType="r8"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_before]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[available_balance_before]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[available_balance_before]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[available_balance_before]"
                       name="available_balance_before" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[available_balance_after]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[available_balance_after]"
                       dataType="r8"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[available_balance_after]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[available_balance_after]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[available_balance_after]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[available_balance_after]"
                       name="available_balance_after" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[withdrawal_requests_date]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[withdrawal_requests_date]"
                       dataType="dbTimeStamp"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[withdrawal_requests_date]"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[withdrawal_requests_date]"
+                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output].ExternalColumns[withdrawal_requests_date]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[withdrawal_requests_date]"
                       name="withdrawal_requests_date" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[type]"
-                      dataType="wstr"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[type]"
-                      length="3"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[type]"
-                      name="type" />
-                    <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[model]"
-                      dataType="wstr"
-                      externalMetadataColumnId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output].ExternalColumns[model]"
-                      length="199"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[model]"
-                      name="model" />
-                    <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -5131,7 +6558,7 @@ FROM cowpay.customers</property>
               refId="Package\Withdawal_Requests.Paths[ODBC Source Output]"
               endId="Package\Withdawal_Requests\withdrawal_requests.Inputs[OLE DB Destination Input]"
               name="ODBC Source Output"
-              startId="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System).Outputs[ODBC Source Output]" />
+              startId="Package\Withdawal_Requests\Withdrawal_Requests (All Requests).Outputs[ODBC Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -5186,6 +6613,22 @@ FROM cowpay.customers</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\Withdawal_Requests" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{2BFA4554-DC2A-43FF-B644-A81932B3CA4F}"
+      DTS:From="Package\Withdawal_Requests"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\CashOuts" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{29DA0378-4A9A-40C5-982E-BDEF38E05349}"
+      DTS:From="Package\CashOuts"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Transactions" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -5198,7 +6641,7 @@ FROM cowpay.customers</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="148.8,41.6"
           Id="Package\bank_accounts"
@@ -5393,6 +6836,82 @@ FROM cowpay.customers</property>
                     Point3="-45.7142879914263,4" />
                   <mssgle:LineSegment
                     End="-45.7142879914263,26.7117669023035" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\CashOuts"
+          TopLeft="393.7142924192,430.352946830538" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="484.00000674384,403.152946247114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.6857143246398,27.2000005834242"
+              Start="0,0"
+              End="-28.6857143246398,19.7000005834242">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.60000029171212" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.60000029171212"
+                    Point2="0,13.6000002917121"
+                    Point3="-4,13.6000002917121" />
+                  <mssgle:LineSegment
+                    End="-24.6857143246398,13.6000002917121" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.6857143246398,13.6000002917121"
+                    Point2="-28.6857143246398,13.6000002917121"
+                    Point3="-28.6857143246398,17.6000002917121" />
+                  <mssgle:LineSegment
+                    End="-28.6857143246398,19.7000005834242" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\Transactions"
+          TopLeft="370.285720591643,504.47059397516" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="455.3142924192,471.952946830538">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16.2285718275577,32.5176471446212"
+              Start="0,0"
+              End="-16.2285718275577,25.0176471446212">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2588235723106" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2588235723106"
+                    Point2="0,16.2588235723106"
+                    Point3="-4,16.2588235723106" />
+                  <mssgle:LineSegment
+                    End="-12.2285718275577,16.2588235723106" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12.2285718275577,16.2588235723106"
+                    Point2="-16.2285718275577,16.2588235723106"
+                    Point3="-16.2285718275577,20.2588235723106" />
+                  <mssgle:LineSegment
+                    End="-16.2285718275577,25.0176471446212" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5739,8 +7258,8 @@ FROM cowpay.customers</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="443.2,41.6"
-          Id="Package\Withdawal_Requests\Withdrawal_Requests (Successfull Only) (has Transactions in the Src System)"
+          Size="248.8,41.6"
+          Id="Package\Withdawal_Requests\Withdrawal_Requests (All Requests)"
           TopLeft="161.714288468264,48.3294124425076" />
         <NodeLayout
           Size="175.2,41.6"
@@ -5748,13 +7267,13 @@ FROM cowpay.customers</property>
           TopLeft="242.285718411816,186.588237910947" />
         <EdgeLayout
           Id="Package\Withdawal_Requests.Paths[ODBC Source Output]"
-          TopLeft="383.314288468264,89.9294124425076">
+          TopLeft="286.114288468264,89.9294124425076">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-53.4285700564481,96.6588254684396"
+              EndConnector="43.7714299435519,96.6588254684396"
               Start="0,0"
-              End="-53.4285700564481,89.1588254684396">
+              End="43.7714299435519,89.1588254684396">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -5763,15 +7282,15 @@ FROM cowpay.customers</property>
                   <mssgle:CubicBezierSegment
                     Point1="0,44.3294127342198"
                     Point2="0,48.3294127342198"
-                    Point3="-4,48.3294127342198" />
+                    Point3="4,48.3294127342198" />
                   <mssgle:LineSegment
-                    End="-49.4285700564481,48.3294127342198" />
+                    End="39.7714299435519,48.3294127342198" />
                   <mssgle:CubicBezierSegment
-                    Point1="-49.4285700564481,48.3294127342198"
-                    Point2="-53.4285700564481,48.3294127342198"
-                    Point3="-53.4285700564481,52.3294127342198" />
+                    Point1="39.7714299435519,48.3294127342198"
+                    Point2="43.7714299435519,48.3294127342198"
+                    Point3="43.7714299435519,52.3294127342198" />
                   <mssgle:LineSegment
-                    End="-53.4285700564481,89.1588254684396" />
+                    End="43.7714299435519,89.1588254684396" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5785,6 +7304,140 @@ FROM cowpay.customers</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Withdawal_Requests\withdrawal_requests">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\CashOuts">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\CashOuts\Cashouts_SRC"
+          TopLeft="409.6,108.8" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\CashOuts\cashouts"
+          TopLeft="372.8,277.6" />
+        <EdgeLayout
+          Id="Package\CashOuts.Paths[ODBC Source Output]"
+          TopLeft="482.4,150.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-49.6,127.2"
+              Start="0,0"
+              End="-49.6,119.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.6"
+                    Point2="0,63.6"
+                    Point3="-4,63.6" />
+                  <mssgle:LineSegment
+                    End="-45.6,63.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.6,63.6"
+                    Point2="-49.6,63.6"
+                    Point3="-49.6,67.6" />
+                  <mssgle:LineSegment
+                    End="-49.6,119.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Transactions">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Transactions\Transactions_SRC"
+          TopLeft="307.2,112" />
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\Transactions\transactions"
+          TopLeft="322.4,307.2" />
+        <EdgeLayout
+          Id="Package\Transactions.Paths[ODBC Source Output]"
+          TopLeft="389.2,153.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,153.6"
+              Start="0,0"
+              End="0,146.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,146.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CashOuts\Cashouts_SRC">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CashOuts\cashouts">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transactions\Transactions_SRC">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transactions\transactions">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
