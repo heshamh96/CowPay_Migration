@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{63563A1B-981B-4409-9645-209B76EC7C83}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{E019D289-D13F-4ECC-BAE4-42817A794900}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3459,7 +3459,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[BankAccounts]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -3476,7 +3476,1238 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[BankAccounts]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\WithdrawalReqests STG to TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B601CE80-DEAE-47F5-B93E-4C4C3C22569C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="WithdrawalReqests STG to TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="WithdrawalReqests_STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[WithdrawalRequests]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      name="MerchantId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      name="MerchantCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[Amount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[Amount]"
+                      name="Amount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[AccountTypeId]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[AccountTypeId]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[AccountTypeId]"
+                      name="AccountTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[AccountId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[AccountId]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[AccountId]"
+                      name="AccountId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[WithdrawalTypeId]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[WithdrawalTypeId]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[WithdrawalTypeId]"
+                      name="WithdrawalTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[Status]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[HandledBy]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[HandledBy]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[HandledBy]"
+                      name="HandledBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[HandledDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[HandledDate]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[HandledDate]"
+                      name="HandledDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      dataType="numeric"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[AccountTypeId]"
+                      dataType="i2"
+                      name="AccountTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[AccountId]"
+                      dataType="i8"
+                      name="AccountId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[WithdrawalTypeId]"
+                      dataType="i2"
+                      name="WithdrawalTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="i2"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[HandledBy]"
+                      dataType="guid"
+                      name="HandledBy" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[HandledDate]"
+                      dataType="dbTimeStamp"
+                      name="HandledDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i8"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      dataType="i8"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      name="MerchantId" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      name="MerchantCode" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      dataType="numeric"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[AccountTypeId]"
+                      dataType="i2"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[AccountTypeId]"
+                      name="AccountTypeId" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[AccountId]"
+                      dataType="i8"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[AccountId]"
+                      name="AccountId" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[WithdrawalTypeId]"
+                      dataType="i2"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[WithdrawalTypeId]"
+                      name="WithdrawalTypeId" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      dataType="i2"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[HandledBy]"
+                      dataType="guid"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[HandledBy]"
+                      name="HandledBy" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[HandledDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[HandledDate]"
+                      name="HandledDate" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="WithdrawalReqests_TRGT"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[WithdrawalRequests]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Connections[OleDbConnection]"
+                  connectionManagerID="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TransactionManagement]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i8"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantId]"
+                      cachedDataType="i8"
+                      cachedName="MerchantId"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[MerchantId]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantCode]"
+                      cachedDataType="guid"
+                      cachedName="MerchantCode"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[MerchantCode]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[Amount]"
+                      cachedDataType="numeric"
+                      cachedName="Amount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[Amount]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[AccountTypeId]"
+                      cachedDataType="i2"
+                      cachedName="AccountTypeId"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AccountTypeId]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[AccountTypeId]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[AccountId]"
+                      cachedDataType="i8"
+                      cachedName="AccountId"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AccountId]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[AccountId]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[WithdrawalTypeId]"
+                      cachedDataType="i2"
+                      cachedName="WithdrawalTypeId"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[WithdrawalTypeId]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[WithdrawalTypeId]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[Status]"
+                      cachedDataType="i2"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[HandledBy]"
+                      cachedDataType="guid"
+                      cachedName="HandledBy"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[HandledBy]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[HandledBy]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[HandledDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HandledDate"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[HandledDate]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[HandledDate]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      dataType="numeric"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AccountTypeId]"
+                      dataType="i2"
+                      name="AccountTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AccountId]"
+                      dataType="i8"
+                      name="AccountId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[WithdrawalTypeId]"
+                      dataType="i2"
+                      name="WithdrawalTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      dataType="i2"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[HandledBy]"
+                      dataType="guid"
+                      name="HandledBy" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[HandledDate]"
+                      dataType="dbTimeStamp"
+                      name="HandledDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\WithdrawalReqests STG to TRGT.Paths[OLE DB Source Output]"
+              endId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\WithdrawalReqests_Prepared STG to STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E71013C6-23DB-4EE4-BF9D-01294406D770}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="WithdrawalReqests_Prepared STG to STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="STG_WithdrawalReqests"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[WithdrawalRequests]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[MerchantId]"
+                      cachedDataType="i8"
+                      cachedName="MerchantId"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[MerchantCode]"
+                      cachedDataType="guid"
+                      cachedName="MerchantCode"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[MerchantCode]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[amount]"
+                      cachedDataType="numeric"
+                      cachedName="amount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[amount]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[AccountTypeId]"
+                      cachedDataType="i4"
+                      cachedName="AccountTypeId"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[AccountTypeId]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[AccountTypeId]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[AccountId]"
+                      cachedDataType="i4"
+                      cachedName="AccountId"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[AccountId]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[AccountId]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[WithdrawalTypeId]"
+                      cachedDataType="i4"
+                      cachedName="WithdrawalTypeId"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[WithdrawalTypeId]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[WithdrawalTypeId]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[status]"
+                      cachedDataType="numeric"
+                      cachedName="status"
+                      cachedPrecision="5"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[HandledDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HandledDate"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[HandledDate]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledDate]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="i4"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="i4"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      dataType="numeric"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[AccountTypeId]"
+                      dataType="i2"
+                      name="AccountTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[AccountId]"
+                      dataType="i8"
+                      name="AccountId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[WithdrawalTypeId]"
+                      dataType="i2"
+                      name="WithdrawalTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      dataType="i2"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[HandledBy]"
+                      dataType="guid"
+                      name="HandledBy" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[HandledDate]"
+                      dataType="dbTimeStamp"
+                      name="HandledDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="WithdrawalReqests_Prepared"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[WithdrawalReqests_Prepared]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      name="MerchantId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      name="MerchantCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[amount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[amount]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[amount]"
+                      name="amount"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[AccountTypeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[AccountTypeId]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[AccountTypeId]"
+                      name="AccountTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[AccountId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[AccountId]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[AccountId]"
+                      name="AccountId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[WithdrawalTypeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[WithdrawalTypeId]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[WithdrawalTypeId]"
+                      name="WithdrawalTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[status]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[status]"
+                      name="status"
+                      precision="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledBy]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HandledBy]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledBy]"
+                      name="HandledBy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HandledDate]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledDate]"
+                      name="HandledDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[old_id]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[old_id]"
+                      name="old_id"
+                      precision="20"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[amount]"
+                      dataType="numeric"
+                      name="amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[AccountTypeId]"
+                      dataType="i4"
+                      name="AccountTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[AccountId]"
+                      dataType="i4"
+                      name="AccountId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[WithdrawalTypeId]"
+                      dataType="i4"
+                      name="WithdrawalTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      dataType="numeric"
+                      name="status"
+                      precision="5" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HandledBy]"
+                      dataType="i4"
+                      name="HandledBy" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HandledDate]"
+                      dataType="dbTimeStamp"
+                      name="HandledDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="i4"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="i4"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      dataType="numeric"
+                      name="old_id"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      dataType="i8"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      name="MerchantId" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      name="MerchantCode" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[amount]"
+                      dataType="numeric"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[amount]"
+                      name="amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[AccountTypeId]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[AccountTypeId]"
+                      name="AccountTypeId" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[AccountId]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[AccountId]"
+                      name="AccountId" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[WithdrawalTypeId]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[WithdrawalTypeId]"
+                      name="WithdrawalTypeId" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[status]"
+                      dataType="numeric"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[status]"
+                      name="status"
+                      precision="5" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[HandledBy]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[HandledBy]"
+                      name="HandledBy" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[HandledDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[HandledDate]"
+                      name="HandledDate" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      dataType="numeric"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      name="old_id"
+                      precision="20" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\WithdrawalReqests_Prepared STG to STG.Paths[OLE DB Source Output]"
+              endId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -3537,6 +4768,22 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 6"
       DTS:To="Package\Truncate_STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{098B7552-759C-4B26-81FA-7FFE99A02D18}"
+      DTS:From="Package\Bank_Accounts_Prepared STG to STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\WithdrawalReqests_Prepared STG to STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{ED4137BD-9555-4488-B639-67EE152143D6}"
+      DTS:From="Package\BankAccounts STG to TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\WithdrawalReqests STG to TRGT" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -3549,21 +4796,88 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="208,41.6"
+          Size="256,42"
+          Id="Package\Bank_Accounts_Prepared STG to STG"
+          TopLeft="476.571436687392,262.44706250425" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\BankAccounts STG to TRGT"
+          TopLeft="46.8571436551153,324.235298664925" />
+        <NodeLayout
+          Size="224,41.6"
+          Id="Package\Cleanseing Activities\Cleanse WR_Cashouts (Status)"
+          TopLeft="21.9428618625719,113.458824301591" />
+        <NodeLayout
+          Size="276.8,41.6"
+          Id="Package\Cleanseing Activities\Cleanse WR_WithdrawalRequests (Status)"
+          TopLeft="21.9428618625719,11.858824301591" />
+        <EdgeLayout
+          Id="Package\Cleanseing Activities.PrecedenceConstraints[Constraint]"
+          TopLeft="160.342861862572,53.458824301591">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26.4,60"
+              Start="0,0"
+              End="-26.4,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-22.4,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.4,30"
+                    Point2="-26.4,30"
+                    Point3="-26.4,34" />
+                  <mssgle:LineSegment
+                    End="-26.4,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="304,210.4"
+          Size="304,43"
+          Id="Package\Cleanseing Activities"
+          TopLeft="208.000003542219,1.22352942892424" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Customers STG to TRGT"
+          TopLeft="38.2857149377161,254.494121216243" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\Customers_Prepared STG to STG"
+          TopLeft="482.857151080151,175.811767048159" />
+        <NodeLayout
+          Size="208,42"
           Id="Package\MobileWallets STG to TRGT"
           TopLeft="38.2857149377165,176.800002479553" />
         <NodeLayout
-          Size="248.8,41.6"
+          Size="249,42"
           Id="Package\MobileWallets_Prepared STG to STG"
           TopLeft="442.285721817796,99.1058837428636" />
         <NodeLayout
-          Size="144.8,41.6"
+          Size="145,42"
           Id="Package\Truncate_STG"
           TopLeft="573.714295484582,37.3176475821894" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Truncate_TRGT"
           TopLeft="68.0000011580333,74.6352951643787" />
         <EdgeLayout
@@ -3586,6 +4900,40 @@
                     Point3="-7.02857366678609,4" />
                   <mssgle:LineSegment
                     End="-7.02857366678609,27.8882361606742" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="566.685721817796,140.705883742864">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.3714292623557,35.1058833052957"
+              Start="0,0"
+              End="33.3714292623557,27.6058833052957">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5529416526479" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5529416526479"
+                    Point2="0,17.5529416526479"
+                    Point3="4,17.5529416526479" />
+                  <mssgle:LineSegment
+                    End="29.3714292623557,17.5529416526479" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.3714292623557,17.5529416526479"
+                    Point2="33.3714292623557,17.5529416526479"
+                    Point3="33.3714292623557,21.5529416526479" />
+                  <mssgle:LineSegment
+                    End="33.3714292623557,27.6058833052957" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3628,48 +4976,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="234.4,41.6"
-          Id="Package\Customers_Prepared STG to STG"
-          TopLeft="482.857151080151,175.811767048159" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="566.685721817796,140.705883742864">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="33.3714292623557,35.1058833052957"
-              Start="0,0"
-              End="33.3714292623557,27.6058833052957">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.5529416526479" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.5529416526479"
-                    Point2="0,17.5529416526479"
-                    Point3="4,17.5529416526479" />
-                  <mssgle:LineSegment
-                    End="29.3714292623557,17.5529416526479" />
-                  <mssgle:CubicBezierSegment
-                    Point1="29.3714292623557,17.5529416526479"
-                    Point2="33.3714292623557,17.5529416526479"
-                    Point3="33.3714292623557,21.5529416526479" />
-                  <mssgle:LineSegment
-                    End="33.3714292623557,27.6058833052957" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="192.8,41.6"
-          Id="Package\Customers STG to TRGT"
-          TopLeft="38.2857149377161,254.494121216243" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="138.485714937716,218.400002479553">
@@ -3692,24 +4998,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="255.2,41.6"
-          Id="Package\Bank_Accounts_Prepared STG to STG"
-          TopLeft="476.571436687392,262.44706250425" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="602.114293883772,217.411767048159">
+          TopLeft="602.214293883771,217.811767048159">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45.035295456091"
+              EndConnector="0,44.635295456091"
               Start="0,0"
-              End="0,37.535295456091">
+              End="0,37.135295456091">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.535295456091" />
+                    End="0,37.135295456091" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3718,10 +5020,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="208.8,41.6"
-          Id="Package\BankAccounts STG to TRGT"
-          TopLeft="46.8571436551153,324.235298664925" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="134.685714937716,296.094121216243">
@@ -3756,55 +5054,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="276.8,41.6"
-          Id="Package\Cleanseing Activities\Cleanse WR_WithdrawalRequests (Status)"
-          TopLeft="21.9428618625719,11.858824301591" />
-        <NodeLayout
-          Size="224,41.6"
-          Id="Package\Cleanseing Activities\Cleanse WR_Cashouts (Status)"
-          TopLeft="21.9428618625719,113.458824301591" />
-        <EdgeLayout
-          Id="Package\Cleanseing Activities.PrecedenceConstraints[Constraint]"
-          TopLeft="160.342861862572,53.458824301591">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-26.4,60"
-              Start="0,0"
-              End="-26.4,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-22.4,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-22.4,30"
-                    Point2="-26.4,30"
-                    Point3="-26.4,34" />
-                  <mssgle:LineSegment
-                    End="-26.4,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="304,210.4"
-          Size="304,43.2"
-          Id="Package\Cleanseing Activities"
-          TopLeft="208.000003542219,1.22352942892424" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="512.000003542219,22.8235294289242">
@@ -3839,300 +5088,90 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="275,42"
+          Id="Package\WithdrawalReqests_Prepared STG to STG"
+          TopLeft="523,331" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="604.571436687392,304.44706250425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55.928563312608,26.55293749575"
+              Start="0,0"
+              End="55.928563312608,19.05293749575">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.27646874787499" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.27646874787499"
+                    Point2="0,13.276468747875"
+                    Point3="4,13.276468747875" />
+                  <mssgle:LineSegment
+                    End="51.928563312608,13.276468747875" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.928563312608,13.276468747875"
+                    Point2="55.928563312608,13.276468747875"
+                    Point3="55.928563312608,17.276468747875" />
+                  <mssgle:LineSegment
+                    End="55.928563312608,19.05293749575" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="234,42"
+          Id="Package\WithdrawalReqests STG to TRGT"
+          TopLeft="79,381" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="255.857143655115,345.235298664925">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-59.8571436551153,35.764701335075"
+              Start="0,0"
+              End="-59.8571436551153,28.264701335075">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-55.8571436551153,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-55.8571436551153,0"
+                    Point2="-59.8571436551153,0"
+                    Point3="-59.8571436551153,4" />
+                  <mssgle:LineSegment
+                    End="-59.8571436551153,28.264701335075" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\MobileWallets STG to TRGT">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="175.2,41.6"
-          Id="Package\MobileWallets STG to TRGT\MobileWallets_TRGT"
-          TopLeft="278.4,239.2" />
-        <NodeLayout
-          Size="168,41.6"
-          Id="Package\MobileWallets STG to TRGT\MobileWallets_STG"
-          TopLeft="274.4,64.8" />
-        <EdgeLayout
-          Id="Package\MobileWallets STG to TRGT.Paths[OLE DB Source Output]"
-          TopLeft="362.2,106.4">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,132.8"
-              Start="0,0"
-              End="0,125.3">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,125.3" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\MobileWallets STG to TRGT\MobileWallets_STG">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\MobileWallets STG to TRGT\MobileWallets_TRGT">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\MobileWallets_Prepared STG to STG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
-          TopLeft="178.857145903062,170.682355334932" />
-        <NodeLayout
-          Size="209.6,41.6"
-          Id="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared"
-          TopLeft="164.571431374063,34.870588724341" />
-        <EdgeLayout
-          Id="Package\MobileWallets_Prepared STG to STG.Paths[OLE DB Source Output]"
-          TopLeft="267.514288638563,76.470588724341">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,94.2117666105911"
-              Start="0,0"
-              End="0,86.7117666105911">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,86.7117666105911" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Customers_Prepared STG to STG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="195.2,41.6"
-          Id="Package\Customers_Prepared STG to STG\vw_Customers_Prepared"
-          TopLeft="191.428574688581,44.0470594412728" />
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Customers_Prepared STG to STG\STG_Customers"
-          TopLeft="232.571432532097,180.470590766326" />
-        <EdgeLayout
-          Id="Package\Customers_Prepared STG to STG.Paths[OLE DB Source Output]"
-          TopLeft="289.028574688581,85.6470594412728">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="19.9428578435159,94.8235313250532"
-              Start="0,0"
-              End="19.9428578435159,87.3235313250532">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.4117656625266" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,43.4117656625266"
-                    Point2="0,47.4117656625266"
-                    Point3="4,47.4117656625266" />
-                  <mssgle:LineSegment
-                    End="15.9428578435159,47.4117656625266" />
-                  <mssgle:CubicBezierSegment
-                    Point1="15.9428578435159,47.4117656625266"
-                    Point2="19.9428578435159,47.4117656625266"
-                    Point3="19.9428578435159,51.4117656625266" />
-                  <mssgle:LineSegment
-                    End="19.9428578435159,87.3235313250532" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Customers_Prepared STG to STG\vw_Customers_Prepared">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Customers_Prepared STG to STG\STG_Customers">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Customers STG to TRGT">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Customers STG to TRGT\Customers_STG"
-          TopLeft="227.2,64" />
-        <NodeLayout
-          Size="160,41.6"
-          Id="Package\Customers STG to TRGT\Customers_TRGT"
-          TopLeft="234.4,221.6" />
-        <EdgeLayout
-          Id="Package\Customers STG to TRGT.Paths[OLE DB Source Output]"
-          TopLeft="303.6,105.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="10.8,116"
-              Start="0,0"
-              End="10.8,108.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,54"
-                    Point2="0,58"
-                    Point3="4,58" />
-                  <mssgle:LineSegment
-                    End="6.80000000000001,58" />
-                  <mssgle:CubicBezierSegment
-                    Point1="6.80000000000001,58"
-                    Point2="10.8,58"
-                    Point3="10.8,62" />
-                  <mssgle:LineSegment
-                    End="10.8,108.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Customers STG to TRGT\Customers_STG">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Customers STG to TRGT\Customers_TRGT">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Bank_Accounts_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="211.2,41.6"
+          Size="211,42"
           Id="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared"
           TopLeft="308.8,102.4" />
         <NodeLayout
-          Size="168.8,41.6"
+          Size="169,42"
           Id="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts"
           TopLeft="317.6,291.2" />
         <EdgeLayout
@@ -4173,19 +5212,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts">
     <Properties>
       <Property>
@@ -4198,17 +5224,30 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\BankAccounts STG to TRGT">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="176,41.6"
+          Size="176,42"
           Id="Package\BankAccounts STG to TRGT\BankAccounts_TRGT"
           TopLeft="234.4,221.6" />
         <NodeLayout
-          Size="168.8,41.6"
+          Size="169,42"
           Id="Package\BankAccounts STG to TRGT\BankAccounts_STG"
           TopLeft="227.2,64" />
         <EdgeLayout
@@ -4249,7 +5288,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\BankAccounts STG to TRGT\BankAccounts_TRGT">
+    design-time-name="Package\BankAccounts STG to TRGT\BankAccounts_STG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4262,7 +5301,435 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\BankAccounts STG to TRGT\BankAccounts_STG">
+    design-time-name="Package\BankAccounts STG to TRGT\BankAccounts_TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Customers STG to TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Customers STG to TRGT\Customers_STG"
+          TopLeft="227.2,64" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Customers STG to TRGT\Customers_TRGT"
+          TopLeft="234.4,221.6" />
+        <EdgeLayout
+          Id="Package\Customers STG to TRGT.Paths[OLE DB Source Output]"
+          TopLeft="303.6,105.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.8,116"
+              Start="0,0"
+              End="10.8,108.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,54"
+                    Point2="0,58"
+                    Point3="4,58" />
+                  <mssgle:LineSegment
+                    End="6.80000000000001,58" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.80000000000001,58"
+                    Point2="10.8,58"
+                    Point3="10.8,62" />
+                  <mssgle:LineSegment
+                    End="10.8,108.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customers STG to TRGT\Customers_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customers STG to TRGT\Customers_TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Customers_Prepared STG to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\Customers_Prepared STG to STG\vw_Customers_Prepared"
+          TopLeft="191.428574688581,44.0470594412728" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Customers_Prepared STG to STG\STG_Customers"
+          TopLeft="232.571432532097,180.470590766326" />
+        <EdgeLayout
+          Id="Package\Customers_Prepared STG to STG.Paths[OLE DB Source Output]"
+          TopLeft="289.028574688581,85.6470594412728">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.9428578435159,94.8235313250532"
+              Start="0,0"
+              End="19.9428578435159,87.3235313250532">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.4117656625266" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.4117656625266"
+                    Point2="0,47.4117656625266"
+                    Point3="4,47.4117656625266" />
+                  <mssgle:LineSegment
+                    End="15.9428578435159,47.4117656625266" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.9428578435159,47.4117656625266"
+                    Point2="19.9428578435159,47.4117656625266"
+                    Point3="19.9428578435159,51.4117656625266" />
+                  <mssgle:LineSegment
+                    End="19.9428578435159,87.3235313250532" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customers_Prepared STG to STG\STG_Customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customers_Prepared STG to STG\vw_Customers_Prepared">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\MobileWallets STG to TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\MobileWallets STG to TRGT\MobileWallets_TRGT"
+          TopLeft="278.4,239.2" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\MobileWallets STG to TRGT\MobileWallets_STG"
+          TopLeft="274.4,64.8" />
+        <EdgeLayout
+          Id="Package\MobileWallets STG to TRGT.Paths[OLE DB Source Output]"
+          TopLeft="362.2,106.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,132.8"
+              Start="0,0"
+              End="0,125.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,125.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MobileWallets STG to TRGT\MobileWallets_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MobileWallets STG to TRGT\MobileWallets_TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\MobileWallets_Prepared STG to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
+          TopLeft="178.857145903062,170.682355334932" />
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared"
+          TopLeft="164.571431374063,34.870588724341" />
+        <EdgeLayout
+          Id="Package\MobileWallets_Prepared STG to STG.Paths[OLE DB Source Output]"
+          TopLeft="267.514288638563,76.470588724341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,94.2117666105911"
+              Start="0,0"
+              End="0,86.7117666105911">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.7117666105911" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\WithdrawalReqests_Prepared STG to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="217,42"
+          Id="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared"
+          TopLeft="94,36" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests"
+          TopLeft="110,123" />
+        <EdgeLayout
+          Id="Package\WithdrawalReqests_Prepared STG to STG.Paths[OLE DB Source Output]"
+          TopLeft="204.75,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\WithdrawalReqests STG to TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG"
+          TopLeft="127,55" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT"
+          TopLeft="134,151" />
+        <EdgeLayout
+          Id="Package\WithdrawalReqests STG to TRGT.Paths[OLE DB Source Output]"
+          TopLeft="224,97">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.5,54"
+              Start="0,0"
+              End="10.5,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="4,27" />
+                  <mssgle:LineSegment
+                    End="6.5,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.5,27"
+                    Point2="10.5,27"
+                    Point3="10.5,31" />
+                  <mssgle:LineSegment
+                    End="10.5,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
