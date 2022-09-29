@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">BI-SERVER2022</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5vBrXrNQOEyteBSbVYwXAAAAAAACAAAAAAAQZgAAAAEAACAAAAArjitpphZu6y0oZ+7Jew2iX9sGj7KIIizTp0l8fHLhjAAAAAAOgAAAAAIAACAAAAD41Sv5wrLjdF8whH5OD8SrumFUfl1wrH2LPODsMbcJKJAAAAD/HaEA7HNyOhvB0qWAAsYxrrObUrkg2LPFE3H4mpwe3VL2p2QOsbvkA8htQTKKMV+dw7h6zd5NQqp6I9ZiWfEP2eihgV1H1uHiItSmRc7SW5cftLiXXjGwDjIihd/SzL5Dx8vcrdWs+fXmtMfmvgcp/ycQFaRWEDvOWpHTgAWuzBn6XOwJe21Y0R5NrP68AKhAAAAAAO3bOgV8BqAM5h+F7sqqCKCmdSF/xaadB+9qUdERZqbgzujTehC4eFLaZNoq2H6a9VQYVuZMB9Ck4bHim3ffwg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAADIiTpIL/E2EW9xOeQyeAtQ/nm38p0j1xknL35s0tIcngAAAAAOgAAAAAIAACAAAAAq5y69A2SLyaKvubAaOHkPHqa59F9F1Txpzg/NKuh12JAAAAA2qmzk8E9BiM2CVjyzwxUIqWtGKIsvdiajG/IU1bXlBi+xhJkxuvpk/mMe/YeuNSl1J9FshR78gHrgoa36JoFdcDal/vv/THmHptRCI9e/xTq0r97x8Eoh9dDUBYcVvfDduUdg3Bu+EE3AT36elrO2QdNLZoHc4TFy2khbCvY9ESWxXHp+g3nP99I2V8oR1ENAAAAApjdepJ0HsfZqGpdUWAlkTx858AydonDa/NOfTYzf1d1abfjykOXtA74KGbU/AXbXWCWcY6S2nu9cl/+n0LpOiA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -669,10 +669,10 @@
                 <SSIS:Property SSIS:Name="Name">Merchants_Module</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">40</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">42</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{F7B1766A-B38A-43FB-86B7-F491142B34C3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{76F5EE9C-B22F-4470-B7F9-AC4E5FC7AC24}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -703,10 +703,10 @@
                 <SSIS:Property SSIS:Name="Name">Transaction_Management_Module</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">19</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">26</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E019D289-D13F-4ECC-BAE4-42817A794900}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{246DED13-7AEF-4AF1-8310-929F07774271}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
