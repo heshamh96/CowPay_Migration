@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pre_Executions"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{7F0D5839-8E1B-4B03-8E85-8D4DE7CFC154}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{EAA0629B-0B1D-4FBC-8719-90647FE500FE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -41,7 +41,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{9236F42D-90B2-4203-A844-ED95DAA87AE3}"
-              SQLTask:SqlStatementSource="&#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_Banks&#xA;  FROM [dbo].[Banks_cowpay]&#xA;&#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_CurrencyTypes&#xA;  FROM [dbo].[Currency_cowpay]&#xA;&#xA;&#xA;&#xA;  &#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_PGWTypes&#xA;  FROM [dbo].[PGWTypes_cowpay]&#xA;&#xA;&#xA;&#xA;  &#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_ChannelTypes&#xA;  FROM [dbo].[ChannelTypes_cowpay]&#xA;&#xA;&#xA;  &#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_PaymentStatusTypes&#xA;  FROM [dbo].[PaymentStatusTypes_cowpay]&#xA;&#xA;&#xA;&#xA;  &#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_PaymentMethodTypes&#xA;  FROM [dbo].[PaymentMethodTypes_cowpay]&#xA;&#xA;&#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_StatusTypes&#xA;  FROM [dbo].[StatusTypes_Cowpay]&#xA;&#xA;  SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_PaymentLinkType&#xA;  FROM [dbo].[PaymentLinkTypes_cowpay]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="&#xA;SELECT *,convert(nvarchar(150),null) as New_Sys_Value into [LKP_DB].dbo.Ref_Banks&#xA;  FROM [dbo].[Banks_cowpay]&#xA;&#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_CurrencyTypes&#xA;  FROM [dbo].[Currency_cowpay]&#xA;&#xA;&#xA;&#xA;  &#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_PGWTypes&#xA;  FROM [dbo].[PGWTypes_cowpay]&#xA;&#xA;&#xA;&#xA;  &#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_ChannelTypes&#xA;  FROM [dbo].[ChannelTypes_cowpay]&#xA;&#xA;&#xA;  &#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_PaymentStatusTypes&#xA;  FROM [dbo].[PaymentStatusTypes_cowpay]&#xA;&#xA;&#xA;&#xA;  &#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_PaymentMethodTypes&#xA;  FROM [dbo].[PaymentMethodTypes_cowpay]&#xA;&#xA;&#xA;SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_StatusTypes&#xA;  FROM [dbo].[StatusTypes_Cowpay]&#xA;&#xA;  SELECT *,convert(nvarchar(50),null) as New_Sys_Value into [LKP_DB].dbo.Ref_PaymentLinkType&#xA;  FROM [dbo].[PaymentLinkTypes_cowpay]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -5705,7 +5705,7 @@ group by bank_name</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="308,41.6"
           Id="Package\Dangerouse, Do Not Use !\Create LKPs (doesn't reverse the Destroy LKPs !)"
@@ -5740,7 +5740,7 @@ group by bank_name</property>
           HeaderHeight="43.2"
           IsExpanded="False"
           PanelSize="318.4,212"
-          Size="318.4,43.2"
+          Size="225.6,43.2"
           Id="Package\Dangerouse, Do Not Use !"
           TopLeft="289.142862066931,384.564710232296" />
         <NodeLayout
@@ -5770,7 +5770,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -5798,7 +5800,7 @@ group by bank_name</property>
         <NodeLayout
           Size="144,41.6"
           Id="Package\Transactions_LKP\ChannelTypes"
-          TopLeft="93.9428593421469,208.605885201425" />
+          TopLeft="96.2285736667867,207.994120486963" />
         <NodeLayout
           Size="120,41.6"
           Id="Package\Transactions_LKP\Currency"
@@ -5887,18 +5889,18 @@ group by bank_name</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transactions_LKP.PrecedenceConstraints[Constraint 4]"
-          TopLeft="168.142859444326,185.35882546844">
+          TopLeft="169.285716606646,185.35882546844">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,23.2470597329848"
+              EndConnector="0,22.6352950185229"
               Start="0,0"
-              End="0,15.7470597329848">
+              End="0,15.1352950185229">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.7470597329848" />
+                    End="0,15.1352950185229" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5909,18 +5911,18 @@ group by bank_name</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transactions_LKP.PrecedenceConstraints[Constraint 5]"
-          TopLeft="167.857144949387,250.205885201425">
+          TopLeft="169.000002111707,249.594120486963">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,27.8117652978866"
+              EndConnector="0,28.4235300123481"
               Start="0,0"
-              End="0,20.3117652978866">
+              End="0,20.9235300123481">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3117652978866" />
+                    End="0,20.9235300123481" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5953,11 +5955,218 @@ group by bank_name</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="360,509.6"
-          Size="360,552.8"
+          Size="360,43.2"
           Id="Package\Transactions_LKP"
           TopLeft="449.714293372874,182.164708044455" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Banks"
+          TopLeft="119.085716913184,5.5" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\ChannelTypes"
+          TopLeft="93.9428593421469,208.605885201425" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Currency"
+          TopLeft="113.371431101585,78.9117657354547" />
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentLinkTypes"
+          TopLeft="93.6000092642651,500.282357814485" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentMethodTypes"
+          TopLeft="75.6571447450287,344.511769381856" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentStatusTypes"
+          TopLeft="81.3714305566282,278.017650499311" />
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PGWTypes"
+          TopLeft="105.942859546506,143.75882546844" />
+        <NodeLayout
+          Size="255.2,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\StatusTypes (withdrawalStatusTypes)"
+          TopLeft="42.7428655410302,414.5882403905" />
+        <EdgeLayout
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint]"
+          TopLeft="168.600005143029,386.111769381856">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.4764710086444"
+              Start="0,0"
+              End="0,20.9764710086444">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.9764710086444" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 1]"
+          TopLeft="173.571437402648,456.1882403905">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.0941174239846"
+              Start="0,0"
+              End="0,36.5941174239846">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5941174239846" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 2]"
+          TopLeft="172.828574007385,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.8117657354547"
+              Start="0,0"
+              End="0,24.3117657354547">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.3117657354547" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 3]"
+          TopLeft="171.857145324045,120.511765735455">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.247059732985"
+              Start="0,0"
+              End="0,15.747059732985">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.747059732985" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 4]"
+          TopLeft="168.142859444326,185.35882546844">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.2470597329848"
+              Start="0,0"
+              End="0,15.7470597329848">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.7470597329848" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 5]"
+          TopLeft="167.857144949387,250.205885201425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.8117652978866"
+              Start="0,0"
+              End="0,20.3117652978866">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3117652978866" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 6]"
+          TopLeft="168.314287650828,319.617650499311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.8941188825453"
+              Start="0,0"
+              End="0,17.3941188825453">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.3941188825453" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="360,612.8"
+          Size="360,43.2"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed"
+          TopLeft="95.3142867652738,460.329417255758" />
         <NodeLayout
           Size="201.6,41.6"
           Id="Package\Truncate Cowpay's Tables"
@@ -5968,9 +6177,9 @@ group by bank_name</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="28.1142846535661,36.941177594538"
+              EndConnector="28.114284653566,36.941177594538"
               Start="0,0"
-              End="28.1142846535661,29.441177594538">
+              End="28.114284653566,29.441177594538">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -5981,13 +6190,13 @@ group by bank_name</property>
                     Point2="0,18.470588797269"
                     Point3="4,18.470588797269" />
                   <mssgle:LineSegment
-                    End="24.1142846535661,18.470588797269" />
+                    End="24.114284653566,18.470588797269" />
                   <mssgle:CubicBezierSegment
-                    Point1="24.1142846535661,18.470588797269"
-                    Point2="28.1142846535661,18.470588797269"
-                    Point3="28.1142846535661,22.470588797269" />
+                    Point1="24.114284653566,18.470588797269"
+                    Point2="28.114284653566,18.470588797269"
+                    Point3="28.114284653566,22.470588797269" />
                   <mssgle:LineSegment
-                    End="28.1142846535661,29.441177594538" />
+                    End="28.114284653566,29.441177594538" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5998,24 +6207,30 @@ group by bank_name</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="449.714293372874,458.564708044455">
+          TopLeft="629.714293372874,225.364708044455">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="37.1142838872215,-158.176468930195"
+              EndConnector="-142.885716112778,75.023531069805"
               Start="0,0"
-              End="37.1142838872215,-150.676468930195">
+              End="-142.885716112778,67.523531069805">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="33.1142838872215,0" />
+                    End="0,33.5117655349025" />
                   <mssgle:CubicBezierSegment
-                    Point1="33.1142838872215,0"
-                    Point2="37.1142838872215,0"
-                    Point3="37.1142838872215,-4" />
+                    Point1="0,33.5117655349025"
+                    Point2="0,37.5117655349025"
+                    Point3="-4,37.5117655349025" />
                   <mssgle:LineSegment
-                    End="37.1142838872215,-150.676468930195" />
+                    End="-138.885716112778,37.5117655349025" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-138.885716112778,37.5117655349025"
+                    Point2="-142.885716112778,37.5117655349025"
+                    Point3="-142.885716112778,41.5117655349025" />
+                  <mssgle:LineSegment
+                    End="-142.885716112778,67.523531069805" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6064,26 +6279,26 @@ group by bank_name</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-38.4857151931653,40.9764711180358"
+              EndConnector="-84.885715193165,40.976471118036"
               Start="0,0"
-              End="-38.4857151931653,33.4764711180358">
+              End="-84.885715193165,33.476471118036">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.4882355590179" />
+                    End="0,16.488235559018" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.4882355590179"
-                    Point2="0,20.4882355590179"
-                    Point3="-4,20.4882355590179" />
+                    Point1="0,16.488235559018"
+                    Point2="0,20.488235559018"
+                    Point3="-4,20.488235559018" />
                   <mssgle:LineSegment
-                    End="-34.4857151931653,20.4882355590179" />
+                    End="-80.885715193165,20.488235559018" />
                   <mssgle:CubicBezierSegment
-                    Point1="-34.4857151931653,20.4882355590179"
-                    Point2="-38.4857151931653,20.4882355590179"
-                    Point3="-38.4857151931653,24.4882355590179" />
+                    Point1="-80.885715193165,20.488235559018"
+                    Point2="-84.885715193165,20.488235559018"
+                    Point3="-84.885715193165,24.488235559018" />
                   <mssgle:LineSegment
-                    End="-38.4857151931653,33.4764711180358" />
+                    End="-84.885715193165,33.476471118036" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6092,225 +6307,32 @@ group by bank_name</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Banks"
-          TopLeft="119.085716913184,5.5" />
-        <NodeLayout
-          Size="144,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\ChannelTypes"
-          TopLeft="93.9428593421469,208.605885201425" />
-        <NodeLayout
-          Size="120,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Currency"
-          TopLeft="113.371431101585,78.9117657354547" />
-        <NodeLayout
-          Size="182.4,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentMethodTypes"
-          TopLeft="75.6571447450287,344.511769381856" />
-        <NodeLayout
-          Size="176.8,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentStatusTypes"
-          TopLeft="81.3714305566282,278.017650499311" />
-        <NodeLayout
-          Size="128.8,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PGWTypes"
-          TopLeft="105.942859546506,143.75882546844" />
-        <NodeLayout
-          Size="255.2,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\StatusTypes (withdrawalStatusTypes)"
-          TopLeft="42.7428655410302,414.5882403905" />
-        <EdgeLayout
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint]"
-          TopLeft="168.600005143029,386.111769381856">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28.4764710086444"
-              Start="0,0"
-              End="0,20.9764710086444">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.9764710086444" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 2]"
-          TopLeft="172.828574007385,47.1">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31.8117657354547"
-              Start="0,0"
-              End="0,24.3117657354547">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.3117657354547" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 3]"
-          TopLeft="171.857145324045,120.511765735455">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23.247059732985"
-              Start="0,0"
-              End="0,15.747059732985">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.747059732985" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 4]"
-          TopLeft="168.142859444326,185.35882546844">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23.2470597329848"
-              Start="0,0"
-              End="0,15.7470597329848">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.7470597329848" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 5]"
-          TopLeft="167.857144949387,250.205885201425">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27.8117652978866"
-              Start="0,0"
-              End="0,20.3117652978866">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.3117652978866" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 6]"
-          TopLeft="168.314287650828,319.617650499311">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,24.8941188825453"
-              Start="0,0"
-              End="0,17.3941188825453">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.3941188825453" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="166.4,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentLinkTypes"
-          TopLeft="93.6000092642651,500.282357814485" />
-        <EdgeLayout
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed.PrecedenceConstraints[Constraint 1]"
-          TopLeft="173.571437402648,456.1882403905">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44.0941174239846"
-              Start="0,0"
-              End="0,36.5941174239846">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5941174239846" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="360,612.8"
-          Size="360,43.2"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed"
-          TopLeft="95.3142867652738,460.329417255758" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="448.342862066931,427.764710232296">
+          TopLeft="401.942862066931,427.764710232296">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-173.028575301657,32.5647070234623"
+              EndConnector="-126.628575301657,32.5647070234621"
               Start="0,0"
-              End="-173.028575301657,25.0647070234623">
+              End="-126.628575301657,25.0647070234621">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.2823535117311" />
+                    End="0,12.282353511731" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.2823535117311"
-                    Point2="0,16.2823535117311"
-                    Point3="-4,16.2823535117311" />
+                    Point1="0,12.282353511731"
+                    Point2="0,16.282353511731"
+                    Point3="-4,16.282353511731" />
                   <mssgle:LineSegment
-                    End="-169.028575301657,16.2823535117311" />
+                    End="-122.628575301657,16.282353511731" />
                   <mssgle:CubicBezierSegment
-                    Point1="-169.028575301657,16.2823535117311"
-                    Point2="-173.028575301657,16.2823535117311"
-                    Point3="-173.028575301657,20.2823535117311" />
+                    Point1="-122.628575301657,16.282353511731"
+                    Point2="-126.628575301657,16.282353511731"
+                    Point3="-126.628575301657,20.282353511731" />
                   <mssgle:LineSegment
-                    End="-173.028575301657,25.0647070234623" />
+                    End="-126.628575301657,25.0647070234621" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6366,7 +6388,7 @@ group by bank_name</property>
     design-time-name="Package\Merchants_LKPs\Countries">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="144,41.6"
           Id="Package\Merchants_LKPs\Countries\Countries_Src"
@@ -6394,7 +6416,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6452,21 +6476,27 @@ group by bank_name</property>
         <NodeLayout
           Size="147.2,41.6"
           Id="Package\Transactions_LKP\Banks\Banks_cowpay"
-          TopLeft="254.285717594381,60.6117647144609" />
+          TopLeft="168.57143042039,121.788236160673" />
         <EdgeLayout
           Id="Package\Transactions_LKP\Banks.Paths[ODBC Source Output]"
-          TopLeft="187.2,81.105882357231">
+          TopLeft="187.2,80.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="67.0857175943804,0"
+              EndConnector="54.9714304203897,40.9882361606731"
               Start="0,0"
-              End="59.5857175943804,0">
+              End="54.9714304203897,33.4882361606731">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="59.5857175943804,0" />
+                    End="50.9714304203897,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.9714304203897,0"
+                    Point2="54.9714304203897,0"
+                    Point3="54.9714304203897,4" />
+                  <mssgle:LineSegment
+                    End="54.9714304203897,33.4882361606731" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6482,7 +6512,7 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP\ChannelTypes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="185.6,41.6"
           Id="Package\Transactions_LKP\ChannelTypes\ChannelTypes_cowpay"
@@ -6510,7 +6540,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6730,7 +6762,7 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP\StatusTypes (withdrawalStatusTypes)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="178.4,41.6"
           Id="Package\Transactions_LKP\StatusTypes (withdrawalStatusTypes)\StatusTypes_Cowpay"
@@ -6770,7 +6802,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6793,7 +6827,7 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Banks">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="147.2,41.6"
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Banks\Banks_cowpay"
@@ -6821,7 +6855,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6844,15 +6880,15 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\ChannelTypes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="185.6,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\ChannelTypes\ChannelTypes_cowpay"
-          TopLeft="284.571432395857,66.258820217621" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\ChannelTypes\Channel_Types_Src"
           TopLeft="60,60" />
+        <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\ChannelTypes\ChannelTypes_cowpay"
+          TopLeft="284.571432395857,66.258820217621" />
         <EdgeLayout
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\ChannelTypes.Paths[ODBC Source Output]"
           TopLeft="230.4,83.9294101088105">
@@ -6872,7 +6908,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6895,15 +6933,15 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Currency">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Currency\Currency_cowpay"
-          TopLeft="260.00000340598,60" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="140.8,41.6"
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Currency\Currency_Src"
           TopLeft="60,65.458826343576" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Currency\Currency_cowpay"
+          TopLeft="260.00000340598,60" />
         <EdgeLayout
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\Currency.Paths[ODBC Source Output]"
           TopLeft="200.8,83.529413171788">
@@ -6923,7 +6961,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6943,18 +6983,58 @@ group by bank_name</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentLinkTypes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentLinkTypes\PaymentLinkTypes_cowpay"
+          TopLeft="414.514290579971,251.764710378152" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentLinkTypes\PaymentLink_Types_Src"
+          TopLeft="152.800000408718,255.200005396675" />
+        <EdgeLayout
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentLinkTypes.Paths[ODBC Source Output]"
+          TopLeft="345.600000408718,274.282357887413">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="68.9142901712534,0"
+              Start="0,0"
+              End="61.4142901712534,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="61.4142901712534,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
     design-time-name="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentMethodTypes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="223.2,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentMethodTypes\PaymentMethodTypes_cowpay"
-          TopLeft="225.828575710375,145.6" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="214.4,41.6"
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentMethodTypes\Payment_Method_Types_Src"
           TopLeft="60,62.870589745334" />
+        <NodeLayout
+          Size="223.2,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentMethodTypes\PaymentMethodTypes_cowpay"
+          TopLeft="225.828575710375,145.6" />
         <EdgeLayout
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentMethodTypes.Paths[ODBC Source Output]"
           TopLeft="167.2,104.470589745334">
@@ -6986,7 +7066,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7009,7 +7091,7 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentStatusTypes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="141.6,41.6"
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentStatusTypes\ODBC Source"
@@ -7049,7 +7131,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7072,7 +7156,7 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PGWTypes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="191.2,41.6"
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PGWTypes\Payment_Gateways_Src"
@@ -7100,7 +7184,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7123,15 +7209,15 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\StatusTypes (withdrawalStatusTypes)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="178.4,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\StatusTypes (withdrawalStatusTypes)\StatusTypes_Cowpay"
-          TopLeft="192.571431850901,239.811768069152" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="238.4,41.6"
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\StatusTypes (withdrawalStatusTypes)\WithdrawalRequest_Status_Types"
           TopLeft="232.000003950937,96.0470601705532" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\StatusTypes (withdrawalStatusTypes)\StatusTypes_Cowpay"
+          TopLeft="192.571431850901,239.811768069152" />
         <EdgeLayout
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\StatusTypes (withdrawalStatusTypes).Paths[ODBC Source Output]"
           TopLeft="351.200003950936,137.647060170553">
@@ -7163,7 +7249,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7182,43 +7270,5 @@ group by bank_name</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentLinkTypes">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="207.2,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentLinkTypes\PaymentLinkTypes_cowpay"
-          TopLeft="414.514290579971,251.764710378152" />
-        <NodeLayout
-          Size="192.8,41.6"
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentLinkTypes\PaymentLink_Types_Src"
-          TopLeft="152.800000408718,255.200005396675" />
-        <EdgeLayout
-          Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\PaymentLinkTypes.Paths[ODBC Source Output]"
-          TopLeft="345.600000408718,274.282357887413">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="68.9142901712534,0"
-              Start="0,0"
-              End="61.4142901712534,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="61.4142901712534,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
