@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">BI-SERVER2022</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAADIiTpIL/E2EW9xOeQyeAtQ/nm38p0j1xknL35s0tIcngAAAAAOgAAAAAIAACAAAAAq5y69A2SLyaKvubAaOHkPHqa59F9F1Txpzg/NKuh12JAAAAA2qmzk8E9BiM2CVjyzwxUIqWtGKIsvdiajG/IU1bXlBi+xhJkxuvpk/mMe/YeuNSl1J9FshR78gHrgoa36JoFdcDal/vv/THmHptRCI9e/xTq0r97x8Eoh9dDUBYcVvfDduUdg3Bu+EE3AT36elrO2QdNLZoHc4TFy2khbCvY9ESWxXHp+g3nP99I2V8oR1ENAAAAApjdepJ0HsfZqGpdUWAlkTx858AydonDa/NOfTYzf1d1abfjykOXtA74KGbU/AXbXWCWcY6S2nu9cl/+n0LpOiA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAABZoMbdfXa5YpS2dfk/FNpf7RWuTaZulurxrOgAt1hoUQAAAAAOgAAAAAIAACAAAACYimd5syk+ZCKkpqO+4EeguycM0SDfc31jQ6SU5aKmw5AAAADWRzv96Qm8oPof3qSx5bKFr8WGAXoJ+Qz2r6f+QxgALIQnP3co7DDOcOx5ZgUbnGXiGnwIRwkywXDmS2/hgQlVV8bgU8ZUDBVv/U7udXsFzO1kTO9zaHyfPZuWMDjLKUIegyeLjym/jqEZcPoxBSa9mRFqa7UTjhZaR6OXew+dr96MzLRNXQn5XvwBShyaOJRAAAAA/N9V9zX6E+Qh7GTYOey03izA/7a0nDBiUpMQIynYtOAfHs0E5ZBnjvi0L7pOLzjsOYjOflGyVurrlU6NbFEPcg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -146,7 +146,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=localhost;User ID=python;Initial Catalog=MerchantManagement;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=localhost;User ID=python;Initial Catalog=MerchantManagement_Stage;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -161,7 +161,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">MerchantManagement</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">MerchantManagement_Stage</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -410,7 +410,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=TransactionManagement;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=TransactionManagement_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -425,7 +425,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">TransactionManagement</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">TransactionManagement_Stage</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -669,10 +669,10 @@
                 <SSIS:Property SSIS:Name="Name">Merchants_Module</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">42</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">44</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{76F5EE9C-B22F-4470-B7F9-AC4E5FC7AC24}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{24AD1F89-3CEA-44B0-BEC0-6C67ED2492D8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -703,10 +703,10 @@
                 <SSIS:Property SSIS:Name="Name">Transaction_Management_Module</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">26</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">30</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{246DED13-7AEF-4AF1-8310-929F07774271}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3ED683DC-95B3-4936-AB0A-DFE455C0D2FA}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
