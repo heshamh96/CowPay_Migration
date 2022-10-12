@@ -85,7 +85,7 @@ s_json =pd.DataFrame(settings_dict)
 #s_json
 #display(df.hide_index())
 #df2
-
+#ee
 select_Users = """SELECT id,m_facebook,m_twitter,m_linked_in,m_instagram,m_website FROM CowPay_Production_Simulation.dbo.users where is_merchant=1"""
 cursor = c.cnxn.cursor()
 cursor.execute(select_Users)
