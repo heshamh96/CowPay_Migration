@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{65E9C3E6-770E-4559-9E8E-141291ECD56D}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{7914DD35-8943-41BD-84BC-B23D4284A0F6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -6476,23 +6476,23 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="256,41.6"
+          Size="256,42"
           Id="Package\Bank_Accounts_Prepared STG to STG"
           TopLeft="476.571436687392,262.44706250425" />
         <NodeLayout
-          Size="208.8,41.6"
+          Size="209,42"
           Id="Package\BankAccounts STG to TRGT"
           TopLeft="46.8571436551153,324.235298664925" />
         <NodeLayout
-          Size="224,41.6"
+          Size="224,42"
           Id="Package\Cleanseing Activities\Cleanse WR_Cashouts (Status)"
           TopLeft="35.6571478104105,88.376471008644" />
         <NodeLayout
-          Size="276.8,41.6"
+          Size="277,42"
           Id="Package\Cleanseing Activities\Cleanse WR_WithdrawalRequests (Status)"
           TopLeft="21.9428618625719,11.858824301591" />
         <NodeLayout
-          Size="259.2,41.6"
+          Size="259,42"
           Id="Package\Cleanseing Activities\Cleanse_ Bank_Accounts(Bank_Name)"
           TopLeft="42.0571471292146,155.247061629114" />
         <EdgeLayout
@@ -6566,48 +6566,48 @@
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="327.2,254.4"
-          Size="197.6,43.2"
+          PanelSize="327,254"
+          Size="197,43"
           Id="Package\Cleanseing Activities"
           TopLeft="208.571432123379,1.22352942892422" />
         <NodeLayout
-          Size="192.8,41.6"
+          Size="193,42"
           Id="Package\Customers STG to TRGT"
           TopLeft="38.2857149377161,254.494121216243" />
         <NodeLayout
-          Size="233.6,41.6"
+          Size="234,42"
           Id="Package\Customers_Prepared STG to STG"
           TopLeft="482.857151080151,175.811767048159" />
         <NodeLayout
-          Size="208,41.6"
+          Size="208,42"
           Id="Package\MobileWallets STG to TRGT"
           TopLeft="38.2857149377165,176.800002479553" />
         <NodeLayout
-          Size="248.8,41.6"
+          Size="249,42"
           Id="Package\MobileWallets_Prepared STG to STG"
           TopLeft="442.285721817796,99.1058837428636" />
         <NodeLayout
-          Size="144.8,41.6"
+          Size="145,42"
           Id="Package\Truncate_STG"
           TopLeft="573.714295484582,37.3176475821894" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Truncate_TRGT"
           TopLeft="156.000002656664,74.0235304499166" />
         <NodeLayout
-          Size="232.8,41.6"
+          Size="233,42"
           Id="Package\WithdrawalReqests STG to TRGT"
           TopLeft="58.4285710782421,398.741176719402" />
         <NodeLayout
-          Size="274.4,41.6"
+          Size="274,42"
           Id="Package\WithdrawalReqests_Prepared STG to STG"
           TopLeft="432.142855595569,330.388235285538" />
         <NodeLayout
-          Size="292,41.6"
+          Size="292,42"
           Id="Package\WithdrawalReqestsTransactions STG to TRGT"
           TopLeft="37.1428577753963,487.294123404084" />
         <NodeLayout
-          Size="333.6,41.6"
+          Size="334,42"
           Id="Package\WithdrawalReqestsTransactions_Prepared STG to STG"
           TopLeft="396.00000674384,413.458828677273" />
         <EdgeLayout
@@ -6854,30 +6854,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="406.171432123379,22.8235294289242">
+          TopLeft="405.571432123379,22.7235294289242">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="167.542863361203,29.6941181532652"
+              EndConnector="168.142863361203,29.9274514865985"
               Start="0,0"
-              End="160.042863361203,29.6941181532652">
+              End="160.642863361203,29.9274514865985">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="92.8025432753617,0" />
+                    End="93.1834898326219,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="92.8025432753617,0"
-                    Point2="96.8025432753617,0"
-                    Point3="96.8025432753617,4" />
+                    Point1="93.1834898326219,0"
+                    Point2="97.1834898326219,0"
+                    Point3="97.1834898326219,4" />
                   <mssgle:LineSegment
-                    End="96.8025432753617,25.6941181532652" />
+                    End="97.1834898326219,25.9274514865985" />
                   <mssgle:CubicBezierSegment
-                    Point1="96.8025432753617,25.6941181532652"
-                    Point2="96.8025432753617,29.6941181532652"
-                    Point3="100.802543275362,29.6941181532652" />
+                    Point1="97.1834898326219,25.9274514865985"
+                    Point2="97.1834898326219,29.9274514865985"
+                    Point3="101.183489832622,29.9274514865985" />
                   <mssgle:LineSegment
-                    End="160.042863361203,29.6941181532652" />
+                    End="160.642863361203,29.9274514865985" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6983,7 +6983,7 @@
     design-time-name="Package\Bank_Accounts_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="211.2,41.6"
           Id="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared"
@@ -7023,7 +7023,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7359,13 +7361,13 @@
     design-time-name="Package\MobileWallets_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="173.6,41.6"
+          Size="174,42"
           Id="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
           TopLeft="178.857145903062,170.682355334932" />
         <NodeLayout
-          Size="209.6,41.6"
+          Size="210,42"
           Id="Package\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared"
           TopLeft="164.571431374063,34.870588724341" />
         <EdgeLayout
@@ -7387,9 +7389,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

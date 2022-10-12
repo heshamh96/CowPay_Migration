@@ -5,10 +5,6 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=localhost;User ID=python;Initial Catalog=MerchantManagement_Stage;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
-      <DTS:Password
-        DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAADvnLuoJmtAaL6/djRTeuf8/A9eE4vvkKrMqr6dBAaH+wAAAAAOgAAAAAIAACAAAADVMMouCIziYMR0X1MG1WIokkUzaDBT3V76Matgka2HSYAAAAA6E6qzDXfMfygVI/bW7LHRbDtR/JXXmxOfE+vYE8o8EgHVhtC5xnxg3Rcs1zG1KNuLsXyujuWHNjxfCgD+F3GwlLVKvE7b6ot07WISKrBlVtGBnkDj5FeHX9Uw6o78cd9u32ZlLiCXLzaX3ImbIpmi1g1OyqEUblMGIdNp9gNVoUAAAADC0U5bNrlxaad7xekoX5VyMFxkA5RFALAlrdHsifXbrPMpN8nhM64tUzVD3prWIhyLfZxNN0QyPIGlmgeG4a9E</DTS:Password>
-    </DTS:ConnectionManager>
+      DTS:ConnectionString="Data Source=localhost;User ID=python;Initial Catalog=MerchantManagement_Stage;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

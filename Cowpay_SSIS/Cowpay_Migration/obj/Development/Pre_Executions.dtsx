@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pre_Executions"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{EAA0629B-0B1D-4FBC-8719-90647FE500FE}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{20714563-549B-43BF-AED6-080079856699}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -74,6 +74,855 @@
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\ExcelpayIdentity_LKP"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{6DF74407-ECD4-445E-B40E-D85B2E7F51AB}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ExcelpayIdentity_LKP">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{e69a9d44-e742-46cd-a4d9-f8bd140b1f21}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Roles STG_To_STG"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Inputs[Data Conversion Input].Columns[ConcurrencyStamp]"
+                          cachedCodepage="1256"
+                          cachedDataType="str"
+                          cachedLength="36"
+                          cachedName="ConcurrencyStamp"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[ConcurrencyStamp]" />
+                        <inputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Inputs[Data Conversion Input].Columns[NormalizedName]"
+                          cachedCodepage="1256"
+                          cachedDataType="str"
+                          cachedLength="8"
+                          cachedName="NormalizedName"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[NormalizedName]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Output].Columns[ConcurrencyStamp_]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="36"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Output].Columns[ConcurrencyStamp_]"
+                          name="ConcurrencyStamp_"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[ConcurrencyStamp]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Output].Columns[NormalizedName_]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="8"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Output].Columns[NormalizedName_]"
+                          name="NormalizedName_"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[NormalizedName]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Roles"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[AspNetRoles]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Connections[OleDbConnection]"
+                      connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].Columns[name]"
+                          cachedDataType="wstr"
+                          cachedLength="191"
+                          cachedName="name"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[name]" />
+                        <inputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].Columns[NormalizedName_]"
+                          cachedDataType="wstr"
+                          cachedLength="8"
+                          cachedName="NormalizedName_"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].ExternalColumns[NormalizedName]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Output].Columns[NormalizedName_]" />
+                        <inputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].Columns[ConcurrencyStamp_]"
+                          cachedDataType="wstr"
+                          cachedLength="36"
+                          cachedName="ConcurrencyStamp_"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].ExternalColumns[ConcurrencyStamp]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Output].Columns[ConcurrencyStamp_]" />
+                        <inputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].Columns[New_id]"
+                          cachedDataType="guid"
+                          cachedName="New_id"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[New_id]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          dataType="guid"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="256"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].ExternalColumns[NormalizedName]"
+                          dataType="wstr"
+                          length="256"
+                          name="NormalizedName" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input].ExternalColumns[ConcurrencyStamp]"
+                          dataType="nText"
+                          name="ConcurrencyStamp" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Roles_SRC"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Roles_Prepared]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select NEWID() as New_id, 
+  name,
+  '791a8bf3-d24d-405e-b87b-0fbb6f65f3a5' as ConcurrencyStamp,
+  case when name in('system-admin','agent','admin') then 'EXCELPAY'
+  else 'MERCHANT' end as NormalizedName
+   FROM [CowPay_Production_Simulation].[dbo].[Roles]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Connections[OleDbConnection]"
+                      connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                          length="191"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[name]"
+                          name="name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[ConcurrencyStamp]"
+                          codePage="1256"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].ExternalColumns[ConcurrencyStamp]"
+                          length="36"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[ConcurrencyStamp]"
+                          name="ConcurrencyStamp"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[NormalizedName]"
+                          codePage="1256"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].ExternalColumns[NormalizedName]"
+                          length="8"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[NormalizedName]"
+                          name="NormalizedName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[New_id]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].ExternalColumns[New_id]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[New_id]"
+                          name="New_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[old_code]"
+                          codePage="1256"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].ExternalColumns[old_code]"
+                          length="50"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].Columns[old_code]"
+                          name="old_code"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                          dataType="wstr"
+                          length="191"
+                          name="name" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].ExternalColumns[ConcurrencyStamp]"
+                          codePage="1256"
+                          dataType="str"
+                          length="36"
+                          name="ConcurrencyStamp" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].ExternalColumns[NormalizedName]"
+                          codePage="1256"
+                          dataType="str"
+                          length="8"
+                          name="NormalizedName" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].ExternalColumns[New_id]"
+                          dataType="guid"
+                          name="New_id" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output].ExternalColumns[old_code]"
+                          codePage="1256"
+                          dataType="str"
+                          length="50"
+                          name="old_code" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[New_id]"
+                          dataType="guid"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[New_id]"
+                          name="New_id" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[name]"
+                          dataType="wstr"
+                          length="191"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[name]"
+                          name="name" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[ConcurrencyStamp]"
+                          codePage="1256"
+                          dataType="str"
+                          length="36"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[ConcurrencyStamp]"
+                          name="ConcurrencyStamp" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[NormalizedName]"
+                          codePage="1256"
+                          dataType="str"
+                          length="8"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[NormalizedName]"
+                          name="NormalizedName" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[old_code]"
+                          codePage="1256"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[old_code]"
+                          name="old_code" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG.Paths[Data Conversion Output]"
+                  endId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG.Paths[OLE DB Source Output]"
+                  endId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion.Inputs[Data Conversion Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{1e6f5926-173e-4811-8358-df7027d41a3b}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Roles STG_To_TRGT"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Roles"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[AspNetRoles]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Connections[OleDbConnection]"
+                      connectionManagerID="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[ExcelpayIdentity_Stage]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].Columns[Id]"
+                          cachedDataType="guid"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[Id]" />
+                        <inputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].Columns[NormalizedName]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="NormalizedName"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].ExternalColumns[NormalizedName]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[NormalizedName]" />
+                        <inputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].Columns[ConcurrencyStamp]"
+                          cachedDataType="nText"
+                          cachedName="ConcurrencyStamp"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].ExternalColumns[ConcurrencyStamp]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[ConcurrencyStamp]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          dataType="wstr"
+                          length="450"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="256"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].ExternalColumns[NormalizedName]"
+                          dataType="wstr"
+                          length="256"
+                          name="NormalizedName" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input].ExternalColumns[ConcurrencyStamp]"
+                          dataType="nText"
+                          name="ConcurrencyStamp" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Roles_STG"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[AspNetRoles]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Connections[OleDbConnection]"
+                      connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                          name="Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="256"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[NormalizedName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].ExternalColumns[NormalizedName]"
+                          length="256"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[NormalizedName]"
+                          name="NormalizedName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[ConcurrencyStamp]"
+                          dataType="nText"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].ExternalColumns[ConcurrencyStamp]"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].Columns[ConcurrencyStamp]"
+                          name="ConcurrencyStamp"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          dataType="guid"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="256"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].ExternalColumns[NormalizedName]"
+                          dataType="wstr"
+                          length="256"
+                          name="NormalizedName" />
+                        <externalMetadataColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output].ExternalColumns[ConcurrencyStamp]"
+                          dataType="nText"
+                          name="ConcurrencyStamp" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          dataType="guid"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          name="Id" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="256"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[NormalizedName]"
+                          dataType="wstr"
+                          length="256"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[NormalizedName]"
+                          name="NormalizedName" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[ConcurrencyStamp]"
+                          dataType="nText"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[ConcurrencyStamp]"
+                          name="ConcurrencyStamp" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT.Paths[OLE DB Source Output]"
+                  endId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\ExcelpayIdentity_LKP.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{0E62AF99-D43F-4D73-9C0A-ADDE73D788A2}"
+          DTS:From="Package\ExcelpayIdentity_LKP\Roles STG_To_STG"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Merchants_LKPs"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
@@ -114,7 +963,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[Cities_cowpay]</property>
+                      name="OpenRowset">[dbo].[Cities]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -157,8 +1006,8 @@
                   <connections>
                     <connection
                       refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Connections[OleDbConnection]"
-                      connectionManagerID="{9236F42D-90B2-4203-A844-ED95DAA87AE3}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[LKP_DB]"
+                      connectionManagerID="{548222E3-535D-4CEE-8B01-802402102276}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[MerchantManagement_Stage]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -171,70 +1020,50 @@
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].Columns[id]"
-                          cachedDataType="i4"
-                          cachedName="id"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[id]"
-                          lineageId="Package\Merchants_LKPs\Cities\Cities_Src.Outputs[ODBC Source Output].Columns[id]" />
-                        <inputColumn
                           refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].Columns[name]"
                           cachedDataType="wstr"
                           cachedLength="60"
                           cachedName="name"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                          externalMetadataColumnId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
                           lineageId="Package\Merchants_LKPs\Cities\Cities_Src.Outputs[ODBC Source Output].Columns[name]" />
                         <inputColumn
                           refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].Columns[country_id]"
                           cachedDataType="i4"
                           cachedName="country_id"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[country_id]"
+                          externalMetadataColumnId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[CountryId]"
                           lineageId="Package\Merchants_LKPs\Cities\Cities_Src.Outputs[ODBC Source Output].Columns[country_id]" />
-                        <inputColumn
-                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].Columns[created_at]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="created_at"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
-                          lineageId="Package\Merchants_LKPs\Cities\Cities_Src.Outputs[ODBC Source Output].Columns[created_at]" />
-                        <inputColumn
-                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].Columns[updated_at]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="updated_at"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
-                          lineageId="Package\Merchants_LKPs\Cities\Cities_Src.Outputs[ODBC Source Output].Columns[updated_at]" />
-                        <inputColumn
-                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].Columns[deleted_at]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="deleted_at"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
-                          lineageId="Package\Merchants_LKPs\Cities\Cities_Src.Outputs[ODBC Source Output].Columns[deleted_at]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[id]"
-                          dataType="i4"
-                          name="id" />
+                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          dataType="i2"
+                          name="Id" />
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[CountryId]"
+                          dataType="i2"
+                          name="CountryId" />
+                        <externalMetadataColumn
+                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
                           dataType="wstr"
-                          length="60"
-                          name="name" />
+                          length="50"
+                          name="Name" />
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[country_id]"
-                          dataType="i4"
-                          name="country_id" />
-                        <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
                           dataType="dbTimeStamp"
-                          name="created_at" />
+                          name="CreatedDate" />
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
                           dataType="dbTimeStamp"
-                          name="updated_at" />
+                          name="UpdatedDate" />
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
                           dataType="dbTimeStamp"
-                          name="deleted_at" />
+                          name="DeletedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Merchants_LKPs\Cities\Cities_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                          dataType="bool"
+                          name="IsDeleted" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -513,7 +1342,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[Countries_cowpay]</property>
+                      name="OpenRowset">[dbo].[Countries]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -556,8 +1385,8 @@
                   <connections>
                     <connection
                       refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Connections[OleDbConnection]"
-                      connectionManagerID="{9236F42D-90B2-4203-A844-ED95DAA87AE3}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[LKP_DB]"
+                      connectionManagerID="{548222E3-535D-4CEE-8B01-802402102276}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[MerchantManagement_Stage]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -570,84 +1399,64 @@
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].Columns[id]"
-                          cachedDataType="i4"
-                          cachedName="id"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[id]"
-                          lineageId="Package\Merchants_LKPs\Countries\Countries_Src.Outputs[ODBC Source Output].Columns[id]" />
-                        <inputColumn
                           refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].Columns[name]"
                           cachedDataType="wstr"
                           cachedLength="50"
                           cachedName="name"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                          externalMetadataColumnId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
                           lineageId="Package\Merchants_LKPs\Countries\Countries_Src.Outputs[ODBC Source Output].Columns[name]" />
                         <inputColumn
                           refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].Columns[code]"
                           cachedDataType="wstr"
                           cachedLength="2"
                           cachedName="code"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[code]"
+                          externalMetadataColumnId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
                           lineageId="Package\Merchants_LKPs\Countries\Countries_Src.Outputs[ODBC Source Output].Columns[code]" />
                         <inputColumn
                           refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].Columns[flag]"
                           cachedDataType="wstr"
                           cachedLength="100"
                           cachedName="flag"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[flag]"
+                          externalMetadataColumnId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[Flag]"
                           lineageId="Package\Merchants_LKPs\Countries\Countries_Src.Outputs[ODBC Source Output].Columns[flag]" />
-                        <inputColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].Columns[created_at]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="created_at"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
-                          lineageId="Package\Merchants_LKPs\Countries\Countries_Src.Outputs[ODBC Source Output].Columns[created_at]" />
-                        <inputColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].Columns[updated_at]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="updated_at"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
-                          lineageId="Package\Merchants_LKPs\Countries\Countries_Src.Outputs[ODBC Source Output].Columns[updated_at]" />
-                        <inputColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].Columns[deleted_at]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="deleted_at"
-                          externalMetadataColumnId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
-                          lineageId="Package\Merchants_LKPs\Countries\Countries_Src.Outputs[ODBC Source Output].Columns[deleted_at]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[id]"
-                          dataType="i4"
-                          name="id" />
+                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          dataType="i2"
+                          name="Id" />
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
                           dataType="wstr"
                           length="50"
-                          name="name" />
+                          name="Name" />
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[code]"
+                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
                           dataType="wstr"
-                          length="2"
-                          name="code" />
+                          length="3"
+                          name="Code" />
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[flag]"
+                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[Flag]"
                           dataType="wstr"
-                          length="100"
-                          name="flag" />
+                          length="50"
+                          name="Flag" />
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
                           dataType="dbTimeStamp"
-                          name="created_at" />
+                          name="CreatedDate" />
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
                           dataType="dbTimeStamp"
-                          name="updated_at" />
+                          name="UpdatedDate" />
                         <externalMetadataColumn
-                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
                           dataType="dbTimeStamp"
-                          name="deleted_at" />
+                          name="DeletedDate" />
+                        <externalMetadataColumn
+                          refId="Package\Merchants_LKPs\Countries\Countries_cowpay.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                          dataType="bool"
+                          name="IsDeleted" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -5664,11 +6473,11 @@ group by bank_name</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{6EE84304-8210-4AB4-BF8F-FE603246D25F}"
+      DTS:DTSID="{881BE094-4421-4D51-B556-CE197F33E7B5}"
       DTS:From="Package\Transactions_LKP"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\PaymentIntegrationManagement_Stage" />
+      DTS:To="Package\ExcelpayIdentity_LKP" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -5693,6 +6502,14 @@ group by bank_name</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{1C24FEEF-8632-4E90-9DBE-A723707EA98C}"
+      DTS:From="Package\ExcelpayIdentity_LKP"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\PaymentIntegrationManagement_Stage" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -5707,11 +6524,11 @@ group by bank_name</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="308,41.6"
+          Size="308,42"
           Id="Package\Dangerouse, Do Not Use !\Create LKPs (doesn't reverse the Destroy LKPs !)"
           TopLeft="5.5,115.00588388872" />
         <NodeLayout
-          Size="240,41.6"
+          Size="240,42"
           Id="Package\Dangerouse, Do Not Use !\Destroy LKPs (Dangerouse to use)"
           TopLeft="31.7857147333574,5.5" />
         <EdgeLayout
@@ -5739,16 +6556,16 @@ group by bank_name</property>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="318.4,212"
-          Size="225.6,43.2"
+          PanelSize="318,212"
+          Size="225,43"
           Id="Package\Dangerouse, Do Not Use !"
           TopLeft="289.142862066931,384.564710232296" />
         <NodeLayout
-          Size="104,41.6"
+          Size="104,42"
           Id="Package\Merchants_LKPs\Cities"
           TopLeft="108.914288876981,84.4176481656137" />
         <NodeLayout
-          Size="121.6,41.6"
+          Size="122,42"
           Id="Package\Merchants_LKPs\Countries"
           TopLeft="92.9142886045029,5.5" />
         <EdgeLayout
@@ -5770,16 +6587,14 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="220,180.8"
-          Size="179.2,43.2"
+          PanelSize="220,181"
+          Size="178,43"
           Id="Package\Merchants_LKPs"
           TopLeft="512.000008719308,102.023530449917" />
         <NodeLayout
@@ -5790,35 +6605,35 @@ group by bank_name</property>
           HeaderHeight="43.2"
           IsExpanded="False"
           PanelSize="288.8,117.6"
-          Size="288.8,43.2"
+          Size="289,43"
           Id="Package\PaymentIntegrationManagement_Stage"
           TopLeft="342.428577260096,300.38823911426" />
         <NodeLayout
-          Size="106.4,41.6"
+          Size="106,42"
           Id="Package\Transactions_LKP\Banks"
           TopLeft="119.085716913184,5.5" />
         <NodeLayout
-          Size="144,41.6"
+          Size="144,42"
           Id="Package\Transactions_LKP\ChannelTypes"
           TopLeft="96.2285736667867,207.994120486963" />
         <NodeLayout
-          Size="120,41.6"
+          Size="120,42"
           Id="Package\Transactions_LKP\Currency"
           TopLeft="113.371431101585,78.9117657354547" />
         <NodeLayout
-          Size="182.4,41.6"
+          Size="182,42"
           Id="Package\Transactions_LKP\PaymentMethodTypes"
           TopLeft="75.6571447450287,344.511769381856" />
         <NodeLayout
-          Size="176.8,41.6"
+          Size="177,42"
           Id="Package\Transactions_LKP\PaymentStatusTypes"
           TopLeft="81.3714305566282,278.017650499311" />
         <NodeLayout
-          Size="128.8,41.6"
+          Size="129,42"
           Id="Package\Transactions_LKP\PGWTypes"
           TopLeft="105.942859546506,143.75882546844" />
         <NodeLayout
-          Size="255.2,41.6"
+          Size="255,42"
           Id="Package\Transactions_LKP\StatusTypes (withdrawalStatusTypes)"
           TopLeft="42.7428655410302,414.5882403905" />
         <EdgeLayout
@@ -5956,8 +6771,8 @@ group by bank_name</property>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="360,509.6"
-          Size="360,43.2"
+          PanelSize="360,510"
+          Size="185,43"
           Id="Package\Transactions_LKP"
           TopLeft="449.714293372874,182.164708044455" />
         <NodeLayout
@@ -6164,73 +6979,39 @@ group by bank_name</property>
           HeaderHeight="43.2"
           IsExpanded="False"
           PanelSize="360,612.8"
-          Size="360,43.2"
+          Size="360,43"
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed"
           TopLeft="95.3142867652738,460.329417255758" />
         <NodeLayout
-          Size="201.6,41.6"
+          Size="202,42"
           Id="Package\Truncate Cowpay's Tables"
           TopLeft="581.714295620821,18.2117645686061" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="601.600008719308,145.223530449917">
+          TopLeft="601.000008719308,145.023530449917">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="28.114284653566,36.941177594538"
+              EndConnector="-58.785715346434,37.141177594538"
               Start="0,0"
-              End="28.114284653566,29.441177594538">
+              End="-58.785715346434,29.641177594538">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.470588797269" />
+                    End="0,14.570588797269" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.470588797269"
-                    Point2="0,18.470588797269"
-                    Point3="4,18.470588797269" />
+                    Point1="0,14.570588797269"
+                    Point2="0,18.570588797269"
+                    Point3="-4,18.570588797269" />
                   <mssgle:LineSegment
-                    End="24.114284653566,18.470588797269" />
+                    End="-54.785715346434,18.570588797269" />
                   <mssgle:CubicBezierSegment
-                    Point1="24.114284653566,18.470588797269"
-                    Point2="28.114284653566,18.470588797269"
-                    Point3="28.114284653566,22.470588797269" />
+                    Point1="-54.785715346434,18.570588797269"
+                    Point2="-58.785715346434,18.570588797269"
+                    Point3="-58.785715346434,22.570588797269" />
                   <mssgle:LineSegment
-                    End="28.114284653566,29.441177594538" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="629.714293372874,225.364708044455">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-142.885716112778,75.023531069805"
-              Start="0,0"
-              End="-142.885716112778,67.523531069805">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.5117655349025" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.5117655349025"
-                    Point2="0,37.5117655349025"
-                    Point3="-4,37.5117655349025" />
-                  <mssgle:LineSegment
-                    End="-138.885716112778,37.5117655349025" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-138.885716112778,37.5117655349025"
-                    Point2="-142.885716112778,37.5117655349025"
-                    Point3="-142.885716112778,41.5117655349025" />
-                  <mssgle:LineSegment
-                    End="-142.885716112778,67.523531069805" />
+                    End="-58.785715346434,29.641177594538" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6241,30 +7022,30 @@ group by bank_name</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="682.514295620821,59.8117645686061">
+          TopLeft="682.714295620821,60.2117645686061">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-80.914286901513,42.2117658813109"
+              EndConnector="-81.714286901513,41.8117658813109"
               Start="0,0"
-              End="-80.914286901513,34.7117658813109">
+              End="-81.714286901513,34.3117658813109">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.1058829406555" />
+                    End="0,16.9058829406555" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.1058829406555"
-                    Point2="0,21.1058829406555"
-                    Point3="-4,21.1058829406555" />
+                    Point1="0,16.9058829406555"
+                    Point2="0,20.9058829406555"
+                    Point3="-4,20.9058829406555" />
                   <mssgle:LineSegment
-                    End="-76.914286901513,21.1058829406555" />
+                    End="-77.714286901513,20.9058829406555" />
                   <mssgle:CubicBezierSegment
-                    Point1="-76.914286901513,21.1058829406555"
-                    Point2="-80.914286901513,21.1058829406555"
-                    Point3="-80.914286901513,25.1058829406555" />
+                    Point1="-77.714286901513,20.9058829406555"
+                    Point2="-81.714286901513,20.9058829406555"
+                    Point3="-81.714286901513,24.9058829406555" />
                   <mssgle:LineSegment
-                    End="-80.914286901513,34.7117658813109" />
+                    End="-81.714286901513,34.3117658813109" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6275,30 +7056,30 @@ group by bank_name</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="486.828577260096,343.58823911426">
+          TopLeft="486.928577260096,343.38823911426">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-84.885715193165,40.976471118036"
+              EndConnector="-85.285715193165,41.176471118036"
               Start="0,0"
-              End="-84.885715193165,33.476471118036">
+              End="-85.285715193165,33.676471118036">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.488235559018" />
+                    End="0,16.588235559018" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.488235559018"
-                    Point2="0,20.488235559018"
-                    Point3="-4,20.488235559018" />
+                    Point1="0,16.588235559018"
+                    Point2="0,20.588235559018"
+                    Point3="-4,20.588235559018" />
                   <mssgle:LineSegment
-                    End="-80.885715193165,20.488235559018" />
+                    End="-81.285715193165,20.588235559018" />
                   <mssgle:CubicBezierSegment
-                    Point1="-80.885715193165,20.488235559018"
-                    Point2="-84.885715193165,20.488235559018"
-                    Point3="-84.885715193165,24.488235559018" />
+                    Point1="-81.285715193165,20.588235559018"
+                    Point2="-85.285715193165,20.588235559018"
+                    Point3="-85.285715193165,24.588235559018" />
                   <mssgle:LineSegment
-                    End="-84.885715193165,33.476471118036" />
+                    End="-85.285715193165,33.676471118036" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6309,30 +7090,147 @@ group by bank_name</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="401.942862066931,427.764710232296">
+          TopLeft="401.642862066931,427.564710232296">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-126.628575301657,32.5647070234621"
+              EndConnector="-126.328575301657,32.7647070234621"
               Start="0,0"
-              End="-126.628575301657,25.0647070234621">
+              End="-126.328575301657,25.2647070234621">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.282353511731" />
+                    End="0,12.382353511731" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.282353511731"
-                    Point2="0,16.282353511731"
-                    Point3="-4,16.282353511731" />
+                    Point1="0,12.382353511731"
+                    Point2="0,16.382353511731"
+                    Point3="-4,16.382353511731" />
                   <mssgle:LineSegment
-                    End="-122.628575301657,16.282353511731" />
+                    End="-122.328575301657,16.382353511731" />
                   <mssgle:CubicBezierSegment
-                    Point1="-122.628575301657,16.282353511731"
-                    Point2="-126.628575301657,16.282353511731"
-                    Point3="-126.628575301657,20.282353511731" />
+                    Point1="-122.328575301657,16.382353511731"
+                    Point2="-126.328575301657,16.382353511731"
+                    Point3="-126.328575301657,20.382353511731" />
                   <mssgle:LineSegment
-                    End="-126.628575301657,25.0647070234621" />
+                    End="-126.328575301657,25.2647070234621" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\ExcelpayIdentity_LKP\Roles STG_To_STG"
+          TopLeft="44,22" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT"
+          TopLeft="52,97" />
+        <EdgeLayout
+          Id="Package\ExcelpayIdentity_LKP.PrecedenceConstraints[Constraint]"
+          TopLeft="129,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.5,33"
+              Start="0,0"
+              End="11.5,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="7.5,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.5,16.5"
+                    Point2="11.5,16.5"
+                    Point3="11.5,20.5" />
+                  <mssgle:LineSegment
+                    End="11.5,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="250,232"
+          Size="203,43"
+          Id="Package\ExcelpayIdentity_LKP"
+          TopLeft="155,192" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="449.714293372874,203.664708044455">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-91.714293372874,9.83529195554502"
+              Start="0,0"
+              End="-84.214293372874,9.83529195554502">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-41.857146686437,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-41.857146686437,0"
+                    Point2="-45.857146686437,0"
+                    Point3="-45.857146686437,4" />
+                  <mssgle:LineSegment
+                    End="-45.857146686437,5.83529195554502" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.857146686437,5.83529195554502"
+                    Point2="-45.857146686437,9.83529195554502"
+                    Point3="-49.857146686437,9.83529195554502" />
+                  <mssgle:LineSegment
+                    End="-84.214293372874,9.83529195554502" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="256.5,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="230.428577260096,65.38823911426"
+              Start="0,0"
+              End="230.428577260096,57.88823911426">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.69411955713" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.69411955713"
+                    Point2="0,32.69411955713"
+                    Point3="4,32.69411955713" />
+                  <mssgle:LineSegment
+                    End="226.428577260096,32.69411955713" />
+                  <mssgle:CubicBezierSegment
+                    Point1="226.428577260096,32.69411955713"
+                    Point2="230.428577260096,32.69411955713"
+                    Point3="230.428577260096,36.69411955713" />
+                  <mssgle:LineSegment
+                    End="230.428577260096,57.88823911426" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6348,53 +7246,64 @@ group by bank_name</property>
     design-time-name="Package\Merchants_LKPs\Cities">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="124.8,41.6"
+          Size="125,42"
           Id="Package\Merchants_LKPs\Cities\Cities_Src"
           TopLeft="60,60" />
         <NodeLayout
-          Size="144.8,41.6"
+          Size="145,42"
           Id="Package\Merchants_LKPs\Cities\Cities_cowpay"
           TopLeft="267.5714318509,66.070585515507" />
         <EdgeLayout
           Id="Package\Merchants_LKPs\Cities.Paths[ODBC Source Output]"
-          TopLeft="184.8,83.835292757754">
+          TopLeft="185,84.0352927577535">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="82.7714318509005,0"
+              EndConnector="82.5714318509,0"
               Start="0,0"
-              End="75.2714318509005,0">
+              End="75.0714318509,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="75.2714318509005,0" />
+                    End="75.0714318509,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Merchants_LKPs\Cities\Cities_cowpay">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Merchants_LKPs\Countries">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="144,41.6"
+          Size="144,42"
           Id="Package\Merchants_LKPs\Countries\Countries_Src"
           TopLeft="60,60" />
         <NodeLayout
-          Size="164,41.6"
+          Size="164,42"
           Id="Package\Merchants_LKPs\Countries\Countries_cowpay"
           TopLeft="269.142861385735,65.2941149444316" />
         <EdgeLayout
@@ -6416,14 +7325,25 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Merchants_LKPs\Countries\Countries_cowpay">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\PaymentIntegrationManagement_Stage\PaymentLinkTypes">
     <LayoutInfo>
@@ -6468,7 +7388,7 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP\Banks">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="127.2,41.6"
           Id="Package\Transactions_LKP\Banks\Banks_Src"
@@ -6502,7 +7422,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6565,13 +7487,13 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP\Currency">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="161.6,41.6"
+          Size="162,42"
           Id="Package\Transactions_LKP\Currency\Currency_cowpay"
           TopLeft="260.00000340598,60" />
         <NodeLayout
-          Size="140.8,41.6"
+          Size="141,42"
           Id="Package\Transactions_LKP\Currency\Currency_Src"
           TopLeft="60,65.458826343576" />
         <EdgeLayout
@@ -6593,14 +7515,25 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transactions_LKP\Currency\Currency_cowpay">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Transactions_LKP\PaymentMethodTypes">
     <LayoutInfo>
@@ -7259,6 +8192,196 @@ group by bank_name</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed\StatusTypes (withdrawalStatusTypes)\StatusTypes_Cowpay">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ExcelpayIdentity_LKP\Roles STG_To_STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Data Conversion"
+          TopLeft="244,96" />
+        <NodeLayout
+          Size="104,42"
+          Id="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles"
+          TopLeft="170,168" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC"
+          TopLeft="84,38" />
+        <EdgeLayout
+          Id="Package\ExcelpayIdentity_LKP\Roles STG_To_STG.Paths[OLE DB Source Output]"
+          TopLeft="213,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31,58"
+              Start="0,0"
+              End="23.5,58">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="11.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.5,0"
+                    Point2="15.5,0"
+                    Point3="15.5,4" />
+                  <mssgle:LineSegment
+                    End="15.5,54" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.5,54"
+                    Point2="15.5,58"
+                    Point3="19.5,58" />
+                  <mssgle:LineSegment
+                    End="23.5,58" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ExcelpayIdentity_LKP\Roles STG_To_STG.Paths[Data Conversion Output]"
+          TopLeft="322,138">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-100,30"
+              Start="0,0"
+              End="-100,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11"
+                    Point2="0,15"
+                    Point3="-4,15" />
+                  <mssgle:LineSegment
+                    End="-96,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-96,15"
+                    Point2="-100,15"
+                    Point3="-100,19" />
+                  <mssgle:LineSegment
+                    End="-100,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ExcelpayIdentity_LKP\Roles STG_To_STG\Roles_SRC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="129,42"
+          Id="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG"
+          TopLeft="148,46" />
+        <NodeLayout
+          Size="104,42"
+          Id="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles"
+          TopLeft="141,118" />
+        <EdgeLayout
+          Id="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT.Paths[OLE DB Source Output]"
+          TopLeft="212.5,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.5,30"
+              Start="0,0"
+              End="-19.5,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11"
+                    Point2="0,15"
+                    Point3="-4,15" />
+                  <mssgle:LineSegment
+                    End="-15.5,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.5,15"
+                    Point2="-19.5,15"
+                    Point3="-19.5,19" />
+                  <mssgle:LineSegment
+                    End="-19.5,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ExcelpayIdentity_LKP\Roles STG_To_TRGT\Roles">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

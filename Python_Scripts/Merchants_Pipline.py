@@ -50,7 +50,7 @@ for row in result:
         "id": "",
         "merchantCode": row[1],
         "StatusTypeId": row[1],
-        "moreSetting": {"m_callback_url": row[5], "m_payments_notification": row[6],"m_orders_notification":row[7]},
+        "moreSetting": {"callbackURL": row[4], "allowPaymentNotify": row[5],"allowOrderNotify":row[6]},
         "limitationNBlocking":[],
         "financialConfig":{"comessions":[{"payMethodType":2,"fixedVal":row[8],"percentage":row[7],"isEnabled":'true' },
                                          {"payMethodType":1,"fixedVal":row[10],"percentage":row[9],"isEnabled":'true'},
@@ -59,7 +59,7 @@ for row in result:
         "autoWithdrawal":{"isEnabled":"","peroidType":"","monthDay":"","daysValue":"","day":""},
         "b2b":{"isEnabled":"","fixedVal":"","percentage":""},
         "chashout":{"isEnabled":"","values":[]}},
-         "balanceConfiguration":{"m_available_balance":row[13]}
+         "balanceConfiguration":{"AvailableBalanceThresholdDays":row[13]}
          }
     settings_dict['id'].append(settings_id)
     #class DecimalEncoder(json.JSONEncoder):
@@ -73,7 +73,8 @@ for row in result:
 
 
 
-    settings_dict['json_settings'].append(json.dumps(settings_data , cls = JSONEncoder))
+    settings_dict['json_settings'].append(json.dumps(settings_data , cls = JSONEncoder).replace('null', '[]'))
+    #r = json.dumps(j).replace('null', '""')
 #s_json = json.dumps(settings_list)
 
 s_json =pd.DataFrame(settings_dict)
@@ -84,7 +85,6 @@ s_json =pd.DataFrame(settings_dict)
 #s_json
 #display(df.hide_index())
 #df2
-
 
 select_Users = """SELECT id,m_facebook,m_twitter,m_linked_in,m_instagram,m_website FROM CowPay_Production_Simulation.dbo.users where is_merchant=1"""
 cursor = c.cnxn.cursor()
@@ -122,7 +122,7 @@ for row in result:
         ]
   
     Urls_dict['id'].append(url_id)
-    Urls_dict['Urls_settings'].append(json.dumps(url_data))
+    Urls_dict['Urls_settings'].append(json.dumps(url_data).replace('null', '[]'))
 #s_json = json.dumps(settings_list)
 
 u_json =pd.DataFrame(Urls_dict)
@@ -136,9 +136,6 @@ u_json =pd.DataFrame(Urls_dict)
 #stud_json
 #list
 
-
-
-
 select_Usersss= """SELECT id,m_commercial_registry_file,m_tax_id_file,m_personal_id_file FROM CowPay_Production_Simulation.dbo.users where is_merchant=1"""
 
 cursor = c.cnxn.cursor()
@@ -149,13 +146,14 @@ for row in result:
     image_id=row[0]
 
     image_data = {      
-    
-        "m_commercial_registry_file": [row[1]],
-        "m_tax_id_file": [row[2]],"m_personal_id_file": [row[3]]
+        "TaxIdImageUrls": [row[2]],
+        "PersonalIDImageUrls": [row[3]],
+        "CommercialRegistrationImageUrls": [row[1]],
+        
         
     }
     image_dict['id'].append(image_id)
-    image_dict['json_image'].append(json.dumps(image_data))
+    image_dict['json_image'].append(json.dumps(image_data).replace('[null]', '[]'))
 #s_json = json.dumps(settings_list)
 
 i_json =pd.DataFrame(image_dict)
@@ -167,6 +165,9 @@ i_json =pd.DataFrame(image_dict)
 #Urls_json = json.dumps(Urls)
 #Urls_json
 
+ 
+      
+      
 
 
 final=my_data.merge(s_json ,on='id').merge(u_json,on='id').merge(i_json,on='id')

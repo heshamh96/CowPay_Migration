@@ -11,16 +11,386 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Populate Cowpay_Production_Simulation_DB"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{04F98B1D-995A-434F-B3C0-C0D494DA8688}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{609C9CE2-8FDC-47BA-8ACF-AEC4CA994417}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
+      DTS:refId="Package\admin_logs"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{14D041F0-07EF-4F8F-AEED-8F83A63D2786}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="admin_logs"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\admin_logs\admin_logs"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="admin_logs"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[admin_logs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\admin_logs\admin_logs.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].Columns[admin_id]"
+                      cachedDataType="i4"
+                      cachedName="admin_id"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].ExternalColumns[admin_id]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[admin_id]" />
+                    <inputColumn
+                      refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].Columns[link]"
+                      cachedDataType="nText"
+                      cachedName="link"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].ExternalColumns[link]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[link]" />
+                    <inputColumn
+                      refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[updated_at]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].ExternalColumns[admin_id]"
+                      dataType="i4"
+                      name="admin_id" />
+                    <externalMetadataColumn
+                      refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].ExternalColumns[link]"
+                      dataType="nText"
+                      name="link" />
+                    <externalMetadataColumn
+                      refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\admin_logs\admin_logs.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\admin_logs\admin_logs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\admin_logs\admin_logs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\admin_logs\admin_logs_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="admin_logs_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">`admin_logs`</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\admin_logs\admin_logs_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[admin_id]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[admin_id]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[admin_id]"
+                      name="admin_id" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[link]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[link]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[link]"
+                      name="link" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      name="updated_at" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      dataType="ui4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[admin_id]"
+                      dataType="i4"
+                      name="admin_id" />
+                    <externalMetadataColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[link]"
+                      dataType="nText"
+                      name="link" />
+                    <externalMetadataColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[admin_id]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[admin_id]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[admin_id]"
+                      name="admin_id" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[link]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[link]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[link]"
+                      name="link" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\admin_logs.Paths[ODBC Source Output]"
+              endId="Package\admin_logs\admin_logs.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\admin_logs\admin_logs_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\bank_accounts"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{B48AB25C-F6B7-4BB4-A87E-E9EE2670C491}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -628,6 +998,7 @@
       DTS:refId="Package\cards"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{819910b8-b961-4905-96e3-e52043131718}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -1329,6 +1700,7 @@
       DTS:refId="Package\CashOuts"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{2D1B9F32-3B82-4AAE-9EEE-15BB781D405C}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -2046,6 +2418,7 @@
       DTS:refId="Package\Customers"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{C4CFADD4-B7DD-45C9-8F96-EBC4FFBEF8CB}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -2595,6 +2968,7 @@ FROM cowpay.customers</property>
       DTS:refId="Package\mobile_wallets"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{212AD6D3-4524-4472-8428-1A98F4780A72}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -3023,9 +3397,1710 @@ FROM cowpay.customers</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\model_has_permissions"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7B360C57-1C2A-42CC-93DA-C978F3C6D8DB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="model_has_permissions"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\model_has_permissions\model_has_permissions"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="model_has_permissions"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[model_has_permissions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\model_has_permissions\model_has_permissions.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input].Columns[permission_id]"
+                      cachedDataType="ui8"
+                      cachedName="permission_id"
+                      externalMetadataColumnId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input].ExternalColumns[permission_id]"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].Columns[permission_id]" />
+                    <inputColumn
+                      refId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input].Columns[model_type]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="model_type"
+                      externalMetadataColumnId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input].ExternalColumns[model_type]"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].Columns[model_type]" />
+                    <inputColumn
+                      refId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input].Columns[model_id]"
+                      cachedDataType="ui8"
+                      cachedName="model_id"
+                      externalMetadataColumnId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input].ExternalColumns[model_id]"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].Columns[model_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input].ExternalColumns[permission_id]"
+                      dataType="numeric"
+                      name="permission_id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input].ExternalColumns[model_type]"
+                      dataType="wstr"
+                      length="191"
+                      name="model_type" />
+                    <externalMetadataColumn
+                      refId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input].ExternalColumns[model_id]"
+                      dataType="numeric"
+                      name="model_id"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\model_has_permissions\model_has_permissions.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\model_has_permissions\model_has_permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\model_has_permissions\model_has_permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\model_has_permissions\model_has_permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\model_has_permissions\model_has_permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\model_has_permissions\model_has_permissions_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="model_has_permissions_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">`model_has_permissions`</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\model_has_permissions\model_has_permissions_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].Columns[permission_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[permission_id]"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].Columns[permission_id]"
+                      name="permission_id" />
+                    <outputColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].Columns[model_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[model_type]"
+                      length="191"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].Columns[model_type]"
+                      name="model_type" />
+                    <outputColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].Columns[model_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].Columns[model_id]"
+                      name="model_id" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[permission_id]"
+                      dataType="ui8"
+                      name="permission_id" />
+                    <externalMetadataColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[model_type]"
+                      dataType="wstr"
+                      length="191"
+                      name="model_type" />
+                    <externalMetadataColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      dataType="ui8"
+                      name="model_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[permission_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[permission_id]"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[permission_id]"
+                      name="permission_id" />
+                    <outputColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[model_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[model_type]"
+                      length="191"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[model_type]"
+                      name="model_type" />
+                    <outputColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[model_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[model_id]"
+                      name="model_id" />
+                    <outputColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\model_has_permissions.Paths[ODBC Source Output]"
+              endId="Package\model_has_permissions\model_has_permissions.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\model_has_permissions\model_has_permissions_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\model_has_roles"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{BF8895B9-60A6-4DEE-A5D9-A3723F44D1AE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="model_has_roles"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\model_has_roles\model_has_roles"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="model_has_roles"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[model_has_roles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\model_has_roles\model_has_roles.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input].Columns[role_id]"
+                      cachedDataType="ui8"
+                      cachedName="role_id"
+                      externalMetadataColumnId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input].ExternalColumns[role_id]"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].Columns[role_id]" />
+                    <inputColumn
+                      refId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input].Columns[model_type]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="model_type"
+                      externalMetadataColumnId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input].ExternalColumns[model_type]"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].Columns[model_type]" />
+                    <inputColumn
+                      refId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input].Columns[model_id]"
+                      cachedDataType="ui8"
+                      cachedName="model_id"
+                      externalMetadataColumnId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input].ExternalColumns[model_id]"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].Columns[model_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input].ExternalColumns[role_id]"
+                      dataType="numeric"
+                      name="role_id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input].ExternalColumns[model_type]"
+                      dataType="wstr"
+                      length="191"
+                      name="model_type" />
+                    <externalMetadataColumn
+                      refId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input].ExternalColumns[model_id]"
+                      dataType="numeric"
+                      name="model_id"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\model_has_roles\model_has_roles.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\model_has_roles\model_has_roles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\model_has_roles\model_has_roles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\model_has_roles\model_has_roles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\model_has_roles\model_has_roles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\model_has_roles\model_has_roles_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="model_has_roles_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">`model_has_roles`</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\model_has_roles\model_has_roles_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].Columns[role_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].ExternalColumns[role_id]"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].Columns[role_id]"
+                      name="role_id" />
+                    <outputColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].Columns[model_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].ExternalColumns[model_type]"
+                      length="191"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].Columns[model_type]"
+                      name="model_type" />
+                    <outputColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].Columns[model_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].Columns[model_id]"
+                      name="model_id" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].ExternalColumns[role_id]"
+                      dataType="ui8"
+                      name="role_id" />
+                    <externalMetadataColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].ExternalColumns[model_type]"
+                      dataType="wstr"
+                      length="191"
+                      name="model_type" />
+                    <externalMetadataColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      dataType="ui8"
+                      name="model_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output].Columns[role_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].ExternalColumns[role_id]"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output].Columns[role_id]"
+                      name="role_id" />
+                    <outputColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output].Columns[model_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].ExternalColumns[model_type]"
+                      length="191"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output].Columns[model_type]"
+                      name="model_type" />
+                    <outputColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output].Columns[model_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output].Columns[model_id]"
+                      name="model_id" />
+                    <outputColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\model_has_roles.Paths[ODBC Source Output]"
+              endId="Package\model_has_roles\model_has_roles.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\model_has_roles\model_has_roles_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Permissions"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{B2528671-B87B-41C6-94F9-C27D4B073D08}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Permissions"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Permissions\Permissions"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Permissions"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Permissions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Permissions\Permissions.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].Columns[guard_name]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="guard_name"
+                      externalMetadataColumnId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].ExternalColumns[guard_name]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[guard_name]" />
+                    <inputColumn
+                      refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[updated_at]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="numeric"
+                      name="id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="191"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].ExternalColumns[guard_name]"
+                      dataType="wstr"
+                      length="191"
+                      name="guard_name" />
+                    <externalMetadataColumn
+                      refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Permissions\Permissions.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Permissions\Permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Permissions\Permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Permissions\Permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Permissions\Permissions_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="Permissions_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">`permissions`</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Permissions\Permissions_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      length="191"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[guard_name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[guard_name]"
+                      length="191"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[guard_name]"
+                      name="guard_name" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      name="updated_at" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      dataType="ui8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="191"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[guard_name]"
+                      dataType="wstr"
+                      length="191"
+                      name="guard_name" />
+                    <externalMetadataColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      length="191"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[guard_name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[guard_name]"
+                      length="191"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[guard_name]"
+                      name="guard_name" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Permissions.Paths[ODBC Source Output]"
+              endId="Package\Permissions\Permissions.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\Permissions\Permissions_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Roles"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{0CCFB121-5177-41F0-B933-B1A80CBB7666}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Roles"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Roles\Roles"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Roles"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Roles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Roles\Roles.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Roles\Roles.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Roles\Roles.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Roles\Roles.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Roles\Roles.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\Roles\Roles.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Roles\Roles.Inputs[OLE DB Destination Input].Columns[guard_name]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="guard_name"
+                      externalMetadataColumnId="Package\Roles\Roles.Inputs[OLE DB Destination Input].ExternalColumns[guard_name]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[guard_name]" />
+                    <inputColumn
+                      refId="Package\Roles\Roles.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\Roles\Roles.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\Roles\Roles.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\Roles\Roles.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[updated_at]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Roles\Roles.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="numeric"
+                      name="id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\Roles\Roles.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="191"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Roles\Roles.Inputs[OLE DB Destination Input].ExternalColumns[guard_name]"
+                      dataType="wstr"
+                      length="191"
+                      name="guard_name" />
+                    <externalMetadataColumn
+                      refId="Package\Roles\Roles.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Roles\Roles.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Roles\Roles.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Roles\Roles.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Roles\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Roles\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Roles\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Roles\Roles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Roles\Roles_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="Roles_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">`roles`</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Roles\Roles_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      length="191"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[guard_name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[guard_name]"
+                      length="191"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[guard_name]"
+                      name="guard_name" />
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      name="updated_at" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      dataType="ui8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="191"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[guard_name]"
+                      dataType="wstr"
+                      length="191"
+                      name="guard_name" />
+                    <externalMetadataColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[name]"
+                      length="191"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[guard_name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[guard_name]"
+                      length="191"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[guard_name]"
+                      name="guard_name" />
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Roles\Roles_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Roles.Paths[ODBC Source Output]"
+              endId="Package\Roles\Roles.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\Roles\Roles_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\role_has_permissions"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{C48F8548-A38B-4BF1-B09D-C6C94E385B39}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="role_has_permissions"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\role_has_permissions\role_has_permissions"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="role_has_permissions"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[role_has_permissions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\role_has_permissions\role_has_permissions.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\role_has_permissions\role_has_permissions.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\role_has_permissions\role_has_permissions.Inputs[OLE DB Destination Input].Columns[permission_id]"
+                      cachedDataType="ui8"
+                      cachedName="permission_id"
+                      externalMetadataColumnId="Package\role_has_permissions\role_has_permissions.Inputs[OLE DB Destination Input].ExternalColumns[permission_id]"
+                      lineageId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].Columns[permission_id]" />
+                    <inputColumn
+                      refId="Package\role_has_permissions\role_has_permissions.Inputs[OLE DB Destination Input].Columns[role_id]"
+                      cachedDataType="ui8"
+                      cachedName="role_id"
+                      externalMetadataColumnId="Package\role_has_permissions\role_has_permissions.Inputs[OLE DB Destination Input].ExternalColumns[role_id]"
+                      lineageId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].Columns[role_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\role_has_permissions\role_has_permissions.Inputs[OLE DB Destination Input].ExternalColumns[permission_id]"
+                      dataType="numeric"
+                      name="permission_id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\role_has_permissions\role_has_permissions.Inputs[OLE DB Destination Input].ExternalColumns[role_id]"
+                      dataType="numeric"
+                      name="role_id"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\role_has_permissions\role_has_permissions.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\role_has_permissions\role_has_permissions.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\role_has_permissions\role_has_permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\role_has_permissions\role_has_permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\role_has_permissions\role_has_permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\role_has_permissions\role_has_permissions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\role_has_permissions\role_has_permissions_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="role_has_permissions_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">`role_has_permissions`</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\role_has_permissions\role_has_permissions_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].Columns[permission_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[permission_id]"
+                      lineageId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].Columns[permission_id]"
+                      name="permission_id" />
+                    <outputColumn
+                      refId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].Columns[role_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[role_id]"
+                      lineageId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].Columns[role_id]"
+                      name="role_id" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[permission_id]"
+                      dataType="ui8"
+                      name="permission_id" />
+                    <externalMetadataColumn
+                      refId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[role_id]"
+                      dataType="ui8"
+                      name="role_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[permission_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[permission_id]"
+                      lineageId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[permission_id]"
+                      name="permission_id" />
+                    <outputColumn
+                      refId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[role_id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output].ExternalColumns[role_id]"
+                      lineageId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[role_id]"
+                      name="role_id" />
+                    <outputColumn
+                      refId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\role_has_permissions.Paths[ODBC Source Output]"
+              endId="Package\role_has_permissions\role_has_permissions.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\role_has_permissions\role_has_permissions_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Transactions"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{893D09E3-3FD7-4B47-997F-FF63AE6B9A1F}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -3798,6 +5873,7 @@ FROM cowpay.customers</property>
       DTS:refId="Package\Truncate_Tables"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{7C8BCC2E-3729-4E2C-BEDC-A5DE3E088CDD}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -3815,6 +5891,7 @@ FROM cowpay.customers</property>
       DTS:refId="Package\Users"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{A129D015-FE7C-4448-ADC4-A7B747B9ACA7}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -5945,6 +8022,7 @@ FROM cowpay.customers</property>
       DTS:refId="Package\Withdawal_Requests"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{BC8CCDE9-E2F8-4D78-8B9B-C958DA159EE8}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -6582,6 +8660,38 @@ FROM cowpay.customers</property>
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Users" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{6BF6557B-8FBF-48FA-96B0-EEF0A570D888}"
+      DTS:From="Package\Permissions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\role_has_permissions" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{C0AED886-4DC8-49E1-9F89-59F8268D25F5}"
+      DTS:From="Package\role_has_permissions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 11"
+      DTS:To="Package\admin_logs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 12]"
+      DTS:CreationName=""
+      DTS:DTSID="{E04C208E-BE4F-4093-BBB0-5C72BF881BC2}"
+      DTS:From="Package\admin_logs"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 12"
+      DTS:To="Package\model_has_roles" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 13]"
+      DTS:CreationName=""
+      DTS:DTSID="{333B5EA8-7F44-4E3F-9B5C-488233ABB6B8}"
+      DTS:From="Package\model_has_roles"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 13"
+      DTS:To="Package\model_has_permissions" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{607D49ED-94D6-432E-BBFC-6985BB2D366B}"
@@ -6629,6 +8739,22 @@ FROM cowpay.customers</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 7"
       DTS:To="Package\Transactions" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{F040609E-58DA-4417-A545-6C6B51F6FC3B}"
+      DTS:From="Package\Transactions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Roles" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{A60B881A-2FD4-4D38-8AB5-DBE2727B1608}"
+      DTS:From="Package\Roles"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\Permissions" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -6643,29 +8769,41 @@ FROM cowpay.customers</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="148.8,41.6"
+          Size="149,42"
           Id="Package\bank_accounts"
           TopLeft="400.57143539312,261.223533075326" />
         <NodeLayout
-          Size="103.2,41.6"
+          Size="103,42"
           Id="Package\cards"
           TopLeft="529.714294735266,306.541179344811" />
         <NodeLayout
-          Size="128,41.6"
+          Size="123,42"
+          Id="Package\CashOuts"
+          TopLeft="393.7142924192,430.352946830538" />
+        <NodeLayout
+          Size="128,42"
           Id="Package\Customers"
           TopLeft="185.714288876982,97.2705895994774" />
         <NodeLayout
-          Size="148,41.6"
+          Size="148,42"
           Id="Package\mobile_wallets"
           TopLeft="323.428576936527,208.611767631584" />
         <NodeLayout
-          Size="156.8,41.6"
+          Size="138,42"
+          Id="Package\Transactions"
+          TopLeft="370.285720591643,504.47059397516" />
+        <NodeLayout
+          Size="157,42"
           Id="Package\Truncate_Tables"
           TopLeft="3.42857148695926,45.2705888701971" />
         <NodeLayout
-          Size="104,41.6"
+          Size="104,42"
           Id="Package\Users"
           TopLeft="288.000004904611,158.44706104569" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Withdawal_Requests"
+          TopLeft="396.00000674384,361.552946247114" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="160.228571486959,66.0705888701971">
@@ -6812,10 +8950,6 @@ FROM cowpay.customers</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="176,41.6"
-          Id="Package\Withdawal_Requests"
-          TopLeft="396.00000674384,361.552946247114" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="529.714294735266,327.341179344811">
@@ -6844,10 +8978,6 @@ FROM cowpay.customers</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="123.2,41.6"
-          Id="Package\CashOuts"
-          TopLeft="393.7142924192,430.352946830538" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="484.00000674384,403.152946247114">
@@ -6882,10 +9012,6 @@ FROM cowpay.customers</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="137.6,41.6"
-          Id="Package\Transactions"
-          TopLeft="370.285720591643,504.47059397516" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="455.3142924192,471.952946830538">
@@ -6912,6 +9038,222 @@ FROM cowpay.customers</property>
                     Point3="-16.2285718275577,20.2588235723106" />
                   <mssgle:LineSegment
                     End="-16.2285718275577,25.0176471446212" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="104,42"
+          Id="Package\Roles"
+          TopLeft="359,572" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="439.285720591643,546.47059397516">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.285720591643,25.52940602484"
+              Start="0,0"
+              End="-28.285720591643,18.02940602484">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.76470301242" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.76470301242"
+                    Point2="0,12.76470301242"
+                    Point3="-4,12.76470301242" />
+                  <mssgle:LineSegment
+                    End="-24.285720591643,12.76470301242" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.285720591643,12.76470301242"
+                    Point2="-28.285720591643,12.76470301242"
+                    Point3="-28.285720591643,16.76470301242" />
+                  <mssgle:LineSegment
+                    End="-28.285720591643,18.02940602484" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Permissions"
+          TopLeft="340,628" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\role_has_permissions"
+          TopLeft="316,690" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="463,593">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11,56"
+              Start="0,0"
+              End="18.5,56">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="29.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.5,0"
+                    Point2="33.5,0"
+                    Point3="33.5,4" />
+                  <mssgle:LineSegment
+                    End="33.5,52" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33.5,52"
+                    Point2="33.5,56"
+                    Point3="29.5,56" />
+                  <mssgle:LineSegment
+                    End="18.5,56" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="340,649">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,41"
+              Start="0,0"
+              End="66,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="62,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62,0"
+                    Point2="66,0"
+                    Point3="66,4" />
+                  <mssgle:LineSegment
+                    End="66,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="133,42"
+          Id="Package\admin_logs"
+          TopLeft="314,759" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 11]"
+          TopLeft="406,732">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-25.5,27"
+              Start="0,0"
+              End="-25.5,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.5"
+                    Point2="0,13.5"
+                    Point3="-4,13.5" />
+                  <mssgle:LineSegment
+                    End="-21.5,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.5,13.5"
+                    Point2="-25.5,13.5"
+                    Point3="-25.5,17.5" />
+                  <mssgle:LineSegment
+                    End="-25.5,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="158,42"
+          Id="Package\model_has_roles"
+          TopLeft="302,812" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 12]"
+          TopLeft="314,780">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12,53"
+              Start="0,0"
+              End="-19.5,53">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-30.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-30.5,0"
+                    Point2="-34.5,0"
+                    Point3="-34.5,4" />
+                  <mssgle:LineSegment
+                    End="-34.5,49" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-34.5,49"
+                    Point2="-34.5,53"
+                    Point3="-30.5,53" />
+                  <mssgle:LineSegment
+                    End="-19.5,53" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="191,42"
+          Id="Package\model_has_permissions"
+          TopLeft="293,875" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 13]"
+          TopLeft="460,833">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-71.5,42"
+              Start="0,0"
+              End="-71.5,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-67.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.5,0"
+                    Point2="-71.5,0"
+                    Point3="-71.5,4" />
+                  <mssgle:LineSegment
+                    End="-71.5,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7062,6 +9404,79 @@ FROM cowpay.customers</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\CashOuts">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="146,42"
+          Id="Package\CashOuts\Cashouts_SRC"
+          TopLeft="409.6,108.8" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\CashOuts\cashouts"
+          TopLeft="372.8,277.6" />
+        <EdgeLayout
+          Id="Package\CashOuts.Paths[ODBC Source Output]"
+          TopLeft="482.4,150.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-49.6,127.2"
+              Start="0,0"
+              End="-49.6,119.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.6"
+                    Point2="0,63.6"
+                    Point3="-4,63.6" />
+                  <mssgle:LineSegment
+                    End="-45.6,63.6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.6,63.6"
+                    Point2="-49.6,63.6"
+                    Point3="-49.6,67.6" />
+                  <mssgle:LineSegment
+                    End="-49.6,119.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CashOuts\cashouts">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CashOuts\Cashouts_SRC">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Customers">
     <LayoutInfo>
       <GraphLayout
@@ -7178,16 +9593,77 @@ FROM cowpay.customers</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Transactions">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Transactions\Transactions_SRC"
+          TopLeft="307.2,112" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Transactions\transactions"
+          TopLeft="322.4,307.2" />
+        <EdgeLayout
+          Id="Package\Transactions.Paths[ODBC Source Output]"
+          TopLeft="389.2,153.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,153.6"
+              Start="0,0"
+              End="0,146.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,146.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transactions\transactions">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transactions\Transactions_SRC">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Users">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="142.4,41.6"
+          Size="142,42"
           Id="Package\Users\Users_MySQL"
           TopLeft="316.8,97.6" />
         <NodeLayout
-          Size="143.2,41.6"
+          Size="143,42"
           Id="Package\Users\Users_MSSQL"
           TopLeft="302.4,263.2" />
         <EdgeLayout
@@ -7221,9 +9697,7 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7258,11 +9732,11 @@ FROM cowpay.customers</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="248.8,41.6"
+          Size="249,42"
           Id="Package\Withdawal_Requests\Withdrawal_Requests (All Requests)"
           TopLeft="161.714288468264,48.3294124425076" />
         <NodeLayout
-          Size="175.2,41.6"
+          Size="175,42"
           Id="Package\Withdawal_Requests\withdrawal_requests"
           TopLeft="242.285718411816,186.588237910947" />
         <EdgeLayout
@@ -7316,44 +9790,117 @@ FROM cowpay.customers</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\CashOuts">
+    design-time-name="Package\Roles">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="145.6,41.6"
-          Id="Package\CashOuts\Cashouts_SRC"
-          TopLeft="409.6,108.8" />
+          Size="129,42"
+          Id="Package\Roles\Roles_SRC"
+          TopLeft="114,24" />
         <NodeLayout
-          Size="120,41.6"
-          Id="Package\CashOuts\cashouts"
-          TopLeft="372.8,277.6" />
+          Size="104,42"
+          Id="Package\Roles\Roles"
+          TopLeft="117,113" />
         <EdgeLayout
-          Id="Package\CashOuts.Paths[ODBC Source Output]"
-          TopLeft="482.4,150.4">
+          Id="Package\Roles.Paths[ODBC Source Output]"
+          TopLeft="178.5,66">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-49.6,127.2"
+              EndConnector="-9.5,47"
               Start="0,0"
-              End="-49.6,119.7">
+              End="-9.5,39.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.6" />
+                    End="0,19.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,59.6"
-                    Point2="0,63.6"
-                    Point3="-4,63.6" />
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="-4,23.5" />
                   <mssgle:LineSegment
-                    End="-45.6,63.6" />
+                    End="-5.5,23.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-45.6,63.6"
-                    Point2="-49.6,63.6"
-                    Point3="-49.6,67.6" />
+                    Point1="-5.5,23.5"
+                    Point2="-9.5,23.5"
+                    Point3="-9.5,27.5" />
                   <mssgle:LineSegment
-                    End="-49.6,119.7" />
+                    End="-9.5,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Roles\Roles_SRC">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Roles\Roles">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Permissions">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Permissions\Permissions_SRC"
+          TopLeft="112,27" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Permissions\Permissions"
+          TopLeft="109,107" />
+        <EdgeLayout
+          Id="Package\Permissions.Paths[ODBC Source Output]"
+          TopLeft="191.5,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15.5,38"
+              Start="0,0"
+              End="-15.5,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="-4,19" />
+                  <mssgle:LineSegment
+                    End="-11.5,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.5,19"
+                    Point2="-15.5,19"
+                    Point3="-15.5,23" />
+                  <mssgle:LineSegment
+                    End="-15.5,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7366,32 +9913,44 @@ FROM cowpay.customers</property>
     </LayoutInfo>
   </TaskHost>
   <TaskHost
-    design-time-name="Package\Transactions">
+    design-time-name="Package\role_has_permissions">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Transactions\Transactions_SRC"
-          TopLeft="307.2,112" />
+          Size="205,42"
+          Id="Package\role_has_permissions\role_has_permissions_SRC"
+          TopLeft="118,13" />
         <NodeLayout
-          Size="135.2,41.6"
-          Id="Package\Transactions\transactions"
-          TopLeft="322.4,307.2" />
+          Size="180,42"
+          Id="Package\role_has_permissions\role_has_permissions"
+          TopLeft="121,115" />
         <EdgeLayout
-          Id="Package\Transactions.Paths[ODBC Source Output]"
-          TopLeft="389.2,153.6">
+          Id="Package\role_has_permissions.Paths[ODBC Source Output]"
+          TopLeft="220.5,55">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,153.6"
+              EndConnector="-9.5,60"
               Start="0,0"
-              End="0,146.1">
+              End="-9.5,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,146.1" />
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-5.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.5,30"
+                    Point2="-9.5,30"
+                    Point3="-9.5,34" />
+                  <mssgle:LineSegment
+                    End="-9.5,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7404,7 +9963,7 @@ FROM cowpay.customers</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\CashOuts\Cashouts_SRC">
+    design-time-name="Package\Permissions\Permissions_SRC">
     <Properties>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -7414,7 +9973,7 @@ FROM cowpay.customers</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\CashOuts\cashouts">
+    design-time-name="Package\Permissions\Permissions">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7427,7 +9986,7 @@ FROM cowpay.customers</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transactions\Transactions_SRC">
+    design-time-name="Package\role_has_permissions\role_has_permissions_SRC">
     <Properties>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -7437,7 +9996,202 @@ FROM cowpay.customers</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transactions\transactions">
+    design-time-name="Package\role_has_permissions\role_has_permissions">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\admin_logs">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\admin_logs\admin_logs_SRC"
+          TopLeft="55,38" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\admin_logs\admin_logs"
+          TopLeft="61,124" />
+        <EdgeLayout
+          Id="Package\admin_logs.Paths[ODBC Source Output]"
+          TopLeft="130.5,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\admin_logs\admin_logs_SRC">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\admin_logs\admin_logs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\model_has_roles">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="183,42"
+          Id="Package\model_has_roles\model_has_roles_SRC"
+          TopLeft="137,45" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\model_has_roles\model_has_roles"
+          TopLeft="146,138" />
+        <EdgeLayout
+          Id="Package\model_has_roles.Paths[ODBC Source Output]"
+          TopLeft="226.75,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\model_has_roles\model_has_roles_SRC">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\model_has_roles\model_has_roles">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\model_has_permissions">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="216,42"
+          Id="Package\model_has_permissions\model_has_permissions_SRC"
+          TopLeft="108,23" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\model_has_permissions\model_has_permissions"
+          TopLeft="108,144" />
+        <EdgeLayout
+          Id="Package\model_has_permissions.Paths[ODBC Source Output]"
+          TopLeft="216,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.5,79"
+              Start="0,0"
+              End="-12.5,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.5"
+                    Point2="0,39.5"
+                    Point3="-4,39.5" />
+                  <mssgle:LineSegment
+                    End="-8.5,39.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.5,39.5"
+                    Point2="-12.5,39.5"
+                    Point3="-12.5,43.5" />
+                  <mssgle:LineSegment
+                    End="-12.5,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\model_has_permissions\model_has_permissions_SRC">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\model_has_permissions\model_has_permissions">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
