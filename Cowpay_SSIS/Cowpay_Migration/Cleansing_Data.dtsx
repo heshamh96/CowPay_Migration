@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/12/2022 7:22:36 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BI-SERVER2022"
+  DTS:CreatorName="BI-SERVER2022\admin"
+  DTS:DTSID="{75F91D54-E73F-44B7-AC54-AE5D6A54E4D7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionGUID="{89CACBED-1FC7-4120-9D83-8C42AD615B67}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+</DTS:Executable>
