@@ -2,38 +2,43 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Cowpay_Migration</Name>
-    <LastWriteTime>2022-10-11T11:47:02.4752873Z</LastWriteTime>
+    <LastWriteTime>2022-10-12T17:38:29.9187509Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Merchants_Module.dtsx</Name>
-      <LastWriteTime>2022-10-11T10:17:41.5599114Z</LastWriteTime>
-      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
-    </ProjectBuildItemInfo>
-    <ProjectBuildItemInfo>
-      <Name>Pre_Executions.dtsx</Name>
-      <LastWriteTime>2022-10-12T11:09:04.8498009Z</LastWriteTime>
+      <LastWriteTime>2022-10-12T22:08:54.4225825Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Transaction_Management_Module.dtsx</Name>
-      <LastWriteTime>2022-10-11T10:17:41.5908539Z</LastWriteTime>
+      <LastWriteTime>2022-10-12T22:07:32.354594Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Populate Cowpay_Production_Simulation_DB.dtsx</Name>
-      <LastWriteTime>2022-10-12T08:15:32.901924Z</LastWriteTime>
+      <LastWriteTime>2022-10-12T21:49:33.0465276Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>AA_Deployment_Package.dtsx</Name>
-      <LastWriteTime>2022-10-10T09:25:33.582539Z</LastWriteTime>
+      <LastWriteTime>2022-10-12T20:43:45.4758132Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ExcelpayIdentity_Module.dtsx</Name>
-      <LastWriteTime>2022-10-12T11:25:45.6950213Z</LastWriteTime>
+      <LastWriteTime>2022-10-12T21:49:33.0783198Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Cleansing_Data.dtsx</Name>
+      <LastWriteTime>2022-10-12T20:49:28.1768599Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Z_Pre_Executions.dtsx</Name>
+      <LastWriteTime>2022-10-12T17:30:14.7002466Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

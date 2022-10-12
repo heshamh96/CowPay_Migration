@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{6FB6921C-8855-432D-820D-EC9F01E1FF4E}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{C373A502-BE19-4121-9B69-3F93643BDAB9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5827,6 +5827,13 @@
                       cachedPrecision="20"
                       externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[old_Withdrawal_Request_ID]"
                       lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[old_id]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[HandledBy]"
+                      cachedDataType="wstr"
+                      cachedLength="450"
+                      cachedName="HandledBy"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[HandledBy]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledBy]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6049,10 +6056,11 @@
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledBy]"
-                      dataType="i4"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HandledBy]"
+                      length="450"
                       lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledBy]"
                       name="HandledBy"
                       truncationRowDisposition="FailComponent" />
@@ -6147,7 +6155,8 @@
                       precision="5" />
                     <externalMetadataColumn
                       refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HandledBy]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="450"
                       name="HandledBy" />
                     <externalMetadataColumn
                       refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HandledDate]"
@@ -6221,7 +6230,8 @@
                       precision="5" />
                     <outputColumn
                       refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[HandledBy]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="450"
                       lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[HandledBy]"
                       name="HandledBy" />
                     <outputColumn
@@ -6773,7 +6783,7 @@
     design-time-name="Package\Bank_Accounts_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="211.2,41.6"
           Id="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared"
@@ -6813,7 +6823,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7005,7 +7017,7 @@
     design-time-name="Package\Customers_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="195.2,41.6"
           Id="Package\Customers_Prepared STG to STG\vw_Customers_Prepared"
@@ -7045,7 +7057,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7147,7 +7161,7 @@
     design-time-name="Package\MobileWallets_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="174,42"
           Id="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
@@ -7175,7 +7189,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7289,7 +7305,7 @@
     design-time-name="Package\WithdrawalReqests_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="216,41.6"
           Id="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared"
@@ -7317,9 +7333,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

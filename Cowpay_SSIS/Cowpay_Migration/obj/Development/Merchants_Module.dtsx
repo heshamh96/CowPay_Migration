@@ -11,68 +11,12 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{E5E26E2F-A70C-47E5-A92F-44BD7BE11E51}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{E172069E-20BA-4DF4-A45B-F0917407BBA4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\Cleansing_Activities"
-      DTS:CreationName="STOCK:SEQUENCE"
-      DTS:Description="Sequence Container"
-      DTS:DTSID="{FD0FE8BE-4DA5-4798-A4AE-DB2A0F6522EC}"
-      DTS:ExecutableType="STOCK:SEQUENCE"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Cleansing_Activities">
-      <DTS:Variables />
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\Cleansing_Activities\Cleanse Users (m_Tax_id)"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{F702060D-5E9C-4FDB-9939-F370C2FFD776}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Cleanse Users (m_Tax_id)"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{9236F42D-90B2-4203-A844-ED95DAA87AE3}"
-              SQLTask:SqlStatementSource="update u&#xA;set u.m_tax_id= try_convert(varchar(9),try_convert(int,replace(u.m_tax_id,'-',''))) &#xA;from CowPay_Production_Simulation.dbo.Users u&#xA;where m_tax_id is not null and block = 0 and is_merchant=1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Cleansing_Activities\Cleansing Users (m_tax_id,m_commercial_number,m_personal_id)"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{7B1B692D-35DE-4A65-9C56-8A831037F639}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Cleansing Users (m_tax_id,m_commercial_number,m_personal_id)"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{9236F42D-90B2-4203-A844-ED95DAA87AE3}"
-              SQLTask:SqlStatementSource="update u&#xA;set u.m_tax_id=nb.m_tax_id&#xA;,u.m_personal_id=nb.m_personal_id&#xA;,u.m_commercial_registry=nb.m_commercial_registry&#xA;&#xA;from CowPay_Production_Simulation.dbo.Users u join [dbo].[Cleansing_Merchants_not_Blocked Users] nb &#xA;on u.id = nb.id" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-      </DTS:Executables>
-      <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Cleansing_Activities.PrecedenceConstraints[Constraint]"
-          DTS:CreationName=""
-          DTS:DTSID="{506876A3-1038-4D41-8A8A-257851C8F83B}"
-          DTS:From="Package\Cleansing_Activities\Cleansing Users (m_tax_id,m_commercial_number,m_personal_id)"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\Cleansing_Activities\Cleanse Users (m_Tax_id)" />
-      </DTS:PrecedenceConstraints>
-    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Execute Process Task"
       DTS:CreationName="Microsoft.ExecuteProcess"
@@ -83,7 +27,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Execute Process Task"
       DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecuteProcessData
@@ -101,7 +45,7 @@
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Script Task"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -130,29 +74,12 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Add_The_Identity ID_to_The Json"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
               SQLTask:SqlStatementSource="update m&#xA;SET Settings=JSON_MODIFY(Settings,'$.id',convert(int,m.Id))&#x9;&#xA;from Merchants m" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Staging_Activities\fetch_Merchants_from_SRC_to_Staging_Merchants"
-          DTS:CreationName="Microsoft.ExecuteProcess"
-          DTS:Description="Execute Process Task"
-          DTS:DTSID="{ad662c4c-d8b7-4f83-ab89-51bce2a664f3}"
-          DTS:ExecutableType="Microsoft.ExecuteProcess"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="fetch_Merchants_from_SRC_to_Staging_Merchants"
-          DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <ExecuteProcessData
-              Executable="C:\Users\Administrator\Documents\cowpay_migration\Batches\Mechants_batch.bat"
-              WindowStyle="Hidden" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -261,12 +188,6 @@
                           cachedName="New_id"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[New_id]" />
-                        <inputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[id]"
-                          cachedDataType="i8"
-                          cachedName="id"
-                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[old_id]"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[id]" />
                         <inputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[m_about]"
                           cachedDataType="nText"
@@ -382,6 +303,19 @@
                           cachedName="MasterMerchantId"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MasterMerchantId]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[MasterMerchantId]" />
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[old_id]"
+                          cachedDataType="i8"
+                          cachedName="old_id"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[old_id]"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[old_id]" />
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[UserId]"
+                          cachedDataType="wstr"
+                          cachedLength="450"
+                          cachedName="UserId"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[UserId]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -735,15 +669,6 @@ from [dbo].[Staging_Merchant]</property>
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[index]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[index]"
                           name="index"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[id]"
-                          dataType="i8"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[id]"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[id]"
-                          name="id"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[parent_id]"
@@ -1402,6 +1327,25 @@ from [dbo].[Staging_Merchant]</property>
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[MasterMerchantId]"
                           name="MasterMerchantId"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[old_id]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[old_id]"
+                          name="old_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[UserId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                          length="450"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[UserId]"
+                          name="UserId"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1433,10 +1377,6 @@ from [dbo].[Staging_Merchant]</property>
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[index]"
                           dataType="i8"
                           name="index" />
-                        <externalMetadataColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[id]"
-                          dataType="i8"
-                          name="id" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[parent_id]"
                           codePage="1256"
@@ -1749,6 +1689,15 @@ from [dbo].[Staging_Merchant]</property>
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[MasterMerchantId]"
                           dataType="i4"
                           name="MasterMerchantId" />
+                        <externalMetadataColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                          dataType="i8"
+                          name="old_id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                          dataType="wstr"
+                          length="450"
+                          name="UserId" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -1796,10 +1745,10 @@ from [dbo].[Staging_Merchant]</property>
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[index]"
                           name="index" />
                         <outputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[id]"
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[old_id]"
                           dataType="i8"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[id]"
-                          name="id" />
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                          name="old_id" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[parent_id]"
                           codePage="1256"
@@ -2177,6 +2126,12 @@ from [dbo].[Staging_Merchant]</property>
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[old_code]"
                           name="old_code" />
                         <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                          dataType="wstr"
+                          length="450"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                          name="UserId" />
+                        <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -2213,16 +2168,24 @@ from [dbo].[Staging_Merchant]</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate_STG_Merchants"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-              SQLTask:SqlStatementSource="truncate table [dbo].[Merchants]&#xA;truncate table [dbo].[Staging_Merchant]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="truncate table [dbo].[Merchants]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging_Activities.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{6AED06B9-6032-43AA-80BC-501CC6399256}"
+          DTS:From="Package\Staging_Activities\Truncate_STG_Merchants"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Staging_Activities\Merchats prep Stg to Stg" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Staging_Activities.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
@@ -2231,22 +2194,6 @@ from [dbo].[Staging_Merchant]</property>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Staging_Activities\Add_The_Identity ID_to_The Json" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Staging_Activities.PrecedenceConstraints[Constraint 2]"
-          DTS:CreationName=""
-          DTS:DTSID="{1EEBEB35-7501-4FC2-894F-EF9378D85A90}"
-          DTS:From="Package\Staging_Activities\Truncate_STG_Merchants"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 2"
-          DTS:To="Package\Staging_Activities\fetch_Merchants_from_SRC_to_Staging_Merchants" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Staging_Activities.PrecedenceConstraints[Constraint 3]"
-          DTS:CreationName=""
-          DTS:DTSID="{102DE5E0-3907-46B2-8408-023F4487B80E}"
-          DTS:From="Package\Staging_Activities\fetch_Merchants_from_SRC_to_Staging_Merchants"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 3"
-          DTS:To="Package\Staging_Activities\Merchats prep Stg to Stg" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -2973,7 +2920,7 @@ from [dbo].[Staging_Merchant]</property>
                     <connection
                       refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Connections[OleDbConnection]"
                       connectionManagerID="{548222E3-535D-4CEE-8B01-802402102276}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[MerchantManagement_Stage]"
+                      connectionManagerRefId="Project.ConnectionManagers[MerchantManagement]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3318,11 +3265,11 @@ from [dbo].[Staging_Merchant]</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate Trgt_Merchants"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{522441BA-20DA-431D-92DA-0935A6A60AC5}"
+              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
               SQLTask:SqlStatementSource="truncate table [dbo].[Merchants]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
@@ -3349,14 +3296,6 @@ from [dbo].[Staging_Merchant]</property>
       DTS:ObjectName="Constraint"
       DTS:To="Package\Script Task" />
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
-      DTS:CreationName=""
-      DTS:DTSID="{C8ACBA7A-5347-4E65-BD07-5548A19D009E}"
-      DTS:From="Package\Cleansing_Activities"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Staging_Activities" />
-    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{955097F3-2A68-41BF-B61C-C908DD6566C6}"
@@ -3376,74 +3315,25 @@ from [dbo].[Staging_Merchant]</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="202,42"
-          Id="Package\Cleansing_Activities\Cleanse Users (m_Tax_id)"
-          TopLeft="28.571436142435,71.8588276562807" />
-        <NodeLayout
-          Size="394,42"
-          Id="Package\Cleansing_Activities\Cleansing Users (m_tax_id,m_commercial_number,m_personal_id)"
-          TopLeft="10.9714294667147,11.7176478739016" />
-        <EdgeLayout
-          Id="Package\Cleansing_Activities.PrecedenceConstraints[Constraint]"
-          TopLeft="207.771429466715,53.3176478739016">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="22.4000066757203,39.3411797823791"
-              Start="0,0"
-              End="14.9000066757203,39.3411797823791">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.3411797823791" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,35.3411797823791"
-                    Point2="0,39.3411797823791"
-                    Point3="4,39.3411797823791" />
-                  <mssgle:LineSegment
-                    End="14.9000066757203,39.3411797823791" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="430,168"
-          Size="194,43"
-          Id="Package\Cleansing_Activities"
-          TopLeft="41.6000017029898,3.05882357231069" />
-        <NodeLayout
-          Size="351,42"
+          Size="351.2,41.6"
           Id="Package\Execute Process Task"
           TopLeft="456.492070333217,16.2000004375679" />
         <NodeLayout
-          Size="130,42"
+          Size="129.6,41.6"
           Id="Package\Script Task"
           TopLeft="609.158736999883,80.7098059463944" />
         <NodeLayout
-          Size="241,42"
+          Size="240.8,41.6"
           Id="Package\Staging_Activities\Add_The_Identity ID_to_The Json"
           TopLeft="22.0714290579972,214.723530887485" />
         <NodeLayout
-          Size="319,42"
-          Id="Package\Staging_Activities\fetch_Merchants_from_SRC_to_Staging_Merchants"
-          TopLeft="14.3571449493876,70.347059732985" />
-        <NodeLayout
-          Size="196,42"
+          Size="196,41.6"
           Id="Package\Staging_Activities\Merchats prep Stg to Stg"
           TopLeft="5.5,146.052942600712" />
         <NodeLayout
-          Size="199,42"
+          Size="199.2,41.6"
           Id="Package\Staging_Activities\Truncate_STG_Merchants"
           TopLeft="61.7857171856627,5.5" />
         <EdgeLayout
@@ -3452,26 +3342,26 @@ from [dbo].[Staging_Merchant]</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="38.9714290579972,27.0705882867727"
+              EndConnector="38.9714290579972,27.070588286773"
               Start="0,0"
-              End="38.9714290579972,19.5705882867727">
+              End="38.9714290579972,19.570588286773">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.53529414338635" />
+                    End="0,9.53529414338651" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.53529414338635"
-                    Point2="0,13.5352941433864"
-                    Point3="4,13.5352941433864" />
+                    Point1="0,9.53529414338651"
+                    Point2="0,13.5352941433865"
+                    Point3="4,13.5352941433865" />
                   <mssgle:LineSegment
-                    End="34.9714290579972,13.5352941433864" />
+                    End="34.9714290579972,13.5352941433865" />
                   <mssgle:CubicBezierSegment
-                    Point1="34.9714290579972,13.5352941433864"
-                    Point2="38.9714290579972,13.5352941433864"
-                    Point3="38.9714290579972,17.5352941433864" />
+                    Point1="34.9714290579972,13.5352941433865"
+                    Point2="38.9714290579972,13.5352941433865"
+                    Point3="38.9714290579972,17.5352941433865" />
                   <mssgle:LineSegment
-                    End="38.9714290579972,19.5705882867727" />
+                    End="38.9714290579972,19.570588286773" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3481,65 +3371,31 @@ from [dbo].[Staging_Merchant]</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Staging_Activities.PrecedenceConstraints[Constraint 2]"
+          Id="Package\Staging_Activities.PrecedenceConstraints[Constraint]"
           TopLeft="161.385717185663,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="12.5714277637249,23.247059732985"
+              EndConnector="-57.8857171856627,98.952942600712"
               Start="0,0"
-              End="12.5714277637249,15.747059732985">
+              End="-57.8857171856627,91.452942600712">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,7.6235298664925" />
+                    End="0,45.476471300356" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,7.6235298664925"
-                    Point2="0,11.6235298664925"
-                    Point3="4,11.6235298664925" />
+                    Point1="0,45.476471300356"
+                    Point2="0,49.476471300356"
+                    Point3="-4,49.476471300356" />
                   <mssgle:LineSegment
-                    End="8.5714277637249,11.6235298664925" />
+                    End="-53.8857171856627,49.476471300356" />
                   <mssgle:CubicBezierSegment
-                    Point1="8.5714277637249,11.6235298664925"
-                    Point2="12.5714277637249,11.6235298664925"
-                    Point3="12.5714277637249,15.6235298664925" />
+                    Point1="-53.8857171856627,49.476471300356"
+                    Point2="-57.8857171856627,49.476471300356"
+                    Point3="-57.8857171856627,53.476471300356" />
                   <mssgle:LineSegment
-                    End="12.5714277637249,15.747059732985" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Staging_Activities.PrecedenceConstraints[Constraint 3]"
-          TopLeft="173.957144949388,111.947059732985">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-70.4571449493876,34.105882867727"
-              Start="0,0"
-              End="-70.4571449493876,26.605882867727">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.0529414338635" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.0529414338635"
-                    Point2="0,17.0529414338635"
-                    Point3="-4,17.0529414338635" />
-                  <mssgle:LineSegment
-                    End="-66.4571449493876,17.0529414338635" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-66.4571449493876,17.0529414338635"
-                    Point2="-70.4571449493876,17.0529414338635"
-                    Point3="-70.4571449493876,21.0529414338635" />
-                  <mssgle:LineSegment
-                    End="-70.4571449493876,26.605882867727" />
+                    End="-57.8857171856627,91.452942600712" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3550,17 +3406,17 @@ from [dbo].[Staging_Merchant]</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="338,311"
-          Size="338,43"
+          IsExpanded="True"
+          PanelSize="337.6,311.2"
+          Size="337.6,354.4"
           Id="Package\Staging_Activities"
-          TopLeft="415.917467392167,207.388238202659" />
+          TopLeft="381.060323941411,124.18823703581" />
         <NodeLayout
-          Size="182,50"
+          Size="182.4,49.6"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants"
           TopLeft="11.2142838361312,84.8941222372355" />
         <NodeLayout
-          Size="197,42"
+          Size="196.8,41.6"
           Id="Package\TRGT_Loading\Truncate Trgt_Merchants"
           TopLeft="5.5,16.0941241333644" />
         <EdgeLayout
@@ -3588,10 +3444,10 @@ from [dbo].[Staging_Merchant]</property>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="205,191"
-          Size="205,43"
+          PanelSize="204.8,191.2"
+          Size="204.8,43.2"
           Id="Package\TRGT_Loading"
-          TopLeft="97.6000009536744,344.235297206364" />
+          TopLeft="55.8857145289986,299.576473050629" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="631.992070333217,58.2000004375679">
@@ -3627,65 +3483,31 @@ from [dbo].[Staging_Merchant]</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="138.60000170299,46.0588235723107">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="446.317465689177,161.329414630348"
-              Start="0,0"
-              End="446.317465689177,153.829414630348">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,76.6647073151742" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,76.6647073151742"
-                    Point2="0,80.6647073151742"
-                    Point3="4,80.6647073151742" />
-                  <mssgle:LineSegment
-                    End="442.317465689177,80.6647073151742" />
-                  <mssgle:CubicBezierSegment
-                    Point1="442.317465689177,80.6647073151742"
-                    Point2="446.317465689177,80.6647073151742"
-                    Point3="446.317465689177,84.6647073151742" />
-                  <mssgle:LineSegment
-                    End="446.317465689177,153.829414630348" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="584.917467392167,250.388238202659">
+          TopLeft="381.060323941411,301.38823703581">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-384.817466438493,93.847059003705"
+              EndConnector="-120.374609412412,19.7882360148187"
               Start="0,0"
-              End="-384.817466438493,86.347059003705">
+              End="-112.874609412412,19.7882360148187">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.9235295018525" />
+                    End="-56.187304706206,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,42.9235295018525"
-                    Point2="0,46.9235295018525"
-                    Point3="-4,46.9235295018525" />
+                    Point1="-56.187304706206,0"
+                    Point2="-60.187304706206,0"
+                    Point3="-60.187304706206,4" />
                   <mssgle:LineSegment
-                    End="-380.817466438493,46.9235295018525" />
+                    End="-60.187304706206,15.7882360148187" />
                   <mssgle:CubicBezierSegment
-                    Point1="-380.817466438493,46.9235295018525"
-                    Point2="-384.817466438493,46.9235295018525"
-                    Point3="-384.817466438493,50.9235295018525" />
+                    Point1="-60.187304706206,15.7882360148187"
+                    Point2="-60.187304706206,19.7882360148187"
+                    Point3="-64.187304706206,19.7882360148187" />
                   <mssgle:LineSegment
-                    End="-384.817466438493,86.347059003705" />
+                    End="-112.874609412412,19.7882360148187" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3703,11 +3525,11 @@ from [dbo].[Staging_Merchant]</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="185,42"
+          Size="184.8,41.6"
           Id="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT"
           TopLeft="437,160" />
         <NodeLayout
-          Size="261,42"
+          Size="260.8,41.6"
           Id="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC"
           TopLeft="398,40" />
         <EdgeLayout
@@ -3765,13 +3587,13 @@ from [dbo].[Staging_Merchant]</property>
     design-time-name="Package\TRGT_Loading\Stg to Trgt Merchants">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants"
           TopLeft="109,107" />
         <NodeLayout
-          Size="146,42"
+          Size="145.6,41.6"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants"
           TopLeft="113,23" />
         <EdgeLayout
@@ -3793,9 +3615,7 @@ from [dbo].[Staging_Merchant]</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

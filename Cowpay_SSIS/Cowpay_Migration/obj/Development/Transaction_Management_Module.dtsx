@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{7914DD35-8943-41BD-84BC-B23D4284A0F6}">
+  DTS:VersionBuild="38"
+  DTS:VersionGUID="{C373A502-BE19-4121-9B69-3F93643BDAB9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1222,87 +1222,6 @@
           </paths>
         </pipeline>
       </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Cleanseing Activities"
-      DTS:CreationName="STOCK:SEQUENCE"
-      DTS:Description="Sequence Container"
-      DTS:DTSID="{D96B3890-0D3F-4481-BAE1-ACC834EF7A92}"
-      DTS:ExecutableType="STOCK:SEQUENCE"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Cleanseing Activities">
-      <DTS:Variables />
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\Cleanseing Activities\Cleanse WR_Cashouts (Status)"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{a7d80c8a-6445-4837-adc0-02af7379de38}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Cleanse WR_Cashouts (Status)"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{28101059-0598-41FF-B844-A6309379F260}"
-              SQLTask:SqlStatementSource="update c  &#xA;set c.status= rst.New_Sys_Value&#xA;from cashouts c join LKP_DB.dbo.Ref_StatusTypes rst on rst.status = c.status" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Cleanseing Activities\Cleanse WR_WithdrawalRequests (Status)"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{05775F4D-8681-4BE4-8D93-1DE59D91DC9D}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Cleanse WR_WithdrawalRequests (Status)"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{28101059-0598-41FF-B844-A6309379F260}"
-              SQLTask:SqlStatementSource="update wr  &#xA;set wr.status= rst.New_Sys_Value&#xA;from withdrawal_requests wr join LKP_DB.dbo.Ref_StatusTypes rst on rst.status = wr.status" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Cleanseing Activities\Cleanse_ Bank_Accounts(Bank_Name)"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{74DB245C-A56E-48BC-9A72-52182B2AD4CE}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Cleanse_ Bank_Accounts(Bank_Name)"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{28101059-0598-41FF-B844-A6309379F260}"
-              SQLTask:SqlStatementSource="update a&#xA;set a.bank_name = b.New_Sys_Value&#xA;&#xA;  FROM [CowPay_Production_Simulation].[dbo].[bank_accounts] a&#xA;  join LKP_DB.dbo.Ref_Banks b on a.bank_name=b.bank_name&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-      </DTS:Executables>
-      <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Cleanseing Activities.PrecedenceConstraints[Constraint]"
-          DTS:CreationName=""
-          DTS:DTSID="{CC260ACD-C272-4E34-8976-97C9156FD868}"
-          DTS:From="Package\Cleanseing Activities\Cleanse WR_WithdrawalRequests (Status)"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\Cleanseing Activities\Cleanse WR_Cashouts (Status)" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Cleanseing Activities.PrecedenceConstraints[Constraint 1]"
-          DTS:CreationName=""
-          DTS:DTSID="{A76F3F3B-2D29-4FD7-A4E6-1CCA5507B967}"
-          DTS:From="Package\Cleanseing Activities\Cleanse WR_Cashouts (Status)"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Cleanseing Activities\Cleanse_ Bank_Accounts(Bank_Name)" />
-      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Customers STG to TRGT"
@@ -5908,6 +5827,13 @@
                       cachedPrecision="20"
                       externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[old_Withdrawal_Request_ID]"
                       lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[old_id]" />
+                    <inputColumn
+                      refId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].Columns[HandledBy]"
+                      cachedDataType="wstr"
+                      cachedLength="450"
+                      cachedName="HandledBy"
+                      externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests.Inputs[OLE DB Destination Input].ExternalColumns[HandledBy]"
+                      lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledBy]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -6130,10 +6056,11 @@
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledBy]"
-                      dataType="i4"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HandledBy]"
+                      length="450"
                       lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].Columns[HandledBy]"
                       name="HandledBy"
                       truncationRowDisposition="FailComponent" />
@@ -6228,7 +6155,8 @@
                       precision="5" />
                     <externalMetadataColumn
                       refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HandledBy]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="450"
                       name="HandledBy" />
                     <externalMetadataColumn
                       refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Output].ExternalColumns[HandledDate]"
@@ -6302,7 +6230,8 @@
                       precision="5" />
                     <outputColumn
                       refId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[HandledBy]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="450"
                       lineageId="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared.Outputs[OLE DB Source Error Output].Columns[HandledBy]"
                       name="HandledBy" />
                     <outputColumn
@@ -6431,14 +6360,6 @@
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\BankAccounts STG to TRGT" />
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
-      DTS:CreationName=""
-      DTS:DTSID="{75F511E6-D413-406F-9774-4C1A41C566BA}"
-      DTS:From="Package\Cleanseing Activities"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 6"
-      DTS:To="Package\Truncate_STG" />
-    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
       DTS:CreationName=""
       DTS:DTSID="{098B7552-759C-4B26-81FA-7FFE99A02D18}"
@@ -6476,138 +6397,51 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="256,42"
+          Size="256,41.6"
           Id="Package\Bank_Accounts_Prepared STG to STG"
           TopLeft="476.571436687392,262.44706250425" />
         <NodeLayout
-          Size="209,42"
+          Size="208.8,41.6"
           Id="Package\BankAccounts STG to TRGT"
           TopLeft="46.8571436551153,324.235298664925" />
         <NodeLayout
-          Size="224,42"
-          Id="Package\Cleanseing Activities\Cleanse WR_Cashouts (Status)"
-          TopLeft="35.6571478104105,88.376471008644" />
-        <NodeLayout
-          Size="277,42"
-          Id="Package\Cleanseing Activities\Cleanse WR_WithdrawalRequests (Status)"
-          TopLeft="21.9428618625719,11.858824301591" />
-        <NodeLayout
-          Size="259,42"
-          Id="Package\Cleanseing Activities\Cleanse_ Bank_Accounts(Bank_Name)"
-          TopLeft="42.0571471292146,155.247061629114" />
-        <EdgeLayout
-          Id="Package\Cleanseing Activities.PrecedenceConstraints[Constraint]"
-          TopLeft="160.342861862572,53.458824301591">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-12.6857140521614,34.917646707053"
-              Start="0,0"
-              End="-12.6857140521614,27.417646707053">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.4588233535265" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.4588233535265"
-                    Point2="0,17.4588233535265"
-                    Point3="-4,17.4588233535265" />
-                  <mssgle:LineSegment
-                    End="-8.68571405216139,17.4588233535265" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-8.68571405216139,17.4588233535265"
-                    Point2="-12.6857140521614,17.4588233535265"
-                    Point3="-12.6857140521614,21.4588233535265" />
-                  <mssgle:LineSegment
-                    End="-12.6857140521614,27.417646707053" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Cleanseing Activities.PrecedenceConstraints[Constraint 1]"
-          TopLeft="147.657147810411,129.976471008644">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="23.9999993188041,25.2705906204698"
-              Start="0,0"
-              End="23.9999993188041,17.7705906204698">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,8.63529531023492" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,8.63529531023492"
-                    Point2="0,12.6352953102349"
-                    Point3="4,12.6352953102349" />
-                  <mssgle:LineSegment
-                    End="19.9999993188041,12.6352953102349" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19.9999993188041,12.6352953102349"
-                    Point2="23.9999993188041,12.6352953102349"
-                    Point3="23.9999993188041,16.6352953102349" />
-                  <mssgle:LineSegment
-                    End="23.9999993188041,17.7705906204698" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="327,254"
-          Size="197,43"
-          Id="Package\Cleanseing Activities"
-          TopLeft="208.571432123379,1.22352942892422" />
-        <NodeLayout
-          Size="193,42"
+          Size="192.8,41.6"
           Id="Package\Customers STG to TRGT"
           TopLeft="38.2857149377161,254.494121216243" />
         <NodeLayout
-          Size="234,42"
+          Size="233.6,41.6"
           Id="Package\Customers_Prepared STG to STG"
           TopLeft="482.857151080151,175.811767048159" />
         <NodeLayout
-          Size="208,42"
+          Size="208,41.6"
           Id="Package\MobileWallets STG to TRGT"
           TopLeft="38.2857149377165,176.800002479553" />
         <NodeLayout
-          Size="249,42"
+          Size="248.8,41.6"
           Id="Package\MobileWallets_Prepared STG to STG"
           TopLeft="442.285721817796,99.1058837428636" />
         <NodeLayout
-          Size="145,42"
+          Size="144.8,41.6"
           Id="Package\Truncate_STG"
           TopLeft="573.714295484582,37.3176475821894" />
         <NodeLayout
-          Size="152,42"
+          Size="152,41.6"
           Id="Package\Truncate_TRGT"
           TopLeft="156.000002656664,74.0235304499166" />
         <NodeLayout
-          Size="233,42"
+          Size="232.8,41.6"
           Id="Package\WithdrawalReqests STG to TRGT"
           TopLeft="58.4285710782421,398.741176719402" />
         <NodeLayout
-          Size="274,42"
+          Size="273.6,41.6"
           Id="Package\WithdrawalReqests_Prepared STG to STG"
           TopLeft="432.142855595569,330.388235285538" />
         <NodeLayout
-          Size="292,42"
+          Size="292,41.6"
           Id="Package\WithdrawalReqestsTransactions STG to TRGT"
           TopLeft="37.1428577753963,487.294123404084" />
         <NodeLayout
-          Size="334,42"
+          Size="334.4,41.6"
           Id="Package\WithdrawalReqestsTransactions_Prepared STG to STG"
           TopLeft="396.00000674384,413.458828677273" />
         <EdgeLayout
@@ -6844,40 +6678,6 @@
                     Point3="16.5714287173992,18.0705887243409" />
                   <mssgle:LineSegment
                     End="16.5714287173992,20.6411774486818" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="405.571432123379,22.7235294289242">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="168.142863361203,29.9274514865985"
-              Start="0,0"
-              End="160.642863361203,29.9274514865985">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="93.1834898326219,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="93.1834898326219,0"
-                    Point2="97.1834898326219,0"
-                    Point3="97.1834898326219,4" />
-                  <mssgle:LineSegment
-                    End="97.1834898326219,25.9274514865985" />
-                  <mssgle:CubicBezierSegment
-                    Point1="97.1834898326219,25.9274514865985"
-                    Point2="97.1834898326219,29.9274514865985"
-                    Point3="101.183489832622,29.9274514865985" />
-                  <mssgle:LineSegment
-                    End="160.642863361203,29.9274514865985" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7361,7 +7161,7 @@
     design-time-name="Package\MobileWallets_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="174,42"
           Id="Package\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
@@ -7389,7 +7189,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7503,7 +7305,7 @@
     design-time-name="Package\WithdrawalReqests_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="216,41.6"
           Id="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared"
@@ -7531,9 +7333,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
