@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="ExcelpayIdentity_Stage"
+  DTS:ObjectName="ExcelpayIdentity"
   DTS:DTSID="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}"
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>

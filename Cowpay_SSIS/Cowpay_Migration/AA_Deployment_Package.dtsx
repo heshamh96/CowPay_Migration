@@ -11,12 +11,29 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AA_Deployment_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{C96AF97E-C8E5-4795-9C5A-256C3D0A9186}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{276E94AC-58DF-4827-9CB0-7B01121D034D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Apply Data Cleansing Activities"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{E7327544-3A74-4422-9C2F-B2ADE7B5C431}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Apply Data Cleansing Activities"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Cleansing_Data.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Fetch from Production"
       DTS:CreationName="Microsoft.ExecutePackageTask"
@@ -51,16 +68,49 @@
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Migrate Transactions"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{1BDB8DB8-F671-4D13-A94A-25545B33899A}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Migrate Transactions"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Transaction_Management_Module.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{80257DBC-C873-4147-A712-5832B8724D33}"
+      DTS:DTSID="{7C945D51-A93C-4B69-A8F9-9B20D2536C55}"
       DTS:From="Package\Fetch from Production"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
+      DTS:To="Package\Apply Data Cleansing Activities" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{2BC71284-50A9-46A3-8BA6-D1F357B5AA3F}"
+      DTS:From="Package\Apply Data Cleansing Activities"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
       DTS:To="Package\Migrate Merchants" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{FC7DBD25-A101-45EF-A6C9-F0A85EB16310}"
+      DTS:From="Package\Migrate Merchants"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Migrate Transactions" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -73,29 +123,117 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="182,42"
+          Size="182.4,41.6"
           Id="Package\Fetch from Production"
           TopLeft="139.428573803026,61.1764714462122" />
         <NodeLayout
-          Size="166,42"
+          Size="165.6,41.6"
           Id="Package\Migrate Merchants"
-          TopLeft="148.000002520425,168.235296477084" />
+          TopLeft="143.428573871145,244.705885784849" />
+        <NodeLayout
+          Size="223.2,41.6"
+          Id="Package\Apply Data Cleansing Activities"
+          TopLeft="142.285716708826,148.047060899834" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="230.714288161725,102.776471446212">
+          TopLeft="230.628573803026,102.776471446212">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65.4588250308713"
+              EndConnector="23.2571429057995,45.2705894536213"
               Start="0,0"
-              End="0,57.9588250308713">
+              End="23.2571429057995,37.7705894536213">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.9588250308713" />
+                    End="0,18.6352947268107" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.6352947268107"
+                    Point2="0,22.6352947268107"
+                    Point3="4,22.6352947268107" />
+                  <mssgle:LineSegment
+                    End="19.2571429057995,22.6352947268107" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.2571429057995,22.6352947268107"
+                    Point2="23.2571429057995,22.6352947268107"
+                    Point3="23.2571429057995,26.6352947268107" />
+                  <mssgle:LineSegment
+                    End="23.2571429057995,37.7705894536213" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="253.885716708826,189.647060899834">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-27.6571428376801,55.0588248850158"
+              Start="0,0"
+              End="-27.6571428376801,47.5588248850158">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5294124425079" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5294124425079"
+                    Point2="0,27.5294124425079"
+                    Point3="-4,27.5294124425079" />
+                  <mssgle:LineSegment
+                    End="-23.6571428376801,27.5294124425079" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.6571428376801,27.5294124425079"
+                    Point2="-27.6571428376801,27.5294124425079"
+                    Point3="-27.6571428376801,31.5294124425079" />
+                  <mssgle:LineSegment
+                    End="-27.6571428376801,47.5588248850158" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Migrate Transactions"
+          TopLeft="190.285717526261,354.211769673569" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="226.228573871145,286.305885784849">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="52.0571436551153,67.9058838887194"
+              Start="0,0"
+              End="52.0571436551153,60.4058838887194">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.9529419443597" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.9529419443597"
+                    Point2="0,33.9529419443597"
+                    Point3="4,33.9529419443597" />
+                  <mssgle:LineSegment
+                    End="48.0571436551153,33.9529419443597" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.0571436551153,33.9529419443597"
+                    Point2="52.0571436551153,33.9529419443597"
+                    Point3="52.0571436551153,37.9529419443597" />
+                  <mssgle:LineSegment
+                    End="52.0571436551153,60.4058838887194" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
