@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{471B8F0D-4ADC-4E1D-BBE0-ECBEE89ACC0C}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{21FF0973-C256-4D71-AAFC-A4BCC792A8F2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -920,6 +920,846 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}"
           SQLTask:SqlStatementSource="truncate table [dbo].[AspNetRoles]&#xA;truncate table [dbo].[AspNetUserRoles]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\UserRoles STG_to_STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6C4276CE-4ABF-431B-8FAE-5D2D28E90A1B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="UserRoles STG_to_STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\UserRoles STG_to_STG\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\UserRoles STG_to_STG\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_STG\Data Conversion.Inputs[Data Conversion Input].Columns[RoleId]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="36"
+                      cachedName="RoleId"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[RoleId]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UserRoles STG_to_STG\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\UserRoles STG_to_STG\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\Data Conversion.Outputs[Data Conversion Output].Columns[RoleId_]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="36"
+                      lineageId="Package\UserRoles STG_to_STG\Data Conversion.Outputs[Data Conversion Output].Columns[RoleId_]"
+                      name="RoleId_"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[RoleId]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UserRoles STG_to_STG\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\UserRoles STG_to_STG\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UserRoles STG_to_STG\UserRoles"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="UserRoles"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AspNetUserRoles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserRoles STG_to_STG\UserRoles.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].Columns[UserId]"
+                      cachedDataType="wstr"
+                      cachedLength="450"
+                      cachedName="UserId"
+                      externalMetadataColumnId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[UserId]" />
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].Columns[Old_Userid]"
+                      cachedDataType="numeric"
+                      cachedName="Old_Userid"
+                      cachedPrecision="20"
+                      externalMetadataColumnId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[Old_Userid]"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[Old_Userid]" />
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].Columns[Old_Roleid]"
+                      cachedDataType="numeric"
+                      cachedName="Old_Roleid"
+                      cachedPrecision="20"
+                      externalMetadataColumnId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[Old_Roleid]"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[Old_Roleid]" />
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].Columns[RoleId_]"
+                      cachedDataType="wstr"
+                      cachedLength="36"
+                      cachedName="RoleId_"
+                      externalMetadataColumnId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
+                      lineageId="Package\UserRoles STG_to_STG\Data Conversion.Outputs[Data Conversion Output].Columns[RoleId_]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      name="UserId" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
+                      dataType="wstr"
+                      length="450"
+                      name="RoleId" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[Old_Userid]"
+                      dataType="numeric"
+                      name="Old_Userid"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[Old_Roleid]"
+                      dataType="numeric"
+                      name="Old_Roleid"
+                      precision="18" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UserRoles STG_to_STG\UserRoles.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UserRoles STG_to_STG\UserRoles_SRC"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="UserRoles_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[UserRoles_Prepared]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[RoleId]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[RoleId]"
+                      length="36"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[RoleId]"
+                      name="RoleId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[UserId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                      length="450"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[UserId]"
+                      name="UserId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[Old_Userid]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[Old_Userid]"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[Old_Userid]"
+                      name="Old_Userid"
+                      precision="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[Old_Roleid]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[Old_Roleid]"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[Old_Roleid]"
+                      name="Old_Roleid"
+                      precision="20"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[RoleId]"
+                      codePage="1256"
+                      dataType="str"
+                      length="36"
+                      name="RoleId" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      name="UserId" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[Old_Userid]"
+                      dataType="numeric"
+                      name="Old_Userid"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[Old_Roleid]"
+                      dataType="numeric"
+                      name="Old_Roleid"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[RoleId]"
+                      codePage="1256"
+                      dataType="str"
+                      length="36"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[RoleId]"
+                      name="RoleId" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                      name="UserId" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[Old_Userid]"
+                      dataType="numeric"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[Old_Userid]"
+                      name="Old_Userid"
+                      precision="20" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[Old_Roleid]"
+                      dataType="numeric"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[Old_Roleid]"
+                      name="Old_Roleid"
+                      precision="20" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\UserRoles STG_to_STG.Paths[Data Conversion Output]"
+              endId="Package\UserRoles STG_to_STG\UserRoles.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\UserRoles STG_to_STG\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\UserRoles STG_to_STG.Paths[OLE DB Source Output]"
+              endId="Package\UserRoles STG_to_STG\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\UserRoles STG_to_TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4a325730-9a32-44d9-b5d6-b4ecbb5dbf00}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="UserRoles STG_to_TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\UserRoles STG_to_TRGT\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\UserRoles STG_to_TRGT\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_TRGT\Data Conversion.Inputs[Data Conversion Input].Columns[RoleId]"
+                      cachedDataType="wstr"
+                      cachedLength="450"
+                      cachedName="RoleId"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[RoleId]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\UserRoles STG_to_TRGT\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Output].Columns[RoleId_]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="36"
+                      lineageId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Output].Columns[RoleId_]"
+                      name="RoleId_"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[RoleId]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\UserRoles STG_to_TRGT\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UserRoles STG_to_TRGT\UserRoles"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="UserRoles"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AspNetUserRoles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles.Connections[OleDbConnection]"
+                  connectionManagerID="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ExcelpayIdentity]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].Columns[UserId]"
+                      cachedDataType="wstr"
+                      cachedLength="450"
+                      cachedName="UserId"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[UserId]" />
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].Columns[RoleId_]"
+                      cachedDataType="wstr"
+                      cachedLength="36"
+                      cachedName="RoleId_"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
+                      lineageId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Output].Columns[RoleId_]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      name="UserId" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
+                      dataType="wstr"
+                      length="450"
+                      name="RoleId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UserRoles STG_to_TRGT\UserRoles_STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="UserRoles_STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AspNetUserRoles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[UserId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                      length="450"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[UserId]"
+                      name="UserId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[RoleId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[RoleId]"
+                      length="450"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[RoleId]"
+                      name="RoleId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[Old_Userid]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Userid]"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[Old_Userid]"
+                      name="Old_Userid"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[Old_Roleid]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Roleid]"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[Old_Roleid]"
+                      name="Old_Roleid"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      name="UserId" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[RoleId]"
+                      dataType="wstr"
+                      length="450"
+                      name="RoleId" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Userid]"
+                      dataType="numeric"
+                      name="Old_Userid"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Roleid]"
+                      dataType="numeric"
+                      name="Old_Roleid"
+                      precision="18" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                      name="UserId" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[RoleId]"
+                      dataType="wstr"
+                      length="450"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[RoleId]"
+                      name="RoleId" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[Old_Userid]"
+                      dataType="numeric"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[Old_Userid]"
+                      name="Old_Userid"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[Old_Roleid]"
+                      dataType="numeric"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[Old_Roleid]"
+                      name="Old_Roleid"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\UserRoles STG_to_TRGT.Paths[Data Conversion Output]"
+              endId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\UserRoles STG_to_TRGT.Paths[OLE DB Source Output]"
+              endId="Package\UserRoles STG_to_TRGT\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2794,6 +3634,22 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 6"
       DTS:To="Package\Drop DB Constraints" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{983702B3-4615-489C-A1CF-47456DAA6C04}"
+      DTS:From="Package\Users STG_To_STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\UserRoles STG_to_STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{9441FE74-5794-4DA2-B72B-EF98D1FF47AB}"
+      DTS:From="Package\Users STG_To_TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\UserRoles STG_to_TRGT" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2806,29 +3662,37 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="169.6,41.6"
+          Size="174,42"
+          Id="Package\Drop DB Constraints"
+          TopLeft="138.857145221866,12.8470590037046" />
+        <NodeLayout
+          Size="319,42"
+          Id="Package\fetch_Merchants_from_SRC_to_Staging_Merchants"
+          TopLeft="440.742862816246,75.4470582744241" />
+        <NodeLayout
+          Size="170,42"
           Id="Package\Roles STG_To_STG"
           TopLeft="533.428578843875,150.317645540204" />
         <NodeLayout
-          Size="176.8,41.6"
+          Size="177,42"
           Id="Package\Roles STG_To_TRGT"
           TopLeft="53.4285705332853,203.294115819568" />
         <NodeLayout
-          Size="142.4,41.6"
+          Size="142,42"
           Id="Package\Truncate STG"
           TopLeft="593.14286724402,15.9058825760152" />
         <NodeLayout
-          Size="149.6,41.6"
+          Size="150,42"
           Id="Package\Truncate TRGT"
           TopLeft="72.5714298073127,97.8823543139395" />
         <NodeLayout
-          Size="169.6,41.6"
+          Size="170,42"
           Id="Package\Users STG_To_STG"
           TopLeft="452.285720319164,265.658827072856" />
         <NodeLayout
-          Size="176.8,41.6"
+          Size="177,42"
           Id="Package\Users STG_To_TRGT"
           TopLeft="78.8571422927234,319.141179782379" />
         <EdgeLayout
@@ -2857,6 +3721,34 @@
                     Point3="-54.2095251913781,47.8312069670719" />
                   <mssgle:LineSegment
                     End="-54.2095251913781,66.2411815326523" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="593.14286724402,36.7058825760152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="7.19999557222616,38.7411756984089"
+              Start="0,0"
+              End="7.19999557222616,31.2411756984089">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="3.19999557222616,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="3.19999557222616,0"
+                    Point2="7.19999557222616,0"
+                    Point3="7.19999557222616,4" />
+                  <mssgle:LineSegment
+                    End="7.19999557222616,31.2411756984089" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2921,30 +3813,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="319.2,41.6"
-          Id="Package\fetch_Merchants_from_SRC_to_Staging_Merchants"
-          TopLeft="440.742862816246,75.4470582744241" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="593.14286724402,36.7058825760152">
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="225.657145221866,54.4470590037046">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="7.19999557222616,38.7411756984089"
+              EndConnector="-78.2857154145532,43.4352953102349"
               Start="0,0"
-              End="7.19999557222616,31.2411756984089">
+              End="-78.2857154145532,35.9352953102349">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="3.19999557222616,0" />
+                    End="0,17.7176476551175" />
                   <mssgle:CubicBezierSegment
-                    Point1="3.19999557222616,0"
-                    Point2="7.19999557222616,0"
-                    Point3="7.19999557222616,4" />
+                    Point1="0,17.7176476551175"
+                    Point2="0,21.7176476551175"
+                    Point3="-4,21.7176476551175" />
                   <mssgle:LineSegment
-                    End="7.19999557222616,31.2411756984089" />
+                    End="-74.2857154145532,21.7176476551175" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.2857154145532,21.7176476551175"
+                    Point2="-78.2857154145532,21.7176476551175"
+                    Point3="-78.2857154145532,25.7176476551175" />
+                  <mssgle:LineSegment
+                    End="-78.2857154145532,35.9352953102349" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2987,44 +3881,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="173.6,41.6"
-          Id="Package\Drop DB Constraints"
-          TopLeft="138.857145221866,12.8470590037046" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="225.657145221866,54.4470590037046">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-78.2857154145532,43.4352953102349"
-              Start="0,0"
-              End="-78.2857154145532,35.9352953102349">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.7176476551175" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.7176476551175"
-                    Point2="0,21.7176476551175"
-                    Point3="-4,21.7176476551175" />
-                  <mssgle:LineSegment
-                    End="-74.2857154145532,21.7176476551175" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-74.2857154145532,21.7176476551175"
-                    Point2="-78.2857154145532,21.7176476551175"
-                    Point3="-78.2857154145532,25.7176476551175" />
-                  <mssgle:LineSegment
-                    End="-78.2857154145532,35.9352953102349" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="510.152386985831,265.658827072856">
@@ -3059,6 +3915,82 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="188,42"
+          Id="Package\UserRoles STG_to_STG"
+          TopLeft="431,332" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="537.285720319164,307.658827072856">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.2857203191641,24.341172927144"
+              Start="0,0"
+              End="-12.2857203191641,16.841172927144">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.17058646357199" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.17058646357199"
+                    Point2="0,12.170586463572"
+                    Point3="-4,12.170586463572" />
+                  <mssgle:LineSegment
+                    End="-8.28572031916406,12.170586463572" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.28572031916406,12.170586463572"
+                    Point2="-12.2857203191641,12.170586463572"
+                    Point3="-12.2857203191641,16.170586463572" />
+                  <mssgle:LineSegment
+                    End="-12.2857203191641,16.841172927144" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="195,42"
+          Id="Package\UserRoles STG_to_TRGT"
+          TopLeft="81,382" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="78.8571422927234,340.141179782379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="2.14285770727662,62.858820217621"
+              Start="0,0"
+              End="-5.35714229272338,62.858820217621">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,58.858820217621" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,58.858820217621"
+                    Point2="-22.5,62.858820217621"
+                    Point3="-18.5,62.858820217621" />
+                  <mssgle:LineSegment
+                    End="-5.35714229272338,62.858820217621" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3066,7 +3998,7 @@
     design-time-name="Package\Roles STG_To_STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="128.8,41.6"
           Id="Package\Roles STG_To_STG\Roles_SRC"
@@ -3110,7 +4042,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3144,7 +4078,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3180,13 +4116,13 @@
     design-time-name="Package\Roles STG_To_TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="128.8,41.6"
+          Size="129,42"
           Id="Package\Roles STG_To_TRGT\Roles_STG"
           TopLeft="148,46" />
         <NodeLayout
-          Size="104,41.6"
+          Size="104,42"
           Id="Package\Roles STG_To_TRGT\Roles"
           TopLeft="141,118" />
         <EdgeLayout
@@ -3220,9 +4156,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3234,15 +4168,15 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="104.8,41.6"
-          Id="Package\Users STG_To_STG\Users"
-          TopLeft="122.6,199.4" />
-        <NodeLayout
-          Size="129.6,41.6"
+          Size="130,42"
           Id="Package\Users STG_To_STG\Users_SRC"
           TopLeft="97,24" />
         <NodeLayout
-          Size="156,41.6"
+          Size="105,42"
+          Id="Package\Users STG_To_STG\Users"
+          TopLeft="122.6,199.4" />
+        <NodeLayout
+          Size="156,42"
           Id="Package\Users STG_To_STG\Data Conversion"
           TopLeft="250,89" />
         <EdgeLayout
@@ -3317,19 +4251,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Users STG_To_STG\Users">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Users STG_To_STG\Users_SRC">
     <Properties>
       <Property>
@@ -3342,17 +4263,30 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Users STG_To_STG\Users">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Users STG_To_TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="104.8,41.6"
+          Size="105,42"
           Id="Package\Users STG_To_TRGT\Users"
           TopLeft="157,130" />
         <NodeLayout
-          Size="129.6,41.6"
+          Size="130,42"
           Id="Package\Users STG_To_TRGT\Users_STG"
           TopLeft="141,33" />
         <EdgeLayout
@@ -3374,9 +4308,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3397,6 +4329,234 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Users STG_To_TRGT\Users_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\UserRoles STG_to_STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\UserRoles STG_to_STG\UserRoles_SRC"
+          TopLeft="100,20" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\UserRoles STG_to_STG\UserRoles"
+          TopLeft="125,124" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\UserRoles STG_to_STG\Data Conversion"
+          TopLeft="341,94" />
+        <EdgeLayout
+          Id="Package\UserRoles STG_to_STG.Paths[OLE DB Source Output]"
+          TopLeft="175,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="244,32"
+              Start="0,0"
+              End="244,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12"
+                    Point2="0,16"
+                    Point3="4,16" />
+                  <mssgle:LineSegment
+                    End="240,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="240,16"
+                    Point2="244,16"
+                    Point3="244,20" />
+                  <mssgle:LineSegment
+                    End="244,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\UserRoles STG_to_STG.Paths[Data Conversion Output]"
+          TopLeft="341,115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-91,30"
+              Start="0,0"
+              End="-83.5,30">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-41.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-41.5,0"
+                    Point2="-45.5,0"
+                    Point3="-45.5,4" />
+                  <mssgle:LineSegment
+                    End="-45.5,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.5,26"
+                    Point2="-45.5,30"
+                    Point3="-49.5,30" />
+                  <mssgle:LineSegment
+                    End="-83.5,30" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserRoles STG_to_STG\UserRoles_SRC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserRoles STG_to_STG\UserRoles">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\UserRoles STG_to_TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="125,42"
+          Id="Package\UserRoles STG_to_TRGT\UserRoles"
+          TopLeft="125,124" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\UserRoles STG_to_TRGT\Data Conversion"
+          TopLeft="302,102" />
+        <EdgeLayout
+          Id="Package\UserRoles STG_to_TRGT.Paths[Data Conversion Output]"
+          TopLeft="302,123">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-52,22"
+              Start="0,0"
+              End="-44.5,22">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-22,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22,0"
+                    Point2="-26,0"
+                    Point3="-26,4" />
+                  <mssgle:LineSegment
+                    End="-26,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26,18"
+                    Point2="-26,22"
+                    Point3="-30,22" />
+                  <mssgle:LineSegment
+                    End="-44.5,22" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="151,42"
+          Id="Package\UserRoles STG_to_TRGT\UserRoles_STG"
+          TopLeft="167,16" />
+        <EdgeLayout
+          Id="Package\UserRoles STG_to_TRGT.Paths[OLE DB Source Output]"
+          TopLeft="242.5,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137.5,44"
+              Start="0,0"
+              End="137.5,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="4,22" />
+                  <mssgle:LineSegment
+                    End="133.5,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="133.5,22"
+                    Point2="137.5,22"
+                    Point3="137.5,26" />
+                  <mssgle:LineSegment
+                    End="137.5,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserRoles STG_to_TRGT\UserRoles">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserRoles STG_to_TRGT\UserRoles_STG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
