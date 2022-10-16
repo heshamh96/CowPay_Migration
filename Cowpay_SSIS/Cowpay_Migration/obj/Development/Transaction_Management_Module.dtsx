@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{C373A502-BE19-4121-9B69-3F93643BDAB9}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{D40F0ACB-A70A-4FD3-A776-D08666C9A4AC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1219,6 +1219,1540 @@
               endId="Package\Bank_Accounts_Prepared STG to STG\STG_BankAccounts.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Cards STG to TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{473AF54F-0F27-4382-BBFA-A07885E4CFD8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cards STG to TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Cards STG to TRGT\Cards_STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Cards_STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CardMetaData]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cards STG to TRGT\Cards_STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      name="CustomerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardNumber]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CardNumber]"
+                      length="16"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardNumber]"
+                      name="CardNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[FirstSix]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[FirstSix]"
+                      length="6"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[FirstSix]"
+                      name="FirstSix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[LastFour]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[LastFour]"
+                      length="4"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[LastFour]"
+                      name="LastFour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardExpMonth]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CardExpMonth]"
+                      length="2"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardExpMonth]"
+                      name="CardExpMonth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardExpYear]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CardExpYear]"
+                      length="4"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardExpYear]"
+                      name="CardExpYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardToken]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CardToken]"
+                      length="64"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardToken]"
+                      name="CardToken"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[TokenExpiryDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[TokenExpiryDate]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[TokenExpiryDate]"
+                      name="TokenExpiryDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      name="MerchantId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[Old_Id]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Id]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[Old_Id]"
+                      name="Old_Id"
+                      precision="20"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      dataType="i8"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CardNumber]"
+                      codePage="1256"
+                      dataType="str"
+                      length="16"
+                      name="CardNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[FirstSix]"
+                      codePage="1256"
+                      dataType="str"
+                      length="6"
+                      name="FirstSix" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[LastFour]"
+                      codePage="1256"
+                      dataType="str"
+                      length="4"
+                      name="LastFour" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CardExpMonth]"
+                      codePage="1256"
+                      dataType="str"
+                      length="2"
+                      name="CardExpMonth" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CardExpYear]"
+                      codePage="1256"
+                      dataType="str"
+                      length="4"
+                      name="CardExpYear" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CardToken]"
+                      dataType="wstr"
+                      length="64"
+                      name="CardToken" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[TokenExpiryDate]"
+                      dataType="dbTimeStamp"
+                      name="TokenExpiryDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Id]"
+                      dataType="numeric"
+                      name="Old_Id"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i8"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      dataType="i8"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      name="CustomerId" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CardNumber]"
+                      codePage="1256"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CardNumber]"
+                      name="CardNumber" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[FirstSix]"
+                      codePage="1256"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[FirstSix]"
+                      name="FirstSix" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[LastFour]"
+                      codePage="1256"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[LastFour]"
+                      name="LastFour" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CardExpMonth]"
+                      codePage="1256"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CardExpMonth]"
+                      name="CardExpMonth" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CardExpYear]"
+                      codePage="1256"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CardExpYear]"
+                      name="CardExpYear" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CardToken]"
+                      dataType="wstr"
+                      length="64"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CardToken]"
+                      name="CardToken" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[TokenExpiryDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[TokenExpiryDate]"
+                      name="TokenExpiryDate" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      dataType="i8"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      name="MerchantId" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[Old_Id]"
+                      dataType="numeric"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[Old_Id]"
+                      name="Old_Id"
+                      precision="20" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cards STG to TRGT\Cards_TRGT"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Cards_TRGT"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CardMetaData]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1256</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cards STG to TRGT\Cards_TRGT.Connections[OleDbConnection]"
+                  connectionManagerID="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TransactionManagement]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[CustomerId]"
+                      cachedDataType="i8"
+                      cachedName="CustomerId"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CustomerId]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[CardToken]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="CardToken"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CardToken]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardToken]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[TokenExpiryDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TokenExpiryDate"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TokenExpiryDate]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[TokenExpiryDate]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantId]"
+                      cachedDataType="i8"
+                      cachedName="MerchantId"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[MerchantId]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[CardNumber]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="CardNumber"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CardNumber]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardNumber]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[FirstSix]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="FirstSix"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[FirstSix]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[FirstSix]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[LastFour]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="LastFour"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[LastFour]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[LastFour]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[CardExpMonth]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="CardExpMonth"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CardExpMonth]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardExpMonth]" />
+                    <inputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].Columns[CardExpYear]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="CardExpYear"
+                      externalMetadataColumnId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CardExpYear]"
+                      lineageId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output].Columns[CardExpYear]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                      dataType="i8"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CardNumber]"
+                      codePage="1256"
+                      dataType="str"
+                      length="16"
+                      name="CardNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[FirstSix]"
+                      codePage="1256"
+                      dataType="str"
+                      length="6"
+                      name="FirstSix" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[LastFour]"
+                      codePage="1256"
+                      dataType="str"
+                      length="4"
+                      name="LastFour" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CardExpMonth]"
+                      codePage="1256"
+                      dataType="str"
+                      length="2"
+                      name="CardExpMonth" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CardExpYear]"
+                      codePage="1256"
+                      dataType="str"
+                      length="4"
+                      name="CardExpYear" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CardToken]"
+                      dataType="wstr"
+                      length="64"
+                      name="CardToken" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TokenExpiryDate]"
+                      dataType="dbTimeStamp"
+                      name="TokenExpiryDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cards STG to TRGT\Cards_TRGT.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cards STG to TRGT\Cards_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cards STG to TRGT\Cards_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cards STG to TRGT\Cards_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cards STG to TRGT.Paths[OLE DB Source Output]"
+              endId="Package\Cards STG to TRGT\Cards_TRGT.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Cards STG to TRGT\Cards_STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Cards_Prepared STG to STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6889413A-82ED-42B7-9998-547C3E46F1FE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Cards_Prepared STG to STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Cards_Prepared STG to STG\Cards_Prepared"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Cards_Prepared"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Cards_Prepared]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[old_id]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[old_id]"
+                      name="old_id"
+                      precision="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      name="CustomerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardNumber]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CardNumber]"
+                      length="16"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardNumber]"
+                      name="CardNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[FirstSix]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FirstSix]"
+                      length="191"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[FirstSix]"
+                      name="FirstSix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[LastFour]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[LastFour]"
+                      length="191"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[LastFour]"
+                      name="LastFour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardExpMonth]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CardExpMonth]"
+                      length="2"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardExpMonth]"
+                      name="CardExpMonth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardExpYear]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CardExpYear]"
+                      length="2"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardExpYear]"
+                      name="CardExpYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardToken]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CardToken]"
+                      length="191"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardToken]"
+                      name="CardToken"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[TokenExpiryDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[TokenExpiryDate]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[TokenExpiryDate]"
+                      name="TokenExpiryDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      name="MerchantId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      dataType="numeric"
+                      name="old_id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      dataType="i8"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CardNumber]"
+                      codePage="1256"
+                      dataType="str"
+                      length="16"
+                      name="CardNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FirstSix]"
+                      dataType="wstr"
+                      length="191"
+                      name="FirstSix" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[LastFour]"
+                      dataType="wstr"
+                      length="191"
+                      name="LastFour" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CardExpMonth]"
+                      dataType="wstr"
+                      length="2"
+                      name="CardExpMonth" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CardExpYear]"
+                      dataType="wstr"
+                      length="2"
+                      name="CardExpYear" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CardToken]"
+                      dataType="wstr"
+                      length="191"
+                      name="CardToken" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[TokenExpiryDate]"
+                      dataType="dbDate"
+                      name="TokenExpiryDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="i4"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      dataType="numeric"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      name="old_id"
+                      precision="20" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      dataType="i8"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      name="CustomerId" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CardNumber]"
+                      codePage="1256"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CardNumber]"
+                      name="CardNumber" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[FirstSix]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[FirstSix]"
+                      name="FirstSix" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[LastFour]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[LastFour]"
+                      name="LastFour" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CardExpMonth]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CardExpMonth]"
+                      name="CardExpMonth" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CardExpYear]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CardExpYear]"
+                      name="CardExpYear" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CardToken]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CardToken]"
+                      name="CardToken" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[TokenExpiryDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[TokenExpiryDate]"
+                      name="TokenExpiryDate" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="i4"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      dataType="i8"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      name="MerchantId" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cards_Prepared STG to STG\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Cards_Prepared STG to STG\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Inputs[Data Conversion Input].Columns[FirstSix]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="FirstSix"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[FirstSix]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Inputs[Data Conversion Input].Columns[LastFour]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="LastFour"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[LastFour]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Inputs[Data Conversion Input].Columns[CardNumber]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="CardNumber"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardNumber]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Inputs[Data Conversion Input].Columns[CardExpMonth]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="CardExpMonth"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardExpMonth]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Inputs[Data Conversion Input].Columns[CardExpYear]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="CardExpYear"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardExpYear]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Cards_Prepared STG to STG\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[FirstSix_]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="191"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[FirstSix_]"
+                      name="FirstSix_"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[FirstSix]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[LastFour_]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="191"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[LastFour_]"
+                      name="LastFour_"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[LastFour]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[CardNumber_]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="16"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[CardNumber_]"
+                      name="CardNumber_"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardNumber]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[CardExpMonth_]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[CardExpMonth_]"
+                      name="CardExpMonth_"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardExpMonth]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[CardExpYear_]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[CardExpYear_]"
+                      name="CardExpYear_"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardExpYear]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Cards_Prepared STG to STG\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Cards_Prepared STG to STG\STG_Cards"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="STG_Cards"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CardMetaData]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Cards_Prepared STG to STG\STG_Cards.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[old_id]"
+                      cachedDataType="numeric"
+                      cachedName="old_id"
+                      cachedPrecision="20"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[Old_Id]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[old_id]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[CustomerId]"
+                      cachedDataType="i8"
+                      cachedName="CustomerId"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CustomerId]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[CardToken]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="CardToken"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CardToken]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CardToken]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[TokenExpiryDate]"
+                      cachedDataType="dbDate"
+                      cachedName="TokenExpiryDate"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[TokenExpiryDate]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[TokenExpiryDate]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="i4"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[MerchantId]"
+                      cachedDataType="i8"
+                      cachedName="MerchantId"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      lineageId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[FirstSix_]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="191"
+                      cachedName="FirstSix_"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[FirstSix]"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[FirstSix_]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[LastFour_]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="191"
+                      cachedName="LastFour_"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[LastFour]"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[LastFour_]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[CardExpMonth_]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="CardExpMonth_"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CardExpMonth]"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[CardExpMonth_]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[CardExpYear_]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="CardExpYear_"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CardExpYear]"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[CardExpYear_]" />
+                    <inputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].Columns[CardNumber_]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="CardNumber_"
+                      externalMetadataColumnId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CardNumber]"
+                      lineageId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output].Columns[CardNumber_]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                      dataType="i8"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CardNumber]"
+                      codePage="1256"
+                      dataType="str"
+                      length="16"
+                      name="CardNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[FirstSix]"
+                      codePage="1256"
+                      dataType="str"
+                      length="6"
+                      name="FirstSix" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[LastFour]"
+                      codePage="1256"
+                      dataType="str"
+                      length="4"
+                      name="LastFour" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CardExpMonth]"
+                      codePage="1256"
+                      dataType="str"
+                      length="2"
+                      name="CardExpMonth" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CardExpYear]"
+                      codePage="1256"
+                      dataType="str"
+                      length="4"
+                      name="CardExpYear" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CardToken]"
+                      dataType="wstr"
+                      length="64"
+                      name="CardToken" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[TokenExpiryDate]"
+                      dataType="dbTimeStamp"
+                      name="TokenExpiryDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input].ExternalColumns[Old_Id]"
+                      dataType="numeric"
+                      name="Old_Id"
+                      precision="20" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Cards_Prepared STG to STG\STG_Cards.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Cards_Prepared STG to STG\STG_Cards.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Cards_Prepared STG to STG\STG_Cards.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Cards_Prepared STG to STG\STG_Cards.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Cards_Prepared STG to STG.Paths[Data Conversion Output]"
+              endId="Package\Cards_Prepared STG to STG\STG_Cards.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Cards_Prepared STG to STG\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Cards_Prepared STG to STG.Paths[OLE DB Source Output]"
+              endId="Package\Cards_Prepared STG to STG\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Cards_Prepared STG to STG\Cards_Prepared.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -3403,7 +4937,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]&#xA;truncate table [dbo].[CardMetaData]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -3420,7 +4954,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]&#xA;truncate table [dbo].[CardMetaData]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -6328,6 +7862,14 @@
       DTS:ObjectName="Constraint 11"
       DTS:To="Package\Truncate_TRGT" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 12]"
+      DTS:CreationName=""
+      DTS:DTSID="{B49D26D9-4509-4D9B-81F2-9C16BA5C7414}"
+      DTS:From="Package\Cards STG to TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 12"
+      DTS:To="Package\BankAccounts STG to TRGT" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{0862C81A-0DF5-43D5-8C0F-2769EF05B862}"
@@ -6346,19 +7888,27 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{817D5B1B-A689-46AD-B0F7-0E6F98A99A94}"
-      DTS:From="Package\Customers_Prepared STG to STG"
+      DTS:DTSID="{ABF2667F-7728-4C2A-9868-6755EEA6370D}"
+      DTS:From="Package\Cards_Prepared STG to STG"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\Bank_Accounts_Prepared STG to STG" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
-      DTS:DTSID="{CB3959FB-74C8-4028-86D8-F01D0C01526D}"
+      DTS:DTSID="{79B5BE11-0CA8-4676-80FC-615023F310FE}"
       DTS:From="Package\Customers STG to TRGT"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
-      DTS:To="Package\BankAccounts STG to TRGT" />
+      DTS:To="Package\Cards STG to TRGT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{B08281CF-4B87-4B68-B941-04B3CEC970E1}"
+      DTS:From="Package\Customers_Prepared STG to STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Cards_Prepared STG to STG" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
       DTS:CreationName=""
@@ -6397,53 +7947,53 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="256,41.6"
+          Size="256,42"
           Id="Package\Bank_Accounts_Prepared STG to STG"
-          TopLeft="476.571436687392,262.44706250425" />
+          TopLeft="457.571436687392,291.44706250425" />
         <NodeLayout
-          Size="208.8,41.6"
+          Size="209,42"
           Id="Package\BankAccounts STG to TRGT"
           TopLeft="46.8571436551153,324.235298664925" />
         <NodeLayout
-          Size="192.8,41.6"
+          Size="194,42"
           Id="Package\Customers STG to TRGT"
           TopLeft="38.2857149377161,254.494121216243" />
         <NodeLayout
-          Size="233.6,41.6"
+          Size="234,42"
           Id="Package\Customers_Prepared STG to STG"
-          TopLeft="482.857151080151,175.811767048159" />
+          TopLeft="472.857151080151,165.811767048159" />
         <NodeLayout
-          Size="208,41.6"
+          Size="208,42"
           Id="Package\MobileWallets STG to TRGT"
           TopLeft="38.2857149377165,176.800002479553" />
         <NodeLayout
-          Size="248.8,41.6"
+          Size="249,42"
           Id="Package\MobileWallets_Prepared STG to STG"
           TopLeft="442.285721817796,99.1058837428636" />
         <NodeLayout
-          Size="144.8,41.6"
+          Size="145,42"
           Id="Package\Truncate_STG"
           TopLeft="573.714295484582,37.3176475821894" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Truncate_TRGT"
           TopLeft="156.000002656664,74.0235304499166" />
         <NodeLayout
-          Size="232.8,41.6"
+          Size="233,42"
           Id="Package\WithdrawalReqests STG to TRGT"
           TopLeft="58.4285710782421,398.741176719402" />
         <NodeLayout
-          Size="273.6,41.6"
+          Size="274,42"
           Id="Package\WithdrawalReqests_Prepared STG to STG"
-          TopLeft="432.142855595569,330.388235285538" />
+          TopLeft="434.142855595569,349.388235285538" />
         <NodeLayout
-          Size="292,41.6"
+          Size="292,42"
           Id="Package\WithdrawalReqestsTransactions STG to TRGT"
           TopLeft="37.1428577753963,487.294123404084" />
         <NodeLayout
-          Size="334.4,41.6"
+          Size="334,42"
           Id="Package\WithdrawalReqestsTransactions_Prepared STG to STG"
-          TopLeft="396.00000674384,413.458828677273" />
+          TopLeft="396.00000674384,430.458828677273" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="573.714295484582,63.7176475821894">
@@ -6474,30 +8024,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="566.685721817796,140.705883742864">
+          TopLeft="566.785721817796,141.105883742864">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="33.3714292623557,35.1058833052957"
+              EndConnector="23.071429262355,24.7058833052954"
               Start="0,0"
-              End="33.3714292623557,27.6058833052957">
+              End="23.071429262355,17.2058833052954">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.5529416526479" />
+                    End="0,8.3529416526477" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.5529416526479"
-                    Point2="0,17.5529416526479"
-                    Point3="4,17.5529416526479" />
+                    Point1="0,8.3529416526477"
+                    Point2="0,12.3529416526477"
+                    Point3="4,12.3529416526477" />
                   <mssgle:LineSegment
-                    End="29.3714292623557,17.5529416526479" />
+                    End="19.071429262355,12.3529416526477" />
                   <mssgle:CubicBezierSegment
-                    Point1="29.3714292623557,17.5529416526479"
-                    Point2="33.3714292623557,17.5529416526479"
-                    Point3="33.3714292623557,21.5529416526479" />
+                    Point1="19.071429262355,12.3529416526477"
+                    Point2="23.071429262355,12.3529416526477"
+                    Point3="23.071429262355,16.3529416526477" />
                   <mssgle:LineSegment
-                    End="33.3714292623557,27.6058833052957" />
+                    End="23.071429262355,17.2058833052954" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6542,30 +8092,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="508.533340077173,413.458828677273">
+          TopLeft="508.666673410507,430.458828677273">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-252.533337420509,-297.835298227356"
+              EndConnector="-252.666670753843,-314.435298227356"
               Start="0,0"
-              End="-252.533337420509,-290.335298227356">
+              End="-252.666670753843,-306.935298227356">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-143.87104375906" />
+                    End="0,-152.111595300818" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-143.87104375906"
-                    Point2="0,-147.87104375906"
-                    Point3="-4,-147.87104375906" />
+                    Point1="0,-152.111595300818"
+                    Point2="0,-156.111595300818"
+                    Point3="-4,-156.111595300818" />
                   <mssgle:LineSegment
-                    End="-248.533337420509,-147.87104375906" />
+                    End="-248.666670753843,-156.111595300818" />
                   <mssgle:CubicBezierSegment
-                    Point1="-248.533337420509,-147.87104375906"
-                    Point2="-252.533337420509,-147.87104375906"
-                    Point3="-252.533337420509,-151.87104375906" />
+                    Point1="-248.666670753843,-156.111595300818"
+                    Point2="-252.666670753843,-156.111595300818"
+                    Point3="-252.666670753843,-160.111595300818" />
                   <mssgle:LineSegment
-                    End="-252.533337420509,-290.335298227356" />
+                    End="-252.666670753843,-306.935298227356" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6610,74 +8160,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="138.485714937716,218.400002479553">
+          TopLeft="138.785714937716,218.800002479553">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.0941187366897"
+              EndConnector="0,35.69411873669"
               Start="0,0"
-              End="0,28.5941187366897">
+              End="0,28.19411873669">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.5941187366897" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="602.214293883771,217.811767048159">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44.635295456091"
-              Start="0,0"
-              End="0,37.135295456091">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.135295456091" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="134.685714937716,296.094121216243">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="16.5714287173992,28.1411774486818"
-              Start="0,0"
-              End="16.5714287173992,20.6411774486818">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10.0705887243409" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10.0705887243409"
-                    Point2="0,14.0705887243409"
-                    Point3="4,14.0705887243409" />
-                  <mssgle:LineSegment
-                    End="12.5714287173992,14.0705887243409" />
-                  <mssgle:CubicBezierSegment
-                    Point1="12.5714287173992,14.0705887243409"
-                    Point2="16.5714287173992,14.0705887243409"
-                    Point3="16.5714287173992,18.0705887243409" />
-                  <mssgle:LineSegment
-                    End="16.5714287173992,20.6411774486818" />
+                    End="0,28.19411873669" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6688,30 +8182,24 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="604.571436687392,304.04706250425">
+          TopLeft="457.571436687392,312.44706250425">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-35.2285810918229,26.3411727812883"
+              EndConnector="113.571418908177,36.9411727812879"
               Start="0,0"
-              End="-35.2285810918229,18.8411727812883">
+              End="113.571418908177,29.4411727812879">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.17058639064413" />
+                    End="109.571418908177,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.17058639064413"
-                    Point2="0,13.1705863906441"
-                    Point3="-4,13.1705863906441" />
+                    Point1="109.571418908177,0"
+                    Point2="113.571418908177,0"
+                    Point3="113.571418908177,4" />
                   <mssgle:LineSegment
-                    End="-31.2285810918229,13.1705863906441" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-31.2285810918229,13.1705863906441"
-                    Point2="-35.2285810918229,13.1705863906441"
-                    Point3="-35.2285810918229,17.1705863906441" />
-                  <mssgle:LineSegment
-                    End="-35.2285810918229,18.8411727812883" />
+                    End="113.571418908177,29.4411727812879" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6756,18 +8244,162 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="566.071431169705,371.988235285538">
+          TopLeft="571.142855595569,391.388235285538">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,41.4705933917348"
+              EndConnector="46.1904844816042,39.070593391735"
               Start="0,0"
-              End="0,33.9705933917348">
+              End="46.1904844816042,31.570593391735">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.9705933917348" />
+                    End="0,19.330592716638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.330592716638"
+                    Point2="0,23.330592716638"
+                    Point3="4,23.330592716638" />
+                  <mssgle:LineSegment
+                    End="42.1904844816042,23.330592716638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.1904844816042,23.330592716638"
+                    Point2="46.1904844816042,23.330592716638"
+                    Point3="46.1904844816042,27.330592716638" />
+                  <mssgle:LineSegment
+                    End="46.1904844816042,31.570593391735" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="211,42"
+          Id="Package\Cards_Prepared STG to STG"
+          TopLeft="442,220" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="547.5,262">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="38.071436687392,29.44706250425"
+              Start="0,0"
+              End="38.071436687392,21.94706250425">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.723531252125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.723531252125"
+                    Point2="0,14.723531252125"
+                    Point3="4,14.723531252125" />
+                  <mssgle:LineSegment
+                    End="34.071436687392,14.723531252125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.071436687392,14.723531252125"
+                    Point2="38.071436687392,14.723531252125"
+                    Point3="38.071436687392,18.723531252125" />
+                  <mssgle:LineSegment
+                    End="38.071436687392,21.94706250425" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="472.857151080151,186.811767048159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.642848919849,33.188232951841"
+              Start="0,0"
+              End="74.642848919849,25.688232951841">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="70.642848919849,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.642848919849,0"
+                    Point2="74.642848919849,0"
+                    Point3="74.642848919849,4" />
+                  <mssgle:LineSegment
+                    End="74.642848919849,25.688232951841" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Cards STG to TRGT"
+          TopLeft="86,305" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="232.285714937716,275.494121216243">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.2857149377161,29.505878783757"
+              Start="0,0"
+              End="-61.2857149377161,22.005878783757">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-57.2857149377161,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.2857149377161,0"
+                    Point2="-61.2857149377161,0"
+                    Point3="-61.2857149377161,4" />
+                  <mssgle:LineSegment
+                    End="-61.2857149377161,22.005878783757" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 12]"
+          TopLeft="198,305">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-46.6428563448847,19.235298664925"
+              Start="0,0"
+              End="-46.6428563448847,11.735298664925">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="-4,-22.5" />
+                  <mssgle:LineSegment
+                    End="-42.6428563448847,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42.6428563448847,-22.5"
+                    Point2="-46.6428563448847,-22.5"
+                    Point3="-46.6428563448847,-18.5" />
+                  <mssgle:LineSegment
+                    End="-46.6428563448847,11.735298664925" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6861,7 +8493,7 @@
     design-time-name="Package\BankAccounts STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="176,42"
           Id="Package\BankAccounts STG to TRGT\BankAccounts_TRGT"
@@ -6901,9 +8533,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7305,7 +8935,7 @@
     design-time-name="Package\WithdrawalReqests_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="216,41.6"
           Id="Package\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared"
@@ -7333,7 +8963,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7447,13 +9079,13 @@
     design-time-name="Package\WithdrawalReqestsTransactions_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="275.2,41.6"
+          Size="275,42"
           Id="Package\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared"
           TopLeft="172.8,52" />
         <NodeLayout
-          Size="252.8,41.6"
+          Size="253,42"
           Id="Package\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions"
           TopLeft="128,208" />
         <EdgeLayout
@@ -7487,9 +9119,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7518,6 +9148,172 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Cards_Prepared STG to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Cards_Prepared STG to STG\Data Conversion"
+          TopLeft="289,91" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Cards_Prepared STG to STG\STG_Cards"
+          TopLeft="162,151" />
+        <EdgeLayout
+          Id="Package\Cards_Prepared STG to STG.Paths[Data Conversion Output]"
+          TopLeft="289,117.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.5,33.3333333333333"
+              Start="0,0"
+              End="-61.5,25.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-57.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.5,0"
+                    Point2="-61.5,0"
+                    Point3="-61.5,4" />
+                  <mssgle:LineSegment
+                    End="-61.5,25.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Cards_Prepared STG to STG\Cards_Prepared"
+          TopLeft="136,28" />
+        <EdgeLayout
+          Id="Package\Cards_Prepared STG to STG.Paths[OLE DB Source Output]"
+          TopLeft="290,49">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77,42"
+              Start="0,0"
+              End="77,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="73,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="73,0"
+                    Point2="77,0"
+                    Point3="77,4" />
+                  <mssgle:LineSegment
+                    End="77,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cards_Prepared STG to STG\STG_Cards">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cards_Prepared STG to STG\Cards_Prepared">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Cards STG to TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Cards STG to TRGT\Cards_STG"
+          TopLeft="123,19" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Cards STG to TRGT\Cards_TRGT"
+          TopLeft="112,149" />
+        <EdgeLayout
+          Id="Package\Cards STG to TRGT.Paths[OLE DB Source Output]"
+          TopLeft="184.75,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,88"
+              Start="0,0"
+              End="0,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cards STG to TRGT\Cards_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Cards STG to TRGT\Cards_TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
