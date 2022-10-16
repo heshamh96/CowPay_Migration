@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Populate Cowpay_Production_Simulation_DB"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{BA3B484B-AA06-4C00-BF59-86845C298DF5}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{0686EE34-FB2E-4581-90F3-64A675A008AB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -4037,6 +4037,1332 @@ FROM cowpay.customers</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Orders"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8571F052-EE6B-41A6-86F6-D5FAA4F33CF3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Orders"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Orders\Orders"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Orders"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Orders]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Orders\Orders.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Orders\Orders.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[merchant_code]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="merchant_code"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[merchant_code]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[merchant_code]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[promo_code_id]"
+                      cachedDataType="i4"
+                      cachedName="promo_code_id"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[promo_code_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[promo_code_id]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[payment_gateway]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="payment_gateway"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_gateway]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_gateway]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[channel]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="channel"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[channel]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[channel]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[iframe_id]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="iframe_id"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[iframe_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[iframe_id]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[payment_link_type]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="payment_link_type"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_link_type]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_link_type]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[api_access_type]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="api_access_type"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[api_access_type]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[api_access_type]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[payment_method]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="payment_method"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_method]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_method]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[payment_status]"
+                      cachedDataType="wstr"
+                      cachedLength="32"
+                      cachedName="payment_status"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_status]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_status]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[card_number]"
+                      cachedDataType="wstr"
+                      cachedLength="199"
+                      cachedName="card_number"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[card_number]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[card_number]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[payment_link_id]"
+                      cachedDataType="ui4"
+                      cachedName="payment_link_id"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_link_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_link_id]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[customer_merchant_profile_id]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="customer_merchant_profile_id"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_merchant_profile_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_merchant_profile_id]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[customer_id]"
+                      cachedDataType="ui4"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[customer_mobile]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="customer_mobile"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_mobile]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_mobile]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[customer_email]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="customer_email"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_email]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_email]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[customer_name]"
+                      cachedDataType="wstr"
+                      cachedLength="512"
+                      cachedName="customer_name"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_name]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_name]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[merchant_reference_id]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="merchant_reference_id"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[merchant_reference_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[merchant_reference_id]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[card_token]"
+                      cachedDataType="wstr"
+                      cachedLength="190"
+                      cachedName="card_token"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[card_token]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[card_token]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[token]"
+                      cachedDataType="wstr"
+                      cachedLength="1024"
+                      cachedName="token"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[token]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[token]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[init_amount]"
+                      cachedDataType="r8"
+                      cachedName="init_amount"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[init_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[init_amount]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[amount]"
+                      cachedDataType="r8"
+                      cachedName="amount"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[amount]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[fees_amount]"
+                      cachedDataType="r8"
+                      cachedName="fees_amount"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[fees_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[fees_amount]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[vat_amount]"
+                      cachedDataType="r8"
+                      cachedName="vat_amount"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[vat_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[vat_amount]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[net_amount]"
+                      cachedDataType="r4"
+                      cachedName="net_amount"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[net_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[net_amount]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[currency_code]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="currency_code"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[currency_code]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[currency_code]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedDataType="nText"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[charge_items]"
+                      cachedDataType="nText"
+                      cachedName="charge_items"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[charge_items]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[charge_items]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[payment_gateway_reference_id]"
+                      cachedDataType="wstr"
+                      cachedLength="199"
+                      cachedName="payment_gateway_reference_id"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_gateway_reference_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_gateway_reference_id]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[payment_gateway_tracking_number]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="payment_gateway_tracking_number"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_gateway_tracking_number]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_gateway_tracking_number]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[cowpay_commission]"
+                      cachedDataType="r4"
+                      cachedName="cowpay_commission"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[cowpay_commission]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[cowpay_commission]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[expires_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="expires_at"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[expires_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[expires_at]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[paid_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="paid_at"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[paid_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[paid_at]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[general_extra_data]"
+                      cachedDataType="nText"
+                      cachedName="general_extra_data"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[general_extra_data]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[general_extra_data]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[environment]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="environment"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[environment]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[environment]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[updated_at]" />
+                    <inputColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].Columns[deleted_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="deleted_at"
+                      externalMetadataColumnId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[deleted_at]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[merchant_code]"
+                      dataType="wstr"
+                      length="20"
+                      name="merchant_code" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[promo_code_id]"
+                      dataType="i4"
+                      name="promo_code_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_gateway]"
+                      dataType="wstr"
+                      length="5"
+                      name="payment_gateway" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[channel]"
+                      dataType="wstr"
+                      length="14"
+                      name="channel" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[iframe_id]"
+                      dataType="wstr"
+                      length="64"
+                      name="iframe_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_link_type]"
+                      dataType="wstr"
+                      length="24"
+                      name="payment_link_type" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[api_access_type]"
+                      dataType="wstr"
+                      length="8"
+                      name="api_access_type" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_method]"
+                      dataType="wstr"
+                      length="14"
+                      name="payment_method" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_status]"
+                      dataType="wstr"
+                      length="32"
+                      name="payment_status" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[card_number]"
+                      dataType="wstr"
+                      length="199"
+                      name="card_number" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_link_id]"
+                      dataType="i8"
+                      name="payment_link_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_merchant_profile_id]"
+                      dataType="wstr"
+                      length="64"
+                      name="customer_merchant_profile_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      dataType="i8"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_mobile]"
+                      dataType="wstr"
+                      length="20"
+                      name="customer_mobile" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_email]"
+                      dataType="wstr"
+                      length="50"
+                      name="customer_email" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[customer_name]"
+                      dataType="wstr"
+                      length="512"
+                      name="customer_name" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[merchant_reference_id]"
+                      dataType="wstr"
+                      length="64"
+                      name="merchant_reference_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[card_token]"
+                      dataType="wstr"
+                      length="190"
+                      name="card_token" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[token]"
+                      dataType="wstr"
+                      length="1024"
+                      name="token" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[init_amount]"
+                      dataType="r8"
+                      name="init_amount" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                      dataType="r8"
+                      name="amount" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[fees_amount]"
+                      dataType="r8"
+                      name="fees_amount" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[vat_amount]"
+                      dataType="r8"
+                      name="vat_amount" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[net_amount]"
+                      dataType="r4"
+                      name="net_amount" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[currency_code]"
+                      dataType="wstr"
+                      length="4"
+                      name="currency_code" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[charge_items]"
+                      dataType="nText"
+                      name="charge_items" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_gateway_reference_id]"
+                      dataType="wstr"
+                      length="199"
+                      name="payment_gateway_reference_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[payment_gateway_tracking_number]"
+                      dataType="wstr"
+                      length="64"
+                      name="payment_gateway_tracking_number" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[cowpay_commission]"
+                      dataType="r4"
+                      name="cowpay_commission" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[expires_at]"
+                      dataType="dbTimeStamp"
+                      name="expires_at" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[paid_at]"
+                      dataType="dbTimeStamp"
+                      name="paid_at" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[general_extra_data]"
+                      dataType="nText"
+                      name="general_extra_data" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[environment]"
+                      dataType="wstr"
+                      length="10"
+                      name="environment" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Orders\Orders.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Orders\Orders.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Orders\Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Orders\Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Orders\Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Orders\Orders.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Orders\Orders_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="Orders_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName">`컬۷矘ᄰ`.`orders`</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">SELECT * FROM cowpay.orders;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Orders\Orders_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[merchant_code]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      length="20"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[merchant_code]"
+                      name="merchant_code" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[promo_code_id]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[promo_code_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[promo_code_id]"
+                      name="promo_code_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_gateway]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_gateway]"
+                      length="5"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_gateway]"
+                      name="payment_gateway" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[channel]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[channel]"
+                      length="14"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[channel]"
+                      name="channel" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[iframe_id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[iframe_id]"
+                      length="64"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[iframe_id]"
+                      name="iframe_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_link_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_type]"
+                      length="24"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_link_type]"
+                      name="payment_link_type" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[api_access_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[api_access_type]"
+                      length="8"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[api_access_type]"
+                      name="api_access_type" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_method]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_method]"
+                      length="14"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_method]"
+                      name="payment_method" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_status]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_status]"
+                      length="32"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_status]"
+                      name="payment_status" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[card_number]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[card_number]"
+                      length="199"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[card_number]"
+                      name="card_number" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_link_id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_link_id]"
+                      name="payment_link_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_merchant_profile_id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_merchant_profile_id]"
+                      length="64"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_merchant_profile_id]"
+                      name="customer_merchant_profile_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_mobile]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_mobile]"
+                      length="20"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_mobile]"
+                      name="customer_mobile" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_email]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_email]"
+                      length="50"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_email]"
+                      name="customer_email" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_name]"
+                      length="512"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[customer_name]"
+                      name="customer_name" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[merchant_reference_id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
+                      length="64"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[merchant_reference_id]"
+                      name="merchant_reference_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[card_token]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[card_token]"
+                      length="190"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[card_token]"
+                      name="card_token" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[token]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[token]"
+                      length="1024"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[token]"
+                      name="token" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[init_amount]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[init_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[init_amount]"
+                      name="init_amount" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[amount]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[amount]"
+                      name="amount" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[fees_amount]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[fees_amount]"
+                      name="fees_amount" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[vat_amount]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[vat_amount]"
+                      name="vat_amount" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[net_amount]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[net_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[net_amount]"
+                      name="net_amount" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[currency_code]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[currency_code]"
+                      length="4"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[currency_code]"
+                      name="currency_code" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[description]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[charge_items]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[charge_items]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[charge_items]"
+                      name="charge_items" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_gateway_reference_id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_gateway_reference_id]"
+                      length="199"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_gateway_reference_id]"
+                      name="payment_gateway_reference_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_gateway_tracking_number]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_gateway_tracking_number]"
+                      length="64"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[payment_gateway_tracking_number]"
+                      name="payment_gateway_tracking_number" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[cowpay_commission]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[cowpay_commission]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[cowpay_commission]"
+                      name="cowpay_commission" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[expires_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[expires_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[expires_at]"
+                      name="expires_at" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[paid_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[paid_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[paid_at]"
+                      name="paid_at" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[general_extra_data]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[general_extra_data]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[general_extra_data]"
+                      name="general_extra_data" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[environment]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[environment]"
+                      length="10"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[environment]"
+                      name="environment" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[deleted_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].Columns[deleted_at]"
+                      name="deleted_at" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      dataType="ui4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      dataType="wstr"
+                      length="20"
+                      name="merchant_code" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[promo_code_id]"
+                      dataType="i4"
+                      name="promo_code_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_gateway]"
+                      dataType="wstr"
+                      length="5"
+                      name="payment_gateway" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[channel]"
+                      dataType="wstr"
+                      length="14"
+                      name="channel" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[iframe_id]"
+                      dataType="wstr"
+                      length="64"
+                      name="iframe_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_type]"
+                      dataType="wstr"
+                      length="24"
+                      name="payment_link_type" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[api_access_type]"
+                      dataType="wstr"
+                      length="8"
+                      name="api_access_type" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_method]"
+                      dataType="wstr"
+                      length="14"
+                      name="payment_method" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_status]"
+                      dataType="wstr"
+                      length="32"
+                      name="payment_status" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[card_number]"
+                      dataType="wstr"
+                      length="199"
+                      name="card_number" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_id]"
+                      dataType="ui4"
+                      name="payment_link_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_merchant_profile_id]"
+                      dataType="wstr"
+                      length="64"
+                      name="customer_merchant_profile_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_id]"
+                      dataType="ui4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_mobile]"
+                      dataType="wstr"
+                      length="20"
+                      name="customer_mobile" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_email]"
+                      dataType="wstr"
+                      length="50"
+                      name="customer_email" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_name]"
+                      dataType="wstr"
+                      length="512"
+                      name="customer_name" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
+                      dataType="wstr"
+                      length="64"
+                      name="merchant_reference_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[card_token]"
+                      dataType="wstr"
+                      length="190"
+                      name="card_token" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[token]"
+                      dataType="wstr"
+                      length="1024"
+                      name="token" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[init_amount]"
+                      dataType="r8"
+                      name="init_amount" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      dataType="r8"
+                      name="amount" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount]"
+                      dataType="r8"
+                      name="fees_amount" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount]"
+                      dataType="r8"
+                      name="vat_amount" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[net_amount]"
+                      dataType="r4"
+                      name="net_amount" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[currency_code]"
+                      dataType="wstr"
+                      length="4"
+                      name="currency_code" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[charge_items]"
+                      dataType="nText"
+                      name="charge_items" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_gateway_reference_id]"
+                      dataType="wstr"
+                      length="199"
+                      name="payment_gateway_reference_id" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_gateway_tracking_number]"
+                      dataType="wstr"
+                      length="64"
+                      name="payment_gateway_tracking_number" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[cowpay_commission]"
+                      dataType="r4"
+                      name="cowpay_commission" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[expires_at]"
+                      dataType="dbTimeStamp"
+                      name="expires_at" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[paid_at]"
+                      dataType="dbTimeStamp"
+                      name="paid_at" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[general_extra_data]"
+                      dataType="nText"
+                      name="general_extra_data" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[environment]"
+                      dataType="wstr"
+                      length="10"
+                      name="environment" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[merchant_code]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      length="20"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[merchant_code]"
+                      name="merchant_code" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[promo_code_id]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[promo_code_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[promo_code_id]"
+                      name="promo_code_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_gateway]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_gateway]"
+                      length="5"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_gateway]"
+                      name="payment_gateway" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[channel]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[channel]"
+                      length="14"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[channel]"
+                      name="channel" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[iframe_id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[iframe_id]"
+                      length="64"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[iframe_id]"
+                      name="iframe_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_link_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_type]"
+                      length="24"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_link_type]"
+                      name="payment_link_type" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[api_access_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[api_access_type]"
+                      length="8"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[api_access_type]"
+                      name="api_access_type" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_method]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_method]"
+                      length="14"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_method]"
+                      name="payment_method" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_status]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_status]"
+                      length="32"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_status]"
+                      name="payment_status" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[card_number]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[card_number]"
+                      length="199"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[card_number]"
+                      name="card_number" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_link_id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_link_id]"
+                      name="payment_link_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[customer_merchant_profile_id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_merchant_profile_id]"
+                      length="64"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[customer_merchant_profile_id]"
+                      name="customer_merchant_profile_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[customer_id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_id]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[customer_mobile]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_mobile]"
+                      length="20"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[customer_mobile]"
+                      name="customer_mobile" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[customer_email]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_email]"
+                      length="50"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[customer_email]"
+                      name="customer_email" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[customer_name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[customer_name]"
+                      length="512"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[customer_name]"
+                      name="customer_name" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[merchant_reference_id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_reference_id]"
+                      length="64"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[merchant_reference_id]"
+                      name="merchant_reference_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[card_token]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[card_token]"
+                      length="190"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[card_token]"
+                      name="card_token" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[token]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[token]"
+                      length="1024"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[token]"
+                      name="token" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[init_amount]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[init_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[init_amount]"
+                      name="init_amount" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[amount]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[amount]"
+                      name="amount" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[fees_amount]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[fees_amount]"
+                      name="fees_amount" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[vat_amount]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[vat_amount]"
+                      name="vat_amount" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[net_amount]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[net_amount]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[net_amount]"
+                      name="net_amount" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[currency_code]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[currency_code]"
+                      length="4"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[currency_code]"
+                      name="currency_code" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[description]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[charge_items]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[charge_items]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[charge_items]"
+                      name="charge_items" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_gateway_reference_id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_gateway_reference_id]"
+                      length="199"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_gateway_reference_id]"
+                      name="payment_gateway_reference_id" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_gateway_tracking_number]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_gateway_tracking_number]"
+                      length="64"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[payment_gateway_tracking_number]"
+                      name="payment_gateway_tracking_number" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[cowpay_commission]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[cowpay_commission]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[cowpay_commission]"
+                      name="cowpay_commission" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[expires_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[expires_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[expires_at]"
+                      name="expires_at" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[paid_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[paid_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[paid_at]"
+                      name="paid_at" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[general_extra_data]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[general_extra_data]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[general_extra_data]"
+                      name="general_extra_data" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[environment]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[environment]"
+                      length="10"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[environment]"
+                      name="environment" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output].ExternalColumns[deleted_at]"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[deleted_at]"
+                      name="deleted_at" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Orders\Orders_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Orders.Paths[ODBC Source Output]"
+              endId="Package\Orders\Orders.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Permissions"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -5872,7 +7198,7 @@ FROM cowpay.customers</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{28101059-0598-41FF-B844-A6309379F260}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[bank_accounts]&#xA;truncate table [dbo].[mobile_wallets]&#xA;truncate table [dbo].[Users]&#xA;truncate table [dbo].[customers]&#xA;truncate table [dbo].[cards]&#xA;truncate table [dbo].[withdrawal_requests]&#xA;truncate table [dbo].[cashouts]&#xA;truncate table [dbo].[transactions]&#xA;truncate table [dbo].[Roles]&#xA;truncate table [dbo].[Permissions]&#xA;truncate table [dbo].[role_has_permissions]&#xA;truncate table [dbo].[admin_logs]&#xA;truncate table [dbo].[model_has_roles]&#xA;truncate table [dbo].[model_has_permissions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[bank_accounts]&#xA;truncate table [dbo].[mobile_wallets]&#xA;truncate table [dbo].[Users]&#xA;truncate table [dbo].[customers]&#xA;truncate table [dbo].[cards]&#xA;truncate table [dbo].[withdrawal_requests]&#xA;truncate table [dbo].[cashouts]&#xA;truncate table [dbo].[Orders]&#xA;truncate table [dbo].[transactions]&#xA;truncate table [dbo].[Roles]&#xA;truncate table [dbo].[Permissions]&#xA;truncate table [dbo].[role_has_permissions]&#xA;truncate table [dbo].[admin_logs]&#xA;truncate table [dbo].[model_has_roles]&#xA;truncate table [dbo].[model_has_permissions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -8678,6 +10004,14 @@ FROM cowpay.customers</property>
       DTS:ObjectName="Constraint 13"
       DTS:To="Package\model_has_permissions" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 14]"
+      DTS:CreationName=""
+      DTS:DTSID="{CBC30F42-19EA-4B12-AC28-C771FDDF5D54}"
+      DTS:From="Package\Orders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 14"
+      DTS:To="Package\Transactions" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{607D49ED-94D6-432E-BBFC-6985BB2D366B}"
@@ -8720,11 +10054,11 @@ FROM cowpay.customers</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
       DTS:CreationName=""
-      DTS:DTSID="{29DA0378-4A9A-40C5-982E-BDEF38E05349}"
+      DTS:DTSID="{BEF74ABD-AEDA-4305-8594-6A5108E379E5}"
       DTS:From="Package\CashOuts"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 7"
-      DTS:To="Package\Transactions" />
+      DTS:To="Package\Orders" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
       DTS:CreationName=""
@@ -8769,7 +10103,7 @@ FROM cowpay.customers</property>
         <NodeLayout
           Size="123.2,41.6"
           Id="Package\CashOuts"
-          TopLeft="393.7142924192,430.352946830538" />
+          TopLeft="393.7142924192,431.576476259462" />
         <NodeLayout
           Size="128,41.6"
           Id="Package\Customers"
@@ -9118,60 +10452,26 @@ FROM cowpay.customers</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-28.6857143246398,27.2000005834242"
+              EndConnector="-28.68571432464,28.4235300123482"
               Start="0,0"
-              End="-28.6857143246398,19.7000005834242">
+              End="-28.68571432464,20.9235300123482">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.60000029171212" />
+                    End="0,10.2117650061741" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.60000029171212"
-                    Point2="0,13.6000002917121"
-                    Point3="-4,13.6000002917121" />
+                    Point1="0,10.2117650061741"
+                    Point2="0,14.2117650061741"
+                    Point3="-4,14.2117650061741" />
                   <mssgle:LineSegment
-                    End="-24.6857143246398,13.6000002917121" />
+                    End="-24.68571432464,14.2117650061741" />
                   <mssgle:CubicBezierSegment
-                    Point1="-24.6857143246398,13.6000002917121"
-                    Point2="-28.6857143246398,13.6000002917121"
-                    Point3="-28.6857143246398,17.6000002917121" />
+                    Point1="-24.68571432464,14.2117650061741"
+                    Point2="-28.68571432464,14.2117650061741"
+                    Point3="-28.68571432464,18.2117650061741" />
                   <mssgle:LineSegment
-                    End="-28.6857143246398,19.7000005834242" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="455.3142924192,471.952946830538">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-16.2285718275577,32.5176471446212"
-              Start="0,0"
-              End="-16.2285718275577,25.0176471446212">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.2588235723106" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.2588235723106"
-                    Point2="0,16.2588235723106"
-                    Point3="-4,16.2588235723106" />
-                  <mssgle:LineSegment
-                    End="-12.2285718275577,16.2588235723106" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-12.2285718275577,16.2588235723106"
-                    Point2="-16.2285718275577,16.2588235723106"
-                    Point3="-16.2285718275577,20.2588235723106" />
-                  <mssgle:LineSegment
-                    End="-16.2285718275577,25.0176471446212" />
+                    End="-28.68571432464,20.9235300123482" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9240,6 +10540,66 @@ FROM cowpay.customers</property>
                     Point3="29.5,56" />
                   <mssgle:LineSegment
                     End="18.5,56" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="109.6,41.6"
+          Id="Package\Orders"
+          TopLeft="180.000003065382,426.211770694561" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="393.7142924192,449.694123477012">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104.114289353818,0"
+              Start="0,0"
+              End="-96.6142893538181,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-96.6142893538181,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 14]"
+          TopLeft="234.800003065382,467.811770694561">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="204.285717526261,36.6588232805988"
+              Start="0,0"
+              End="204.285717526261,29.1588232805988">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.3294116402994" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3294116402994"
+                    Point2="0,18.3294116402994"
+                    Point3="4,18.3294116402994" />
+                  <mssgle:LineSegment
+                    End="200.285717526261,18.3294116402994" />
+                  <mssgle:CubicBezierSegment
+                    Point1="200.285717526261,18.3294116402994"
+                    Point2="204.285717526261,18.3294116402994"
+                    Point3="204.285717526261,22.3294116402994" />
+                  <mssgle:LineSegment
+                    End="204.285717526261,29.1588232805988" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9456,13 +10816,13 @@ FROM cowpay.customers</property>
     design-time-name="Package\CashOuts">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="146,42"
+          Size="145.6,41.6"
           Id="Package\CashOuts\Cashouts_SRC"
           TopLeft="409.6,108.8" />
         <NodeLayout
-          Size="120,42"
+          Size="120,41.6"
           Id="Package\CashOuts\cashouts"
           TopLeft="372.8,277.6" />
         <EdgeLayout
@@ -9496,9 +10856,7 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9647,7 +11005,7 @@ FROM cowpay.customers</property>
     design-time-name="Package\model_has_permissions">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="216,41.6"
           Id="Package\model_has_permissions\model_has_permissions_SRC"
@@ -9687,7 +11045,9 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10196,6 +11556,67 @@ FROM cowpay.customers</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Withdawal_Requests\withdrawal_requests">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Orders">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Orders\Orders_SRC"
+          TopLeft="201.1428605683,54.4470595871289" />
+        <NodeLayout
+          Size="109.6,41.6"
+          Id="Package\Orders\Orders"
+          TopLeft="210.285717866859,231.247062066682" />
+        <EdgeLayout
+          Id="Package\Orders.Paths[ODBC Source Output]"
+          TopLeft="266.714289217579,96.0470595871289">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,135.200002479553"
+              Start="0,0"
+              End="0,127.700002479553">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.700002479553" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Orders\Orders_SRC">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Orders\Orders">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
