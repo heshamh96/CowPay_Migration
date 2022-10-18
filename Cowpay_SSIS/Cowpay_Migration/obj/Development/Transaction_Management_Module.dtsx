@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{1E8F967C-E584-4958-B88E-CF728EF0B660}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{194F6674-E6D2-4DE2-B1AC-F157C98AE724}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -8785,6 +8785,1908 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\OrderTransactions STG to STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BB8896CA-4EE8-4FD3-9B28-B850A705A76B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="OrderTransactions STG to STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\OrderTransactions STG to STG\OrderTransactions"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OrderTransactions"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[OrderTransactions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OrderTransactions STG to STG\OrderTransactions.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[TranxCode]"
+                      cachedDataType="guid"
+                      cachedName="TranxCode"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[TranxCode]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TranxCode]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[TranxNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="199"
+                      cachedName="TranxNumber"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[TranxNumber]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TranxNumber]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[MerchantId]"
+                      cachedDataType="i8"
+                      cachedName="MerchantId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[MerchantCode]"
+                      cachedDataType="guid"
+                      cachedName="MerchantCode"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantCode]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[OrderId]"
+                      cachedDataType="i4"
+                      cachedName="OrderId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[OrderId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[OrderId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[Amount]"
+                      cachedDataType="numeric"
+                      cachedName="Amount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[FeesAmount]"
+                      cachedDataType="numeric"
+                      cachedName="FeesAmount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[FeesAmount]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[FeesAmount]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[VatAmount]"
+                      cachedDataType="numeric"
+                      cachedName="VatAmount"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[VatAmount]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[VatAmount]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[CustomerAmount]"
+                      cachedDataType="i4"
+                      cachedName="CustomerAmount"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAmount]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[MerchantAmount]"
+                      cachedDataType="i4"
+                      cachedName="MerchantAmount"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[MerchantAmount]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantAmount]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[CurrencyId]"
+                      cachedDataType="i4"
+                      cachedName="CurrencyId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CurrencyId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[Currency]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="Currency"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Currency]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Currency]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[TransactionTypeId]"
+                      cachedDataType="i4"
+                      cachedName="TransactionTypeId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[TransactionTypeId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TransactionTypeId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[OperationTypeId]"
+                      cachedDataType="i4"
+                      cachedName="OperationTypeId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[OperationTypeId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[OperationTypeId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="i4"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[TransactionStatusId]"
+                      cachedDataType="i4"
+                      cachedName="TransactionStatusId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[TransactionStatusId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TransactionStatusId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[PGWMetaRequest]"
+                      cachedDataType="i4"
+                      cachedName="PGWMetaRequest"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[PGWMetaRequest]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[PGWMetaRequest]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[PGWMetaResponse]"
+                      cachedDataType="i4"
+                      cachedName="PGWMetaResponse"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[PGWMetaResponse]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[PGWMetaResponse]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[IsFeesOnCustomer]"
+                      cachedDataType="i4"
+                      cachedName="IsFeesOnCustomer"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[IsFeesOnCustomer]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[IsFeesOnCustomer]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[IsSuccess]"
+                      cachedDataType="i4"
+                      cachedName="IsSuccess"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[IsSuccess]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[old_id]"
+                      cachedDataType="i8"
+                      cachedName="old_id"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Old_Id]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[old_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[TranxCode]"
+                      dataType="guid"
+                      name="TranxCode" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[TranxNumber]"
+                      dataType="wstr"
+                      length="50"
+                      name="TranxNumber" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[OrderId]"
+                      dataType="i8"
+                      name="OrderId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      dataType="numeric"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[FeesAmount]"
+                      dataType="numeric"
+                      name="FeesAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[VatAmount]"
+                      dataType="numeric"
+                      name="VatAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAmount]"
+                      dataType="numeric"
+                      name="CustomerAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[MerchantAmount]"
+                      dataType="numeric"
+                      name="MerchantAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[IsFeesOnCustomer]"
+                      dataType="bool"
+                      name="IsFeesOnCustomer" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyId]"
+                      dataType="i2"
+                      name="CurrencyId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Currency]"
+                      dataType="wstr"
+                      length="5"
+                      name="Currency" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[TransactionTypeId]"
+                      dataType="i2"
+                      name="TransactionTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[OperationTypeId]"
+                      dataType="i2"
+                      name="OperationTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[PGWMetaRequest]"
+                      dataType="nText"
+                      name="PGWMetaRequest" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[PGWMetaResponse]"
+                      dataType="nText"
+                      name="PGWMetaResponse" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                      dataType="bool"
+                      name="IsSuccess" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[TransactionStatusId]"
+                      dataType="i2"
+                      name="TransactionStatusId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Old_Id]"
+                      dataType="i8"
+                      name="Old_Id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OrderTransactions STG to STG\OrderTransactions.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\OrderTransactions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\OrderTransactions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\OrderTransactions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Order_Transactions_Prepared"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[OrderTransactions_Prepared]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TranxCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[TranxCode]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TranxCode]"
+                      name="TranxCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TranxNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[TranxNumber]"
+                      length="199"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TranxNumber]"
+                      name="TranxNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      name="MerchantId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      name="MerchantCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[OrderId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[OrderId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[OrderId]"
+                      name="OrderId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]"
+                      name="Amount"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[FeesAmount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FeesAmount]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[FeesAmount]"
+                      name="FeesAmount"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[VatAmount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[VatAmount]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[VatAmount]"
+                      name="VatAmount"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]"
+                      name="CustomerAmount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantAmount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantAmount]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantAmount]"
+                      name="MerchantAmount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CurrencyId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CurrencyId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CurrencyId]"
+                      name="CurrencyId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Currency]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Currency]"
+                      length="2"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Currency]"
+                      name="Currency"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TransactionTypeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[TransactionTypeId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TransactionTypeId]"
+                      name="TransactionTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[OperationTypeId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[OperationTypeId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[OperationTypeId]"
+                      name="OperationTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TransactionStatusId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[TransactionStatusId]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[TransactionStatusId]"
+                      name="TransactionStatusId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[PGWMetaRequest]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[PGWMetaRequest]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[PGWMetaRequest]"
+                      name="PGWMetaRequest"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[PGWMetaResponse]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[PGWMetaResponse]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[PGWMetaResponse]"
+                      name="PGWMetaResponse"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[IsFeesOnCustomer]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsFeesOnCustomer]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[IsFeesOnCustomer]"
+                      name="IsFeesOnCustomer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                      name="IsSuccess"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[old_id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[old_id]"
+                      name="old_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[TranxCode]"
+                      dataType="guid"
+                      name="TranxCode" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[TranxNumber]"
+                      dataType="wstr"
+                      length="199"
+                      name="TranxNumber" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[OrderId]"
+                      dataType="i4"
+                      name="OrderId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      dataType="numeric"
+                      name="Amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FeesAmount]"
+                      dataType="numeric"
+                      name="FeesAmount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[VatAmount]"
+                      dataType="numeric"
+                      name="VatAmount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
+                      dataType="i4"
+                      name="CustomerAmount" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantAmount]"
+                      dataType="i4"
+                      name="MerchantAmount" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CurrencyId]"
+                      dataType="i4"
+                      name="CurrencyId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Currency]"
+                      dataType="wstr"
+                      length="2"
+                      name="Currency" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[TransactionTypeId]"
+                      dataType="i4"
+                      name="TransactionTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[OperationTypeId]"
+                      dataType="i4"
+                      name="OperationTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="i4"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[TransactionStatusId]"
+                      dataType="i4"
+                      name="TransactionStatusId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[PGWMetaRequest]"
+                      dataType="i4"
+                      name="PGWMetaRequest" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[PGWMetaResponse]"
+                      dataType="i4"
+                      name="PGWMetaResponse" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsFeesOnCustomer]"
+                      dataType="i4"
+                      name="IsFeesOnCustomer" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                      dataType="i4"
+                      name="IsSuccess" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      dataType="i8"
+                      name="old_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[TranxCode]"
+                      dataType="guid"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[TranxCode]"
+                      name="TranxCode" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[TranxNumber]"
+                      dataType="wstr"
+                      length="199"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[TranxNumber]"
+                      name="TranxNumber" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      dataType="i8"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      name="MerchantId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      name="MerchantCode" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[OrderId]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[OrderId]"
+                      name="OrderId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      dataType="numeric"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      name="Amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[FeesAmount]"
+                      dataType="numeric"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[FeesAmount]"
+                      name="FeesAmount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[VatAmount]"
+                      dataType="numeric"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[VatAmount]"
+                      name="VatAmount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CustomerAmount]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CustomerAmount]"
+                      name="CustomerAmount" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantAmount]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantAmount]"
+                      name="MerchantAmount" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CurrencyId]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CurrencyId]"
+                      name="CurrencyId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[Currency]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[Currency]"
+                      name="Currency" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[TransactionTypeId]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[TransactionTypeId]"
+                      name="TransactionTypeId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[OperationTypeId]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[OperationTypeId]"
+                      name="OperationTypeId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[TransactionStatusId]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[TransactionStatusId]"
+                      name="TransactionStatusId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[PGWMetaRequest]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[PGWMetaRequest]"
+                      name="PGWMetaRequest" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[PGWMetaResponse]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[PGWMetaResponse]"
+                      name="PGWMetaResponse" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[IsFeesOnCustomer]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[IsFeesOnCustomer]"
+                      name="IsFeesOnCustomer" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                      name="IsSuccess" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      dataType="i8"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      name="old_id" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\OrderTransactions STG to STG.Paths[OLE DB Source Output]"
+              endId="Package\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\OrderTransactions STG to TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DAE537E6-5CB9-4C72-B56D-0D8B27BAB9D5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="OrderTransactions STG to TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OrderTransactions_STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[OrderTransactions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TranxCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[TranxCode]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TranxCode]"
+                      name="TranxCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TranxNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[TranxNumber]"
+                      length="50"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TranxNumber]"
+                      name="TranxNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[OrderId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[OrderId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[OrderId]"
+                      name="OrderId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      name="MerchantId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      name="MerchantCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Amount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Amount]"
+                      name="Amount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[FeesAmount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[FeesAmount]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[FeesAmount]"
+                      name="FeesAmount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[VatAmount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[VatAmount]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[VatAmount]"
+                      name="VatAmount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[CustomerAmount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[CustomerAmount]"
+                      name="CustomerAmount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[MerchantAmount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantAmount]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[MerchantAmount]"
+                      name="MerchantAmount"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[IsFeesOnCustomer]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[IsFeesOnCustomer]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[IsFeesOnCustomer]"
+                      name="IsFeesOnCustomer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[CurrencyId]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[CurrencyId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[CurrencyId]"
+                      name="CurrencyId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Currency]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[Currency]"
+                      length="5"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Currency]"
+                      name="Currency"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TransactionTypeId]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[TransactionTypeId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TransactionTypeId]"
+                      name="TransactionTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[OperationTypeId]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[OperationTypeId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[OperationTypeId]"
+                      name="OperationTypeId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[PGWMetaRequest]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[PGWMetaRequest]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[PGWMetaRequest]"
+                      name="PGWMetaRequest"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[PGWMetaResponse]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[PGWMetaResponse]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[PGWMetaResponse]"
+                      name="PGWMetaResponse"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                      name="IsSuccess"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TransactionStatusId]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[TransactionStatusId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TransactionStatusId]"
+                      name="TransactionStatusId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Old_Id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Id]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Old_Id]"
+                      name="Old_Id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[TranxCode]"
+                      dataType="guid"
+                      name="TranxCode" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[TranxNumber]"
+                      dataType="wstr"
+                      length="50"
+                      name="TranxNumber" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[OrderId]"
+                      dataType="i8"
+                      name="OrderId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      dataType="numeric"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[FeesAmount]"
+                      dataType="numeric"
+                      name="FeesAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[VatAmount]"
+                      dataType="numeric"
+                      name="VatAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
+                      dataType="numeric"
+                      name="CustomerAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantAmount]"
+                      dataType="numeric"
+                      name="MerchantAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[IsFeesOnCustomer]"
+                      dataType="bool"
+                      name="IsFeesOnCustomer" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[CurrencyId]"
+                      dataType="i2"
+                      name="CurrencyId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[Currency]"
+                      dataType="wstr"
+                      length="5"
+                      name="Currency" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[TransactionTypeId]"
+                      dataType="i2"
+                      name="TransactionTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[OperationTypeId]"
+                      dataType="i2"
+                      name="OperationTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[PGWMetaRequest]"
+                      dataType="nText"
+                      name="PGWMetaRequest" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[PGWMetaResponse]"
+                      dataType="nText"
+                      name="PGWMetaResponse" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                      dataType="bool"
+                      name="IsSuccess" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[TransactionStatusId]"
+                      dataType="i2"
+                      name="TransactionStatusId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Id]"
+                      dataType="i8"
+                      name="Old_Id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i8"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[TranxCode]"
+                      dataType="guid"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[TranxCode]"
+                      name="TranxCode" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[TranxNumber]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[TranxNumber]"
+                      name="TranxNumber" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[OrderId]"
+                      dataType="i8"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[OrderId]"
+                      name="OrderId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      dataType="i8"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      name="MerchantId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      name="MerchantCode" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      dataType="numeric"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[FeesAmount]"
+                      dataType="numeric"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[FeesAmount]"
+                      name="FeesAmount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[VatAmount]"
+                      dataType="numeric"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[VatAmount]"
+                      name="VatAmount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[CustomerAmount]"
+                      dataType="numeric"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[CustomerAmount]"
+                      name="CustomerAmount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[MerchantAmount]"
+                      dataType="numeric"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[MerchantAmount]"
+                      name="MerchantAmount"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[IsFeesOnCustomer]"
+                      dataType="bool"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[IsFeesOnCustomer]"
+                      name="IsFeesOnCustomer" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[CurrencyId]"
+                      dataType="i2"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[CurrencyId]"
+                      name="CurrencyId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[Currency]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[Currency]"
+                      name="Currency" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[TransactionTypeId]"
+                      dataType="i2"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[TransactionTypeId]"
+                      name="TransactionTypeId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[OperationTypeId]"
+                      dataType="i2"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[OperationTypeId]"
+                      name="OperationTypeId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[PGWMetaRequest]"
+                      dataType="nText"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[PGWMetaRequest]"
+                      name="PGWMetaRequest" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[PGWMetaResponse]"
+                      dataType="nText"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[PGWMetaResponse]"
+                      name="PGWMetaResponse" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                      dataType="bool"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                      name="IsSuccess" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[TransactionStatusId]"
+                      dataType="i2"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[TransactionStatusId]"
+                      name="TransactionStatusId" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[Old_Id]"
+                      dataType="i8"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[Old_Id]"
+                      name="Old_Id" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OrderTransactions_TRGT"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[OrderTransactions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Connections[OleDbConnection]"
+                  connectionManagerID="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TransactionManagement]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i8"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[TranxCode]"
+                      cachedDataType="guid"
+                      cachedName="TranxCode"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TranxCode]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TranxCode]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[TranxNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TranxNumber"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TranxNumber]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TranxNumber]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[OrderId]"
+                      cachedDataType="i8"
+                      cachedName="OrderId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[OrderId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[OrderId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantId]"
+                      cachedDataType="i8"
+                      cachedName="MerchantId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[MerchantId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantCode]"
+                      cachedDataType="guid"
+                      cachedName="MerchantCode"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[MerchantCode]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[Amount]"
+                      cachedDataType="numeric"
+                      cachedName="Amount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Amount]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[FeesAmount]"
+                      cachedDataType="numeric"
+                      cachedName="FeesAmount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[FeesAmount]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[FeesAmount]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[VatAmount]"
+                      cachedDataType="numeric"
+                      cachedName="VatAmount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[VatAmount]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[VatAmount]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[CustomerAmount]"
+                      cachedDataType="numeric"
+                      cachedName="CustomerAmount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAmount]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[CustomerAmount]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[MerchantAmount]"
+                      cachedDataType="numeric"
+                      cachedName="MerchantAmount"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantAmount]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[MerchantAmount]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[IsFeesOnCustomer]"
+                      cachedDataType="bool"
+                      cachedName="IsFeesOnCustomer"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsFeesOnCustomer]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[IsFeesOnCustomer]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[CurrencyId]"
+                      cachedDataType="i2"
+                      cachedName="CurrencyId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[CurrencyId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[Currency]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="Currency"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Currency]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Currency]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[TransactionTypeId]"
+                      cachedDataType="i2"
+                      cachedName="TransactionTypeId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TransactionTypeId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TransactionTypeId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[OperationTypeId]"
+                      cachedDataType="i2"
+                      cachedName="OperationTypeId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[OperationTypeId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[OperationTypeId]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[PGWMetaRequest]"
+                      cachedDataType="nText"
+                      cachedName="PGWMetaRequest"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[PGWMetaRequest]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[PGWMetaRequest]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[PGWMetaResponse]"
+                      cachedDataType="nText"
+                      cachedName="PGWMetaResponse"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[PGWMetaResponse]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[PGWMetaResponse]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[IsSuccess]"
+                      cachedDataType="bool"
+                      cachedName="IsSuccess"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[IsSuccess]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="UpdatedDate"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[TransactionStatusId]"
+                      cachedDataType="i2"
+                      cachedName="TransactionStatusId"
+                      externalMetadataColumnId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TransactionStatusId]"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TransactionStatusId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i8"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TranxCode]"
+                      dataType="guid"
+                      name="TranxCode" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TranxNumber]"
+                      dataType="wstr"
+                      length="50"
+                      name="TranxNumber" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[OrderId]"
+                      dataType="i8"
+                      name="OrderId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
+                      dataType="numeric"
+                      name="Amount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[FeesAmount]"
+                      dataType="numeric"
+                      name="FeesAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[VatAmount]"
+                      dataType="numeric"
+                      name="VatAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAmount]"
+                      dataType="numeric"
+                      name="CustomerAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantAmount]"
+                      dataType="numeric"
+                      name="MerchantAmount"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsFeesOnCustomer]"
+                      dataType="bool"
+                      name="IsFeesOnCustomer" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CurrencyId]"
+                      dataType="i2"
+                      name="CurrencyId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Currency]"
+                      dataType="wstr"
+                      length="5"
+                      name="Currency" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TransactionTypeId]"
+                      dataType="i2"
+                      name="TransactionTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[OperationTypeId]"
+                      dataType="i2"
+                      name="OperationTypeId" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[PGWMetaRequest]"
+                      dataType="nText"
+                      name="PGWMetaRequest" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[PGWMetaResponse]"
+                      dataType="nText"
+                      name="PGWMetaResponse" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                      dataType="bool"
+                      name="IsSuccess" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp"
+                      name="UpdatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TransactionStatusId]"
+                      dataType="i2"
+                      name="TransactionStatusId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\OrderTransactions STG to TRGT.Paths[OLE DB Source Output]"
+              endId="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Truncate_STG"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -8798,7 +10700,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[CardMetaData]&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]&#xA;truncate table [dbo].[Orders-Meta]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[CardMetaData]&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]&#xA;truncate table [dbo].[Orders-Meta]&#xA;truncate table [dbo].[OrderTransactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -8810,12 +10712,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate_TRGT"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[CardMetaData]&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]&#xA;truncate table [dbo].[OrderMeta]&#xA;truncate table [dbo].[Orders]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[CardMetaData]&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]&#xA;truncate table [dbo].[OrderMeta]&#xA;truncate table [dbo].[Orders]&#xA;truncate table [dbo].[OrderTransactions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -11749,11 +13651,19 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 15]"
       DTS:CreationName=""
-      DTS:DTSID="{F0FA8FB2-EAA4-49E6-8484-02AABBA7D1FC}"
+      DTS:DTSID="{2251110B-FC19-4484-9631-AA251DEE1B21}"
       DTS:From="Package\Orders &amp; Orders_Meta  STG to STG"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 15"
-      DTS:To="Package\Truncate_TRGT" />
+      DTS:To="Package\OrderTransactions STG to STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 16]"
+      DTS:CreationName=""
+      DTS:DTSID="{9FD42DE5-696D-4A7E-AE40-BCCF2715B5A1}"
+      DTS:From="Package\Orders STG to TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 16"
+      DTS:To="Package\OrderTransactions STG to TRGT" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -11856,10 +13766,6 @@
           Id="Package\Customers_Prepared STG to STG"
           TopLeft="472.857151080151,165.811767048159" />
         <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Orders STG to TRGT"
-          TopLeft="81.7142871058714,638.494123258228" />
-        <NodeLayout
           Size="208,41.6"
           Id="Package\MobileWallets STG to TRGT"
           TopLeft="38.2857149377165,176.800002479553" />
@@ -11871,6 +13777,10 @@
           Size="245.6,41.6"
           Id="Package\Orders &amp; Orders_Meta  STG to STG"
           TopLeft="451.428579116354,513.929416672334" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Orders STG to TRGT"
+          TopLeft="82.2857156870314,637.882358543766" />
         <NodeLayout
           Size="207.2,41.6"
           Id="Package\Orders_Meta  STG to TRGT"
@@ -12059,6 +13969,40 @@
                     Point3="20.4571439275937,20.6352939246025" />
                   <mssgle:LineSegment
                     End="20.4571439275937,25.7705878492051" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 14]"
+          TopLeft="204.17143028415,614.776476113607">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-34.6857145971186,23.1058824301589"
+              Start="0,0"
+              End="-34.6857145971186,15.6058824301589">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.55294121507944" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.55294121507944"
+                    Point2="0,11.5529412150794"
+                    Point3="-4,11.5529412150794" />
+                  <mssgle:LineSegment
+                    End="-30.6857145971186,11.5529412150794" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-30.6857145971186,11.5529412150794"
+                    Point2="-34.6857145971186,11.5529412150794"
+                    Point3="-34.6857145971186,15.5529412150794" />
+                  <mssgle:LineSegment
+                    End="-34.6857145971186,15.6058824301589" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12303,32 +14247,36 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="222.4,41.6"
+          Id="Package\OrderTransactions STG to STG"
+          TopLeft="429.714293032277,600.847063233531" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 14]"
-          TopLeft="204.17143028415,614.776476113607">
+          Id="Package.PrecedenceConstraints[Constraint 15]"
+          TopLeft="574.228579116354,555.529416672334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-35.2571431782786,23.7176471446207"
+              EndConnector="-33.3142860840774,45.3176465611966"
               Start="0,0"
-              End="-35.2571431782786,16.2176471446207">
+              End="-33.3142860840774,37.8176465611966">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,7.85882357231037" />
+                    End="0,18.6588232805983" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,7.85882357231037"
-                    Point2="0,11.8588235723104"
-                    Point3="-4,11.8588235723104" />
+                    Point1="0,18.6588232805983"
+                    Point2="0,22.6588232805983"
+                    Point3="-4,22.6588232805983" />
                   <mssgle:LineSegment
-                    End="-31.2571431782786,11.8588235723104" />
+                    End="-29.3142860840774,22.6588232805983" />
                   <mssgle:CubicBezierSegment
-                    Point1="-31.2571431782786,11.8588235723104"
-                    Point2="-35.2571431782786,11.8588235723104"
-                    Point3="-35.2571431782786,15.8588235723104" />
+                    Point1="-29.3142860840774,22.6588232805983"
+                    Point2="-33.3142860840774,22.6588232805983"
+                    Point3="-33.3142860840774,26.6588232805983" />
                   <mssgle:LineSegment
-                    End="-35.2571431782786,16.2176471446207" />
+                    End="-33.3142860840774,37.8176465611966" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12337,32 +14285,36 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="229.6,41.6"
+          Id="Package\OrderTransactions STG to TRGT"
+          TopLeft="67.4285725768732,727.952947122251" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 15]"
-          TopLeft="534.628579116354,513.929416672334">
+          Id="Package.PrecedenceConstraints[Constraint 16]"
+          TopLeft="169.485715687031,679.482358543766">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-278.62857645969,-398.305886222417"
+              EndConnector="12.7428568898418,48.4705885784846"
               Start="0,0"
-              End="-278.62857645969,-390.805886222417">
+              End="12.7428568898418,40.9705885784846">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-194.175105419992" />
+                    End="0,20.2352942892423" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-194.175105419992"
-                    Point2="0,-198.175105419992"
-                    Point3="-4,-198.175105419992" />
+                    Point1="0,20.2352942892423"
+                    Point2="0,24.2352942892423"
+                    Point3="4,24.2352942892423" />
                   <mssgle:LineSegment
-                    End="-274.62857645969,-198.175105419992" />
+                    End="8.74285688984179,24.2352942892423" />
                   <mssgle:CubicBezierSegment
-                    Point1="-274.62857645969,-198.175105419992"
-                    Point2="-278.62857645969,-198.175105419992"
-                    Point3="-278.62857645969,-202.175105419992" />
+                    Point1="8.74285688984179,24.2352942892423"
+                    Point2="12.7428568898418,24.2352942892423"
+                    Point3="12.7428568898418,28.2352942892423" />
                   <mssgle:LineSegment
-                    End="-278.62857645969,-390.805886222417" />
+                    End="12.7428568898418,40.9705885784846" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12600,7 +14552,7 @@
     design-time-name="Package\Cards_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156,41.6"
           Id="Package\Cards_Prepared STG to STG\Data Conversion"
@@ -12638,7 +14590,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12672,7 +14626,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12860,94 +14816,6 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Orders STG to TRGT">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="141.6,41.6"
-          Id="Package\Orders STG to TRGT\Orders_TRGT"
-          TopLeft="60,220" />
-        <NodeLayout
-          Size="134.4,41.6"
-          Id="Package\Orders STG to TRGT\Orders_SRC"
-          TopLeft="68.8,60" />
-        <NodeLayout
-          Size="151.2,41.6"
-          Id="Package\Orders STG to TRGT\fk_metadata_id"
-          TopLeft="248.8,137.6" />
-        <EdgeLayout
-          Id="Package\Orders STG to TRGT.Paths[OLE DB Source Output]"
-          TopLeft="136,101.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="188.4,36"
-              Start="0,0"
-              End="188.4,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14"
-                    Point2="0,18"
-                    Point3="4,18" />
-                  <mssgle:LineSegment
-                    End="184.4,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="184.4,18"
-                    Point2="188.4,18"
-                    Point3="188.4,22" />
-                  <mssgle:LineSegment
-                    End="188.4,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Orders STG to TRGT.Paths[Derived Column Output]"
-          TopLeft="324.4,179.2">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-193.6,40.8"
-              Start="0,0"
-              End="-193.6,33.3">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.4"
-                    Point2="0,20.4"
-                    Point3="-4,20.4" />
-                  <mssgle:LineSegment
-                    End="-189.6,20.4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-189.6,20.4"
-                    Point2="-193.6,20.4"
-                    Point3="-193.6,24.4" />
-                  <mssgle:LineSegment
-                    End="-193.6,33.3" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <TaskHost
     design-time-name="Package\MobileWallets STG to TRGT">
     <LayoutInfo>
@@ -13157,18 +15025,110 @@
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Orders STG to TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Orders STG to TRGT\Orders_SRC"
+          TopLeft="68.8,60" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Orders STG to TRGT\Orders_TRGT"
+          TopLeft="60,220" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Orders STG to TRGT\fk_metadata_id"
+          TopLeft="248.8,137.6" />
+        <EdgeLayout
+          Id="Package\Orders STG to TRGT.Paths[Derived Column Output]"
+          TopLeft="324.4,179.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-193.6,40.8"
+              Start="0,0"
+              End="-193.6,33.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4"
+                    Point2="0,20.4"
+                    Point3="-4,20.4" />
+                  <mssgle:LineSegment
+                    End="-189.6,20.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-189.6,20.4"
+                    Point2="-193.6,20.4"
+                    Point3="-193.6,24.4" />
+                  <mssgle:LineSegment
+                    End="-193.6,33.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Orders STG to TRGT.Paths[OLE DB Source Output]"
+          TopLeft="136,101.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="188.4,36"
+              Start="0,0"
+              End="188.4,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="4,18" />
+                  <mssgle:LineSegment
+                    End="184.4,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="184.4,18"
+                    Point2="188.4,18"
+                    Point3="188.4,22" />
+                  <mssgle:LineSegment
+                    End="188.4,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
     design-time-name="Package\Orders_Meta  STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Orders_Meta  STG to TRGT\OrdersMeta_TRGT"
-          TopLeft="137.6,202.4" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="157.6,41.6"
           Id="Package\Orders_Meta  STG to TRGT\OrdersMeta_SRC"
           TopLeft="140,48" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Orders_Meta  STG to TRGT\OrdersMeta_TRGT"
+          TopLeft="137.6,202.4" />
         <EdgeLayout
           Id="Package\Orders_Meta  STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="219.4,89.6">
@@ -13188,7 +15148,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13224,7 +15186,7 @@
     design-time-name="Package\WithdrawalReqests STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="200.8,41.6"
           Id="Package\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT"
@@ -13264,9 +15226,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13517,6 +15477,158 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\OrderTransactions STG to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="218.4,41.6"
+          Id="Package\OrderTransactions STG to STG\Order_Transactions_Prepared"
+          TopLeft="176.571431578422,45.8823535846592" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\OrderTransactions STG to STG\OrderTransactions"
+          TopLeft="174.857145834942,225.129414922061" />
+        <EdgeLayout
+          Id="Package\OrderTransactions STG to STG.Paths[OLE DB Source Output]"
+          TopLeft="285.771431578422,87.4823535846592">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28.5142857434798,137.647061337402"
+              Start="0,0"
+              End="-28.5142857434798,130.147061337402">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.8235306687009" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,64.8235306687009"
+                    Point2="0,68.8235306687009"
+                    Point3="-4,68.8235306687009" />
+                  <mssgle:LineSegment
+                    End="-24.5142857434798,68.8235306687009" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24.5142857434798,68.8235306687009"
+                    Point2="-28.5142857434798,68.8235306687009"
+                    Point3="-28.5142857434798,72.8235306687009" />
+                  <mssgle:LineSegment
+                    End="-28.5142857434798,130.147061337402" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\OrderTransactions STG to STG\Order_Transactions_Prepared">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OrderTransactions STG to STG\OrderTransactions">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\OrderTransactions STG to TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\OrderTransactions STG to TRGT\OrderTransactions_STG"
+          TopLeft="314.4,76.8" />
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT"
+          TopLeft="302.4,246.4" />
+        <EdgeLayout
+          Id="Package\OrderTransactions STG to TRGT.Paths[OLE DB Source Output]"
+          TopLeft="409.2,118.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.39999999999992,128"
+              Start="0,0"
+              End="-8.39999999999992,120.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60"
+                    Point2="0,64"
+                    Point3="-4,64" />
+                  <mssgle:LineSegment
+                    End="-4.39999999999992,64" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.39999999999992,64"
+                    Point2="-8.39999999999992,64"
+                    Point3="-8.39999999999992,68" />
+                  <mssgle:LineSegment
+                    End="-8.39999999999992,120.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\OrderTransactions STG to TRGT\OrderTransactions_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OrderTransactions STG to TRGT\OrderTransactions_TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
