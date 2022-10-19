@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Z_Pre_Executions"
   DTS:PackageType="5"
-  DTS:VersionBuild="48"
-  DTS:VersionGUID="{4CDA25CE-BFFC-4D01-84E7-A3447201B373}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{6595A79A-57F6-4061-AF04-C6B31C7568B7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5713,7 +5713,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -5723,6 +5725,13 @@ group by bank_name</property>
           Size="225.6,43.2"
           Id="Package\Dangerouse, Do Not Use !"
           TopLeft="289.142862066931,384.564710232296" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="249.6,232"
+          Size="249.6,43.2"
+          Id="Package\ExcelpayIdentity_LKP"
+          TopLeft="155,192" />
         <NodeLayout
           Size="104,42"
           Id="Package\Merchants_LKPs\Cities"
@@ -5774,31 +5783,31 @@ group by bank_name</property>
           Id="Package\PaymentIntegrationManagement_Stage"
           TopLeft="342.428577260096,300.38823911426" />
         <NodeLayout
-          Size="106,42"
+          Size="105.6,41.6"
           Id="Package\Transactions_LKP\Banks"
           TopLeft="119.085716913184,5.5" />
         <NodeLayout
-          Size="144,42"
+          Size="144,41.6"
           Id="Package\Transactions_LKP\ChannelTypes"
           TopLeft="96.2285736667867,207.994120486963" />
         <NodeLayout
-          Size="120,42"
+          Size="120,41.6"
           Id="Package\Transactions_LKP\Currency"
           TopLeft="113.371431101585,78.9117657354547" />
         <NodeLayout
-          Size="182,42"
+          Size="182.4,41.6"
           Id="Package\Transactions_LKP\PaymentMethodTypes"
           TopLeft="75.6571447450287,344.511769381856" />
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\Transactions_LKP\PaymentStatusTypes"
           TopLeft="81.3714305566282,278.017650499311" />
         <NodeLayout
-          Size="129,42"
+          Size="128.8,41.6"
           Id="Package\Transactions_LKP\PGWTypes"
           TopLeft="105.942859546506,143.75882546844" />
         <NodeLayout
-          Size="255,42"
+          Size="255.2,41.6"
           Id="Package\Transactions_LKP\StatusTypes (withdrawalStatusTypes)"
           TopLeft="42.7428655410302,414.5882403905" />
         <EdgeLayout
@@ -5820,9 +5829,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5844,9 +5851,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5868,9 +5873,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5892,9 +5895,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5916,9 +5917,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5940,15 +5939,13 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="360,510"
+          PanelSize="360,510.4"
           Size="184.8,43.2"
           Id="Package\Transactions_LKP"
           TopLeft="449.714293372874,182.164708044455" />
@@ -6003,7 +6000,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6025,7 +6024,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6047,7 +6048,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6069,7 +6072,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6091,7 +6096,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6113,7 +6120,9 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6135,13 +6144,15 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="360,612.8"
+          PanelSize="545.6,612.8"
           Size="545.6,43.2"
           Id="Package\Transactions_LKP (Neat Trick) shall be removed as soon as the Transactions Ref_LKPs is fixed"
           TopLeft="95.3142867652738,460.329417255758" />
@@ -6151,30 +6162,64 @@ group by bank_name</property>
           TopLeft="581.714295620821,18.2117645686061" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="601.000008719308,145.023530449917">
+          TopLeft="600.800008719308,145.223530449917">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-58.785715346434,37.141177594538"
+              EndConnector="-58.685715346434,36.941177594538"
               Start="0,0"
-              End="-58.785715346434,29.641177594538">
+              End="-58.685715346434,29.441177594538">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.570588797269" />
+                    End="0,14.470588797269" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.570588797269"
-                    Point2="0,18.570588797269"
-                    Point3="-4,18.570588797269" />
+                    Point1="0,14.470588797269"
+                    Point2="0,18.470588797269"
+                    Point3="-4,18.470588797269" />
                   <mssgle:LineSegment
-                    End="-54.785715346434,18.570588797269" />
+                    End="-54.685715346434,18.470588797269" />
                   <mssgle:CubicBezierSegment
-                    Point1="-54.785715346434,18.570588797269"
-                    Point2="-58.785715346434,18.570588797269"
-                    Point3="-58.785715346434,22.570588797269" />
+                    Point1="-54.685715346434,18.470588797269"
+                    Point2="-58.685715346434,18.470588797269"
+                    Point3="-58.685715346434,22.470588797269" />
                   <mssgle:LineSegment
-                    End="-58.785715346434,29.641177594538" />
+                    End="-58.685715346434,29.441177594538" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="449.714293372874,203.764708044455">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-45.1142933728739,9.83529195554496"
+              Start="0,0"
+              End="-37.6142933728739,9.83529195554496">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.557146686437,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.557146686437,0"
+                    Point2="-22.557146686437,0"
+                    Point3="-22.557146686437,4" />
+                  <mssgle:LineSegment
+                    End="-22.557146686437,5.83529195554496" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.557146686437,5.83529195554496"
+                    Point2="-22.557146686437,9.83529195554496"
+                    Point3="-26.557146686437,9.83529195554496" />
+                  <mssgle:LineSegment
+                    End="-37.6142933728739,9.83529195554496" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6285,13 +6330,6 @@ group by bank_name</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="False"
-          PanelSize="249.6,232"
-          Size="249.6,43.2"
-          Id="Package\ExcelpayIdentity_LKP"
-          TopLeft="155,192" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="279.8,235.2">
@@ -6318,40 +6356,6 @@ group by bank_name</property>
                     Point3="207.028577260096,36.59411955713" />
                   <mssgle:LineSegment
                     End="207.028577260096,57.68823911426" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="449.714293372874,203.764708044455">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-45.114293372874,9.83529195554502"
-              Start="0,0"
-              End="-37.614293372874,9.83529195554502">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-18.557146686437,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-18.557146686437,0"
-                    Point2="-22.557146686437,0"
-                    Point3="-22.557146686437,4" />
-                  <mssgle:LineSegment
-                    End="-22.557146686437,5.83529195554502" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-22.557146686437,5.83529195554502"
-                    Point2="-22.557146686437,9.83529195554502"
-                    Point3="-26.557146686437,9.83529195554502" />
-                  <mssgle:LineSegment
-                    End="-37.614293372874,9.83529195554502" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6776,7 +6780,7 @@ group by bank_name</property>
     design-time-name="Package\Transactions_LKP\PGWTypes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="191.2,41.6"
           Id="Package\Transactions_LKP\PGWTypes\Payment_Gateways_Src"
@@ -6804,9 +6808,7 @@ group by bank_name</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

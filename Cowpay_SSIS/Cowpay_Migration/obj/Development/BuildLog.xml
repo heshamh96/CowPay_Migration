@@ -13,12 +13,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Transaction_Management_Module.dtsx</Name>
-      <LastWriteTime>2022-10-18T11:36:15.2937315Z</LastWriteTime>
+      <LastWriteTime>2022-10-18T16:40:57.4598221Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Populate Cowpay_Production_Simulation_DB.dtsx</Name>
-      <LastWriteTime>2022-10-16T16:51:46.3503967Z</LastWriteTime>
+      <LastWriteTime>2022-10-19T13:32:38.0126779Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -33,12 +33,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Cleansing_Data.dtsx</Name>
-      <LastWriteTime>2022-10-17T10:35:56.7971554Z</LastWriteTime>
+      <LastWriteTime>2022-10-19T13:32:38.0276536Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Z_Pre_Executions.dtsx</Name>
-      <LastWriteTime>2022-10-12T17:30:14.7002466Z</LastWriteTime>
+      <LastWriteTime>2022-10-19T12:59:05.5619053Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

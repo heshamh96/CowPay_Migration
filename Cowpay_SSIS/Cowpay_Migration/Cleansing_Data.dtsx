@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Cleansing_Data"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{E5EA2473-B1F6-4C10-A3D5-358B7188811A}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{0D79907B-06E4-4C2E-8E62-773627385164}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -317,7 +317,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="201.6,41.6"
           Id="Package\Merchants_Cleansing_Activities\Cleanse Users (m_Tax_id)"
@@ -351,7 +351,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -625,37 +627,37 @@
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="False"
+          IsExpanded="True"
           PanelSize="363.2,688.8"
-          Size="363.2,43.2"
+          Size="363.2,732"
           Id="Package\Transactions_Cleanseing Activities"
-          TopLeft="373.71429092057,186.44705914956" />
+          TopLeft="374.28571950173,186.44705914956" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="151.828570873883,67.1058818467348">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="403.485720046687,119.341177302825"
+              EndConnector="404.057148627847,119.341177302825"
               Start="0,0"
-              End="403.485720046687,111.841177302825">
+              End="404.057148627847,111.841177302825">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.6705886514127" />
+                    End="0,55.6705886514126" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,55.6705886514127"
-                    Point2="0,59.6705886514127"
-                    Point3="4,59.6705886514127" />
+                    Point1="0,55.6705886514126"
+                    Point2="0,59.6705886514126"
+                    Point3="4,59.6705886514126" />
                   <mssgle:LineSegment
-                    End="399.485720046687,59.6705886514127" />
+                    End="400.057148627847,59.6705886514126" />
                   <mssgle:CubicBezierSegment
-                    Point1="399.485720046687,59.6705886514127"
-                    Point2="403.485720046687,59.6705886514127"
-                    Point3="403.485720046687,63.6705886514127" />
+                    Point1="400.057148627847,59.6705886514126"
+                    Point2="404.057148627847,59.6705886514126"
+                    Point3="404.057148627847,63.6705886514126" />
                   <mssgle:LineSegment
-                    End="403.485720046687,111.841177302825" />
+                    End="404.057148627847,111.841177302825" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

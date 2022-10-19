@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Populate Cowpay_Production_Simulation_DB"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{0ECAF000-ADE0-4D51-BEBA-64EF2D0EE344}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{F0A2AA61-DFA7-43AE-8FFA-64EC6A24BB62}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2960,6 +2960,848 @@ FROM cowpay.customers</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\merchant_financials_configs"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0729407F-43D6-44D9-BACD-518BD26C6200}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="merchant_financials_configs"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\merchant_financials_configs\Merchant_Configurations"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Merchant_Configurations"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[merchant_financials_configs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\merchant_financials_configs\Merchant_Configurations.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[merchant_code]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="merchant_code"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[merchant_code]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[merchant_code]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[b2b_available_balance_threshold]"
+                      cachedDataType="i1"
+                      cachedName="b2b_available_balance_threshold"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[b2b_available_balance_threshold]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[b2b_available_balance_threshold]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[available_balance_threshold]"
+                      cachedDataType="i1"
+                      cachedName="available_balance_threshold"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[available_balance_threshold]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[available_balance_threshold]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[fawry_percentage]"
+                      cachedDataType="r8"
+                      cachedName="fawry_percentage"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[fawry_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[fawry_percentage]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[fawry_fixed]"
+                      cachedDataType="r8"
+                      cachedName="fawry_fixed"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[fawry_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[fawry_fixed]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[card_percentage]"
+                      cachedDataType="r8"
+                      cachedName="card_percentage"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[card_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[card_percentage]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[card_fixed]"
+                      cachedDataType="r8"
+                      cachedName="card_fixed"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[card_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[card_fixed]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[collection_percentage]"
+                      cachedDataType="r8"
+                      cachedName="collection_percentage"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[collection_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[collection_percentage]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[collection_fixed]"
+                      cachedDataType="r8"
+                      cachedName="collection_fixed"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[collection_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[collection_fixed]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[b2b_percentage]"
+                      cachedDataType="r8"
+                      cachedName="b2b_percentage"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[b2b_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[b2b_percentage]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[b2b_fixed]"
+                      cachedDataType="r8"
+                      cachedName="b2b_fixed"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[b2b_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[b2b_fixed]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[bank_cashout]"
+                      cachedDataType="r8"
+                      cachedName="bank_cashout"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[bank_cashout]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[bank_cashout]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[wallet_cashout]"
+                      cachedDataType="r8"
+                      cachedName="wallet_cashout"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[wallet_cashout]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[wallet_cashout]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[fawry_cashout]"
+                      cachedDataType="r8"
+                      cachedName="fawry_cashout"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[fawry_cashout]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[fawry_cashout]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[updated_at]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[meeza_percentage]"
+                      cachedDataType="r8"
+                      cachedName="meeza_percentage"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[meeza_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_percentage]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[meeza_fixed]"
+                      cachedDataType="r8"
+                      cachedName="meeza_fixed"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[meeza_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_fixed]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[meeza_r2p_percentage]"
+                      cachedDataType="r8"
+                      cachedName="meeza_r2p_percentage"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[meeza_r2p_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_r2p_percentage]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[meeza_r2p_fixed]"
+                      cachedDataType="r8"
+                      cachedName="meeza_r2p_fixed"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[meeza_r2p_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_r2p_fixed]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[valu_percentage]"
+                      cachedDataType="r8"
+                      cachedName="valu_percentage"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[valu_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[valu_percentage]" />
+                    <inputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].Columns[valu_fixed]"
+                      cachedDataType="r8"
+                      cachedName="valu_fixed"
+                      externalMetadataColumnId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[valu_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[valu_fixed]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="numeric"
+                      name="id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[merchant_code]"
+                      dataType="wstr"
+                      length="191"
+                      name="merchant_code" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[b2b_available_balance_threshold]"
+                      dataType="i2"
+                      name="b2b_available_balance_threshold" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[available_balance_threshold]"
+                      dataType="i2"
+                      name="available_balance_threshold" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[fawry_percentage]"
+                      dataType="r8"
+                      name="fawry_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[fawry_fixed]"
+                      dataType="r8"
+                      name="fawry_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[card_percentage]"
+                      dataType="r8"
+                      name="card_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[card_fixed]"
+                      dataType="r8"
+                      name="card_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[collection_percentage]"
+                      dataType="r8"
+                      name="collection_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[collection_fixed]"
+                      dataType="r8"
+                      name="collection_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[b2b_percentage]"
+                      dataType="r8"
+                      name="b2b_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[b2b_fixed]"
+                      dataType="r8"
+                      name="b2b_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[bank_cashout]"
+                      dataType="r8"
+                      name="bank_cashout" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[wallet_cashout]"
+                      dataType="r8"
+                      name="wallet_cashout" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[fawry_cashout]"
+                      dataType="r8"
+                      name="fawry_cashout" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[meeza_percentage]"
+                      dataType="r8"
+                      name="meeza_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[meeza_fixed]"
+                      dataType="r8"
+                      name="meeza_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[meeza_r2p_percentage]"
+                      dataType="r8"
+                      name="meeza_r2p_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[meeza_r2p_fixed]"
+                      dataType="r8"
+                      name="meeza_r2p_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[valu_percentage]"
+                      dataType="r8"
+                      name="valu_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input].ExternalColumns[valu_fixed]"
+                      dataType="r8"
+                      name="valu_fixed" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\merchant_financials_configs\Merchant_Configurations.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\merchant_financials_configs\Merchant_Configurations.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\Merchant_Configurations.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\merchant_financials_configs\Merchant_Configurations.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\merchant_financials_configs\merchant_financials_configs_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="merchant_financials_configs_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">SELECT * FROM cowpay.merchant_financials_configs</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[merchant_code]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      length="191"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[merchant_code]"
+                      name="merchant_code" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[b2b_available_balance_threshold]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[b2b_available_balance_threshold]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[b2b_available_balance_threshold]"
+                      name="b2b_available_balance_threshold" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[available_balance_threshold]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[available_balance_threshold]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[available_balance_threshold]"
+                      name="available_balance_threshold" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[fawry_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[fawry_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[fawry_percentage]"
+                      name="fawry_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[fawry_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[fawry_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[fawry_fixed]"
+                      name="fawry_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[card_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[card_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[card_percentage]"
+                      name="card_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[card_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[card_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[card_fixed]"
+                      name="card_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[collection_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[collection_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[collection_percentage]"
+                      name="collection_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[collection_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[collection_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[collection_fixed]"
+                      name="collection_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[b2b_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[b2b_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[b2b_percentage]"
+                      name="b2b_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[b2b_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[b2b_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[b2b_fixed]"
+                      name="b2b_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[bank_cashout]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[bank_cashout]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[bank_cashout]"
+                      name="bank_cashout" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[wallet_cashout]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[wallet_cashout]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[wallet_cashout]"
+                      name="wallet_cashout" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[fawry_cashout]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[fawry_cashout]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[fawry_cashout]"
+                      name="fawry_cashout" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_percentage]"
+                      name="meeza_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_fixed]"
+                      name="meeza_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_r2p_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_r2p_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_r2p_percentage]"
+                      name="meeza_r2p_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_r2p_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_r2p_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[meeza_r2p_fixed]"
+                      name="meeza_r2p_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[valu_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[valu_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[valu_percentage]"
+                      name="valu_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[valu_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[valu_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].Columns[valu_fixed]"
+                      name="valu_fixed" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      dataType="ui8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      dataType="wstr"
+                      length="191"
+                      name="merchant_code" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[b2b_available_balance_threshold]"
+                      dataType="i1"
+                      name="b2b_available_balance_threshold" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[available_balance_threshold]"
+                      dataType="i1"
+                      name="available_balance_threshold" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[fawry_percentage]"
+                      dataType="r8"
+                      name="fawry_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[fawry_fixed]"
+                      dataType="r8"
+                      name="fawry_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[card_percentage]"
+                      dataType="r8"
+                      name="card_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[card_fixed]"
+                      dataType="r8"
+                      name="card_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[collection_percentage]"
+                      dataType="r8"
+                      name="collection_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[collection_fixed]"
+                      dataType="r8"
+                      name="collection_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[b2b_percentage]"
+                      dataType="r8"
+                      name="b2b_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[b2b_fixed]"
+                      dataType="r8"
+                      name="b2b_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[bank_cashout]"
+                      dataType="r8"
+                      name="bank_cashout" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[wallet_cashout]"
+                      dataType="r8"
+                      name="wallet_cashout" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[fawry_cashout]"
+                      dataType="r8"
+                      name="fawry_cashout" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_percentage]"
+                      dataType="r8"
+                      name="meeza_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_fixed]"
+                      dataType="r8"
+                      name="meeza_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_r2p_percentage]"
+                      dataType="r8"
+                      name="meeza_r2p_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_r2p_fixed]"
+                      dataType="r8"
+                      name="meeza_r2p_fixed" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[valu_percentage]"
+                      dataType="r8"
+                      name="valu_percentage" />
+                    <externalMetadataColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[valu_fixed]"
+                      dataType="r8"
+                      name="valu_fixed" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      dataType="ui8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[merchant_code]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_code]"
+                      length="191"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[merchant_code]"
+                      name="merchant_code" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[b2b_available_balance_threshold]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[b2b_available_balance_threshold]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[b2b_available_balance_threshold]"
+                      name="b2b_available_balance_threshold" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[available_balance_threshold]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[available_balance_threshold]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[available_balance_threshold]"
+                      name="available_balance_threshold" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[fawry_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[fawry_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[fawry_percentage]"
+                      name="fawry_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[fawry_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[fawry_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[fawry_fixed]"
+                      name="fawry_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[card_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[card_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[card_percentage]"
+                      name="card_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[card_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[card_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[card_fixed]"
+                      name="card_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[collection_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[collection_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[collection_percentage]"
+                      name="collection_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[collection_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[collection_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[collection_fixed]"
+                      name="collection_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[b2b_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[b2b_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[b2b_percentage]"
+                      name="b2b_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[b2b_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[b2b_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[b2b_fixed]"
+                      name="b2b_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[bank_cashout]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[bank_cashout]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[bank_cashout]"
+                      name="bank_cashout" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[wallet_cashout]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[wallet_cashout]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[wallet_cashout]"
+                      name="wallet_cashout" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[fawry_cashout]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[fawry_cashout]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[fawry_cashout]"
+                      name="fawry_cashout" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[meeza_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[meeza_percentage]"
+                      name="meeza_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[meeza_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[meeza_fixed]"
+                      name="meeza_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[meeza_r2p_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_r2p_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[meeza_r2p_percentage]"
+                      name="meeza_r2p_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[meeza_r2p_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[meeza_r2p_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[meeza_r2p_fixed]"
+                      name="meeza_r2p_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[valu_percentage]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[valu_percentage]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[valu_percentage]"
+                      name="valu_percentage" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[valu_fixed]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output].ExternalColumns[valu_fixed]"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[valu_fixed]"
+                      name="valu_fixed" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\merchant_financials_configs.Paths[ODBC Source Output]"
+              endId="Package\merchant_financials_configs\Merchant_Configurations.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\merchant_financials_configs\merchant_financials_configs_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\mobile_wallets"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -5358,6 +6200,711 @@ FROM cowpay.customers</property>
               endId="Package\Orders\Orders.Inputs[OLE DB Destination Input]"
               name="ODBC Source Output"
               startId="Package\Orders\Orders_SRC.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\payment_Links"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2F7FC09D-D7BC-4684-8829-3DA405A3A2F6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="payment_Links"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\payment_Links\paymentLinks_SRC"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="paymentLinks_SRC"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">SELECT * FROM cowpay.payment_links;</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\payment_Links\paymentLinks_SRC.Connections[ODBCConnection]"
+                  connectionManagerID="{B8F73DBA-45B6-4376-B10D-8B35DB51610D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CowPay_Production_MySQL]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[uuid]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[uuid]"
+                      length="36"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[uuid]"
+                      name="uuid" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[merchant_id]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[merchant_id]"
+                      name="merchant_id" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[payment_link_name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_name]"
+                      length="1024"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[payment_link_name]"
+                      name="payment_link_name" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[payment_link_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_type]"
+                      length="23"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[payment_link_type]"
+                      name="payment_link_type" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[cover_photo]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[cover_photo]"
+                      length="256"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[cover_photo]"
+                      name="cover_photo" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[description]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[vat_amount_on_customer]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount_on_customer]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[vat_amount_on_customer]"
+                      name="vat_amount_on_customer" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[fees_amount_on_customer]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount_on_customer]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[fees_amount_on_customer]"
+                      name="fees_amount_on_customer" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[model]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[model]"
+                      length="191"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[model]"
+                      name="model" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[model_id]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[model_id]"
+                      name="model_id" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[transactions_number]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[transactions_number]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[transactions_number]"
+                      name="transactions_number" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[transactions_volume]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[transactions_volume]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[transactions_volume]"
+                      name="transactions_volume" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[suspended]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[suspended]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[suspended]"
+                      name="suspended" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[deleted_at]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[deleted_at]"
+                      name="deleted_at" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      dataType="ui4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[uuid]"
+                      dataType="wstr"
+                      length="36"
+                      name="uuid" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
+                      dataType="i4"
+                      name="merchant_id" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_name]"
+                      dataType="wstr"
+                      length="1024"
+                      name="payment_link_name" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_type]"
+                      dataType="wstr"
+                      length="23"
+                      name="payment_link_type" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[cover_photo]"
+                      dataType="wstr"
+                      length="256"
+                      name="cover_photo" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount_on_customer]"
+                      dataType="i1"
+                      name="vat_amount_on_customer" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount_on_customer]"
+                      dataType="i1"
+                      name="fees_amount_on_customer" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[model]"
+                      dataType="wstr"
+                      length="191"
+                      name="model" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      dataType="i4"
+                      name="model_id" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[transactions_number]"
+                      dataType="i4"
+                      name="transactions_number" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[transactions_volume]"
+                      dataType="r4"
+                      name="transactions_volume" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[suspended]"
+                      dataType="i1"
+                      name="suspended" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      dataType="ui4"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[id]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[uuid]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[uuid]"
+                      length="36"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[uuid]"
+                      name="uuid" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[merchant_id]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[merchant_id]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[merchant_id]"
+                      name="merchant_id" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[payment_link_name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_name]"
+                      length="1024"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[payment_link_name]"
+                      name="payment_link_name" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[payment_link_type]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[payment_link_type]"
+                      length="23"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[payment_link_type]"
+                      name="payment_link_type" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[cover_photo]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[cover_photo]"
+                      length="256"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[cover_photo]"
+                      name="cover_photo" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[description]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[description]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[vat_amount_on_customer]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[vat_amount_on_customer]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[vat_amount_on_customer]"
+                      name="vat_amount_on_customer" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[fees_amount_on_customer]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[fees_amount_on_customer]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[fees_amount_on_customer]"
+                      name="fees_amount_on_customer" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[model]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[model]"
+                      length="191"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[model]"
+                      name="model" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[model_id]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[model_id]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[model_id]"
+                      name="model_id" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[transactions_number]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[transactions_number]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[transactions_number]"
+                      name="transactions_number" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[transactions_volume]"
+                      dataType="r4"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[transactions_volume]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[transactions_volume]"
+                      name="transactions_volume" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[suspended]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[suspended]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[suspended]"
+                      name="suspended" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].ExternalColumns[deleted_at]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[deleted_at]"
+                      name="deleted_at" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\payment_Links\payment_links"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="payment_links"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[payment_links]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\payment_Links\payment_links.Connections[OleDbConnection]"
+                  connectionManagerID="{28101059-0598-41FF-B844-A6309379F260}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Cowpay_Production_Simulation_Conn]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="ui4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[uuid]"
+                      cachedDataType="wstr"
+                      cachedLength="36"
+                      cachedName="uuid"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[uuid]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[uuid]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[merchant_id]"
+                      cachedDataType="i4"
+                      cachedName="merchant_id"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[merchant_id]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[payment_link_name]"
+                      cachedDataType="wstr"
+                      cachedLength="1024"
+                      cachedName="payment_link_name"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[payment_link_name]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[payment_link_name]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[payment_link_type]"
+                      cachedDataType="wstr"
+                      cachedLength="23"
+                      cachedName="payment_link_type"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[payment_link_type]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[payment_link_type]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[cover_photo]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="cover_photo"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[cover_photo]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[cover_photo]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[description]"
+                      cachedDataType="nText"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[description]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[vat_amount_on_customer]"
+                      cachedDataType="i1"
+                      cachedName="vat_amount_on_customer"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[vat_amount_on_customer]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[vat_amount_on_customer]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[fees_amount_on_customer]"
+                      cachedDataType="i1"
+                      cachedName="fees_amount_on_customer"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[fees_amount_on_customer]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[fees_amount_on_customer]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[model]"
+                      cachedDataType="wstr"
+                      cachedLength="191"
+                      cachedName="model"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[model]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[model]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[model_id]"
+                      cachedDataType="i4"
+                      cachedName="model_id"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[model_id]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[model_id]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[transactions_number]"
+                      cachedDataType="i4"
+                      cachedName="transactions_number"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[transactions_number]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[transactions_number]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[transactions_volume]"
+                      cachedDataType="r4"
+                      cachedName="transactions_volume"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[transactions_volume]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[transactions_volume]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[suspended]"
+                      cachedDataType="i1"
+                      cachedName="suspended"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[suspended]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[suspended]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[created_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_at"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[created_at]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[updated_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="updated_at"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[updated_at]" />
+                    <inputColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].Columns[deleted_at]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="deleted_at"
+                      externalMetadataColumnId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      lineageId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output].Columns[deleted_at]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[uuid]"
+                      dataType="wstr"
+                      length="36"
+                      name="uuid" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[merchant_id]"
+                      dataType="i4"
+                      name="merchant_id" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[payment_link_name]"
+                      dataType="wstr"
+                      length="1024"
+                      name="payment_link_name" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[payment_link_type]"
+                      dataType="wstr"
+                      length="23"
+                      name="payment_link_type" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[cover_photo]"
+                      dataType="wstr"
+                      length="256"
+                      name="cover_photo" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[description]"
+                      dataType="nText"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[vat_amount_on_customer]"
+                      dataType="i2"
+                      name="vat_amount_on_customer" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[fees_amount_on_customer]"
+                      dataType="i2"
+                      name="fees_amount_on_customer" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[model]"
+                      dataType="wstr"
+                      length="191"
+                      name="model" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[model_id]"
+                      dataType="i4"
+                      name="model_id" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[transactions_number]"
+                      dataType="i4"
+                      name="transactions_number" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[transactions_volume]"
+                      dataType="r4"
+                      name="transactions_volume" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[suspended]"
+                      dataType="i2"
+                      name="suspended" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input].ExternalColumns[deleted_at]"
+                      dataType="dbTimeStamp"
+                      name="deleted_at" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\payment_Links\payment_links.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\payment_Links\payment_links.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\payment_Links\payment_links.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\payment_Links\payment_links.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\payment_Links\payment_links.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\payment_Links.Paths[ODBC Source Output]"
+              endId="Package\payment_Links\payment_links.Inputs[OLE DB Destination Input]"
+              name="ODBC Source Output"
+              startId="Package\payment_Links\paymentLinks_SRC.Outputs[ODBC Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -7820,7 +9367,7 @@ FROM cowpay.customers</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{28101059-0598-41FF-B844-A6309379F260}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[bank_accounts]&#xA;truncate table [dbo].[mobile_wallets]&#xA;truncate table [dbo].[Users]&#xA;truncate table [dbo].[customers]&#xA;truncate table [dbo].[cards]&#xA;truncate table [dbo].[promo_codes]&#xA;truncate table [dbo].[withdrawal_requests]&#xA;truncate table [dbo].[cashouts]&#xA;truncate table [dbo].[Orders]&#xA;truncate table [dbo].[transactions]&#xA;truncate table [dbo].[Roles]&#xA;truncate table [dbo].[Permissions]&#xA;truncate table [dbo].[role_has_permissions]&#xA;truncate table [dbo].[admin_logs]&#xA;truncate table [dbo].[model_has_roles]&#xA;truncate table [dbo].[model_has_permissions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[bank_accounts]&#xA;truncate table [dbo].[mobile_wallets]&#xA;truncate table [dbo].[Users]&#xA;truncate table [dbo].[merchant_financials_configs]&#xA;truncate table [dbo].[customers]&#xA;truncate table [dbo].[cards]&#xA;truncate table [dbo].[promo_codes]&#xA;truncate table [dbo].[payment_links]&#xA;truncate table [dbo].[withdrawal_requests]&#xA;truncate table [dbo].[cashouts]&#xA;truncate table [dbo].[Orders]&#xA;truncate table [dbo].[transactions]&#xA;truncate table [dbo].[Roles]&#xA;truncate table [dbo].[Permissions]&#xA;truncate table [dbo].[role_has_permissions]&#xA;truncate table [dbo].[admin_logs]&#xA;truncate table [dbo].[model_has_roles]&#xA;truncate table [dbo].[model_has_permissions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -10636,16 +12183,32 @@ FROM cowpay.customers</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 15]"
       DTS:CreationName=""
-      DTS:DTSID="{3ECFBB79-871D-452F-90D3-3CC035EA2E04}"
+      DTS:DTSID="{C852423F-1730-4E5D-8B81-D6D15677F271}"
       DTS:From="Package\promo_codes"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 15"
+      DTS:To="Package\payment_Links" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 16]"
+      DTS:CreationName=""
+      DTS:DTSID="{FD8F0E97-BB5E-4161-9B22-1B11D0919DFD}"
+      DTS:From="Package\Users"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 16"
+      DTS:To="Package\merchant_financials_configs" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 17]"
+      DTS:CreationName=""
+      DTS:DTSID="{53FD9B8A-F4F1-47A4-8041-9D2BA68C9D61}"
+      DTS:From="Package\payment_Links"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 17"
       DTS:To="Package\Withdawal_Requests" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{607D49ED-94D6-432E-BBFC-6985BB2D366B}"
-      DTS:From="Package\Users"
+      DTS:DTSID="{95FB4F83-9CCC-4093-B6F9-E94EECD7BBD5}"
+      DTS:From="Package\merchant_financials_configs"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\mobile_wallets" />
@@ -10741,7 +12304,7 @@ FROM cowpay.customers</property>
         <NodeLayout
           Size="148,41.6"
           Id="Package\mobile_wallets"
-          TopLeft="323.428576936527,208.611767631584" />
+          TopLeft="205.142860636419,242.870591641463" />
         <NodeLayout
           Size="191.2,41.6"
           Id="Package\model_has_permissions"
@@ -10751,9 +12314,17 @@ FROM cowpay.customers</property>
           Id="Package\model_has_roles"
           TopLeft="302,812" />
         <NodeLayout
+          Size="109.6,41.6"
+          Id="Package\Orders"
+          TopLeft="180.000003065382,426.211770694561" />
+        <NodeLayout
           Size="134.4,41.6"
           Id="Package\Permissions"
           TopLeft="340,628" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\promo_codes"
+          TopLeft="681.714297323811,350.635295601947" />
         <NodeLayout
           Size="180,41.6"
           Id="Package\role_has_permissions"
@@ -10965,25 +12536,31 @@ FROM cowpay.customers</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="392.000004904611,179.24706104569">
+          Id="Package.PrecedenceConstraints[Constraint 14]"
+          TopLeft="234.800003065382,467.811770694561">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="5.42857203191681,29.3647065858944"
+              EndConnector="204.285717526261,36.6588232805988"
               Start="0,0"
-              End="5.42857203191681,21.8647065858944">
+              End="204.285717526261,29.1588232805988">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="1.42857203191681,0" />
+                    End="0,14.3294116402994" />
                   <mssgle:CubicBezierSegment
-                    Point1="1.42857203191681,0"
-                    Point2="5.42857203191681,0"
-                    Point3="5.42857203191681,4" />
+                    Point1="0,14.3294116402994"
+                    Point2="0,18.3294116402994"
+                    Point3="4,18.3294116402994" />
                   <mssgle:LineSegment
-                    End="5.42857203191681,21.8647065858944" />
+                    End="200.285717526261,18.3294116402994" />
+                  <mssgle:CubicBezierSegment
+                    Point1="200.285717526261,18.3294116402994"
+                    Point2="204.285717526261,18.3294116402994"
+                    Point3="204.285717526261,22.3294116402994" />
+                  <mssgle:LineSegment
+                    End="204.285717526261,29.1588232805988" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10994,24 +12571,30 @@ FROM cowpay.customers</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="471.428576936527,229.411767631584">
+          TopLeft="353.142860636419,263.670591641463">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="3.54285845659251,31.8117654437425"
+              EndConnector="47.4285747567011,18.3529414338631"
               Start="0,0"
-              End="3.54285845659251,24.3117654437425">
+              End="39.9285747567011,18.3529414338631">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-0.457141543407488,0" />
+                    End="19.7142873783505,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-0.457141543407488,0"
-                    Point2="3.54285845659251,0"
-                    Point3="3.54285845659251,4" />
+                    Point1="19.7142873783505,0"
+                    Point2="23.7142873783505,0"
+                    Point3="23.7142873783505,4" />
                   <mssgle:LineSegment
-                    End="3.54285845659251,24.3117654437425" />
+                    End="23.7142873783505,14.3529414338631" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.7142873783505,14.3529414338631"
+                    Point2="23.7142873783505,18.3529414338631"
+                    Point3="27.7142873783505,18.3529414338631" />
+                  <mssgle:LineSegment
+                    End="39.9285747567011,18.3529414338631" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11049,6 +12632,40 @@ FROM cowpay.customers</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="633.485723316426,327.952944059273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.228574007385,37.882351542674"
+              Start="0,0"
+              End="40.728574007385,37.882351542674">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.865398315378,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.865398315378,0"
+                    Point2="27.865398315378,0"
+                    Point3="27.865398315378,4" />
+                  <mssgle:LineSegment
+                    End="27.865398315378,33.882351542674" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.865398315378,33.882351542674"
+                    Point2="27.865398315378,37.882351542674"
+                    Point3="31.865398315378,37.882351542674" />
+                  <mssgle:LineSegment
+                    End="40.728574007385,37.882351542674" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="484.00000674384,403.152946247114">
           <EdgeLayout.Curve>
@@ -11074,6 +12691,28 @@ FROM cowpay.customers</property>
                     Point3="-28.68571432464,18.2117650061741" />
                   <mssgle:LineSegment
                     End="-28.68571432464,20.9235300123482" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="393.7142924192,449.694123477012">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104.114289353818,0"
+              Start="0,0"
+              End="-96.6142893538181,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-96.6142893538181,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11151,23 +12790,23 @@ FROM cowpay.customers</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="109.6,41.6"
-          Id="Package\Orders"
-          TopLeft="180.000003065382,426.211770694561" />
+          Size="211.2,41.6"
+          Id="Package\merchant_financials_configs"
+          TopLeft="484.000008242471,150.494119757682" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="393.7142924192,449.694123477012">
+          Id="Package.PrecedenceConstraints[Constraint 16]"
+          TopLeft="392.000004904611,175.270590401686">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-104.114289353818,0"
+              EndConnector="92.0000033378601,0"
               Start="0,0"
-              End="-96.6142893538181,0">
+              End="84.5000033378601,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-96.6142893538181,0" />
+                    End="84.5000033378601,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11177,31 +12816,31 @@ FROM cowpay.customers</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 14]"
-          TopLeft="234.800003065382,467.811770694561">
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="589.600008242471,192.094119757682">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="204.285717526261,36.6588232805988"
+              EndConnector="-310.457147606052,50.7764718837809"
               Start="0,0"
-              End="204.285717526261,29.1588232805988">
+              End="-310.457147606052,43.2764718837809">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.3294116402994" />
+                    End="0,21.3882359418904" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.3294116402994"
-                    Point2="0,18.3294116402994"
-                    Point3="4,18.3294116402994" />
+                    Point1="0,21.3882359418904"
+                    Point2="0,25.3882359418904"
+                    Point3="-4,25.3882359418904" />
                   <mssgle:LineSegment
-                    End="200.285717526261,18.3294116402994" />
+                    End="-306.457147606052,25.3882359418904" />
                   <mssgle:CubicBezierSegment
-                    Point1="200.285717526261,18.3294116402994"
-                    Point2="204.285717526261,18.3294116402994"
-                    Point3="204.285717526261,22.3294116402994" />
+                    Point1="-306.457147606052,25.3882359418904"
+                    Point2="-310.457147606052,25.3882359418904"
+                    Point3="-310.457147606052,29.3882359418904" />
                   <mssgle:LineSegment
-                    End="204.285717526261,29.1588232805988" />
+                    End="-310.457147606052,43.2764718837809" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11211,35 +12850,23 @@ FROM cowpay.customers</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="141.6,41.6"
-          Id="Package\promo_codes"
-          TopLeft="681.714297323811,350.635295601947" />
+          Size="148.8,41.6"
+          Id="Package\payment_Links"
+          TopLeft="670.74286731214,437.364708336167" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="633.485723316426,327.952944059273">
+          Id="Package.PrecedenceConstraints[Constraint 15]"
+          TopLeft="748.828582317975,392.235295601947">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="48.228574007385,37.882351542674"
+              EndConnector="0,45.1294127342198"
               Start="0,0"
-              End="40.728574007385,37.882351542674">
+              End="0,37.6294127342198">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="23.865398315378,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="23.865398315378,0"
-                    Point2="27.865398315378,0"
-                    Point3="27.865398315378,4" />
-                  <mssgle:LineSegment
-                    End="27.865398315378,33.882351542674" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.865398315378,33.882351542674"
-                    Point2="27.865398315378,37.882351542674"
-                    Point3="31.865398315378,37.882351542674" />
-                  <mssgle:LineSegment
-                    End="40.728574007385,37.882351542674" />
+                    End="0,37.6294127342198" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11249,19 +12876,31 @@ FROM cowpay.customers</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 15]"
-          TopLeft="681.714297323811,379.694120924531">
+          Id="Package.PrecedenceConstraints[Constraint 17]"
+          TopLeft="721.676200645473,437.364708336167">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-109.714290579971,0"
+              EndConnector="-209.676193901633,-34.2117620890529"
               Start="0,0"
-              End="-102.214290579971,0">
+              End="-209.676193901633,-26.7117620890529">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-102.214290579971,0" />
+                    End="0,-13.1405537496364" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-13.1405537496364"
+                    Point2="0,-17.1405537496364"
+                    Point3="-4,-17.1405537496364" />
+                  <mssgle:LineSegment
+                    End="-205.676193901633,-17.1405537496364" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-205.676193901633,-17.1405537496364"
+                    Point2="-209.676193901633,-17.1405537496364"
+                    Point3="-209.676193901633,-21.1405537496364" />
+                  <mssgle:LineSegment
+                    End="-209.676193901633,-26.7117620890529" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11478,7 +13117,7 @@ FROM cowpay.customers</property>
     design-time-name="Package\CashOuts">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="145.6,41.6"
           Id="Package\CashOuts\Cashouts_SRC"
@@ -11518,7 +13157,9 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11802,6 +13443,69 @@ FROM cowpay.customers</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Orders">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Orders\Orders_SRC"
+          TopLeft="201.1428605683,54.4470595871289" />
+        <NodeLayout
+          Size="109.6,41.6"
+          Id="Package\Orders\Orders"
+          TopLeft="210.285717866859,231.247062066682" />
+        <EdgeLayout
+          Id="Package\Orders.Paths[ODBC Source Output]"
+          TopLeft="266.714289217579,96.0470595871289">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,135.200002479553"
+              Start="0,0"
+              End="0,127.700002479553">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.700002479553" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Orders\Orders">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Orders\Orders_SRC">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Permissions">
     <LayoutInfo>
       <GraphLayout
@@ -11869,6 +13573,71 @@ FROM cowpay.customers</property>
   <PipelineComponentMetadata
     design-time-name="Package\Permissions\Permissions_SRC">
     <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\promo_codes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\promo_codes\promo_codes_SRC"
+          TopLeft="331.2,111.2" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\promo_codes\promo_codes"
+          TopLeft="332.8,287.2" />
+        <EdgeLayout
+          Id="Package\promo_codes.Paths[ODBC Source Output]"
+          TopLeft="414.4,152.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.8,134.4"
+              Start="0,0"
+              End="-10.8,126.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63.2"
+                    Point2="0,67.2"
+                    Point3="-4,67.2" />
+                  <mssgle:LineSegment
+                    End="-6.80000000000001,67.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.80000000000001,67.2"
+                    Point2="-10.8,67.2"
+                    Point3="-10.8,71.2" />
+                  <mssgle:LineSegment
+                    End="-10.8,126.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\promo_codes\promo_codes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
@@ -12230,32 +13999,44 @@ FROM cowpay.customers</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Orders">
+    design-time-name="Package\merchant_financials_configs">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="134.4,41.6"
-          Id="Package\Orders\Orders_SRC"
-          TopLeft="201.1428605683,54.4470595871289" />
+          Size="236,41.6"
+          Id="Package\merchant_financials_configs\merchant_financials_configs_SRC"
+          TopLeft="174.857145834942,78.9176481656137" />
         <NodeLayout
-          Size="109.6,41.6"
-          Id="Package\Orders\Orders"
-          TopLeft="210.285717866859,231.247062066682" />
+          Size="196,41.6"
+          Id="Package\merchant_financials_configs\Merchant_Configurations"
+          TopLeft="207.428574961059,241.035297498076" />
         <EdgeLayout
-          Id="Package\Orders.Paths[ODBC Source Output]"
-          TopLeft="266.714289217579,96.0470595871289">
+          Id="Package\merchant_financials_configs.Paths[ODBC Source Output]"
+          TopLeft="292.857145834942,120.517648165614">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,135.200002479553"
+              EndConnector="12.5714291261167,120.517649332462"
               Start="0,0"
-              End="0,127.700002479553">
+              End="12.5714291261167,113.017649332462">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,127.700002479553" />
+                    End="0,56.2588246662312" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,56.2588246662312"
+                    Point2="0,60.2588246662312"
+                    Point3="4,60.2588246662312" />
+                  <mssgle:LineSegment
+                    End="8.5714291261167,60.2588246662312" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.5714291261167,60.2588246662312"
+                    Point2="12.5714291261167,60.2588246662312"
+                    Point3="12.5714291261167,64.2588246662312" />
+                  <mssgle:LineSegment
+                    End="12.5714291261167,113.017649332462" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12268,17 +14049,7 @@ FROM cowpay.customers</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Orders\Orders_SRC">
-    <Properties>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Orders\Orders">
+    design-time-name="Package\merchant_financials_configs\Merchant_Configurations">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -12291,44 +14062,44 @@ FROM cowpay.customers</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\promo_codes">
+    design-time-name="Package\payment_Links">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="166.4,41.6"
-          Id="Package\promo_codes\promo_codes_SRC"
-          TopLeft="331.2,111.2" />
+          Size="168,41.6"
+          Id="Package\payment_Links\paymentLinks_SRC"
+          TopLeft="409.6,124.8" />
         <NodeLayout
-          Size="141.6,41.6"
-          Id="Package\promo_codes\promo_codes"
-          TopLeft="332.8,287.2" />
+          Size="146.4,41.6"
+          Id="Package\payment_Links\payment_links"
+          TopLeft="449.6,333.6" />
         <EdgeLayout
-          Id="Package\promo_codes.Paths[ODBC Source Output]"
-          TopLeft="414.4,152.8">
+          Id="Package\payment_Links.Paths[ODBC Source Output]"
+          TopLeft="493.6,166.4">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-10.8,134.4"
+              EndConnector="29.2,167.2"
               Start="0,0"
-              End="-10.8,126.9">
+              End="29.2,159.7">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,63.2" />
+                    End="0,79.6" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,63.2"
-                    Point2="0,67.2"
-                    Point3="-4,67.2" />
+                    Point1="0,79.6"
+                    Point2="0,83.6"
+                    Point3="4,83.6" />
                   <mssgle:LineSegment
-                    End="-6.80000000000001,67.2" />
+                    End="25.2,83.6" />
                   <mssgle:CubicBezierSegment
-                    Point1="-6.80000000000001,67.2"
-                    Point2="-10.8,67.2"
-                    Point3="-10.8,71.2" />
+                    Point1="25.2,83.6"
+                    Point2="29.2,83.6"
+                    Point3="29.2,87.6" />
                   <mssgle:LineSegment
-                    End="-10.8,126.9" />
+                    End="29.2,159.7" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12341,7 +14112,7 @@ FROM cowpay.customers</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\promo_codes\promo_codes">
+    design-time-name="Package\payment_Links\payment_links">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
