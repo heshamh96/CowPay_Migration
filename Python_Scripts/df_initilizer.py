@@ -18,7 +18,7 @@ MSSQL_Jdbc_Conn_string =connections.Staging_Migration_DB_JDBC
 def initialize_spark_object(APPName):
     mysql_Path = r'C:\Users\Administrator\Documents\cowpay_migration\Extra_Connections\MYSQL_8_Jar_Connector\mysql-connector-java-8.0.11.jar'
     MSSQL_Path = r'C:\Users\Administrator\Documents\cowpay_migration\Extra_Connections\MSSQL_JDBC_Connector\enu\mssql-jdbc-11.2.0.jre17.jar'
-    spark = dfapi.SparkSession.Builder().config("spark.jars",mysql_Path).config("spark.driver.extraClassPath",MSSQL_Path)\
+    spark = dfapi.SparkSession.Builder().config("spark.driver.maxResultSize","12GB").config("spark.jars",mysql_Path).config("spark.driver.extraClassPath",MSSQL_Path)\
         .appName(APPName).getOrCreate()
     return spark
 
