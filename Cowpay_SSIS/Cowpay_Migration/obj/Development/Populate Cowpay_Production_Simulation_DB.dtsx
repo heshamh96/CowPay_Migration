@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Populate Cowpay_Production_Simulation_DB"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{EF3BB97C-E376-4DC0-8B7F-1F836108FF47}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{F0A2AA61-DFA7-43AE-8FFA-64EC6A24BB62}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -9367,7 +9367,7 @@ FROM cowpay.customers</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{28101059-0598-41FF-B844-A6309379F260}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[bank_accounts]&#xA;truncate table [dbo].[mobile_wallets]&#xA;truncate table [dbo].[Users]&#xA;truncate table [dbo].[merchant_financials_configs]&#xA;truncate table [dbo].[customers]&#xA;truncate table [dbo].[cards]&#xA;truncate table [dbo].[promo_codes]&#xA;truncate table [dbo].[withdrawal_requests]&#xA;truncate table [dbo].[cashouts]&#xA;truncate table [dbo].[Orders]&#xA;truncate table [dbo].[transactions]&#xA;truncate table [dbo].[Roles]&#xA;truncate table [dbo].[Permissions]&#xA;truncate table [dbo].[role_has_permissions]&#xA;truncate table [dbo].[admin_logs]&#xA;truncate table [dbo].[model_has_roles]&#xA;truncate table [dbo].[model_has_permissions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[bank_accounts]&#xA;truncate table [dbo].[mobile_wallets]&#xA;truncate table [dbo].[Users]&#xA;truncate table [dbo].[merchant_financials_configs]&#xA;truncate table [dbo].[customers]&#xA;truncate table [dbo].[cards]&#xA;truncate table [dbo].[promo_codes]&#xA;truncate table [dbo].[payment_links]&#xA;truncate table [dbo].[withdrawal_requests]&#xA;truncate table [dbo].[cashouts]&#xA;truncate table [dbo].[Orders]&#xA;truncate table [dbo].[transactions]&#xA;truncate table [dbo].[Roles]&#xA;truncate table [dbo].[Permissions]&#xA;truncate table [dbo].[role_has_permissions]&#xA;truncate table [dbo].[admin_logs]&#xA;truncate table [dbo].[model_has_roles]&#xA;truncate table [dbo].[model_has_permissions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -12197,6 +12197,14 @@ FROM cowpay.customers</property>
       DTS:ObjectName="Constraint 16"
       DTS:To="Package\merchant_financials_configs" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 17]"
+      DTS:CreationName=""
+      DTS:DTSID="{53FD9B8A-F4F1-47A4-8041-9D2BA68C9D61}"
+      DTS:From="Package\payment_Links"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 17"
+      DTS:To="Package\Withdawal_Requests" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{95FB4F83-9CCC-4093-B6F9-E94EECD7BBD5}"
@@ -12859,6 +12867,40 @@ FROM cowpay.customers</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,37.6294127342198" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 17]"
+          TopLeft="721.676200645473,437.364708336167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-209.676193901633,-34.2117620890529"
+              Start="0,0"
+              End="-209.676193901633,-26.7117620890529">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-13.1405537496364" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-13.1405537496364"
+                    Point2="0,-17.1405537496364"
+                    Point3="-4,-17.1405537496364" />
+                  <mssgle:LineSegment
+                    End="-205.676193901633,-17.1405537496364" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-205.676193901633,-17.1405537496364"
+                    Point2="-209.676193901633,-17.1405537496364"
+                    Point3="-209.676193901633,-21.1405537496364" />
+                  <mssgle:LineSegment
+                    End="-209.676193901633,-26.7117620890529" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
