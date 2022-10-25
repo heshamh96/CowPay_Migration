@@ -13,12 +13,15 @@ from sqlalchemy import create_engine
 
 import connections as c
 
-#conn_mysql = lol.connect(user='root', password='P@ssw0rd',host='localhost',database='cowpay_staging')
 my_data = pd.read_sql("select *, case when block = 0 and is_merchant = 1 then 'approved' when block = 1 and is_merchant = 1 then 'Suspended' end as status from CowPay_Production_Simulation.[dbo].[Users] where is_merchant=1",c.cnxn)
-#print text.encode('utf8')
-#my_data.to_csv('d.csv',encoding='utf-8-sig')
-#my_data.to_csv('d.csv',encoding='utf8')
 
+
+def fix_Dict(comessions):
+    arr = []
+    for element in comessions :
+        if element['percentage'] != 0.0 or element['fixedVal'] != 0.0:
+            arr.append(element)
+    return arr
 
 class create_dict(dict): 
   
@@ -39,7 +42,7 @@ class JSONEncoder(json.JSONEncoder):
 
 
 mydict = create_dict()
-settings = """select id, null,null ,null,m_callback_url,m_payments_notification,m_orders_notification,m_cowpay_payatfawry_percentage_commission,m_cowpay_payatfawry_fixed_commission,m_cowpay_credit_card_percentage_commission,m_cowpay_credit_card_fixed_commission,m_cowpay_collect_percentage_commission,m_cowpay_collect_fixed_commission,m_available_balance,m_commercial_registry_file,m_tax_id_file,m_personal_id_file from CowPay_Production_Simulation.dbo.users where is_merchant=1"""
+settings = """select * from Merchants_Settings"""
 cursor = c.cnxn.cursor()
 cursor.execute(settings)
 result = cursor.fetchall()
@@ -48,18 +51,22 @@ for row in result:
     settings_id=row[0]
     settings_data = {
         "id": "",
-        "merchantCode": row[1],
-        "StatusTypeId": row[1],
-        "moreSetting": {"callbackURL": row[4], "allowPaymentNotify": row[5],"allowOrderNotify":row[6]},
+        "merchantCode": "",
+        "StatusTypeId": "",
+        "moreSetting": {"callbackURL": row[4], "allowPaymentNotify":False if row[5] is 0 else True,"allowOrderNotify":False if row[6] is 0 else True},
         "limitationNBlocking":[],
-        "financialConfig":{"comessions":[{"payMethodType":2,"fixedVal":row[8],"percentage":row[7],"isEnabled":'true' },
-                                         {"payMethodType":1,"fixedVal":row[10],"percentage":row[9],"isEnabled":'true'},
-                                         {"payMethodType":6,"fixedVal":row[12],"percentage":row[11],"isEnabled":'true'}
-                                        ],
+        "financialConfig":{"comessions":fix_Dict([{"payMethodType":2,"fixedVal":row[8],"percentage":row[7],"isEnabled":True},
+                                         {"payMethodType":1,"fixedVal":row[10],"percentage":row[9],"isEnabled":True},
+                                         {"payMethodType":6,"fixedVal":row[12],"percentage":row[11],"isEnabled":True},
+                                         {"payMethodType":3,"fixedVal":row[14],"percentage":row[13],"isEnabled":True},
+                                         {"payMethodType":4,"fixedVal":row[16],"percentage":row[15],"isEnabled":True},
+                                         {"payMethodType":5,"fixedVal":row[18],"percentage":row[17],"isEnabled":True},
+                                         {"payMethodType":7,"fixedVal":row[20],"percentage":row[19],"isEnabled":True}
+                                        ]),
         "autoWithdrawal":{"isEnabled":"","peroidType":"","monthDay":"","daysValue":"","day":""},
         "b2b":{"isEnabled":"","fixedVal":"","percentage":""},
         "chashout":{"isEnabled":"","values":[]}},
-         "balanceConfiguration":{"AvailableBalanceThresholdDays":row[13]}
+         "balanceConfiguration":{"AvailableBalanceThresholdDays":row[21]}
          }
     settings_dict['id'].append(settings_id)
     #class DecimalEncoder(json.JSONEncoder):
@@ -80,12 +87,15 @@ for row in result:
 s_json =pd.DataFrame(settings_dict)
 #df2 = s_json.to_string(index=False)
 #print(df1)
+            
+    
 #s_json.to_csv('s.csv')
 #print(s_json.to_string(index=False))
-#s_json
+#s_json.head()
 #display(df.hide_index())
 #df2
-#ee
+
+
 select_Users = """SELECT id,m_facebook,m_twitter,m_linked_in,m_instagram,m_website FROM CowPay_Production_Simulation.dbo.users where is_merchant=1"""
 cursor = c.cnxn.cursor()
 cursor.execute(select_Users)
