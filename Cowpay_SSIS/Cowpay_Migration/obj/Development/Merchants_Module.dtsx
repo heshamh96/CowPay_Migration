@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="67"
-  DTS:VersionGUID="{DE326E76-6C07-48A5-B38E-3C23B254EE90}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{948BD1E4-3786-44C2-A9DD-679676E142DE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -27,7 +27,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Execute Process Task"
       DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecuteProcessData
@@ -45,7 +45,7 @@
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Script Task"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -65,23 +65,6 @@
       DTS:ObjectName="Staging_Activities">
       <DTS:Variables />
       <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\Staging_Activities\Add_The_Identity ID_to_The Json"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{0C6B3AA6-7018-40FD-82B1-A3CEEEF1D177}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Add_The_Identity ID_to_The Json"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-              SQLTask:SqlStatementSource="update m&#xA;SET Settings=JSON_MODIFY(Settings,'$.id',convert(int,m.Id))&#x9;&#xA;from Merchants m" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Staging_Activities\Merchats prep Stg to Stg"
           DTS:CreationName="Microsoft.Pipeline"
@@ -2168,12 +2151,29 @@ from [dbo].[Staging_Merchant]</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate_STG_Merchants"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
               SQLTask:SqlStatementSource="truncate table [dbo].[Merchants]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging_Activities\Update_The Settings_Json (id, mechantCode, StatusTypeId)"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0C6B3AA6-7018-40FD-82B1-A3CEEEF1D177}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update_The Settings_Json (id, mechantCode, StatusTypeId)"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+              SQLTask:SqlStatementSource="  update m&#xA;SET Settings=JSON_MODIFY(Settings,'$.id',convert(int,m.Id))&#x9;&#xA;from Merchants m&#xA;&#xA;  update m&#xA;SET Settings=JSON_MODIFY(Settings,'$.merchantCode',Try_convert(nvarchar(100),m.MerchantCode))&#x9;&#xA;from Merchants m&#xA;&#xA;  update m&#xA;SET Settings=JSON_MODIFY(Settings,'$.StatusTypeId',convert(int,m.StatusTypeId))&#x9;&#xA;from Merchants m" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -2193,7 +2193,7 @@ from [dbo].[Staging_Merchant]</property>
           DTS:From="Package\Staging_Activities\Merchats prep Stg to Stg"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Staging_Activities\Add_The_Identity ID_to_The Json" />
+          DTS:To="Package\Staging_Activities\Update_The Settings_Json (id, mechantCode, StatusTypeId)" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -3265,7 +3265,7 @@ from [dbo].[Staging_Merchant]</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate Trgt_Merchants"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3325,8 +3325,8 @@ from [dbo].[Staging_Merchant]</property>
           Id="Package\Script Task"
           TopLeft="609.158736999883,80.7098059463944" />
         <NodeLayout
-          Size="240.8,41.6"
-          Id="Package\Staging_Activities\Add_The_Identity ID_to_The Json"
+          Size="363.2,41.6"
+          Id="Package\Staging_Activities\Update_The Settings_Json (id, mechantCode, StatusTypeId)"
           TopLeft="22.0714290579972,214.723530887485" />
         <NodeLayout
           Size="196,41.6"
@@ -3376,9 +3376,9 @@ from [dbo].[Staging_Merchant]</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="38.9714290579972,27.070588286773"
+              EndConnector="100.171429057997,27.070588286773"
               Start="0,0"
-              End="38.9714290579972,19.570588286773">
+              End="100.171429057997,19.570588286773">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3389,13 +3389,13 @@ from [dbo].[Staging_Merchant]</property>
                     Point2="0,13.5352941433865"
                     Point3="4,13.5352941433865" />
                   <mssgle:LineSegment
-                    End="34.9714290579972,13.5352941433865" />
+                    End="96.1714290579972,13.5352941433865" />
                   <mssgle:CubicBezierSegment
-                    Point1="34.9714290579972,13.5352941433865"
-                    Point2="38.9714290579972,13.5352941433865"
-                    Point3="38.9714290579972,17.5352941433865" />
+                    Point1="96.1714290579972,13.5352941433865"
+                    Point2="100.171429057997,13.5352941433865"
+                    Point3="100.171429057997,17.5352941433865" />
                   <mssgle:LineSegment
-                    End="38.9714290579972,19.570588286773" />
+                    End="100.171429057997,19.570588286773" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3406,11 +3406,11 @@ from [dbo].[Staging_Merchant]</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
-          PanelSize="337.6,311.2"
-          Size="337.6,354.4"
+          IsExpanded="False"
+          PanelSize="390.4,311.2"
+          Size="390.4,43.2"
           Id="Package\Staging_Activities"
-          TopLeft="381.060323941411,124.18823703581" />
+          TopLeft="381.060323941411,123.576472321348" />
         <NodeLayout
           Size="182.4,49.6"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants"
@@ -3443,11 +3443,11 @@ from [dbo].[Staging_Merchant]</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="204.8,191.2"
-          Size="204.8,234.4"
+          Size="204.8,43.2"
           Id="Package\TRGT_Loading"
-          TopLeft="56.4571431101585,300.188237765091" />
+          TopLeft="56.4571431101585,299.576473050629" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="631.992070333217,58.2000004375679">
@@ -3484,30 +3484,30 @@ from [dbo].[Staging_Merchant]</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="381.060323941411,301.38823703581">
+          TopLeft="576.260323941411,166.776472321348">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-119.803180831253,116.000000729281"
+              EndConnector="-417.403180831252,132.800000729281"
               Start="0,0"
-              End="-112.303180831253,116.000000729281">
+              End="-417.403180831252,125.300000729281">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-55.9015904156263,0" />
+                    End="0,62.4000003646405" />
                   <mssgle:CubicBezierSegment
-                    Point1="-55.9015904156263,0"
-                    Point2="-59.9015904156263,0"
-                    Point3="-59.9015904156263,4" />
+                    Point1="0,62.4000003646405"
+                    Point2="0,66.4000003646405"
+                    Point3="-4,66.4000003646405" />
                   <mssgle:LineSegment
-                    End="-59.9015904156263,112.000000729281" />
+                    End="-413.403180831252,66.4000003646405" />
                   <mssgle:CubicBezierSegment
-                    Point1="-59.9015904156263,112.000000729281"
-                    Point2="-59.9015904156263,116.000000729281"
-                    Point3="-63.9015904156263,116.000000729281" />
+                    Point1="-413.403180831252,66.4000003646405"
+                    Point2="-417.403180831252,66.4000003646405"
+                    Point3="-417.403180831252,70.4000003646405" />
                   <mssgle:LineSegment
-                    End="-112.303180831253,116.000000729281" />
+                    End="-417.403180831252,125.300000729281" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

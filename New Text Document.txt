@@ -1,0 +1,97 @@
+USE [LKP_DB]
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Dashboard.View')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Dashboard.IniatePayment')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Transaction.View')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Transaction.ViewDetails')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Transaction.Export')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Transaction.Refund')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Balance.View')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Balance.Export')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Balance.TransferMoney')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.BalanceStatement.View')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.BalanceStatement.Export')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.VAT.View')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.VAT.Export')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Customer.View')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Customer.Export')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Team.View')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Team.Export')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Team.Create')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Team.Edit')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Team.Delete')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.ViewBank')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.ExportBank')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.CreateBank')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.EditBank')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.DeleteBank')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.ViewFawry')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.ExportFawry')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.CreateFawry')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.EditFawry')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.DeleteFawry')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.ViewWallet')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.ExportWallet')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.CreateWallet')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.EditWallet')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Account.DeleteWallet')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Profile.View')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Profile.ViewCompany')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Profile.EditCompany')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Profile.ChangePassword')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.ApiSetting.ViewToken')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.ApiSetting.ExportToken')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.ApiSetting.GenerateToken')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.ApiSetting.RemoveToken')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.ApiSetting.EditCallbackUrl')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.PaymentLink.View')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.Product.View')
+GO
+INSERT [dbo].[merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (NULL, N'permission', N'Permissions.Merchant.IFrame.View')
+GO
+
