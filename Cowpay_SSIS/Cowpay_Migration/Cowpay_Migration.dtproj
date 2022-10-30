@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">BI-SERVER2022</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAAAyQOA3+54nMWzXtFd5neY+JtkSK7hG0+KcUgJwQd4rvwAAAAAOgAAAAAIAACAAAACvmq636/OBnmjriVKQjlfWJlYIr7EwesL4vdVag2ohqJAAAAAWWEZz+2+IwAsooi7AxHJI2V8w8a9UkaB5HjVOPckvvpyY9R2mP39as/+E7gKAklrpMz4xBGW6C4eBM0FyzI6ItOBSKYFKvgsAyOJuMw3FeBCnU9t0mdyL7XkYP4sMZUe296yzvxvPblepeZ6onziU5Wmzp2wyHc/qkRrfULj4It9SxwFQ6IDzQvGlaKn07udAAAAAaB1b1X2cyexSDnW0CB2JblHSmchomcH6lIDrq0uYcCXXCBOw60tANoZUlW6Zkqpj+AAb1VaV8g0G94TNWk1jGQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAZNsAQRm6ESHV9Xew46AeQAAAAACAAAAAAAQZgAAAAEAACAAAAAsIPZHd7+RQliVFFc/4danH4Go1/+kMYj/TWY7EJjfRQAAAAAOgAAAAAIAACAAAAD4iaUS0hdQynm9wZ2SxCzb4l7Rvmk/Le5l1RfkeIRRSZAAAAAqjniO5/l7yAuVQFi2LcDEu0zVtM65XkdBg3yFBJgBk988fKTnPQvHNWfiJZuaYB4MtasheKUhD+DVWX5LLRAvuNlGT5y5W0lZPQ2+23YAAjzD6x6l0ZlNVejhl2GXBn6gRQaTuaC3XDjekkc+Jxjg22x9b4bGN2ruVXhTlNDozAiNG7hLVcelOaiJBpMMdYZAAAAAjtWP/TgqmmGpDU4FzYYS6njcg80dANHuqyPJJs0TQZJs8k22O+XOQr0Qq7wI0PlmvgL7NkW7jnJX9+4A3kQSeQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -34,9 +34,10 @@
           <SSIS:Package SSIS:Name="Transaction_Management_Module.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Populate Cowpay_Production_Simulation_DB.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="AA_Deployment_Package.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="ExcelpayIdentity_Module.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Cleansing_Data.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Z_Pre_Executions.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ExcelpayIdentity_Module_STG.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="ExcelpayIdentity_Module_TRGT.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="LKP_DB.conmgr" />
@@ -759,10 +760,10 @@
                 <SSIS:Property SSIS:Name="Name">Merchants_Module</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">54</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">69</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{09EEA89A-E82B-496F-8877-CE23B8FE0A54}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{AA342C35-5D9E-4C70-863F-A1EC263B3E14}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -810,27 +811,10 @@
                 <SSIS:Property SSIS:Name="Name">AA_Deployment_Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">10</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{276E94AC-58DF-4827-9CB0-7B01121D034D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="ExcelpayIdentity_Module.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{39FC1004-B58C-460B-8F48-B183F31D041D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">ExcelpayIdentity_Module</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">24</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{25542F00-10F9-4628-8201-67C7D297E446}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9CE0CC9A-C519-4433-B47C-4427E0CD5BDC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -865,6 +849,40 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{4CDA25CE-BFFC-4D01-84E7-A3447201B373}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ExcelpayIdentity_Module_STG.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{0D797CF5-A22C-4F65-BC53-F82B339DAD1A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ExcelpayIdentity_Module_STG</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">53</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0F59361A-FC33-4CF8-875E-DB7CDC56E91F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="ExcelpayIdentity_Module_TRGT.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{81F02DF8-10A7-4526-BB84-708D6BD3220C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">ExcelpayIdentity_Module_TRGT</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{10A817D7-44C3-4F1B-A8BF-5FCE25310ECF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

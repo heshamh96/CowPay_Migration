@@ -59,7 +59,7 @@ INSERT into [dbo].[Merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUE
 INSERT into [dbo].[Merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (N'{str(id)}', N'permission', N'Permissions.Merchant.Product.View ') 
 INSERT into [dbo].[Merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (N'{str(id)}', N'permission', N'Permissions.Merchant.IFrame.View ')
 INSERT into [dbo].[Merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (N'{str(id)}', N'name', N'')
-INSERT into [dbo].[Merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (N'{str(id)}', N'memberrole', N'SuperAdmin')
+INSERT into [dbo].[Merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (N'{str(id)}', N'memberrole', N'')
 INSERT into [dbo].[Merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (N'{str(id)}', N'MerchantCode', N'')
 INSERT into [dbo].[Merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (N'{str(id)}', N'MerchantId', N'')
 INSERT into [dbo].[Merchant_Claims] ([user_id], [ClaimType], [ClaimValue]) VALUES (N'{str(id)}', N'IsMaster', N'true')                   

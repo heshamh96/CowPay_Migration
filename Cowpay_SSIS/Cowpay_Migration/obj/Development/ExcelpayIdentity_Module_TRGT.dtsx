@@ -1,0 +1,2330 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/30/2022 1:43:33 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BI-SERVER2022"
+  DTS:CreatorName="BI-SERVER2022\admin"
+  DTS:DTSID="{81F02DF8-10A7-4526-BB84-708D6BD3220C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ExcelpayIdentity_Module_TRGT"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{B12B90E5-D46F-49E9-A425-E6DB11FF546A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create DB Constraints"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{90D3EC22-7ED6-46AA-9725-727FD0743968}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create DB Constraints"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}"
+          SQLTask:SqlStatementSource="--Identity Creats&#xA;USE [ExcelpayIdentity_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY([UserId])&#xA;REFERENCES [dbo].[AspNetUsers] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY([RoleId])&#xA;REFERENCES [dbo].[AspNetRoles] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId]&#xA;GO&#xA;&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY([UserId])&#xA;REFERENCES [dbo].[AspNetUsers] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY([UserId])&#xA;REFERENCES [dbo].[AspNetUsers] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserTokens]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY([UserId])&#xA;REFERENCES [dbo].[AspNetUsers] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;&#xA;CREATE UNIQUE NONCLUSTERED INDEX [UserNameIndex] ON [dbo].[AspNetUsers]&#xA;(&#xA;&#x9;[NormalizedUserName] ASC&#xA;)&#xA;WHERE ([NormalizedUserName] IS NOT NULL)&#xA;WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;GO&#xA;&#xA;&#xA;CREATE NONCLUSTERED INDEX [EmailIndex] ON [dbo].[AspNetUsers]&#xA;(&#xA;&#x9;[NormalizedEmail] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Drop DB Constraints"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{b2a1491d-4e40-47f4-87e4-ebe97c7528b3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Drop DB Constraints"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}"
+          SQLTask:SqlStatementSource="USE [ExcelpayIdentity_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserTokens] DROP CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserClaims] DROP CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserLogins] DROP CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;DROP INDEX [EmailIndex] ON [dbo].[AspNetUsers]&#xA;GO&#xA;&#xA;DROP INDEX [UserNameIndex] ON [dbo].[AspNetUsers]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STG_Update_User_Claims"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{6E1BEFAC-F2E1-4141-A4D9-52D19A6D0082}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STG_Update_User_Claims">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\STG_Update_User_Claims\Update UserClaims (Merchant_Code)"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{025F91B0-34D7-4819-AC8A-1424857B15F1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update UserClaims (Merchant_Code)"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+              SQLTask:SqlStatementSource="update uc&#xA;set uc.ClaimValue=m.MerchantCode&#xA;  FROM [Staging_Migration].[dbo].[AspNetUserClaims] uc join [dbo].[Merchants] m on m.UserId=uc.UserId&#xA;  where ClaimType='MerchantCode'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\STG_Update_User_Claims\Update UserClaims (Merchant_ID)"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8816E0A1-6BA9-4EDE-A798-8D4EDD11833C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update UserClaims (Merchant_ID)"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+              SQLTask:SqlStatementSource="update uc&#xA;set uc.ClaimValue=m.Id &#xA;  FROM [Staging_Migration].[dbo].[AspNetUserClaims] uc join [dbo].[Merchants] m on m.UserId=uc.UserId&#xA;  where ClaimType='MerchantId'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\STG_Update_User_Claims\Update UserClaims(Name)"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D271583C-347D-4DCA-9FE0-E0854182C8FE}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update UserClaims(Name)"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+              SQLTask:SqlStatementSource="update uc&#xA;set uc.ClaimValue=m.Name&#xA;--SELECT uc.*&#xA;  FROM [Staging_Migration].[dbo].[AspNetUserClaims] uc join [dbo].[Merchants] m on m.UserId=uc.UserId&#xA;  where ClaimType='name'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\STG_Update_User_Claims.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{DDDAD38D-F63F-49B8-AA6E-70F6245D3AD2}"
+          DTS:From="Package\STG_Update_User_Claims\Update UserClaims(Name)"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\STG_Update_User_Claims\Update UserClaims (Merchant_Code)" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\STG_Update_User_Claims.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{6B904C95-F548-462A-B670-D17163C3BE0F}"
+          DTS:From="Package\STG_Update_User_Claims\Update UserClaims (Merchant_Code)"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\STG_Update_User_Claims\Update UserClaims (Merchant_ID)" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate TRGT"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{42853e99-290d-450a-85e4-89f0b05dbb70}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate TRGT"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}"
+          SQLTask:SqlStatementSource="truncate table [dbo].[AspNetUserRoles]&#xA;truncate table [dbo].[AspNetUsers]&#xA;truncate table.[dbo].[AspNetUserClaims]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\UserClaims STG_to_TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{763AC381-2618-4692-83AE-B3B4992ED2A0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="UserClaims STG_to_TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\UserClaims STG_to_TRGT\UserClaims STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="UserClaims STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AspNetUserClaims]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[UserId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                      length="450"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[UserId]"
+                      name="UserId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[ClaimType]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].ExternalColumns[ClaimType]"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[ClaimType]"
+                      name="ClaimType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[ClaimValue]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].ExternalColumns[ClaimValue]"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[ClaimValue]"
+                      name="ClaimValue"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      name="UserId" />
+                    <externalMetadataColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].ExternalColumns[ClaimType]"
+                      dataType="nText"
+                      name="ClaimType" />
+                    <externalMetadataColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].ExternalColumns[ClaimValue]"
+                      dataType="nText"
+                      name="ClaimValue" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                      name="UserId" />
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[ClaimType]"
+                      dataType="nText"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[ClaimType]"
+                      name="ClaimType" />
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[ClaimValue]"
+                      dataType="nText"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[ClaimValue]"
+                      name="ClaimValue" />
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="UserClaims TRGT"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AspNetUserClaims]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Connections[OleDbConnection]"
+                  connectionManagerID="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ExcelpayIdentity]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].Columns[UserId]"
+                      cachedDataType="wstr"
+                      cachedLength="450"
+                      cachedName="UserId"
+                      externalMetadataColumnId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[UserId]" />
+                    <inputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].Columns[ClaimType]"
+                      cachedDataType="nText"
+                      cachedName="ClaimType"
+                      externalMetadataColumnId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].ExternalColumns[ClaimType]"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[ClaimType]" />
+                    <inputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].Columns[ClaimValue]"
+                      cachedDataType="nText"
+                      cachedName="ClaimValue"
+                      externalMetadataColumnId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].ExternalColumns[ClaimValue]"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output].Columns[ClaimValue]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      name="UserId" />
+                    <externalMetadataColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].ExternalColumns[ClaimType]"
+                      dataType="nText"
+                      name="ClaimType" />
+                    <externalMetadataColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input].ExternalColumns[ClaimValue]"
+                      dataType="nText"
+                      name="ClaimValue" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\UserClaims STG_to_TRGT.Paths[OLE DB Source Output]"
+              endId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\UserClaims STG_to_TRGT\UserClaims STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\UserRoles STG_to_TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{19f3543c-8492-450c-9f05-70caad7e8a0c}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="UserRoles STG_to_TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\UserRoles STG_to_TRGT\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\UserRoles STG_to_TRGT\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_TRGT\Data Conversion.Inputs[Data Conversion Input].Columns[RoleId]"
+                      cachedDataType="wstr"
+                      cachedLength="450"
+                      cachedName="RoleId"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[RoleId]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\UserRoles STG_to_TRGT\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Output].Columns[RoleId_]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="36"
+                      lineageId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Output].Columns[RoleId_]"
+                      name="RoleId_"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[RoleId]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\UserRoles STG_to_TRGT\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UserRoles STG_to_TRGT\UserRoles"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="UserRoles"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AspNetUserRoles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles.Connections[OleDbConnection]"
+                  connectionManagerID="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ExcelpayIdentity]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].Columns[UserId]"
+                      cachedDataType="wstr"
+                      cachedLength="450"
+                      cachedName="UserId"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[UserId]" />
+                    <inputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].Columns[RoleId_]"
+                      cachedDataType="wstr"
+                      cachedLength="36"
+                      cachedName="RoleId_"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
+                      lineageId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Output].Columns[RoleId_]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      name="UserId" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input].ExternalColumns[RoleId]"
+                      dataType="wstr"
+                      length="450"
+                      name="RoleId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UserRoles STG_to_TRGT\UserRoles_STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="UserRoles_STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AspNetUserRoles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[UserId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                      length="450"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[UserId]"
+                      name="UserId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[RoleId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[RoleId]"
+                      length="450"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[RoleId]"
+                      name="RoleId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[Old_Userid]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Userid]"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[Old_Userid]"
+                      name="Old_Userid"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[Old_Roleid]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Roleid]"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].Columns[Old_Roleid]"
+                      name="Old_Roleid"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      name="UserId" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[RoleId]"
+                      dataType="wstr"
+                      length="450"
+                      name="RoleId" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Userid]"
+                      dataType="numeric"
+                      name="Old_Userid"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Roleid]"
+                      dataType="numeric"
+                      name="Old_Roleid"
+                      precision="18" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                      dataType="wstr"
+                      length="450"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[UserId]"
+                      name="UserId" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[RoleId]"
+                      dataType="wstr"
+                      length="450"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[RoleId]"
+                      name="RoleId" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[Old_Userid]"
+                      dataType="numeric"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[Old_Userid]"
+                      name="Old_Userid"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[Old_Roleid]"
+                      dataType="numeric"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[Old_Roleid]"
+                      name="Old_Roleid"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\UserRoles STG_to_TRGT.Paths[Data Conversion Output]"
+              endId="Package\UserRoles STG_to_TRGT\UserRoles.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\UserRoles STG_to_TRGT\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\UserRoles STG_to_TRGT.Paths[OLE DB Source Output]"
+              endId="Package\UserRoles STG_to_TRGT\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\UserRoles STG_to_TRGT\UserRoles_STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Users STG_To_TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{a4a81464-2143-4f75-b10f-71d7b2f3587b}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Users STG_To_TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Users STG_To_TRGT\Users"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Users"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AspNetUsers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Users STG_To_TRGT\Users.Connections[OleDbConnection]"
+                  connectionManagerID="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ExcelpayIdentity]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="450"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="CreatedDate"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DeletedDate"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="UpdatedDate"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[UserName]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="UserName"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[UserName]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[UserName]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[NormalizedUserName]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="NormalizedUserName"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[NormalizedUserName]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[NormalizedUserName]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[NormalizedEmail]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="NormalizedEmail"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[NormalizedEmail]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[NormalizedEmail]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[EmailConfirmed]"
+                      cachedDataType="bool"
+                      cachedName="EmailConfirmed"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[EmailConfirmed]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[EmailConfirmed]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[PasswordHash]"
+                      cachedDataType="nText"
+                      cachedName="PasswordHash"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[PasswordHash]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[PasswordHash]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[SecurityStamp]"
+                      cachedDataType="nText"
+                      cachedName="SecurityStamp"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[SecurityStamp]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[SecurityStamp]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[ConcurrencyStamp]"
+                      cachedDataType="nText"
+                      cachedName="ConcurrencyStamp"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[ConcurrencyStamp]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[ConcurrencyStamp]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[PhoneNumber]"
+                      cachedDataType="nText"
+                      cachedName="PhoneNumber"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[PhoneNumber]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[PhoneNumber]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[PhoneNumberConfirmed]"
+                      cachedDataType="bool"
+                      cachedName="PhoneNumberConfirmed"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[PhoneNumberConfirmed]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[PhoneNumberConfirmed]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[TwoFactorEnabled]"
+                      cachedDataType="bool"
+                      cachedName="TwoFactorEnabled"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[TwoFactorEnabled]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[TwoFactorEnabled]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[LockoutEnd]"
+                      cachedDataType="dbTimeStampOffset"
+                      cachedName="LockoutEnd"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[LockoutEnd]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[LockoutEnd]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[LockoutEnabled]"
+                      cachedDataType="bool"
+                      cachedName="LockoutEnabled"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[LockoutEnabled]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[LockoutEnabled]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].Columns[AccessFailedCount]"
+                      cachedDataType="i4"
+                      cachedName="AccessFailedCount"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[AccessFailedCount]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[AccessFailedCount]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="450"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="CreatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp2"
+                      name="DeletedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="UpdatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[UserName]"
+                      dataType="wstr"
+                      length="256"
+                      name="UserName" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[NormalizedUserName]"
+                      dataType="wstr"
+                      length="256"
+                      name="NormalizedUserName" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="256"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[NormalizedEmail]"
+                      dataType="wstr"
+                      length="256"
+                      name="NormalizedEmail" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[EmailConfirmed]"
+                      dataType="bool"
+                      name="EmailConfirmed" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[PasswordHash]"
+                      dataType="nText"
+                      name="PasswordHash" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[SecurityStamp]"
+                      dataType="nText"
+                      name="SecurityStamp" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[ConcurrencyStamp]"
+                      dataType="nText"
+                      name="ConcurrencyStamp" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[PhoneNumber]"
+                      dataType="nText"
+                      name="PhoneNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[PhoneNumberConfirmed]"
+                      dataType="bool"
+                      name="PhoneNumberConfirmed" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[TwoFactorEnabled]"
+                      dataType="bool"
+                      name="TwoFactorEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[LockoutEnd]"
+                      dataType="dbTimeStampOffset"
+                      name="LockoutEnd"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[LockoutEnabled]"
+                      dataType="bool"
+                      name="LockoutEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input].ExternalColumns[AccessFailedCount]"
+                      dataType="i4"
+                      name="AccessFailedCount" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Users STG_To_TRGT\Users.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Users STG_To_TRGT\Users.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Users STG_To_TRGT\Users.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Users STG_To_TRGT\Users_STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Users_STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AspNetUsers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Users STG_To_TRGT\Users_STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      length="450"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      length="50"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[UserName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[UserName]"
+                      length="256"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[UserName]"
+                      name="UserName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[NormalizedUserName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[NormalizedUserName]"
+                      length="256"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[NormalizedUserName]"
+                      name="NormalizedUserName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="256"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[NormalizedEmail]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[NormalizedEmail]"
+                      length="256"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[NormalizedEmail]"
+                      name="NormalizedEmail"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[EmailConfirmed]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[EmailConfirmed]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[EmailConfirmed]"
+                      name="EmailConfirmed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[PasswordHash]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[PasswordHash]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[PasswordHash]"
+                      name="PasswordHash"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[SecurityStamp]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[SecurityStamp]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[SecurityStamp]"
+                      name="SecurityStamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[ConcurrencyStamp]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[ConcurrencyStamp]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[ConcurrencyStamp]"
+                      name="ConcurrencyStamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[PhoneNumber]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[PhoneNumber]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[PhoneNumber]"
+                      name="PhoneNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[PhoneNumberConfirmed]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[PhoneNumberConfirmed]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[PhoneNumberConfirmed]"
+                      name="PhoneNumberConfirmed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[TwoFactorEnabled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[TwoFactorEnabled]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[TwoFactorEnabled]"
+                      name="TwoFactorEnabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[LockoutEnd]"
+                      dataType="dbTimeStampOffset"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[LockoutEnd]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[LockoutEnd]"
+                      name="LockoutEnd"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[LockoutEnabled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[LockoutEnabled]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[LockoutEnabled]"
+                      name="LockoutEnabled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[AccessFailedCount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[AccessFailedCount]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[AccessFailedCount]"
+                      name="AccessFailedCount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[old_code]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[old_code]"
+                      length="50"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[old_code]"
+                      name="old_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[old_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].Columns[old_id]"
+                      name="old_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="450"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="CreatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="DeletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="UpdatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[UserName]"
+                      dataType="wstr"
+                      length="256"
+                      name="UserName" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[NormalizedUserName]"
+                      dataType="wstr"
+                      length="256"
+                      name="NormalizedUserName" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="256"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[NormalizedEmail]"
+                      dataType="wstr"
+                      length="256"
+                      name="NormalizedEmail" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[EmailConfirmed]"
+                      dataType="bool"
+                      name="EmailConfirmed" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[PasswordHash]"
+                      dataType="nText"
+                      name="PasswordHash" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[SecurityStamp]"
+                      dataType="nText"
+                      name="SecurityStamp" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[ConcurrencyStamp]"
+                      dataType="nText"
+                      name="ConcurrencyStamp" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[PhoneNumber]"
+                      dataType="nText"
+                      name="PhoneNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[PhoneNumberConfirmed]"
+                      dataType="bool"
+                      name="PhoneNumberConfirmed" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[TwoFactorEnabled]"
+                      dataType="bool"
+                      name="TwoFactorEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[LockoutEnd]"
+                      dataType="dbTimeStampOffset"
+                      name="LockoutEnd"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[LockoutEnabled]"
+                      dataType="bool"
+                      name="LockoutEnabled" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[AccessFailedCount]"
+                      dataType="i4"
+                      name="AccessFailedCount" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[old_code]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="old_code" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                      dataType="i4"
+                      name="old_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="wstr"
+                      length="450"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[UserName]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[UserName]"
+                      name="UserName" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[NormalizedUserName]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[NormalizedUserName]"
+                      name="NormalizedUserName" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[NormalizedEmail]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[NormalizedEmail]"
+                      name="NormalizedEmail" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[EmailConfirmed]"
+                      dataType="bool"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[EmailConfirmed]"
+                      name="EmailConfirmed" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[PasswordHash]"
+                      dataType="nText"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[PasswordHash]"
+                      name="PasswordHash" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[SecurityStamp]"
+                      dataType="nText"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[SecurityStamp]"
+                      name="SecurityStamp" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[ConcurrencyStamp]"
+                      dataType="nText"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[ConcurrencyStamp]"
+                      name="ConcurrencyStamp" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[PhoneNumber]"
+                      dataType="nText"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[PhoneNumber]"
+                      name="PhoneNumber" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[PhoneNumberConfirmed]"
+                      dataType="bool"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[PhoneNumberConfirmed]"
+                      name="PhoneNumberConfirmed" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[TwoFactorEnabled]"
+                      dataType="bool"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[TwoFactorEnabled]"
+                      name="TwoFactorEnabled" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[LockoutEnd]"
+                      dataType="dbTimeStampOffset"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[LockoutEnd]"
+                      name="LockoutEnd"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[LockoutEnabled]"
+                      dataType="bool"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[LockoutEnabled]"
+                      name="LockoutEnabled" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[AccessFailedCount]"
+                      dataType="i4"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[AccessFailedCount]"
+                      name="AccessFailedCount" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[old_code]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[old_code]"
+                      name="old_code" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      dataType="i4"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                      name="old_id" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Users STG_To_TRGT.Paths[OLE DB Source Output]"
+              endId="Package\Users STG_To_TRGT\Users.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Users STG_To_TRGT\Users_STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C2AF209F-B1BB-4A60-B386-A8B67CB8BC48}"
+      DTS:From="Package\STG_Update_User_Claims"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Drop DB Constraints" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{37E20912-90DF-4278-B73C-74F245EEA40C}"
+      DTS:From="Package\Truncate TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Users STG_To_TRGT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{FF94016D-5592-43A7-BD09-3DE861D2A149}"
+      DTS:From="Package\UserRoles STG_to_TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\UserClaims STG_to_TRGT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{2889EC86-2D71-42A0-9FFB-CA21202BCD09}"
+      DTS:From="Package\UserClaims STG_to_TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Create DB Constraints" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{bc34afb2-a0a4-4b24-862e-b8586eb0c108}"
+      DTS:From="Package\Drop DB Constraints"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Truncate TRGT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{6e478dfa-773f-441e-b205-01209e01bbb2}"
+      DTS:From="Package\Users STG_To_TRGT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\UserRoles STG_to_TRGT" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Drop DB Constraints"
+          TopLeft="145.428574688581,60" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Truncate TRGT"
+          TopLeft="79.1428592740274,145.035295310235" />
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\UserRoles STG_to_TRGT"
+          TopLeft="63.5714290579971,389.388234556257" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Users STG_To_TRGT"
+          TopLeft="53.4285712144813,248.835295601947" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="232.228574688581,101.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-78.2857154145532,43.4352953102349"
+              Start="0,0"
+              End="-78.2857154145532,35.9352953102349">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.7176476551175" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.7176476551175"
+                    Point2="0,21.7176476551175"
+                    Point3="-4,21.7176476551175" />
+                  <mssgle:LineSegment
+                    End="-74.2857154145532,21.7176476551175" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.2857154145532,21.7176476551175"
+                    Point2="-78.2857154145532,21.7176476551175"
+                    Point3="-78.2857154145532,25.7176476551175" />
+                  <mssgle:LineSegment
+                    End="-78.2857154145532,35.9352953102349" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="141.828571214481,290.435295601947">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.3428578435158,98.9529389543104"
+              Start="0,0"
+              End="19.3428578435158,91.4529389543104">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.4764694771552" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.4764694771552"
+                    Point2="0,49.4764694771552"
+                    Point3="4,49.4764694771552" />
+                  <mssgle:LineSegment
+                    End="15.3428578435158,49.4764694771552" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.3428578435158,49.4764694771552"
+                    Point2="19.3428578435158,49.4764694771552"
+                    Point3="19.3428578435158,53.4764694771552" />
+                  <mssgle:LineSegment
+                    End="19.3428578435158,91.4529389543104" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="239.2,41.6"
+          Id="Package\STG_Update_User_Claims\Update UserClaims (Merchant_ID)"
+          TopLeft="6.64285716231996,163.105885493137" />
+        <EdgeLayout
+          Id="Package\STG_Update_User_Claims.PrecedenceConstraints[Constraint 1]"
+          TopLeft="128.87142858116,125.788237327523">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.3176481656137"
+              Start="0,0"
+              End="0,29.8176481656137">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.8176481656137" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="252,41.6"
+          Id="Package\STG_Update_User_Claims\Update UserClaims (Merchant_Code)"
+          TopLeft="5.5,84.188237327523" />
+        <EdgeLayout
+          Id="Package\STG_Update_User_Claims.PrecedenceConstraints[Constraint]"
+          TopLeft="131.100000204359,49.3176480197577">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.8705893077653"
+              Start="0,0"
+              End="0,27.3705893077653">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.3705893077653" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\STG_Update_User_Claims\Update UserClaims(Name)"
+          TopLeft="29.5000004087176,7.71764801975765" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="262.4,260"
+          Size="262.4,43.2"
+          Id="Package\STG_Update_User_Claims"
+          TopLeft="413.142864178638,17.7411767194015" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="413.142864178638,39.3411767194015">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-93.3142894900574,41.4588232805985"
+              Start="0,0"
+              End="-85.8142894900574,41.4588232805985">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-42.6571447450287,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42.6571447450287,0"
+                    Point2="-46.6571447450287,0"
+                    Point3="-46.6571447450287,4" />
+                  <mssgle:LineSegment
+                    End="-46.6571447450287,37.4588232805985" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-46.6571447450287,37.4588232805985"
+                    Point2="-46.6571447450287,41.4588232805985"
+                    Point3="-50.6571447450287,41.4588232805985" />
+                  <mssgle:LineSegment
+                    End="-85.8142894900574,41.4588232805985" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\Create DB Constraints"
+          TopLeft="424.571435801837,564.329419006031" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="154.342859274027,186.635295310235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.5142880595461,62.2000002917117"
+              Start="0,0"
+              End="-12.5142880595461,54.7000002917117">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.1000001458559" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.1000001458559"
+                    Point2="0,31.1000001458559"
+                    Point3="-4,31.1000001458559" />
+                  <mssgle:LineSegment
+                    End="-8.51428805954606,31.1000001458559" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.51428805954606,31.1000001458559"
+                    Point2="-12.5142880595461,31.1000001458559"
+                    Point3="-12.5142880595461,35.1000001458559" />
+                  <mssgle:LineSegment
+                    End="-12.5142880595461,54.7000002917117" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\UserClaims STG_to_TRGT"
+          TopLeft="60.5714296029539,502.211768944288" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="160.871429330476,430.988234556257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.2235343880312"
+              Start="0,0"
+              End="0,63.7235343880312">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.7235343880312" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="260.571429602954,523.011768944288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="164.000006198883,62.1176500617426"
+              Start="0,0"
+              End="156.500006198883,62.1176500617426">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="78.0000030994416,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.0000030994416,0"
+                    Point2="82.0000030994416,0"
+                    Point3="82.0000030994416,4" />
+                  <mssgle:LineSegment
+                    End="82.0000030994416,58.1176500617426" />
+                  <mssgle:CubicBezierSegment
+                    Point1="82.0000030994416,58.1176500617426"
+                    Point2="82.0000030994416,62.1176500617426"
+                    Point3="86.0000030994416,62.1176500617426" />
+                  <mssgle:LineSegment
+                    End="156.500006198883,62.1176500617426" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\UserRoles STG_to_TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\UserRoles STG_to_TRGT\UserRoles_STG"
+          TopLeft="167,16" />
+        <NodeLayout
+          Size="124.8,41.6"
+          Id="Package\UserRoles STG_to_TRGT\UserRoles"
+          TopLeft="125,124" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\UserRoles STG_to_TRGT\Data Conversion"
+          TopLeft="302,102" />
+        <EdgeLayout
+          Id="Package\UserRoles STG_to_TRGT.Paths[OLE DB Source Output]"
+          TopLeft="242.5,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137.5,44"
+              Start="0,0"
+              End="137.5,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="4,22" />
+                  <mssgle:LineSegment
+                    End="133.5,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="133.5,22"
+                    Point2="137.5,22"
+                    Point3="137.5,26" />
+                  <mssgle:LineSegment
+                    End="137.5,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\UserRoles STG_to_TRGT.Paths[Data Conversion Output]"
+          TopLeft="302,123">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-52,22"
+              Start="0,0"
+              End="-44.5,22">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-22,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22,0"
+                    Point2="-26,0"
+                    Point3="-26,4" />
+                  <mssgle:LineSegment
+                    End="-26,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26,18"
+                    Point2="-26,22"
+                    Point3="-30,22" />
+                  <mssgle:LineSegment
+                    End="-44.5,22" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserRoles STG_to_TRGT\UserRoles_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserRoles STG_to_TRGT\UserRoles">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Users STG_To_TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Users STG_To_TRGT\Users_STG"
+          TopLeft="141,33" />
+        <NodeLayout
+          Size="104,41.6"
+          Id="Package\Users STG_To_TRGT\Users"
+          TopLeft="141.6,192.8" />
+        <EdgeLayout
+          Id="Package\Users STG_To_TRGT.Paths[OLE DB Source Output]"
+          TopLeft="205.8,74.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.2,118.2"
+              Start="0,0"
+              End="-12.2,110.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.1" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.1"
+                    Point2="0,59.1"
+                    Point3="-4,59.1" />
+                  <mssgle:LineSegment
+                    End="-8.20000000000002,59.1" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.20000000000002,59.1"
+                    Point2="-12.2,59.1"
+                    Point3="-12.2,63.1" />
+                  <mssgle:LineSegment
+                    End="-12.2,110.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Users STG_To_TRGT\Users_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\UserClaims STG_to_TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\UserClaims STG_to_TRGT\UserClaims STG"
+          TopLeft="272,105.6" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\UserClaims STG_to_TRGT\UserClaims TRGT"
+          TopLeft="263.2,265.6" />
+        <EdgeLayout
+          Id="Package\UserClaims STG_to_TRGT.Paths[OLE DB Source Output]"
+          TopLeft="345.8,147.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,118.4"
+              Start="0,0"
+              End="0,110.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,110.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserClaims STG_to_TRGT\UserClaims STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserClaims STG_to_TRGT\UserClaims TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Users STG_To_TRGT\Users">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
