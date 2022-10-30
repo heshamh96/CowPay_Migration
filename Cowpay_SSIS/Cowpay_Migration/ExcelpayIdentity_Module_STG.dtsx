@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_STG"
   DTS:PackageType="5"
-  DTS:VersionBuild="54"
-  DTS:VersionGUID="{F71EA8AB-2036-4773-85AF-4A7301426712}">
+  DTS:VersionBuild="57"
+  DTS:VersionGUID="{9344D4DB-33CA-4BA9-9993-5FBB08EEEEB6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -445,9 +445,8 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\UserRoles STG_to_STG\Data Conversion.Inputs[Data Conversion Input].Columns[RoleId]"
-                      cachedCodepage="1256"
-                      cachedDataType="str"
-                      cachedLength="36"
+                      cachedDataType="wstr"
+                      cachedLength="450"
                       cachedName="RoleId"
                       lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[RoleId]" />
                   </inputColumns>
@@ -723,12 +722,11 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[RoleId]"
-                      codePage="1256"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[RoleId]"
-                      length="36"
+                      length="450"
                       lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[RoleId]"
                       name="RoleId"
                       truncationRowDisposition="FailComponent" />
@@ -762,14 +760,22 @@
                       name="Old_Roleid"
                       precision="20"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[rn]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[rn]"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].Columns[rn]"
+                      name="rn"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[RoleId]"
-                      codePage="1256"
-                      dataType="str"
-                      length="36"
+                      dataType="wstr"
+                      length="450"
                       name="RoleId" />
                     <externalMetadataColumn
                       refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[UserId]"
@@ -786,6 +792,10 @@
                       dataType="numeric"
                       name="Old_Roleid"
                       precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Output].ExternalColumns[rn]"
+                      dataType="i8"
+                      name="rn" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -794,10 +804,14 @@
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
+                      refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[rn]"
+                      dataType="i8"
+                      lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[rn]"
+                      name="rn" />
+                    <outputColumn
                       refId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[RoleId]"
-                      codePage="1256"
-                      dataType="str"
-                      length="36"
+                      dataType="wstr"
+                      length="450"
                       lineageId="Package\UserRoles STG_to_STG\UserRoles_SRC.Outputs[OLE DB Source Error Output].Columns[RoleId]"
                       name="RoleId" />
                     <outputColumn
@@ -1962,15 +1976,11 @@
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="384,187.2"
-          Size="384,230.4"
+          Size="384,43.2"
           Id="Package\UserClaims STG_to_STG"
-          TopLeft="258.857147265454,421.458828531417" />
-        <NodeLayout
-          Size="188,41.6"
-          Id="Package\UserRoles STG_to_STG"
-          TopLeft="431,332" />
+          TopLeft="258.857147265454,422.070593245879" />
         <NodeLayout
           Size="171.2,41.6"
           Id="Package\Users STG_To_STG"
@@ -2037,40 +2047,10 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="525,373.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-74.142852734546,47.858828531417"
-              Start="0,0"
-              End="-74.142852734546,40.358828531417">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.9294142657085" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.9294142657085"
-                    Point2="0,23.9294142657085"
-                    Point3="-4,23.9294142657085" />
-                  <mssgle:LineSegment
-                    End="-70.142852734546,23.9294142657085" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-70.142852734546,23.9294142657085"
-                    Point2="-74.142852734546,23.9294142657085"
-                    Point3="-74.142852734546,27.9294142657085" />
-                  <mssgle:LineSegment
-                    End="-74.142852734546,40.358828531417" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\UserRoles STG_to_STG"
+          TopLeft="431,332" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="537.785720319164,307.658827072856">
@@ -2097,6 +2077,40 @@
                     Point3="-12.7857203191641,16.170586463572" />
                   <mssgle:LineSegment
                     End="-12.7857203191641,16.841172927144" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="525,373.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-74.142852734546,48.4705932458791"
+              Start="0,0"
+              End="-74.142852734546,40.9705932458791">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2352966229396" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2352966229396"
+                    Point2="0,24.2352966229396"
+                    Point3="-4,24.2352966229396" />
+                  <mssgle:LineSegment
+                    End="-70.142852734546,24.2352966229396" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-70.142852734546,24.2352966229396"
+                    Point2="-74.142852734546,24.2352966229396"
+                    Point3="-74.142852734546,28.2352966229396" />
+                  <mssgle:LineSegment
+                    End="-74.142852734546,40.9705932458791" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2183,124 +2197,6 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\UserRoles STG_to_STG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="125,42"
-          Id="Package\UserRoles STG_to_STG\UserRoles"
-          TopLeft="125,124" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\UserRoles STG_to_STG\Data Conversion"
-          TopLeft="341,94" />
-        <NodeLayout
-          Size="150,42"
-          Id="Package\UserRoles STG_to_STG\UserRoles_SRC"
-          TopLeft="100,20" />
-        <EdgeLayout
-          Id="Package\UserRoles STG_to_STG.Paths[OLE DB Source Output]"
-          TopLeft="175,62">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="244,32"
-              Start="0,0"
-              End="244,24.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12"
-                    Point2="0,16"
-                    Point3="4,16" />
-                  <mssgle:LineSegment
-                    End="240,16" />
-                  <mssgle:CubicBezierSegment
-                    Point1="240,16"
-                    Point2="244,16"
-                    Point3="244,20" />
-                  <mssgle:LineSegment
-                    End="244,24.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\UserRoles STG_to_STG.Paths[Data Conversion Output]"
-          TopLeft="341,115">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-91,30"
-              Start="0,0"
-              End="-83.5,30">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-41.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-41.5,0"
-                    Point2="-45.5,0"
-                    Point3="-45.5,4" />
-                  <mssgle:LineSegment
-                    End="-45.5,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-45.5,26"
-                    Point2="-45.5,30"
-                    Point3="-49.5,30" />
-                  <mssgle:LineSegment
-                    End="-83.5,30" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\UserRoles STG_to_STG\UserRoles">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\UserRoles STG_to_STG\UserRoles_SRC">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2411,6 +2307,107 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Users STG_To_STG\Users">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\UserRoles STG_to_STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="124.8,41.6"
+          Id="Package\UserRoles STG_to_STG\UserRoles"
+          TopLeft="125,124" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\UserRoles STG_to_STG\Data Conversion"
+          TopLeft="341,94" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\UserRoles STG_to_STG\UserRoles_SRC"
+          TopLeft="100,20" />
+        <EdgeLayout
+          Id="Package\UserRoles STG_to_STG.Paths[OLE DB Source Output]"
+          TopLeft="175,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="244,32"
+              Start="0,0"
+              End="244,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12"
+                    Point2="0,16"
+                    Point3="4,16" />
+                  <mssgle:LineSegment
+                    End="240,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="240,16"
+                    Point2="244,16"
+                    Point3="244,20" />
+                  <mssgle:LineSegment
+                    End="244,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\UserRoles STG_to_STG.Paths[Data Conversion Output]"
+          TopLeft="341,115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-91,30"
+              Start="0,0"
+              End="-83.5,30">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-41.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-41.5,0"
+                    Point2="-45.5,0"
+                    Point3="-45.5,4" />
+                  <mssgle:LineSegment
+                    End="-45.5,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.5,26"
+                    Point2="-45.5,30"
+                    Point3="-49.5,30" />
+                  <mssgle:LineSegment
+                    End="-83.5,30" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserRoles STG_to_STG\UserRoles_SRC">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
