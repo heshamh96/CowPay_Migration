@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="70"
-  DTS:VersionGUID="{001C43CF-34FD-4525-826B-C374BC9B931C}">
+  DTS:VersionBuild="74"
+  DTS:VersionGUID="{4D3D46E7-BEF7-4F74-9144-F3848F63B4B5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2207,6 +2207,40 @@ from [dbo].[Staging_Merchant]</property>
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\TRGT_Loading\Create_Merchant_Constraints"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{16EC8515-49DF-4277-8E15-9DEACC90E4D8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create_Merchant_Constraints"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
+              SQLTask:SqlStatementSource="USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_Cities] FOREIGN KEY([CityId])&#xA;REFERENCES [dbo].[Cities] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_Cities]&#xA;GO&#xA;&#xA;&#xA;--===========================&#xA;&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_Countries] FOREIGN KEY([CountryId])&#xA;REFERENCES [dbo].[Countries] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_Countries]&#xA;GO&#xA;&#xA;&#xA;--============================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_StatusTypes] FOREIGN KEY([StatusTypeId])&#xA;REFERENCES [dbo].[StatusTypes] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_StatusTypes]&#xA;GO&#xA;&#xA;--========================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks]  WITH CHECK ADD  CONSTRAINT [FK_MerchantSocialLinks_Merchants] FOREIGN KEY([MerchantId])&#xA;REFERENCES [dbo].[Merchants] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks] CHECK CONSTRAINT [FK_MerchantSocialLinks_Merchants]&#xA;GO&#xA;&#xA;--===========================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments]  WITH CHECK ADD  CONSTRAINT [FK_MerchantAttachments_Merchants] FOREIGN KEY([MerchantId])&#xA;REFERENCES [dbo].[Merchants] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments] CHECK CONSTRAINT [FK_MerchantAttachments_Merchants]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\TRGT_Loading\Drop_Merchant_Constraints"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2E53A6C5-788C-4CB8-AE7A-F4B58B475855}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Drop_Merchant_Constraints"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
+              SQLTask:SqlStatementSource="USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_Cities]&#xA;GO&#xA;&#xA;---======================================&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_Countries]&#xA;GO&#xA;&#xA;&#xA;--========================&#xA;&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_StatusTypes]&#xA;GO&#xA;&#xA;&#xA;--==================================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks] DROP CONSTRAINT [FK_MerchantSocialLinks_Merchants]&#xA;GO&#xA;&#xA;&#xA;--======================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments] DROP CONSTRAINT [FK_MerchantAttachments_Merchants]&#xA;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\TRGT_Loading\Stg to Trgt Merchants"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
@@ -3276,6 +3310,22 @@ from [dbo].[Staging_Merchant]</property>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
+          DTS:refId="Package\TRGT_Loading.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{493BC446-F7DC-41D4-9142-21BAB69ABADF}"
+          DTS:From="Package\TRGT_Loading\Drop_Merchant_Constraints"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\TRGT_Loading\Truncate Trgt_Merchants" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\TRGT_Loading.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{90CBE97E-E5BA-4C1D-8DF7-8800428F7F7B}"
+          DTS:From="Package\TRGT_Loading\Stg to Trgt Merchants"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\TRGT_Loading\Create_Merchant_Constraints" />
+        <DTS:PrecedenceConstraint
           DTS:refId="Package\TRGT_Loading.PrecedenceConstraints[Constraint 4]"
           DTS:CreationName=""
           DTS:DTSID="{D11B7E4F-9EF7-4762-B964-F597B4F3C33D}"
@@ -3315,7 +3365,7 @@ from [dbo].[Staging_Merchant]</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="351.2,41.6"
           Id="Package\Execute Process Task"
@@ -3406,33 +3456,121 @@ from [dbo].[Staging_Merchant]</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="390.4,311.2"
-          Size="390.4,354.4"
+          Size="390.4,43.2"
           Id="Package\Staging_Activities"
           TopLeft="381.060323941411,123.576472321348" />
         <NodeLayout
-          Size="182.4,49.6"
+          Size="182.4,51.2"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants"
-          TopLeft="11.2142838361312,84.8941222372355" />
+          TopLeft="22.8571407940923,141.176475967751" />
         <NodeLayout
           Size="196.8,41.6"
           Id="Package\TRGT_Loading\Truncate Trgt_Merchants"
-          TopLeft="5.5,16.0941241333644" />
+          TopLeft="25.7142856753603,71.7647131494175" />
         <EdgeLayout
           Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 4]"
-          TopLeft="103.157141918066,57.6941241333643">
+          TopLeft="124.11428567536,113.364713149417">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,27.1999981038713"
+              EndConnector="-10.0571448812679,27.8117628183332"
               Start="0,0"
-              End="0,19.6999981038713">
+              End="-10.0571448812679,20.3117628183332">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.6999981038713" />
+                    End="0,9.90588140916661" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.90588140916661"
+                    Point2="0,13.9058814091666"
+                    Point3="-4,13.9058814091666" />
+                  <mssgle:LineSegment
+                    End="-6.05714488126792,13.9058814091666" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.05714488126792,13.9058814091666"
+                    Point2="-10.0571448812679,13.9058814091666"
+                    Point3="-10.0571448812679,17.9058814091666" />
+                  <mssgle:LineSegment
+                    End="-10.0571448812679,20.3117628183332" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="208.8,41.6"
+          Id="Package\TRGT_Loading\Drop_Merchant_Constraints"
+          TopLeft="44.557144200072,3.48235635592465" />
+        <EdgeLayout
+          Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint]"
+          TopLeft="148.957144200072,45.0823563559247">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-24.8428585247118,26.6823567934929"
+              Start="0,0"
+              End="-24.8428585247118,19.1823567934929">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.34117839674643" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.34117839674643"
+                    Point2="0,13.3411783967464"
+                    Point3="-4,13.3411783967464" />
+                  <mssgle:LineSegment
+                    End="-20.8428585247118,13.3411783967464" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20.8428585247118,13.3411783967464"
+                    Point2="-24.8428585247118,13.3411783967464"
+                    Point3="-24.8428585247118,17.3411783967464" />
+                  <mssgle:LineSegment
+                    End="-24.8428585247118,19.1823567934929" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="216.8,41.6"
+          Id="Package\TRGT_Loading\Create_Merchant_Constraints"
+          TopLeft="38.1714301479106,228.800005542531" />
+        <EdgeLayout
+          Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 1]"
+          TopLeft="114.057140794092,192.376475967751">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.5142893538183,36.42352957478"
+              Start="0,0"
+              End="32.5142893538183,28.92352957478">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.21176478739" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.21176478739"
+                    Point2="0,18.21176478739"
+                    Point3="4,18.21176478739" />
+                  <mssgle:LineSegment
+                    End="28.5142893538183,18.21176478739" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.5142893538183,18.21176478739"
+                    Point2="32.5142893538183,18.21176478739"
+                    Point3="32.5142893538183,22.21176478739" />
+                  <mssgle:LineSegment
+                    End="32.5142893538183,28.92352957478" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3443,9 +3581,9 @@ from [dbo].[Staging_Merchant]</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
-          PanelSize="204.8,191.2"
-          Size="204.8,234.4"
+          IsExpanded="False"
+          PanelSize="268.8,323.2"
+          Size="268.8,43.2"
           Id="Package\TRGT_Loading"
           TopLeft="56.4571431101585,299.576473050629" />
         <EdgeLayout
@@ -3484,30 +3622,30 @@ from [dbo].[Staging_Merchant]</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="381.060323941411,300.776472321348">
+          TopLeft="576.260323941411,166.776472321348">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-119.803180831253,116.000000729281"
+              EndConnector="-385.403180831252,132.800000729281"
               Start="0,0"
-              End="-112.303180831253,116.000000729281">
+              End="-385.403180831252,125.300000729281">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-55.9015904156263,0" />
+                    End="0,62.4000003646405" />
                   <mssgle:CubicBezierSegment
-                    Point1="-55.9015904156263,0"
-                    Point2="-59.9015904156263,0"
-                    Point3="-59.9015904156263,4" />
+                    Point1="0,62.4000003646405"
+                    Point2="0,66.4000003646405"
+                    Point3="-4,66.4000003646405" />
                   <mssgle:LineSegment
-                    End="-59.9015904156263,112.000000729281" />
+                    End="-381.403180831252,66.4000003646405" />
                   <mssgle:CubicBezierSegment
-                    Point1="-59.9015904156263,112.000000729281"
-                    Point2="-59.9015904156263,116.000000729281"
-                    Point3="-63.9015904156263,116.000000729281" />
+                    Point1="-381.403180831252,66.4000003646405"
+                    Point2="-385.403180831252,66.4000003646405"
+                    Point3="-385.403180831252,70.4000003646405" />
                   <mssgle:LineSegment
-                    End="-112.303180831253,116.000000729281" />
+                    End="-385.403180831252,125.300000729281" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

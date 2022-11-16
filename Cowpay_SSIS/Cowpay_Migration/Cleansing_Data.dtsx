@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Cleansing_Data"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{0D79907B-06E4-4C2E-8E62-773627385164}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{4768DFFD-F914-4E67-B6B4-EC236DA7D6E9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -319,11 +319,11 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="201.6,41.6"
+          Size="202,42"
           Id="Package\Merchants_Cleansing_Activities\Cleanse Users (m_Tax_id)"
           TopLeft="28.571436142435,71.8588276562807" />
         <NodeLayout
-          Size="393.6,41.6"
+          Size="394,42"
           Id="Package\Merchants_Cleansing_Activities\Cleansing Users (m_tax_id,m_commercial_number,m_personal_id)"
           TopLeft="10.9714294667147,11.7176478739016" />
         <EdgeLayout
@@ -359,7 +359,7 @@
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="410.4,168"
+          PanelSize="410,168"
           Size="248.8,43.2"
           Id="Package\Merchants_Cleansing_Activities"
           TopLeft="27.4285708738833,23.9058818467348" />
@@ -376,7 +376,7 @@
           Id="Package\Transactions_Cleanseing Activities\Cleanse_Bank_Accounts(Bank_Name)"
           TopLeft="42.6285757103745,155.247061629114" />
         <NodeLayout
-          Size="202.4,41.6"
+          Size="201.6,41.6"
           Id="Package\Transactions_Cleanseing Activities\Cleanse_Orders_(channel)"
           TopLeft="79.7714362786741,373.741181386796" />
         <NodeLayout
@@ -384,7 +384,7 @@
           Id="Package\Transactions_Cleanseing Activities\Cleanse_Orders_(payment_link_Type)"
           TopLeft="50.6285786395172,443.294122528947" />
         <NodeLayout
-          Size="277.6,41.6"
+          Size="278.4,41.6"
           Id="Package\Transactions_Cleanseing Activities\Cleanse_Orders_(payment_method_Type)"
           TopLeft="80.3428648598342,512.423534971455" />
         <NodeLayout
@@ -446,9 +446,9 @@
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.63529531023501" />
+                    End="0,8.63529531023499" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,8.63529531023501"
+                    Point1="0,8.63529531023499"
                     Point2="0,12.635295310235"
                     Point3="4,12.635295310235" />
                   <mssgle:LineSegment
@@ -469,13 +469,13 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transactions_Cleanseing Activities.PrecedenceConstraints[Constraint 2]"
-          TopLeft="170.628575710375,196.847061629114">
+          TopLeft="170.628575710374,196.847061629114">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-25.4285689665346,37.600002187841"
+              EndConnector="-25.4285689665345,37.600002187841"
               Start="0,0"
-              End="-25.4285689665346,30.100002187841">
+              End="-25.4285689665345,30.100002187841">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -486,13 +486,13 @@
                     Point2="0,18.8000010939205"
                     Point3="-4,18.8000010939205" />
                   <mssgle:LineSegment
-                    End="-21.4285689665346,18.8000010939205" />
+                    End="-21.4285689665345,18.8000010939205" />
                   <mssgle:CubicBezierSegment
-                    Point1="-21.4285689665346,18.8000010939205"
-                    Point2="-25.4285689665346,18.8000010939205"
-                    Point3="-25.4285689665346,22.8000010939205" />
+                    Point1="-21.4285689665345,18.8000010939205"
+                    Point2="-25.4285689665345,18.8000010939205"
+                    Point3="-25.4285689665345,22.8000010939205" />
                   <mssgle:LineSegment
-                    End="-25.4285689665346,30.100002187841" />
+                    End="-25.4285689665345,30.100002187841" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

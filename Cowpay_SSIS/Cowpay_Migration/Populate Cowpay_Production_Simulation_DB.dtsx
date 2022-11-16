@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Populate Cowpay_Production_Simulation_DB"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{FAC23F67-D709-4DFC-BF12-D8D6468DA36F}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{324C37DB-0F06-4B87-9E0A-A3C73EF7D25D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -10766,6 +10766,18 @@ FROM cowpay.customers</property>
                       externalMetadataColumnId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].ExternalColumns[cowpay_fees]"
                       lineageId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].Columns[cowpay_fees]"
                       name="cowpay_fees" />
+                    <outputColumn
+                      refId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].Columns[sms_balance]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].ExternalColumns[sms_balance]"
+                      lineageId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].Columns[sms_balance]"
+                      name="sms_balance" />
+                    <outputColumn
+                      refId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].Columns[can_withdraw]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].ExternalColumns[can_withdraw]"
+                      lineageId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].Columns[can_withdraw]"
+                      name="can_withdraw" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -11068,6 +11080,14 @@ FROM cowpay.customers</property>
                       refId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].ExternalColumns[cowpay_fees]"
                       dataType="r8"
                       name="cowpay_fees" />
+                    <externalMetadataColumn
+                      refId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].ExternalColumns[sms_balance]"
+                      dataType="r8"
+                      name="sms_balance" />
+                    <externalMetadataColumn
+                      refId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].ExternalColumns[can_withdraw]"
+                      dataType="i1"
+                      name="can_withdraw" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -11506,6 +11526,18 @@ FROM cowpay.customers</property>
                       externalMetadataColumnId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].ExternalColumns[cowpay_fees]"
                       lineageId="Package\Users\Users_MySQL.Outputs[ODBC Source Error Output].Columns[cowpay_fees]"
                       name="cowpay_fees" />
+                    <outputColumn
+                      refId="Package\Users\Users_MySQL.Outputs[ODBC Source Error Output].Columns[sms_balance]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].ExternalColumns[sms_balance]"
+                      lineageId="Package\Users\Users_MySQL.Outputs[ODBC Source Error Output].Columns[sms_balance]"
+                      name="sms_balance" />
+                    <outputColumn
+                      refId="Package\Users\Users_MySQL.Outputs[ODBC Source Error Output].Columns[can_withdraw]"
+                      dataType="i1"
+                      externalMetadataColumnId="Package\Users\Users_MySQL.Outputs[ODBC Source Output].ExternalColumns[can_withdraw]"
+                      lineageId="Package\Users\Users_MySQL.Outputs[ODBC Source Error Output].Columns[can_withdraw]"
+                      name="can_withdraw" />
                     <outputColumn
                       refId="Package\Users\Users_MySQL.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -12352,6 +12384,10 @@ FROM cowpay.customers</property>
           Id="Package\Customers"
           TopLeft="185.714288876982,97.2705895994774" />
         <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Drop_Indexies"
+          TopLeft="295.42857645969,21.4117650061743" />
+        <NodeLayout
           Size="211.2,41.6"
           Id="Package\merchant_financials_configs"
           TopLeft="484.000008242471,150.494119757682" />
@@ -12375,6 +12411,10 @@ FROM cowpay.customers</property>
           Size="148.8,41.6"
           Id="Package\payment_Links"
           TopLeft="670.74286731214,437.364708336167" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\payment_links_Index"
+          TopLeft="655.657152715021,535.29412019525" />
         <NodeLayout
           Size="134.4,41.6"
           Id="Package\Permissions"
@@ -12672,6 +12712,96 @@ FROM cowpay.customers</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 17]"
+          TopLeft="716.457152715021,535.29412019525">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-204.457145971181,-132.141173948136"
+              Start="0,0"
+              End="-204.457145971181,-124.641173948136">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-62.0607094756417" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-62.0607094756417"
+                    Point2="0,-66.0607094756417"
+                    Point3="-4,-66.0607094756417" />
+                  <mssgle:LineSegment
+                    End="-200.457145971181,-66.0607094756417" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-200.457145971181,-66.0607094756417"
+                    Point2="-204.457145971181,-66.0607094756417"
+                    Point3="-204.457145971181,-70.0607094756417" />
+                  <mssgle:LineSegment
+                    End="-204.457145971181,-124.641173948136" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 18]"
+          TopLeft="745.000010013581,478.964708336167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.3294118590833"
+              Start="0,0"
+              End="0,48.8294118590833">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.8294118590833" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 19]"
+          TopLeft="295.42857645969,42.2117650061743">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-135.200004972731,18.2588238640228"
+              Start="0,0"
+              End="-127.700004972731,18.2588238640228">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-74.1155584286889,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.1155584286889,0"
+                    Point2="-78.1155584286889,0"
+                    Point3="-78.1155584286889,4" />
+                  <mssgle:LineSegment
+                    End="-78.1155584286889,14.2588238640228" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-78.1155584286889,14.2588238640228"
+                    Point2="-78.1155584286889,18.2588238640228"
+                    Point3="-82.1155584286889,18.2588238640228" />
+                  <mssgle:LineSegment
+                    End="-127.700004972731,18.2588238640228" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="589.600008242471,192.094119757682">
           <EdgeLayout.Curve>
@@ -12925,104 +13055,6 @@ FROM cowpay.customers</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="178.4,41.6"
-          Id="Package\payment_links_Index"
-          TopLeft="655.657152715021,535.29412019525" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 18]"
-          TopLeft="745.000010013581,478.964708336167">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,56.3294118590833"
-              Start="0,0"
-              End="0,48.8294118590833">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.8294118590833" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 17]"
-          TopLeft="716.457152715021,535.29412019525">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-204.457145971181,-132.141173948136"
-              Start="0,0"
-              End="-204.457145971181,-124.641173948136">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-62.0607094756417" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-62.0607094756417"
-                    Point2="0,-66.0607094756417"
-                    Point3="-4,-66.0607094756417" />
-                  <mssgle:LineSegment
-                    End="-200.457145971181,-66.0607094756417" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-200.457145971181,-66.0607094756417"
-                    Point2="-204.457145971181,-66.0607094756417"
-                    Point3="-204.457145971181,-70.0607094756417" />
-                  <mssgle:LineSegment
-                    End="-204.457145971181,-124.641173948136" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="146.4,41.6"
-          Id="Package\Drop_Indexies"
-          TopLeft="295.42857645969,21.4117650061743" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 19]"
-          TopLeft="295.42857645969,42.2117650061743">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-135.200004972731,18.2588238640228"
-              Start="0,0"
-              End="-127.700004972731,18.2588238640228">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-74.1155584286889,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-74.1155584286889,0"
-                    Point2="-78.1155584286889,0"
-                    Point3="-78.1155584286889,4" />
-                  <mssgle:LineSegment
-                    End="-78.1155584286889,14.2588238640228" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-78.1155584286889,14.2588238640228"
-                    Point2="-78.1155584286889,18.2588238640228"
-                    Point3="-82.1155584286889,18.2588238640228" />
-                  <mssgle:LineSegment
-                    End="-127.700004972731,18.2588238640228" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -13156,7 +13188,7 @@ FROM cowpay.customers</property>
     design-time-name="Package\cards">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="141.6,41.6"
           Id="Package\cards\cards_MySQL"
@@ -13196,9 +13228,7 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13306,7 +13336,7 @@ FROM cowpay.customers</property>
     design-time-name="Package\Customers">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="166.4,41.6"
           Id="Package\Customers\Customers_MySQL"
@@ -13334,9 +13364,7 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13359,7 +13387,7 @@ FROM cowpay.customers</property>
     design-time-name="Package\merchant_financials_configs">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="236,41.6"
           Id="Package\merchant_financials_configs\merchant_financials_configs_SRC"
@@ -13399,7 +13427,9 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13623,7 +13653,7 @@ FROM cowpay.customers</property>
     design-time-name="Package\Orders">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="134.4,41.6"
           Id="Package\Orders\Orders_SRC"
@@ -13651,9 +13681,7 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -14039,13 +14067,13 @@ FROM cowpay.customers</property>
     design-time-name="Package\Transactions">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="162,42"
+          Size="161.6,41.6"
           Id="Package\Transactions\Transactions_SRC"
           TopLeft="307.2,112" />
         <NodeLayout
-          Size="135,42"
+          Size="135.2,41.6"
           Id="Package\Transactions\transactions"
           TopLeft="322.4,307.2" />
         <EdgeLayout
@@ -14067,9 +14095,7 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -14102,13 +14128,13 @@ FROM cowpay.customers</property>
     design-time-name="Package\Users">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="142,42"
+          Size="142.4,41.6"
           Id="Package\Users\Users_MySQL"
           TopLeft="316.8,97.6" />
         <NodeLayout
-          Size="143,42"
+          Size="143.2,41.6"
           Id="Package\Users\Users_MSSQL"
           TopLeft="302.4,263.2" />
         <EdgeLayout
@@ -14142,9 +14168,7 @@ FROM cowpay.customers</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
