@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_TRGT"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{B59590C3-EC83-4830-BC11-56A149094C45}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{B72C5D96-96F3-4519-861C-AC53801FA7E9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1789,13 +1789,13 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="181.6,41.6"
+          Size="182,42"
           Id="Package\Create DB Constraints"
           TopLeft="410.857149853998,500.70588870197" />
         <NodeLayout
-          Size="174.4,41.6"
+          Size="174,42"
           Id="Package\Drop DB Constraints"
           TopLeft="145.428574688581,60" />
         <NodeLayout
@@ -1829,7 +1829,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1851,30 +1853,32 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
           PanelSize="262.4,260"
-          Size="224.8,43.2"
+          Size="225,43"
           Id="Package\STG_Update_User_Claims"
           TopLeft="440.571436074315,55.0588243015909" />
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150,42"
           Id="Package\Truncate TRGT"
           TopLeft="79.1428592740274,145.035295310235" />
         <NodeLayout
-          Size="200,41.6"
+          Size="200,42"
           Id="Package\UserClaims STG_to_TRGT"
           TopLeft="60.5714296029539,502.211768944288" />
         <NodeLayout
-          Size="195.2,41.6"
+          Size="195,42"
           Id="Package\UserRoles STG_to_TRGT"
           TopLeft="63.5714290579971,389.388234556257" />
         <NodeLayout
-          Size="176.8,41.6"
+          Size="177,42"
           Id="Package\Users STG_To_TRGT"
           TopLeft="53.4285712144813,248.835295601947" />
         <EdgeLayout
@@ -2236,13 +2240,13 @@
     design-time-name="Package\Users STG_To_TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="104,41.6"
+          Size="104,42"
           Id="Package\Users STG_To_TRGT\Users"
           TopLeft="141.6,192.8" />
         <NodeLayout
-          Size="129.6,41.6"
+          Size="130,42"
           Id="Package\Users STG_To_TRGT\Users_STG"
           TopLeft="141,33" />
         <EdgeLayout
@@ -2276,9 +2280,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

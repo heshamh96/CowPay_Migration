@@ -50,10 +50,10 @@ settings_dict={'id':[],'json_settings':[]}
 for row in result:
     settings_id=row[0]
     settings_data = {
-        "id": "",
-        "merchantCode": "",
-        "StatusTypeId": "",
-        "moreSetting": {"callbackURL": row[4], "allowPaymentNotify":False if row[5] is 0 else True,"allowOrderNotify":False if row[6] is 0 else True},
+     "id": "",
+        "merchantCode": '' if row[1] is None else row[1],
+        "StatusTypeId": '' if row[2] is None else row[2],
+        "moreSetting": {"callbackURL":'' if row[4] is None else row[4] ,"allowPaymentNotify":False if row[5] is 0 else True,"allowOrderNotify":False if row[6] is 0 else True},
         "limitationNBlocking":[],
         "financialConfig":{"comessions":fix_Dict([{"payMethodType":2,"fixedVal":row[8],"percentage":row[7],"isEnabled":True},
                                          {"payMethodType":1,"fixedVal":row[10],"percentage":row[9],"isEnabled":True},

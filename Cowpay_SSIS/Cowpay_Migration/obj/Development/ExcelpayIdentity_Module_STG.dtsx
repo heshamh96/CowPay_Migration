@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_STG"
   DTS:PackageType="5"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{BC278829-BC54-4AAD-BE53-F83F9FA4677D}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{0BFB8B6A-489E-4FE4-BEE6-0DA8425733BB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -32,6 +32,24 @@
         <ExecuteProcessData
           Executable="C:\Users\Administrator\Documents\cowpay_migration\Batches\Mechants_batch.bat"
           WindowStyle="Hidden" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\remove_curly_Brackets"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{3F147B7D-C626-4DB9-8474-BF82AF805CC5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="remove_curly_Brackets"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+          SQLTask:SqlStatementSource=" update AspNetUsers&#xA;  set id=replace(REPLACE(id,'}',''),'{','')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1098,13 +1116,6 @@
                       externalMetadataColumnId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].ExternalColumns[NormalizedUserName]"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[NormalizedUserName]" />
                     <inputColumn
-                      refId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].Columns[Email]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Email"
-                      externalMetadataColumnId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
-                      lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[Email]" />
-                    <inputColumn
                       refId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].Columns[NormalizedEmail]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -1144,14 +1155,6 @@
                       externalMetadataColumnId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].ExternalColumns[TwoFactorEnabled]"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[TwoFactorEnabled]" />
                     <inputColumn
-                      refId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].Columns[LockoutEnd]"
-                      cachedCodepage="1256"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="LockoutEnd"
-                      externalMetadataColumnId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].ExternalColumns[LockoutEnd]"
-                      lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[LockoutEnd]" />
-                    <inputColumn
                       refId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].Columns[LockoutEnabled]"
                       cachedDataType="i4"
                       cachedName="LockoutEnabled"
@@ -1179,7 +1182,8 @@
                       lineageId="Package\Users STG_To_STG\Data Conversion.Outputs[Data Conversion Output].Columns[ConcurrencyStamp_]" />
                     <inputColumn
                       refId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].Columns[id]"
-                      cachedDataType="guid"
+                      cachedDataType="wstr"
+                      cachedLength="400"
                       cachedName="id"
                       externalMetadataColumnId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[id]" />
@@ -1197,6 +1201,13 @@
                       cachedName="old_id"
                       externalMetadataColumnId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].ExternalColumns[old_id]"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[old_id]" />
+                    <inputColumn
+                      refId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[Email]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1275,10 +1286,9 @@
                       name="TwoFactorEnabled" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].ExternalColumns[LockoutEnd]"
-                      codePage="1256"
-                      dataType="str"
-                      length="50"
-                      name="LockoutEnd" />
+                      dataType="dbTimeStampOffset"
+                      name="LockoutEnd"
+                      scale="7" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].ExternalColumns[LockoutEnabled]"
                       dataType="bool"
@@ -1467,16 +1477,6 @@
                       name="NormalizedUserName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[Email]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[Email]"
-                      length="50"
-                      lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[Email]"
-                      name="Email"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[NormalizedEmail]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -1557,12 +1557,10 @@
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[LockoutEnd]"
-                      codePage="1256"
-                      dataType="str"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[LockoutEnd]"
-                      length="50"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[LockoutEnd]"
                       name="LockoutEnd"
                       truncationRowDisposition="FailComponent" />
@@ -1586,10 +1584,11 @@
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[id]"
-                      dataType="guid"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      length="400"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[id]"
                       name="id"
                       truncationRowDisposition="FailComponent" />
@@ -1612,6 +1611,16 @@
                       externalMetadataColumnId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[old_id]"
                       name="old_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="50"
+                      lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -1644,11 +1653,6 @@
                       dataType="wstr"
                       length="50"
                       name="NormalizedUserName" />
-                    <externalMetadataColumn
-                      refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[Email]"
-                      dataType="wstr"
-                      length="50"
-                      name="Email" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[NormalizedEmail]"
                       dataType="wstr"
@@ -1690,9 +1694,7 @@
                       name="TwoFactorEnabled" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[LockoutEnd]"
-                      codePage="1256"
-                      dataType="str"
-                      length="50"
+                      dataType="i4"
                       name="LockoutEnd" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[LockoutEnabled]"
@@ -1704,7 +1706,8 @@
                       name="AccessFailedCount" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[id]"
-                      dataType="guid"
+                      dataType="wstr"
+                      length="400"
                       name="id" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[old_code]"
@@ -1716,6 +1719,11 @@
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
                       dataType="i8"
                       name="old_id" />
+                    <externalMetadataColumn
+                      refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="50"
+                      name="Email" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1725,7 +1733,8 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Error Output].Columns[id]"
-                      dataType="guid"
+                      dataType="wstr"
+                      length="400"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Error Output].Columns[id]"
                       name="id" />
                     <outputColumn
@@ -1817,9 +1826,7 @@
                       name="TwoFactorEnabled" />
                     <outputColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Error Output].Columns[LockoutEnd]"
-                      codePage="1256"
-                      dataType="str"
-                      length="50"
+                      dataType="i4"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Error Output].Columns[LockoutEnd]"
                       name="LockoutEnd" />
                     <outputColumn
@@ -1896,6 +1903,22 @@
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\fetch_Merchants_from_SRC_to_Staging_Merchants" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{5A5BC77F-1295-47BA-9025-19232CCCA5C7}"
+      DTS:From="Package\Users STG_To_STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\remove_curly_Brackets" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{42492EC3-44E9-42C5-B8AF-4529E6F38377}"
+      DTS:From="Package\remove_curly_Brackets"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\UserRoles STG_to_STG" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
       DTS:DTSID="{22A0C3B7-1EA6-45D4-AFD1-F471C2D9E451}"
@@ -1903,14 +1926,6 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\UserClaims STG_to_STG" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
-      DTS:CreationName=""
-      DTS:DTSID="{983702B3-4615-489C-A1CF-47456DAA6C04}"
-      DTS:From="Package\Users STG_To_STG"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 7"
-      DTS:To="Package\UserRoles STG_to_STG" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1925,19 +1940,19 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="319.2,41.6"
+          Size="319,42"
           Id="Package\fetch_Merchants_from_SRC_to_Staging_Merchants"
           TopLeft="440.742862816246,75.4470582744241" />
         <NodeLayout
-          Size="142.4,41.6"
+          Size="142,42"
           Id="Package\Truncate STG"
           TopLeft="593.14286724402,15.9058825760152" />
         <NodeLayout
-          Size="281.6,41.6"
+          Size="282,42"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims (Merchants) STG_to_STG"
           TopLeft="43.9999997275216,21.4588229888863" />
         <NodeLayout
-          Size="284.8,41.6"
+          Size="285,42"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims"
           TopLeft="55.085721340958,88.3176533435044" />
         <EdgeLayout
@@ -1977,44 +1992,44 @@
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="384,187.2"
-          Size="216.8,43.2"
+          PanelSize="384,187"
+          Size="217,43"
           Id="Package\UserClaims STG_to_STG"
           TopLeft="258.857147265454,422.070593245879" />
         <NodeLayout
-          Size="188,41.6"
+          Size="188,42"
           Id="Package\UserRoles STG_to_STG"
           TopLeft="431,332" />
         <NodeLayout
-          Size="171.2,41.6"
+          Size="171,42"
           Id="Package\Users STG_To_STG"
-          TopLeft="452.285720319164,265.658827072856" />
+          TopLeft="462.285720319164,193.658827072856" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="600.242862816246,117.447058274424">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-35.2904758304153,148.211768798432"
+              EndConnector="-52.4571424970819,76.2117687984319"
               Start="0,0"
-              End="-35.2904758304153,140.711768798432">
+              End="-52.4571424970819,68.7117687984319">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,84.1027084514433" />
+                    End="0,34.105884399216" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,84.1027084514433"
-                    Point2="0,88.1027084514433"
-                    Point3="-4,88.1027084514433" />
+                    Point1="0,34.105884399216"
+                    Point2="0,38.105884399216"
+                    Point3="-4,38.105884399216" />
                   <mssgle:LineSegment
-                    End="-31.2904758304153,88.1027084514433" />
+                    End="-48.4571424970819,38.105884399216" />
                   <mssgle:CubicBezierSegment
-                    Point1="-31.2904758304153,88.1027084514433"
-                    Point2="-35.2904758304153,88.1027084514433"
-                    Point3="-35.2904758304153,92.1027084514433" />
+                    Point1="-48.4571424970819,38.105884399216"
+                    Point2="-52.4571424970819,38.105884399216"
+                    Point3="-52.4571424970819,42.105884399216" />
                   <mssgle:LineSegment
-                    End="-35.2904758304153,140.711768798432" />
+                    End="-52.4571424970819,68.7117687984319" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2053,30 +2068,68 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="525,373.6">
+          TopLeft="525,374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-157.742852734546,48.470593245879"
+              EndConnector="-157.642852734546,48.0705932458791"
               Start="0,0"
-              End="-157.742852734546,40.970593245879">
+              End="-157.642852734546,40.5705932458791">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2352966229395" />
+                    End="0,20.0352966229395" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2352966229395"
-                    Point2="0,24.2352966229395"
-                    Point3="-4,24.2352966229395" />
+                    Point1="0,20.0352966229395"
+                    Point2="0,24.0352966229395"
+                    Point3="-4,24.0352966229395" />
                   <mssgle:LineSegment
-                    End="-153.742852734546,24.2352966229395" />
+                    End="-153.642852734546,24.0352966229395" />
                   <mssgle:CubicBezierSegment
-                    Point1="-153.742852734546,24.2352966229395"
-                    Point2="-157.742852734546,24.2352966229395"
-                    Point3="-157.742852734546,28.2352966229395" />
+                    Point1="-153.642852734546,24.0352966229395"
+                    Point2="-157.642852734546,24.0352966229395"
+                    Point3="-157.642852734546,28.0352966229395" />
                   <mssgle:LineSegment
-                    End="-157.742852734546,40.970593245879" />
+                    End="-157.642852734546,40.5705932458791" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="188,42"
+          Id="Package\remove_curly_Brackets"
+          TopLeft="465,255" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="462.285720319164,214.658827072856">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="2.71427968083594,61.341172927144"
+              Start="0,0"
+              End="-4.78572031916406,61.341172927144">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,57.341172927144" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,57.341172927144"
+                    Point2="-22.5,61.341172927144"
+                    Point3="-18.5,61.341172927144" />
+                  <mssgle:LineSegment
+                    End="-4.78572031916406,61.341172927144" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2086,31 +2139,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="537.785720319164,307.658827072856">
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="559,297">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-12.7857203191641,24.341172927144"
+              EndConnector="-34,35"
               Start="0,0"
-              End="-12.7857203191641,16.841172927144">
+              End="-34,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.17058646357199" />
+                    End="0,13.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,8.17058646357199"
-                    Point2="0,12.170586463572"
-                    Point3="-4,12.170586463572" />
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="-4,17.5" />
                   <mssgle:LineSegment
-                    End="-8.78572031916406,12.170586463572" />
+                    End="-30,17.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-8.78572031916406,12.170586463572"
-                    Point2="-12.7857203191641,12.170586463572"
-                    Point3="-12.7857203191641,16.170586463572" />
+                    Point1="-30,17.5"
+                    Point2="-34,17.5"
+                    Point3="-34,21.5" />
                   <mssgle:LineSegment
-                    End="-12.7857203191641,16.841172927144" />
+                    End="-34,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2126,7 +2179,7 @@
     design-time-name="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="158.4,41.6"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims\Merchant_Claims"
@@ -2166,7 +2219,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2307,17 +2362,17 @@
     design-time-name="Package\Users STG_To_STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="129.6,41.6"
+          Size="130,42"
           Id="Package\Users STG_To_STG\Users_SRC"
           TopLeft="97,24" />
         <NodeLayout
-          Size="104.8,41.6"
+          Size="105,42"
           Id="Package\Users STG_To_STG\Users"
           TopLeft="122.6,199.4" />
         <NodeLayout
-          Size="156,41.6"
+          Size="156,42"
           Id="Package\Users STG_To_STG\Data Conversion"
           TopLeft="250,89" />
         <EdgeLayout
@@ -2351,9 +2406,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2387,9 +2440,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

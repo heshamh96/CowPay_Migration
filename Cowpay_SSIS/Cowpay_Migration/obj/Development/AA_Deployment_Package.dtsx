@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AA_Deployment_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{17EB86B2-A45B-4C6C-99FF-47E394A9F77C}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{54730C65-F81F-45D7-BFB2-F89B6A750ABC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -56,7 +56,6 @@
       DTS:refId="Package\Migrate Excel_Identity SRC_to_STG"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:Disabled="True"
       DTS:DTSID="{C0867659-F80E-4E69-BE1C-366D49207819}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -74,7 +73,6 @@
       DTS:refId="Package\Migrate Excel_Identity STG_to_TRGT"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:Disabled="True"
       DTS:DTSID="{E7152EF7-447B-4A47-B3B5-009DE8263FC9}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -92,7 +90,6 @@
       DTS:refId="Package\Migrate Merchants"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:Disabled="True"
       DTS:DTSID="{7C52D646-387E-4ED1-BC90-A1650178C4AB}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -179,27 +176,27 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="223.2,41.6"
+          Size="223,42"
           Id="Package\Apply Data Cleansing Activities"
           TopLeft="141.714288127666,148.658825614296" />
         <NodeLayout
-          Size="183.2,41.6"
+          Size="183,42"
           Id="Package\Fetch from Production"
           TopLeft="139.428573803026,61.1764714462122" />
         <NodeLayout
-          Size="246.4,41.6"
+          Size="246,42"
           Id="Package\Migrate Excel_Identity SRC_to_STG"
           TopLeft="480.000008174351,176.047060899834" />
         <NodeLayout
-          Size="252.8,41.6"
+          Size="253,42"
           Id="Package\Migrate Excel_Identity STG_to_TRGT"
           TopLeft="281.142861930692,373.364710378152" />
         <NodeLayout
-          Size="166.4,41.6"
+          Size="166,42"
           Id="Package\Migrate Merchants"
           TopLeft="285.142861998811,283.858827510425" />
         <NodeLayout
-          Size="176,41.6"
+          Size="176,42"
           Id="Package\Migrate Transactions"
           TopLeft="120.000002043588,462.494124133364" />
         <EdgeLayout
