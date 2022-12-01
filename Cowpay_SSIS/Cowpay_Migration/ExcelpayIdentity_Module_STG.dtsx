@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_STG"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{F9D6B2A2-9A1C-4069-A352-14BA1A105DEA}">
+  DTS:VersionBuild="67"
+  DTS:VersionGUID="{20046285-E1BF-4C01-86E2-EA8BC28E3253}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1963,7 +1963,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="319,42"
           Id="Package\fetch_Merchants_from_SRC_to_Staging_Merchants"
@@ -2235,6 +2235,13 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="Staging_Merchants acts as our Src for Merchants"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="286,60"
+          Id="2af22d61-2683-4c61-8cde-8153d7359fdc"
+          TopLeft="95,71" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
