@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AA_Deployment_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{28AB01E8-CB11-40C4-8B54-6CD21B144E67}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{B7FB2CD2-CC3C-41B4-AFE5-34EDDBDD7EC2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,6 +21,7 @@
       DTS:refId="Package\Apply Data Cleansing Activities"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{E7327544-3A74-4422-9C2F-B2ADE7B5C431}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -107,6 +108,7 @@
       DTS:refId="Package\Migrate Transactions"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{1BDB8DB8-F671-4D13-A94A-25545B33899A}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"

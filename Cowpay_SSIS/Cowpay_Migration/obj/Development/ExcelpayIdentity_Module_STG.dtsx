@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_STG"
   DTS:PackageType="5"
-  DTS:VersionBuild="65"
-  DTS:VersionGUID="{0BFB8B6A-489E-4FE4-BEE6-0DA8425733BB}">
+  DTS:VersionBuild="72"
+  DTS:VersionGUID="{A947839E-8585-47FF-8ECA-18D2DCCEE629}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -53,20 +53,37 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Truncate STG"
+      DTS:refId="Package\Truncate STG (First_Time_Only then Disable)"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{FEAF738B-1717-46D0-94F0-AE1858145445}"
+      DTS:DTSID="{29ccaeab-cbac-4441-a7e0-d68c3c98a6f7}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Truncate STG"
+      DTS:ObjectName="Truncate STG (First_Time_Only then Disable)"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[Staging_Merchant]&#xA;truncate table [dbo].[AspNetUserRoles]&#xA;truncate table [dbo].[AspNetUsers]&#xA;truncate table [dbo].[AspNetUserClaims]&#xA;truncate table [dbo].[Merchant_Claims]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[AspNetUsers]&#xA;truncate table [dbo].[AspNetUserClaims]&#xA;truncate table [dbo].[Merchant_Claims]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG that could be Truncated"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FEAF738B-1717-46D0-94F0-AE1858145445}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG that could be Truncated"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+          SQLTask:SqlStatementSource="truncate table [dbo].[Staging_Merchant]&#xA;truncate table [dbo].[AspNetUserRoles]&#xA;--truncate table [dbo].[AspNetUsers]&#xA;--truncate table [dbo].[AspNetUserClaims]&#xA;--truncate table [dbo].[Merchant_Claims]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -423,6 +440,23 @@
             </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\UserClaims STG_to_STG\Remove Spaces from USer Claims"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{93C78ACC-3625-4D7E-ADD0-07FF4B08E538}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Remove Spaces from USer Claims"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+              SQLTask:SqlStatementSource="update  Staging_Migration.[dbo].[AspNetUserClaims]&#xA;set ClaimValue=TRIM(ClaimValue)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
@@ -433,6 +467,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\UserClaims STG_to_STG.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{A649E16C-3892-45B5-BDCB-DD691C101CCE}"
+          DTS:From="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\UserClaims STG_to_STG\Remove Spaces from USer Claims" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -1360,29 +1402,8 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
- try_cast(id as nvarchar(450)) as Id,
- [CreatedDate],
- --try_cast(DeletedDate as char) as DeletedDateee ,
- try_cast(DeletedDate as datetime2(7)) as DeletedDate,
- [UpdatedDate],
- [IsDeleted],
- [UserName] ,
- [NormalizedUserName],
- [Email],
- [NormalizedEmail],
- [EmailConfirmed] ,
- [PasswordHash] ,
- [SecurityStamp],
- [ConcurrencyStamp], 
- [PhoneNumber] ,
- [PhoneNumberConfirmed],
- [TwoFactorEnabled] ,
- --try_cast(LockoutEnd as char) as LockoutEndd,
-  try_cast(LockoutEnd as datetimeoffset(7)) as LockoutEnd,
- [LockoutEnabled],
- [AccessFailedCount]
- from [Staging_Migration].[dbo].[Users_Prepared]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select u.* from Users_Prepared u join Migration_RollOut  mr on u.old_id=mr.id and u.old_code=mr.code
+where is_migrated=0</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1399,7 +1420,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -1898,7 +1919,7 @@
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
       DTS:DTSID="{9997D2BD-406C-4505-8E25-62EEB1219A83}"
-      DTS:From="Package\Truncate STG"
+      DTS:From="Package\Truncate STG that could be Truncated"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\fetch_Merchants_from_SRC_to_Staging_Merchants" />
@@ -1919,6 +1940,14 @@
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\UserRoles STG_to_STG" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{1F173E26-5E9D-42E5-9D24-C706C6438CF1}"
+      DTS:From="Package\Truncate STG (First_Time_Only then Disable)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Truncate STG that could be Truncated" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
       DTS:DTSID="{22A0C3B7-1EA6-45D4-AFD1-F471C2D9E451}"
@@ -1938,15 +1967,19 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="319,42"
           Id="Package\fetch_Merchants_from_SRC_to_Staging_Merchants"
           TopLeft="440.742862816246,75.4470582744241" />
         <NodeLayout
-          Size="142,42"
-          Id="Package\Truncate STG"
-          TopLeft="593.14286724402,15.9058825760152" />
+          Size="188,42"
+          Id="Package\remove_curly_Brackets"
+          TopLeft="465,255" />
+        <NodeLayout
+          Size="259,42"
+          Id="Package\Truncate STG that could be Truncated"
+          TopLeft="592.14286724402,8.9058825760152" />
         <NodeLayout
           Size="282,42"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims (Merchants) STG_to_STG"
@@ -1955,6 +1988,10 @@
           Size="285,42"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims"
           TopLeft="55.085721340958,88.3176533435044" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\UserClaims STG_to_STG\Remove Spaces from USer Claims"
+          TopLeft="110,165" />
         <EdgeLayout
           Id="Package\UserClaims STG_to_STG.PrecedenceConstraints[Constraint]"
           TopLeft="184.799999727522,63.0588229888863">
@@ -1989,11 +2026,45 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\UserClaims STG_to_STG.PrecedenceConstraints[Constraint 1]"
+          TopLeft="197.585721340958,130.317653343504">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.414278659042,34.6823466564956"
+              Start="0,0"
+              End="31.414278659042,27.1823466564956">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.3411733282478" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.3411733282478"
+                    Point2="0,17.3411733282478"
+                    Point3="4,17.3411733282478" />
+                  <mssgle:LineSegment
+                    End="27.414278659042,17.3411733282478" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.414278659042,17.3411733282478"
+                    Point2="31.414278659042,17.3411733282478"
+                    Point3="31.414278659042,21.3411733282478" />
+                  <mssgle:LineSegment
+                    End="31.414278659042,27.1823466564956" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="384,187"
-          Size="217,43"
+          IsExpanded="True"
+          PanelSize="384,262"
+          Size="384,305"
           Id="Package\UserClaims STG_to_STG"
           TopLeft="258.857147265454,422.070593245879" />
         <NodeLayout
@@ -2040,24 +2111,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="593.14286724402,36.7058825760152">
+          TopLeft="721.64286724402,50.9058825760152">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="7.19999557222616,38.7411756984089"
+              EndConnector="-121.400004427774,24.5411756984089"
               Start="0,0"
-              End="7.19999557222616,31.2411756984089">
+              End="-121.400004427774,17.0411756984089">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="3.19999557222616,0" />
+                    End="0,8.27058784920445" />
                   <mssgle:CubicBezierSegment
-                    Point1="3.19999557222616,0"
-                    Point2="7.19999557222616,0"
-                    Point3="7.19999557222616,4" />
+                    Point1="0,8.27058784920445"
+                    Point2="0,12.2705878492044"
+                    Point3="-4,12.2705878492044" />
                   <mssgle:LineSegment
-                    End="7.19999557222616,31.2411756984089" />
+                    End="-117.400004427774,12.2705878492044" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-117.400004427774,12.2705878492044"
+                    Point2="-121.400004427774,12.2705878492044"
+                    Point3="-121.400004427774,16.2705878492044" />
+                  <mssgle:LineSegment
+                    End="-121.400004427774,17.0411756984089" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2066,44 +2143,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="525,374">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-157.642852734546,48.0705932458791"
-              Start="0,0"
-              End="-157.642852734546,40.5705932458791">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.0352966229395" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.0352966229395"
-                    Point2="0,24.0352966229395"
-                    Point3="-4,24.0352966229395" />
-                  <mssgle:LineSegment
-                    End="-153.642852734546,24.0352966229395" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-153.642852734546,24.0352966229395"
-                    Point2="-157.642852734546,24.0352966229395"
-                    Point3="-157.642852734546,28.0352966229395" />
-                  <mssgle:LineSegment
-                    End="-157.642852734546,40.5705932458791" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="188,42"
-          Id="Package\remove_curly_Brackets"
-          TopLeft="465,255" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="462.285720319164,214.658827072856">
@@ -2172,6 +2211,73 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="525,374">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-74.142852734546,48.0705932458791"
+              Start="0,0"
+              End="-74.142852734546,40.5705932458791">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.0352966229395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.0352966229395"
+                    Point2="0,24.0352966229395"
+                    Point3="-4,24.0352966229395" />
+                  <mssgle:LineSegment
+                    End="-70.142852734546,24.0352966229395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-70.142852734546,24.0352966229395"
+                    Point2="-74.142852734546,24.0352966229395"
+                    Point3="-74.142852734546,28.0352966229395" />
+                  <mssgle:LineSegment
+                    End="-74.142852734546,40.5705932458791" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Staging_Merchants acts as our Src for Merchants"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="286,40"
+          Id="2af22d61-2683-4c61-8cde-8153d7359fdc"
+          TopLeft="95,71" />
+        <NodeLayout
+          Size="293,42"
+          Id="Package\Truncate STG (First_Time_Only then Disable)"
+          TopLeft="985,10.0705932458791" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="985,30.4882379109471">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-133.85713275598,0"
+              Start="0,0"
+              End="-126.35713275598,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-126.35713275598,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2179,13 +2285,13 @@
     design-time-name="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims\Merchant_Claims"
           TopLeft="265.6,70.4" />
         <NodeLayout
-          Size="163.2,41.6"
+          Size="163,42"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims\AspNetUserClaims"
           TopLeft="249.6,263.2" />
         <EdgeLayout
@@ -2219,9 +2325,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2257,17 +2361,17 @@
     design-time-name="Package\UserRoles STG_to_STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="124.8,41.6"
+          Size="125,42"
           Id="Package\UserRoles STG_to_STG\UserRoles"
           TopLeft="125,124" />
         <NodeLayout
-          Size="156,41.6"
+          Size="156,42"
           Id="Package\UserRoles STG_to_STG\Data Conversion"
           TopLeft="341,94" />
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150,42"
           Id="Package\UserRoles STG_to_STG\UserRoles_SRC"
           TopLeft="100,20" />
         <EdgeLayout
@@ -2301,9 +2405,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2337,9 +2439,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2376,40 +2476,6 @@
           Id="Package\Users STG_To_STG\Data Conversion"
           TopLeft="250,89" />
         <EdgeLayout
-          Id="Package\Users STG_To_STG.Paths[Data Conversion Output]"
-          TopLeft="328,130.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-153,68.8"
-              Start="0,0"
-              End="-153,61.3">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.4"
-                    Point2="0,34.4"
-                    Point3="-4,34.4" />
-                  <mssgle:LineSegment
-                    End="-149,34.4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-149,34.4"
-                    Point2="-153,34.4"
-                    Point3="-153,38.4" />
-                  <mssgle:LineSegment
-                    End="-153,61.3" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Users STG_To_STG.Paths[OLE DB Source Output]"
           TopLeft="162,66">
           <EdgeLayout.Curve>
@@ -2435,6 +2501,40 @@
                     Point3="166,15.5" />
                   <mssgle:LineSegment
                     End="166,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Users STG_To_STG.Paths[Data Conversion Output]"
+          TopLeft="328,130.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-153,68.8"
+              Start="0,0"
+              End="-153,61.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.4"
+                    Point2="0,34.4"
+                    Point3="-4,34.4" />
+                  <mssgle:LineSegment
+                    End="-149,34.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-149,34.4"
+                    Point2="-153,34.4"
+                    Point3="-153,38.4" />
+                  <mssgle:LineSegment
+                    End="-153,61.3" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
