@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_TRGT"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{2EB6ED9B-2FE7-4F1D-8045-A798C7C14881}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{161F8E28-829C-40BE-8EF3-0ECD2D1F7757}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

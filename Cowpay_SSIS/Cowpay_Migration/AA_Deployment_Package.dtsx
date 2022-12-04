@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AA_Deployment_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{B7FB2CD2-CC3C-41B4-AFE5-34EDDBDD7EC2}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{F76B41B1-6341-4DD8-AFAB-F27C47A85BC7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -108,7 +108,6 @@
       DTS:refId="Package\Migrate Transactions"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:Disabled="True"
       DTS:DTSID="{1BDB8DB8-F671-4D13-A94A-25545B33899A}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
