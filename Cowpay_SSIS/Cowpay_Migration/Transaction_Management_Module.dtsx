@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="140"
-  DTS:VersionGUID="{1F3FD9E5-0CFD-40CD-B75F-38ECB3D85EB4}">
+  DTS:VersionBuild="142"
+  DTS:VersionGUID="{58432645-2DF6-4502-B4A2-E283D92AEC76}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5715,7 +5715,6 @@
           DTS:refId="Package\Orders &amp; Transactions STG to STG\fetch OrderTransactions_Jsons  from_SRC_to_STG"
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:Description="Execute Process Task"
-          DTS:Disabled="True"
           DTS:DTSID="{4f589e2e-6033-4afc-a2d1-9fa12b19d000}"
           DTS:ExecutableType="Microsoft.ExecuteProcess"
           DTS:LocaleID="-1"
@@ -12842,7 +12841,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[CardMetaData]&#xA;&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]&#xA;truncate table [dbo].[Orders-Meta]&#xA;--truncate table [dbo].[OrderTransactions_jsons_Staging]&#xA;truncate table [dbo].[OrderTransactions]&#xA;truncate table [dbo].[TransactionBalance]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[CardMetaData]&#xA;&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]&#xA;truncate table [dbo].[Orders-Meta]&#xA;truncate table [dbo].[OrderTransactions_jsons_Staging]&#xA;truncate table [dbo].[OrderTransactions]&#xA;truncate table [dbo].[TransactionBalance]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -16635,7 +16634,7 @@
           HeaderHeight="43"
           IsExpanded="False"
           PanelSize="372,425"
-          Size="372,43"
+          Size="224,43"
           Id="Package\Orders Stuff STG to TRGT"
           TopLeft="116.714291193047,454.705884326288" />
         <NodeLayout
@@ -17038,9 +17037,9 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="177.142856685482,126.50588388872"
+              EndConnector="103.142856685482,126.50588388872"
               Start="0,0"
-              End="177.142856685482,119.00588388872">
+              End="103.142856685482,119.00588388872">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -17051,13 +17050,13 @@
                     Point2="0,63.25294194436"
                     Point3="4,63.25294194436" />
                   <mssgle:LineSegment
-                    End="173.142856685482,63.25294194436" />
+                    End="99.142856685482,63.25294194436" />
                   <mssgle:CubicBezierSegment
-                    Point1="173.142856685482,63.25294194436"
-                    Point2="177.142856685482,63.25294194436"
-                    Point3="177.142856685482,67.25294194436" />
+                    Point1="99.142856685482,63.25294194436"
+                    Point2="103.142856685482,63.25294194436"
+                    Point3="103.142856685482,67.25294194436" />
                   <mssgle:LineSegment
-                    End="177.142856685482,119.00588388872" />
+                    End="103.142856685482,119.00588388872" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17144,13 +17143,13 @@
           TopLeft="150,704" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="302.714291193047,497.705884326288">
+          TopLeft="228.714291193047,497.705884326288">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9.21429119304702,206.294115673712"
+              EndConnector="64.785708806953,206.294115673712"
               Start="0,0"
-              End="-9.21429119304702,198.794115673712">
+              End="64.785708806953,198.794115673712">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -17159,15 +17158,15 @@
                   <mssgle:CubicBezierSegment
                     Point1="0,99.147057836856"
                     Point2="0,103.147057836856"
-                    Point3="-4,103.147057836856" />
+                    Point3="4,103.147057836856" />
                   <mssgle:LineSegment
-                    End="-5.21429119304702,103.147057836856" />
+                    End="60.785708806953,103.147057836856" />
                   <mssgle:CubicBezierSegment
-                    Point1="-5.21429119304702,103.147057836856"
-                    Point2="-9.21429119304702,103.147057836856"
-                    Point3="-9.21429119304702,107.147057836856" />
+                    Point1="60.785708806953,103.147057836856"
+                    Point2="64.785708806953,103.147057836856"
+                    Point3="64.785708806953,107.147057836856" />
                   <mssgle:LineSegment
-                    End="-9.21429119304702,198.794115673712" />
+                    End="64.785708806953,198.794115673712" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

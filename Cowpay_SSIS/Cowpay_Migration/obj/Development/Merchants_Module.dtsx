@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="89"
-  DTS:VersionGUID="{2D4A2747-C8E9-4D25-804C-B062FE7AB059}">
+  DTS:VersionBuild="90"
+  DTS:VersionGUID="{3EF654A4-DF56-4F39-951D-78A3AAEAC45D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2065,7 +2065,6 @@ where mr.is_migrated=0</property>
           DTS:refId="Package\Staging_Activities\Truncate_STG_Merchants (First_time_Only Then Disable)"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
           DTS:DTSID="{3072B476-A776-4514-9FC7-CA4C88A18807}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"

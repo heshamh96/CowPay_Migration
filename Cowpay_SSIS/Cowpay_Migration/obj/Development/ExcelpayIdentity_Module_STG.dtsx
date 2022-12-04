@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_STG"
   DTS:PackageType="5"
-  DTS:VersionBuild="76"
-  DTS:VersionGUID="{5ADD7F93-B957-4DE2-BAD9-A2D53FCE80B1}">
+  DTS:VersionBuild="77"
+  DTS:VersionGUID="{15DBF261-2DD8-41AF-B09E-E0D965EFF4B3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -56,7 +56,6 @@
       DTS:refId="Package\Truncate STG (First_Time_Only then Disable)"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{29ccaeab-cbac-4441-a7e0-d68c3c98a6f7}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"

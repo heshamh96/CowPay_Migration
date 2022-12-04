@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="138"
-  DTS:VersionGUID="{93FD1AD1-8D17-4188-88C5-E31183ABF9A7}">
+  DTS:VersionBuild="141"
+  DTS:VersionGUID="{99EF2D7C-CA45-4011-8AB5-1F2E54AC8BF3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,6 @@
       DTS:refId="Package\Customers-Cards-Accounts STG to STG"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:Disabled="True"
       DTS:DTSID="{5ECC6738-DE38-41AA-9064-340057EE511E}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -3375,7 +3374,6 @@
           DTS:refId="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:Disabled="True"
           DTS:DTSID="{473AF54F-0F27-4382-BBFA-A07885E4CFD8}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
@@ -4139,7 +4137,6 @@
           DTS:refId="Package\Customers-Cards-Accounts STG to TRGT\Customers STG to TRGT"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:Disabled="True"
           DTS:DTSID="{FFD628A2-93A0-48E8-97D0-60C4C5B10F63}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
@@ -4668,7 +4665,6 @@
           DTS:refId="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:Disabled="True"
           DTS:DTSID="{1049169D-F756-47F8-81FF-872F3B79C02A}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
@@ -5243,7 +5239,6 @@
           DTS:refId="Package\Customers-Cards-Accounts STG to TRGT\Transfer Banks_LKP   (First_Time_only then Disable)"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:Disabled="True"
           DTS:DTSID="{2551800A-E894-420E-BF18-9DC3911F2C44}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
@@ -5693,7 +5688,6 @@
       DTS:refId="Package\Drop_Banks_Accounts_Constraints"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{039ee039-4227-468b-be1e-c8be85ca4760}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -5711,7 +5705,6 @@
       DTS:refId="Package\Orders &amp; Transactions STG to STG"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:Disabled="True"
       DTS:DTSID="{62EA6443-6961-4E5D-8A8C-0D08EF6FCA4F}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -12819,10 +12812,26 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Truncate Transaction_Balance before reload"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B063FC66-CAD5-4BB4-AEA9-BA1B5AF22D59}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Transaction_Balance before reload"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
+          SQLTask:SqlStatementSource="truncate table [dbo].[TransactionBalance]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Truncate_STG"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{41547249-1E34-4004-950A-DDB9FF71FBFC}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -12840,7 +12849,6 @@
       DTS:refId="Package\Truncate_TRGT (First_Time_only then Disable)"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{dc648677-28f8-43fc-93ae-950ca0e032a8}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -12858,7 +12866,6 @@
       DTS:refId="Package\Update MigrationRollOut (IsMigrated) ****"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{5EC670C5-A739-4BDC-A9B3-78045A17CF9D}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -12876,7 +12883,6 @@
       DTS:refId="Package\Withdrawals Stuff STG to STG"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:Disabled="True"
       DTS:DTSID="{950202FA-BC19-4B3F-B92E-7189CFACCD9B}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -16080,11 +16086,11 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
-      DTS:DTSID="{9F63CFDC-99D2-4157-B96C-91F30FEFD4AF}"
+      DTS:DTSID="{68270F6A-3210-497D-A8F1-5E1BC9EDFCCB}"
       DTS:From="Package\Orders Stuff STG to TRGT"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
-      DTS:To="Package\TransactionBalance STG to TRGT" />
+      DTS:To="Package\Truncate Transaction_Balance before reload" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
       DTS:CreationName=""
@@ -16109,6 +16115,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 8"
       DTS:To="Package\Orders Stuff STG to TRGT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{506F6CED-B0E3-4046-8AA3-4E638BCDF7C9}"
+      DTS:From="Package\Truncate Transaction_Balance before reload"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\TransactionBalance STG to TRGT" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -16121,7 +16135,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="256,42"
           Id="Package\Customers-Cards-Accounts STG to STG\Bank_Accounts_Prepared STG to STG"
@@ -16951,40 +16965,6 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="302.714291193047,497.705884326288">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-46.228570465165,418.917649478318"
-              Start="0,0"
-              End="-46.228570465165,411.417649478318">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,205.458824739159" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,205.458824739159"
-                    Point2="0,209.458824739159"
-                    Point3="-4,209.458824739159" />
-                  <mssgle:LineSegment
-                    End="-42.228570465165,209.458824739159" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-42.228570465165,209.458824739159"
-                    Point2="-46.228570465165,209.458824739159"
-                    Point3="-46.228570465165,213.458824739159" />
-                  <mssgle:LineSegment
-                    End="-46.228570465165,411.417649478318" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="658.085722975828,185.729412296652">
           <EdgeLayout.Curve>
@@ -17150,6 +17130,78 @@
                     Point3="-186.747631406459,24.3691338524592" />
                   <mssgle:LineSegment
                     End="-186.747631406459,26.64117234372" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="287,42"
+          Id="Package\Truncate Transaction_Balance before reload"
+          TopLeft="150,704" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="302.714291193047,497.705884326288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.21429119304702,206.294115673712"
+              Start="0,0"
+              End="-9.21429119304702,198.794115673712">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,99.147057836856" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,99.147057836856"
+                    Point2="0,103.147057836856"
+                    Point3="-4,103.147057836856" />
+                  <mssgle:LineSegment
+                    End="-5.21429119304702,103.147057836856" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.21429119304702,103.147057836856"
+                    Point2="-9.21429119304702,103.147057836856"
+                    Point3="-9.21429119304702,107.147057836856" />
+                  <mssgle:LineSegment
+                    End="-9.21429119304702,198.794115673712" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="293.5,746">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-37.014279272118,170.623533804606"
+              Start="0,0"
+              End="-37.014279272118,163.123533804606">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,81.311766902303" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,81.311766902303"
+                    Point2="0,85.311766902303"
+                    Point3="-4,85.311766902303" />
+                  <mssgle:LineSegment
+                    End="-33.014279272118,85.311766902303" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-33.014279272118,85.311766902303"
+                    Point2="-37.014279272118,85.311766902303"
+                    Point3="-37.014279272118,89.311766902303" />
+                  <mssgle:LineSegment
+                    End="-37.014279272118,163.123533804606" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
