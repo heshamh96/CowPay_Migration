@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_STG"
   DTS:PackageType="5"
-  DTS:VersionBuild="67"
-  DTS:VersionGUID="{20046285-E1BF-4C01-86E2-EA8BC28E3253}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{17DA5F07-6CBB-4C74-AB43-2EC806F41D62}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1965,21 +1965,29 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="319,42"
+          Size="319.2,41.6"
           Id="Package\fetch_Merchants_from_SRC_to_Staging_Merchants"
           TopLeft="440.742862816246,75.4470582744241" />
         <NodeLayout
-          Size="142,42"
+          Size="188,41.6"
+          Id="Package\remove_curly_Brackets"
+          TopLeft="465,255" />
+        <NodeLayout
+          Size="142.4,41.6"
           Id="Package\Truncate STG"
           TopLeft="593.14286724402,15.9058825760152" />
         <NodeLayout
-          Size="282,42"
+          Size="281.6,41.6"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims (Merchants) STG_to_STG"
           TopLeft="43.9999997275216,21.4588229888863" />
         <NodeLayout
-          Size="285,42"
+          Size="284.8,41.6"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims"
           TopLeft="55.085721340958,88.3176533435044" />
+        <NodeLayout
+          Size="238.4,41.6"
+          Id="Package\UserClaims STG_to_STG\Remove Spaces from USer Claims"
+          TopLeft="110,165" />
         <EdgeLayout
           Id="Package\UserClaims STG_to_STG.PrecedenceConstraints[Constraint]"
           TopLeft="184.799999727522,63.0588229888863">
@@ -2014,10 +2022,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="238,42"
-          Id="Package\UserClaims STG_to_STG\Remove Spaces from USer Claims"
-          TopLeft="110,165" />
         <EdgeLayout
           Id="Package\UserClaims STG_to_STG.PrecedenceConstraints[Constraint 1]"
           TopLeft="197.585721340958,130.317653343504">
@@ -2054,17 +2058,17 @@
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="384,262"
-          Size="384,43"
+          IsExpanded="True"
+          PanelSize="384,262.4"
+          Size="384,305.6"
           Id="Package\UserClaims STG_to_STG"
           TopLeft="258.857147265454,422.070593245879" />
         <NodeLayout
-          Size="188,42"
+          Size="188,41.6"
           Id="Package\UserRoles STG_to_STG"
           TopLeft="431,332" />
         <NodeLayout
-          Size="171,42"
+          Size="171.2,41.6"
           Id="Package\Users STG_To_STG"
           TopLeft="462.285720319164,193.658827072856" />
         <EdgeLayout
@@ -2129,44 +2133,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="525,374">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-74.142852734546,48.0705932458791"
-              Start="0,0"
-              End="-74.142852734546,40.5705932458791">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.0352966229395" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.0352966229395"
-                    Point2="0,24.0352966229395"
-                    Point3="-4,24.0352966229395" />
-                  <mssgle:LineSegment
-                    End="-70.142852734546,24.0352966229395" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-70.142852734546,24.0352966229395"
-                    Point2="-74.142852734546,24.0352966229395"
-                    Point3="-74.142852734546,28.0352966229395" />
-                  <mssgle:LineSegment
-                    End="-74.142852734546,40.5705932458791" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="188,42"
-          Id="Package\remove_curly_Brackets"
-          TopLeft="465,255" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="462.285720319164,214.658827072856">
@@ -2235,11 +2201,45 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="525,373.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-74.142852734546,48.470593245879"
+              Start="0,0"
+              End="-74.142852734546,40.970593245879">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2352966229395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2352966229395"
+                    Point2="0,24.2352966229395"
+                    Point3="-4,24.2352966229395" />
+                  <mssgle:LineSegment
+                    End="-70.142852734546,24.2352966229395" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-70.142852734546,24.2352966229395"
+                    Point2="-74.142852734546,24.2352966229395"
+                    Point3="-74.142852734546,28.2352966229395" />
+                  <mssgle:LineSegment
+                    End="-74.142852734546,40.970593245879" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <AnnotationLayout
           Text="Staging_Merchants acts as our Src for Merchants"
           ParentId="Package"
           FontInfo="{assembly:Null}"
-          Size="286,60"
+          Size="286.4,40"
           Id="2af22d61-2683-4c61-8cde-8153d7359fdc"
           TopLeft="95,71" />
       </GraphLayout>
