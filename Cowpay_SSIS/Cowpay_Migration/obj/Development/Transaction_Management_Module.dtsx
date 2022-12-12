@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="141"
-  DTS:VersionGUID="{99EF2D7C-CA45-4011-8AB5-1F2E54AC8BF3}">
+  DTS:VersionBuild="148"
+  DTS:VersionGUID="{434AC7D0-B251-4EBE-81E2-CE6D1B625C66}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5715,7 +5715,6 @@
           DTS:refId="Package\Orders &amp; Transactions STG to STG\fetch OrderTransactions_Jsons  from_SRC_to_STG"
           DTS:CreationName="Microsoft.ExecuteProcess"
           DTS:Description="Execute Process Task"
-          DTS:Disabled="True"
           DTS:DTSID="{4f589e2e-6033-4afc-a2d1-9fa12b19d000}"
           DTS:ExecutableType="Microsoft.ExecuteProcess"
           DTS:LocaleID="-1"
@@ -6937,6 +6936,12 @@
                           cachedName="Old_Id"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders-Meta.Inputs[OLE DB Destination Input].ExternalColumns[Old_Id]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders Prepared.Outputs[OLE DB Source Output].Columns[Old_Id]" />
+                        <inputColumn
+                          refId="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders-Meta.Inputs[OLE DB Destination Input].Columns[Migration_Key]"
+                          cachedDataType="guid"
+                          cachedName="Migration_Key"
+                          externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders-Meta.Inputs[OLE DB Destination Input].ExternalColumns[Migration_Key]"
+                          lineageId="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders Prepared.Outputs[OLE DB Source Output].Columns[Migration_Key]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -7113,6 +7118,10 @@
                           refId="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders-Meta.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
                           dataType="i4"
                           name="ID" />
+                        <externalMetadataColumn
+                          refId="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders-Meta.Inputs[OLE DB Destination Input].ExternalColumns[Migration_Key]"
+                          dataType="guid"
+                          name="Migration_Key" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -7271,34 +7280,26 @@
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[OrderId]" />
                         <inputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[Amount]"
-                          cachedDataType="numeric"
+                          cachedDataType="r8"
                           cachedName="Amount"
-                          cachedPrecision="14"
-                          cachedScale="2"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]" />
                         <inputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[FeesAmount]"
-                          cachedDataType="numeric"
+                          cachedDataType="r8"
                           cachedName="FeesAmount"
-                          cachedPrecision="14"
-                          cachedScale="2"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[FeesAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[FeesAmount]" />
                         <inputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[VatAmount]"
-                          cachedDataType="numeric"
+                          cachedDataType="r8"
                           cachedName="VatAmount"
-                          cachedPrecision="14"
-                          cachedScale="2"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[VatAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[VatAmount]" />
                         <inputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[CustomerAmount]"
-                          cachedDataType="numeric"
+                          cachedDataType="r8"
                           cachedName="CustomerAmount"
-                          cachedPrecision="16"
-                          cachedScale="2"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]" />
                         <inputColumn
@@ -7394,6 +7395,12 @@
                           cachedName="old_id"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Old_Id]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[old_id]" />
+                        <inputColumn
+                          refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[FK_Migration_Key_Orders]"
+                          cachedDataType="guid"
+                          cachedName="FK_Migration_Key_Orders"
+                          externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[FK_Migration_Key_Orders]"
+                          lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[FK_Migration_Key_Orders]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -7509,6 +7516,10 @@
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Old_Id]"
                           dataType="i8"
                           name="Old_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[FK_Migration_Key_Orders]"
+                          dataType="guid"
+                          name="FK_Migration_Key_Orders" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -7648,47 +7659,39 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]"
-                          dataType="numeric"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]"
                           name="Amount"
-                          precision="14"
-                          scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[FeesAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FeesAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[FeesAmount]"
                           name="FeesAmount"
-                          precision="14"
-                          scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[VatAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[VatAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[VatAmount]"
                           name="VatAmount"
-                          precision="14"
-                          scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]"
                           name="CustomerAmount"
-                          precision="16"
-                          scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantAmount]"
@@ -7863,28 +7866,20 @@
                           name="OrderId" />
                         <externalMetadataColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
-                          dataType="numeric"
-                          name="Amount"
-                          precision="14"
-                          scale="2" />
+                          dataType="r8"
+                          name="Amount" />
                         <externalMetadataColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FeesAmount]"
-                          dataType="numeric"
-                          name="FeesAmount"
-                          precision="14"
-                          scale="2" />
+                          dataType="r8"
+                          name="FeesAmount" />
                         <externalMetadataColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[VatAmount]"
-                          dataType="numeric"
-                          name="VatAmount"
-                          precision="14"
-                          scale="2" />
+                          dataType="r8"
+                          name="VatAmount" />
                         <externalMetadataColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
-                          dataType="numeric"
-                          name="CustomerAmount"
-                          precision="16"
-                          scale="2" />
+                          dataType="r8"
+                          name="CustomerAmount" />
                         <externalMetadataColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantAmount]"
                           dataType="numeric"
@@ -7987,32 +7982,24 @@
                           name="OrderId" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[Amount]"
-                          dataType="numeric"
+                          dataType="r8"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[Amount]"
-                          name="Amount"
-                          precision="14"
-                          scale="2" />
+                          name="Amount" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[FeesAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[FeesAmount]"
-                          name="FeesAmount"
-                          precision="14"
-                          scale="2" />
+                          name="FeesAmount" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[VatAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[VatAmount]"
-                          name="VatAmount"
-                          precision="14"
-                          scale="2" />
+                          name="VatAmount" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CustomerAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CustomerAmount]"
-                          name="CustomerAmount"
-                          precision="16"
-                          scale="2" />
+                          name="CustomerAmount" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantAmount]"
                           dataType="numeric"
@@ -10960,6 +10947,15 @@
                           lineageId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[Old_Id]"
                           name="Old_Id"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[FK_Migration_Key_Orders]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[FK_Migration_Key_Orders]"
+                          lineageId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[FK_Migration_Key_Orders]"
+                          name="FK_Migration_Key_Orders"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -11075,6 +11071,10 @@
                           refId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[Old_Id]"
                           dataType="i8"
                           name="Old_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[FK_Migration_Key_Orders]"
+                          dataType="guid"
+                          name="FK_Migration_Key_Orders" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -11219,6 +11219,11 @@
                           dataType="i8"
                           lineageId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[Old_Id]"
                           name="Old_Id" />
+                        <outputColumn
+                          refId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[FK_Migration_Key_Orders]"
+                          dataType="guid"
+                          lineageId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[FK_Migration_Key_Orders]"
+                          name="FK_Migration_Key_Orders" />
                         <outputColumn
                           refId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -11458,6 +11463,12 @@
                           cachedName="TransactionStatusId"
                           externalMetadataColumnId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TransactionStatusId]"
                           lineageId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[TransactionStatusId]" />
+                        <inputColumn
+                          refId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].Columns[FK_Migration_Key_Orders]"
+                          cachedDataType="guid"
+                          cachedName="FK_Migration_Key_Orders"
+                          externalMetadataColumnId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[FK_Migration_Key_Orders]"
+                          lineageId="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG.Outputs[OLE DB Source Output].Columns[FK_Migration_Key_Orders]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -12294,8 +12305,8 @@
               <connections>
                 <connection
                   refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Connections[OleDbConnection]"
-                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  connectionManagerID="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TransactionManagement]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -12812,23 +12823,6 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Truncate Transaction_Balance before reload"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{B063FC66-CAD5-4BB4-AEA9-BA1B5AF22D59}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Truncate Transaction_Balance before reload"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[TransactionBalance]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\Truncate_STG"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -12842,7 +12836,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[CardMetaData]&#xA;&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]&#xA;truncate table [dbo].[Orders-Meta]&#xA;--truncate table [dbo].[OrderTransactions_jsons_Staging]&#xA;truncate table [dbo].[OrderTransactions]&#xA;truncate table [dbo].[TransactionBalance]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [dbo].[MobileWallets]&#xA;truncate table [dbo].[Customers]&#xA;truncate table [dbo].[CardMetaData]&#xA;&#xA;truncate table [dbo].[BankAccounts]&#xA;truncate table [dbo].[WithdrawalRequests]&#xA;truncate table [dbo].[WithdrawalRequestTransactions]&#xA;truncate table [dbo].[Orders-Meta]&#xA;truncate table [dbo].[OrderTransactions_jsons_Staging]&#xA;truncate table [dbo].[OrderTransactions]&#xA;truncate table [dbo].[TransactionBalance]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -13004,7 +12998,7 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].Columns[Amount]"
                           cachedDataType="numeric"
                           cachedName="Amount"
-                          cachedPrecision="14"
+                          cachedPrecision="18"
                           cachedScale="2"
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]" />
@@ -13028,7 +13022,7 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].Columns[CustomerAmount]"
                           cachedDataType="numeric"
                           cachedName="CustomerAmount"
-                          cachedPrecision="14"
+                          cachedPrecision="18"
                           cachedScale="2"
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAmount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]" />
@@ -13036,7 +13030,7 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].Columns[MerchantAmount]"
                           cachedDataType="numeric"
                           cachedName="MerchantAmount"
-                          cachedPrecision="14"
+                          cachedPrecision="18"
                           cachedScale="2"
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[MerchantAmount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantAmount]" />
@@ -13107,6 +13101,12 @@
                           cachedName="FK_Migration_key_WithdrawalRequests"
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[FK_Migration_key_WithdrawalRequests]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[FK_Migration_key_WithdrawalRequests]" />
+                        <inputColumn
+                          refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].Columns[IsSuccess]"
+                          cachedDataType="i4"
+                          cachedName="IsSuccess"
+                          externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                          lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[IsSuccess]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -13206,6 +13206,10 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[FK_Migration_key_WithdrawalRequests]"
                           dataType="guid"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <externalMetadataColumn
+                          refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                          dataType="bool"
+                          name="IsSuccess" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -13342,7 +13346,7 @@
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]"
                           name="Amount"
-                          precision="14"
+                          precision="18"
                           scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
@@ -13375,7 +13379,7 @@
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]"
                           name="CustomerAmount"
-                          precision="14"
+                          precision="18"
                           scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
@@ -13386,7 +13390,7 @@
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantAmount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantAmount]"
                           name="MerchantAmount"
-                          precision="14"
+                          precision="18"
                           scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
@@ -13489,6 +13493,15 @@
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[FK_Migration_key_WithdrawalRequests]"
                           name="FK_Migration_key_WithdrawalRequests"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                          lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                          name="IsSuccess"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -13513,7 +13526,7 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
                           dataType="numeric"
                           name="Amount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <externalMetadataColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FeesAmount]"
@@ -13531,13 +13544,13 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
                           dataType="numeric"
                           name="CustomerAmount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <externalMetadataColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantAmount]"
                           dataType="numeric"
                           name="MerchantAmount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <externalMetadataColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CurrencyId]"
@@ -13584,6 +13597,10 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FK_Migration_key_WithdrawalRequests]"
                           dataType="guid"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <externalMetadataColumn
+                          refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                          dataType="i4"
+                          name="IsSuccess" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -13622,7 +13639,7 @@
                           dataType="numeric"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[Amount]"
                           name="Amount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <outputColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[FeesAmount]"
@@ -13643,14 +13660,14 @@
                           dataType="numeric"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CustomerAmount]"
                           name="CustomerAmount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <outputColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantAmount]"
                           dataType="numeric"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantAmount]"
                           name="MerchantAmount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <outputColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CurrencyId]"
@@ -13703,6 +13720,11 @@
                           dataType="guid"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[FK_Migration_key_WithdrawalRequests]"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <outputColumn
+                          refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                          dataType="i4"
+                          lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                          name="IsSuccess" />
                         <outputColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -15433,6 +15455,15 @@
                           lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].Columns[FK_Migration_key_WithdrawalRequests]"
                           name="FK_Migration_key_WithdrawalRequests"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                          lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                          name="IsSuccess"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -15532,6 +15563,10 @@
                           refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[FK_Migration_key_WithdrawalRequests]"
                           dataType="guid"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <externalMetadataColumn
+                          refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                          dataType="bool"
+                          name="IsSuccess" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -15656,6 +15691,11 @@
                           dataType="guid"
                           lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Error Output].Columns[FK_Migration_key_WithdrawalRequests]"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <outputColumn
+                          refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                          dataType="bool"
+                          lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                          name="IsSuccess" />
                         <outputColumn
                           refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -15871,6 +15911,12 @@
                           cachedName="FK_Migration_key_WithdrawalRequests"
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[FK_Migration_key_WithdrawalRequests]"
                           lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].Columns[FK_Migration_key_WithdrawalRequests]" />
+                        <inputColumn
+                          refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[IsSuccess]"
+                          cachedDataType="bool"
+                          cachedName="IsSuccess"
+                          externalMetadataColumnId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                          lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].Columns[IsSuccess]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -15966,6 +16012,10 @@
                           refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[FK_Migration_key_WithdrawalRequests]"
                           dataType="guid"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <externalMetadataColumn
+                          refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                          dataType="bool"
+                          name="IsSuccess" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -16086,11 +16136,11 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
-      DTS:DTSID="{68270F6A-3210-497D-A8F1-5E1BC9EDFCCB}"
+      DTS:DTSID="{29D312E2-6222-4719-9554-A1A131A7717F}"
       DTS:From="Package\Orders Stuff STG to TRGT"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
-      DTS:To="Package\Truncate Transaction_Balance before reload" />
+      DTS:To="Package\TransactionBalance STG to TRGT" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
       DTS:CreationName=""
@@ -16115,14 +16165,6 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 8"
       DTS:To="Package\Orders Stuff STG to TRGT" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
-      DTS:CreationName=""
-      DTS:DTSID="{506F6CED-B0E3-4046-8AA3-4E638BCDF7C9}"
-      DTS:From="Package\Truncate Transaction_Balance before reload"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 9"
-      DTS:To="Package\TransactionBalance STG to TRGT" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -16135,7 +16177,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="256,42"
           Id="Package\Customers-Cards-Accounts STG to STG\Bank_Accounts_Prepared STG to STG"
@@ -16183,7 +16225,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16217,7 +16261,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16245,38 +16291,40 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="False"
           PanelSize="286,294"
-          Size="286,43"
+          Size="286.4,43.2"
           Id="Package\Customers-Cards-Accounts STG to STG"
           TopLeft="809.571441660123,93.3058818467354" />
         <NodeLayout
-          Size="209,42"
+          Size="208.8,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\BankAccounts STG to TRGT"
           TopLeft="15.785714460879,304.041180657517" />
         <NodeLayout
-          Size="170,42"
+          Size="169.6,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT"
           TopLeft="95.5000000681193,141.041174093992" />
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\Create The Constraints"
           TopLeft="43.0857150739555,373.411770548705" />
         <NodeLayout
-          Size="194,42"
+          Size="193.6,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\Customers STG to TRGT"
           TopLeft="10.6428572304394,82.1941187366899" />
         <NodeLayout
-          Size="208,42"
+          Size="208,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT"
           TopLeft="10.6428572304398,5.5" />
         <NodeLayout
-          Size="327,42"
+          Size="327.2,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\Transfer Banks_LKP   (First_Time_only then Disable)"
           TopLeft="245.714289898775,251.294121799667" />
         <EdgeLayout
@@ -16427,25 +16475,25 @@
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="48"
-          IsExpanded="True"
-          PanelSize="578,471"
-          Size="578,519"
+          IsExpanded="False"
+          PanelSize="577.6,471.2"
+          Size="577.6,48"
           Id="Package\Customers-Cards-Accounts STG to TRGT"
-          TopLeft="19.571430897226,43.5647067317495" />
+          TopLeft="19.571430897226,42.9529420172874" />
         <NodeLayout
-          Size="242,42"
+          Size="241.6,41.6"
           Id="Package\Drop_Banks_Accounts_Constraints"
           TopLeft="537.085722975828,185.729412296652" />
         <NodeLayout
-          Size="317,42"
+          Size="316.8,41.6"
           Id="Package\Orders &amp; Transactions STG to STG\fetch OrderTransactions_Jsons  from_SRC_to_STG"
           TopLeft="8.92857148695953,143.435300123485" />
         <NodeLayout
-          Size="246,42"
+          Size="246.4,41.6"
           Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG"
           TopLeft="26.0714289217574,54.0235373051526" />
         <NodeLayout
-          Size="222,42"
+          Size="222.4,41.6"
           Id="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG"
           TopLeft="28.3571432463976,235.152949893516" />
         <EdgeLayout
@@ -16518,49 +16566,31 @@
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="False"
-          PanelSize="336,283"
-          Size="265,43"
+          IsExpanded="True"
+          PanelSize="336,283.2"
+          Size="336,326.4"
           Id="Package\Orders &amp; Transactions STG to STG"
           TopLeft="776.914298073126,665.85882765628" />
         <NodeLayout
-          Size="174,42"
+          Size="246.4,41.6"
+          Id="Package\Orders Stuff STG to TRGT\Attach OrderTransactions to Orders"
+          TopLeft="33,319" />
+        <NodeLayout
+          Size="240.8,41.6"
+          Id="Package\Orders Stuff STG to TRGT\Attach The Orders to Orders_Meta"
+          TopLeft="47,179" />
+        <NodeLayout
+          Size="174.4,41.6"
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT"
           TopLeft="72.5000010217937,106.517652833008" />
         <NodeLayout
-          Size="207,42"
+          Size="207.2,41.6"
           Id="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT"
           TopLeft="57.5000010899138,13.7294171099023" />
         <NodeLayout
-          Size="230,42"
+          Size="230.4,41.6"
           Id="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT"
           TopLeft="48.7857152101945,252.023536138304" />
-        <EdgeLayout
-          Id="Package\Orders Stuff STG to TRGT.PrecedenceConstraints[Constraint 14]"
-          TopLeft="160.250001055854,55.7294171099023">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,50.7882357231057"
-              Start="0,0"
-              End="0,43.2882357231057">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.2882357231057" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="241,42"
-          Id="Package\Orders Stuff STG to TRGT\Attach The Orders to Orders_Meta"
-          TopLeft="47,179" />
         <EdgeLayout
           Id="Package\Orders Stuff STG to TRGT.PrecedenceConstraints[Constraint]"
           TopLeft="163.500000510897,148.517652833008">
@@ -16605,10 +16635,28 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="246,42"
-          Id="Package\Orders Stuff STG to TRGT\Attach OrderTransactions to Orders"
-          TopLeft="33,319" />
+        <EdgeLayout
+          Id="Package\Orders Stuff STG to TRGT.PrecedenceConstraints[Constraint 14]"
+          TopLeft="160.250001055854,55.7294171099023">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.7882357231057"
+              Start="0,0"
+              End="0,43.2882357231057">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.2882357231057" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Orders Stuff STG to TRGT.PrecedenceConstraints[Constraint 2]"
           TopLeft="159.892857605097,294.023536138304">
@@ -16634,32 +16682,36 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="False"
-          PanelSize="372,425"
-          Size="372,43"
+          PanelSize="372,424.8"
+          Size="224,43.2"
           Id="Package\Orders Stuff STG to TRGT"
           TopLeft="116.714291193047,454.705884326288" />
         <NodeLayout
-          Size="228,42"
+          Size="228,41.6"
           Id="Package\TransactionBalance STG to STG"
           TopLeft="811.514297936887,1052.71765443743" />
         <NodeLayout
-          Size="234,42"
+          Size="234.4,41.6"
           Id="Package\TransactionBalance STG to TRGT"
-          TopLeft="139.485720727882,916.623533804606" />
+          TopLeft="122.342863293084,752.670590328757" />
         <NodeLayout
-          Size="146,42"
+          Size="145.6,41.6"
           Id="Package\Truncate_STG"
           TopLeft="1137.54287426034,51.8000002917122" />
         <NodeLayout
-          Size="300,42"
+          Size="300,41.6"
           Id="Package\Truncate_TRGT (First_Time_only then Disable)"
           TopLeft="1341.85715325998,12" />
         <NodeLayout
-          Size="274,42"
+          Size="281.6,41.6"
+          Id="Package\Update MigrationRollOut (IsMigrated) ****"
+          TopLeft="536,743" />
+        <NodeLayout
+          Size="273.6,41.6"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG"
           TopLeft="39.6428487836096,34.2529415797197" />
         <NodeLayout
-          Size="334,42"
+          Size="334.4,41.6"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG"
           TopLeft="10.0714286492796,116.547064400379" />
         <EdgeLayout
@@ -16699,22 +16751,26 @@
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="345,213"
-          Size="243,43"
+          PanelSize="344.8,212.8"
+          Size="243.2,43.2"
           Id="Package\Withdrawals Stuff STG to STG"
           TopLeft="772.857155576044,397.870588724341" />
         <NodeLayout
-          Size="233,42"
+          Size="374.4,41.6"
+          Id="Package\Withdrawals Stuff STG to TRGT\Attach WithdrawalRequestTransactions to WithdrawalRequests"
+          TopLeft="20,226" />
+        <NodeLayout
+          Size="300.8,41.6"
+          Id="Package\Withdrawals Stuff STG to TRGT\Update The Account_ID in withdrawalRequests"
+          TopLeft="30,70" />
+        <NodeLayout
+          Size="232.8,41.6"
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqests STG to TRGT"
           TopLeft="39.3571420883644,3.82353278361438" />
         <NodeLayout
-          Size="292,42"
+          Size="292,41.6"
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT"
           TopLeft="21.5,143.800008605508" />
-        <NodeLayout
-          Size="301,42"
-          Id="Package\Withdrawals Stuff STG to TRGT\Update The Account_ID in withdrawalRequests"
-          TopLeft="30,70" />
         <EdgeLayout
           Id="Package\Withdrawals Stuff STG to TRGT.PrecedenceConstraints[Constraint]"
           TopLeft="180.5,112">
@@ -16783,10 +16839,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="374,42"
-          Id="Package\Withdrawals Stuff STG to TRGT\Attach WithdrawalRequestTransactions to WithdrawalRequests"
-          TopLeft="20,226" />
         <EdgeLayout
           Id="Package\Withdrawals Stuff STG to TRGT.PrecedenceConstraints[Constraint 2]"
           TopLeft="167.5,185.800008605508">
@@ -16824,8 +16876,8 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="False"
-          PanelSize="499,323"
-          Size="250,43"
+          PanelSize="499.2,323.2"
+          Size="250.4,43.2"
           Id="Package\Withdrawals Stuff STG to TRGT"
           TopLeft="0.571434507565016,285.200000437568" />
         <EdgeLayout
@@ -16864,30 +16916,64 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="952.571441660123,136.305881846735">
+          TopLeft="952.771441660123,136.505881846735">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-58.214286084079,261.564706877606"
+              EndConnector="-58.314286084079,261.364706877606"
               Start="0,0"
-              End="-58.214286084079,254.064706877606">
+              End="-58.314286084079,253.864706877606">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,126.782353438803" />
+                    End="0,126.682353438803" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,126.782353438803"
-                    Point2="0,130.782353438803"
-                    Point3="-4,130.782353438803" />
+                    Point1="0,126.682353438803"
+                    Point2="0,130.682353438803"
+                    Point3="-4,130.682353438803" />
                   <mssgle:LineSegment
-                    End="-54.214286084079,130.782353438803" />
+                    End="-54.314286084079,130.682353438803" />
                   <mssgle:CubicBezierSegment
-                    Point1="-54.214286084079,130.782353438803"
-                    Point2="-58.214286084079,130.782353438803"
-                    Point3="-58.214286084079,134.782353438803" />
+                    Point1="-54.314286084079,130.682353438803"
+                    Point2="-58.314286084079,130.682353438803"
+                    Point3="-58.314286084079,134.682353438803" />
                   <mssgle:LineSegment
-                    End="-58.214286084079,254.064706877606" />
+                    End="-58.314286084079,253.864706877606" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="677,743">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18.914277024172,-515.270587703348"
+              Start="0,0"
+              End="-18.914277024172,-507.770587703348">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-253.635293851674" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-253.635293851674"
+                    Point2="0,-257.635293851674"
+                    Point3="-4,-257.635293851674" />
+                  <mssgle:LineSegment
+                    End="-14.914277024172,-257.635293851674" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.914277024172,-257.635293851674"
+                    Point2="-18.914277024172,-257.635293851674"
+                    Point3="-18.914277024172,-261.635293851674" />
+                  <mssgle:LineSegment
+                    End="-18.914277024172,-507.770587703348" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -16898,30 +16984,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="1341.85715325998,33">
+          TopLeft="1341.85715325998,32.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-744.285722362752,270.064706731749"
+              EndConnector="-744.685722362754,34.1529420172874"
               Start="0,0"
-              End="-736.785722362752,270.064706731749">
+              End="-737.185722362754,34.1529420172874">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-368.142861181376,0" />
+                    End="-368.342861181377,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-368.142861181376,0"
-                    Point2="-372.142861181376,0"
-                    Point3="-372.142861181376,4" />
+                    Point1="-368.342861181377,0"
+                    Point2="-372.342861181377,0"
+                    Point3="-372.342861181377,4" />
                   <mssgle:LineSegment
-                    End="-372.142861181376,266.064706731749" />
+                    End="-372.342861181377,30.1529420172874" />
                   <mssgle:CubicBezierSegment
-                    Point1="-372.142861181376,266.064706731749"
-                    Point2="-372.142861181376,270.064706731749"
-                    Point3="-376.142861181376,270.064706731749" />
+                    Point1="-372.342861181377,30.1529420172874"
+                    Point2="-372.342861181377,34.1529420172874"
+                    Point3="-376.342861181377,34.1529420172874" />
                   <mssgle:LineSegment
-                    End="-736.785722362752,270.064706731749" />
+                    End="-737.185722362754,34.1529420172874" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -16932,30 +17018,58 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="308.571430897226,562.56470673175">
+          TopLeft="308.371430897226,90.9529420172874">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-182.999996389661,-277.364706294182"
+              EndConnector="-182.599996389661,194.247058420281"
               Start="0,0"
-              End="-182.999996389661,-269.864706294182">
+              End="-182.599996389661,186.747058420281">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-134.682353147091" />
+                    End="0,93.1235292101403" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-134.682353147091"
-                    Point2="0,-138.682353147091"
-                    Point3="-4,-138.682353147091" />
+                    Point1="0,93.1235292101403"
+                    Point2="0,97.1235292101403"
+                    Point3="-4,97.1235292101403" />
                   <mssgle:LineSegment
-                    End="-178.999996389661,-138.682353147091" />
+                    End="-178.599996389661,97.1235292101403" />
                   <mssgle:CubicBezierSegment
-                    Point1="-178.999996389661,-138.682353147091"
-                    Point2="-182.999996389661,-138.682353147091"
-                    Point3="-182.999996389661,-142.682353147091" />
+                    Point1="-178.599996389661,97.1235292101403"
+                    Point2="-182.599996389661,97.1235292101403"
+                    Point3="-182.599996389661,101.12352921014" />
                   <mssgle:LineSegment
-                    End="-182.999996389661,-269.864706294182" />
+                    End="-182.599996389661,186.747058420281" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="776.914298073126,829.05882765628">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-54.514298073126,-86.0588276562801"
+              Start="0,0"
+              End="-54.514298073126,-78.5588276562801">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-50.514298073126,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-50.514298073126,0"
+                    Point2="-54.514298073126,0"
+                    Point3="-54.514298073126,-4" />
+                  <mssgle:LineSegment
+                    End="-54.514298073126,-78.5588276562801" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17000,30 +17114,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="894.357155576044,440.870588724341">
+          TopLeft="894.457155576044,441.070588724341">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="15.0571424970821,224.988238931939"
+              EndConnector="50.457142497082,224.788238931939"
               Start="0,0"
-              End="15.0571424970821,217.488238931939">
+              End="50.457142497082,217.288238931939">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,108.49411946597" />
+                    End="0,108.39411946597" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,108.49411946597"
-                    Point2="0,112.49411946597"
-                    Point3="4,112.49411946597" />
+                    Point1="0,108.39411946597"
+                    Point2="0,112.39411946597"
+                    Point3="4,112.39411946597" />
                   <mssgle:LineSegment
-                    End="11.0571424970821,112.49411946597" />
+                    End="46.457142497082,112.39411946597" />
                   <mssgle:CubicBezierSegment
-                    Point1="11.0571424970821,112.49411946597"
-                    Point2="15.0571424970821,112.49411946597"
-                    Point3="15.0571424970821,116.49411946597" />
+                    Point1="46.457142497082,112.39411946597"
+                    Point2="50.457142497082,112.39411946597"
+                    Point3="50.457142497082,116.39411946597" />
                   <mssgle:LineSegment
-                    End="15.0571424970821,217.488238931939" />
+                    End="50.457142497082,217.288238931939" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17034,30 +17148,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="125.571434507565,328.200000437568">
+          TopLeft="125.771434507565,328.400000437568">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="177.142856685482,126.50588388872"
+              EndConnector="102.942856685482,126.30588388872"
               Start="0,0"
-              End="177.142856685482,119.00588388872">
+              End="102.942856685482,118.80588388872">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.25294194436" />
+                    End="0,59.15294194436" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,59.25294194436"
-                    Point2="0,63.25294194436"
-                    Point3="4,63.25294194436" />
+                    Point1="0,59.15294194436"
+                    Point2="0,63.15294194436"
+                    Point3="4,63.15294194436" />
                   <mssgle:LineSegment
-                    End="173.142856685482,63.25294194436" />
+                    End="98.942856685482,63.15294194436" />
                   <mssgle:CubicBezierSegment
-                    Point1="173.142856685482,63.25294194436"
-                    Point2="177.142856685482,63.25294194436"
-                    Point3="177.142856685482,67.25294194436" />
+                    Point1="98.942856685482,63.15294194436"
+                    Point2="102.942856685482,63.15294194436"
+                    Point3="102.942856685482,67.15294194436" />
                   <mssgle:LineSegment
-                    End="177.142856685482,119.00588388872" />
+                    End="102.942856685482,118.80588388872" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17066,142 +17180,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="282,42"
-          Id="Package\Update MigrationRollOut (IsMigrated) ****"
-          TopLeft="536,743" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="677,743">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-18.914277024172,-515.270587703348"
-              Start="0,0"
-              End="-18.914277024172,-507.770587703348">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-253.635293851674" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-253.635293851674"
-                    Point2="0,-257.635293851674"
-                    Point3="-4,-257.635293851674" />
-                  <mssgle:LineSegment
-                    End="-14.914277024172,-257.635293851674" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-14.914277024172,-257.635293851674"
-                    Point2="-18.914277024172,-257.635293851674"
-                    Point3="-18.914277024172,-261.635293851674" />
-                  <mssgle:LineSegment
-                    End="-18.914277024172,-507.770587703348" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="909.414298073126,708.85882765628">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-186.747631406459,34.14117234372"
-              Start="0,0"
-              End="-186.747631406459,26.64117234372">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.3691338524592" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.3691338524592"
-                    Point2="0,20.3691338524592"
-                    Point3="-4,20.3691338524592" />
-                  <mssgle:LineSegment
-                    End="-182.747631406459,20.3691338524592" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-182.747631406459,20.3691338524592"
-                    Point2="-186.747631406459,20.3691338524592"
-                    Point3="-186.747631406459,24.3691338524592" />
-                  <mssgle:LineSegment
-                    End="-186.747631406459,26.64117234372" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="287,42"
-          Id="Package\Truncate Transaction_Balance before reload"
-          TopLeft="150,704" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="302.714291193047,497.705884326288">
+          TopLeft="228.714291193047,497.905884326288">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9.21429119304702,206.294115673712"
+              EndConnector="10.8285721000367,254.764706002469"
               Start="0,0"
-              End="-9.21429119304702,198.794115673712">
+              End="10.8285721000367,247.264706002469">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,99.147057836856" />
+                    End="0,123.382353001235" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,99.147057836856"
-                    Point2="0,103.147057836856"
-                    Point3="-4,103.147057836856" />
+                    Point1="0,123.382353001235"
+                    Point2="0,127.382353001235"
+                    Point3="4,127.382353001235" />
                   <mssgle:LineSegment
-                    End="-5.21429119304702,103.147057836856" />
+                    End="6.82857210003669,127.382353001235" />
                   <mssgle:CubicBezierSegment
-                    Point1="-5.21429119304702,103.147057836856"
-                    Point2="-9.21429119304702,103.147057836856"
-                    Point3="-9.21429119304702,107.147057836856" />
+                    Point1="6.82857210003669,127.382353001235"
+                    Point2="10.8285721000367,127.382353001235"
+                    Point3="10.8285721000367,131.382353001235" />
                   <mssgle:LineSegment
-                    End="-9.21429119304702,198.794115673712" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="293.5,746">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-37.014279272118,170.623533804606"
-              Start="0,0"
-              End="-37.014279272118,163.123533804606">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,81.311766902303" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,81.311766902303"
-                    Point2="0,85.311766902303"
-                    Point3="-4,85.311766902303" />
-                  <mssgle:LineSegment
-                    End="-33.014279272118,85.311766902303" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-33.014279272118,85.311766902303"
-                    Point2="-37.014279272118,85.311766902303"
-                    Point3="-37.014279272118,89.311766902303" />
-                  <mssgle:LineSegment
-                    End="-37.014279272118,163.123533804606" />
+                    End="10.8285721000367,247.264706002469" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17217,7 +17221,7 @@
     design-time-name="Package\Customers-Cards-Accounts STG to STG\Bank_Accounts_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="211,42"
           Id="Package\Customers-Cards-Accounts STG to STG\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared"
@@ -17257,7 +17261,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17293,7 +17299,7 @@
     design-time-name="Package\Customers-Cards-Accounts STG to STG\Cards_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156,42"
           Id="Package\Customers-Cards-Accounts STG to STG\Cards_Prepared STG to STG\Data Conversion"
@@ -17331,7 +17337,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17365,7 +17373,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17401,7 +17411,7 @@
     design-time-name="Package\Customers-Cards-Accounts STG to STG\Customers_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="195,42"
           Id="Package\Customers-Cards-Accounts STG to STG\Customers_Prepared STG to STG\vw_Customers_Prepared"
@@ -17441,7 +17451,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17477,15 +17489,15 @@
     design-time-name="Package\Customers-Cards-Accounts STG to STG\MobileWallets_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Customers-Cards-Accounts STG to STG\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
-          TopLeft="178.857145903062,170.682355334932" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="210,42"
           Id="Package\Customers-Cards-Accounts STG to STG\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared"
           TopLeft="164.571431374063,34.870588724341" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Customers-Cards-Accounts STG to STG\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
+          TopLeft="178.857145903062,170.682355334932" />
         <EdgeLayout
           Id="Package\Customers-Cards-Accounts STG to STG\MobileWallets_Prepared STG to STG.Paths[OLE DB Source Output]"
           TopLeft="267.514288638563,76.470588724341">
@@ -17505,7 +17517,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17541,7 +17555,7 @@
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\BankAccounts STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="176,42"
           Id="Package\Customers-Cards-Accounts STG to TRGT\BankAccounts STG to TRGT\BankAccounts_TRGT"
@@ -17581,7 +17595,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17617,7 +17633,7 @@
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT\Cards_TRGT"
@@ -17645,7 +17661,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17681,7 +17699,7 @@
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\Customers STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="153,42"
           Id="Package\Customers-Cards-Accounts STG to TRGT\Customers STG to TRGT\Customers_STG"
@@ -17721,7 +17739,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17757,15 +17777,15 @@
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT\MobileWallets_TRGT"
-          TopLeft="278.4,239.2" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="168,42"
           Id="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT\MobileWallets_STG"
           TopLeft="274.4,64.8" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT\MobileWallets_TRGT"
+          TopLeft="278.4,239.2" />
         <EdgeLayout
           Id="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="362.2,106.4">
@@ -17785,7 +17805,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17821,7 +17843,7 @@
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\Transfer Banks_LKP   (First_Time_only then Disable)">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="106,42"
           Id="Package\Customers-Cards-Accounts STG to TRGT\Transfer Banks_LKP   (First_Time_only then Disable)\Banks"
@@ -17861,7 +17883,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17899,13 +17923,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="155,42"
-          Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders Prepared"
-          TopLeft="280,71.2" />
-        <NodeLayout
-          Size="137,42"
+          Size="136.8,41.6"
           Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders-Meta"
           TopLeft="332.8,236" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders Prepared"
+          TopLeft="280,71.2" />
         <EdgeLayout
           Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG.Paths[OLE DB Source Output]"
           TopLeft="357.6,112.8">
@@ -17975,11 +17999,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="218,42"
+          Size="217.6,41.6"
           Id="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared"
           TopLeft="176.571431578422,45.8823535846592" />
         <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions"
           TopLeft="174.857145834942,225.129414922061" />
         <EdgeLayout
@@ -18051,51 +18075,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="134,42"
+          Size="142.4,41.6"
+          Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT"
+          TopLeft="57.6,219.2" />
+        <NodeLayout
+          Size="134.4,41.6"
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_SRC"
           TopLeft="68.8,60" />
         <NodeLayout
-          Size="142,42"
-          Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT"
-          TopLeft="57.6,220" />
-        <NodeLayout
-          Size="151,42"
+          Size="151.2,41.6"
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\fk_metadata_id"
           TopLeft="248.8,137.6" />
-        <EdgeLayout
-          Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT.Paths[Derived Column Output]"
-          TopLeft="324.4,179.2">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-196,40.8"
-              Start="0,0"
-              End="-196,33.3">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.4"
-                    Point2="0,20.4"
-                    Point3="-4,20.4" />
-                  <mssgle:LineSegment
-                    End="-192,20.4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-192,20.4"
-                    Point2="-196,20.4"
-                    Point3="-196,24.4" />
-                  <mssgle:LineSegment
-                    End="-196,33.3" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="136,101.6">
@@ -18130,11 +18120,45 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT.Paths[Derived Column Output]"
+          TopLeft="324.4,179.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-195.6,40"
+              Start="0,0"
+              End="-195.6,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16"
+                    Point2="0,20"
+                    Point3="-4,20" />
+                  <mssgle:LineSegment
+                    End="-191.6,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-191.6,20"
+                    Point2="-195.6,20"
+                    Point3="-195.6,24" />
+                  <mssgle:LineSegment
+                    End="-195.6,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_SRC">
+    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -18147,7 +18171,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT">
+    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_SRC">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -18165,13 +18189,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="158,42"
-          Id="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT\OrdersMeta_SRC"
-          TopLeft="140.57142858116,49" />
-        <NodeLayout
-          Size="165,42"
+          Size="164.8,41.6"
           Id="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT\OrdersMeta_TRGT"
           TopLeft="137.6,202.4" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT\OrdersMeta_SRC"
+          TopLeft="140.57142858116,49" />
         <EdgeLayout
           Id="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="219.83571429058,91">
@@ -18229,11 +18253,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="190,42"
+          Size="190.4,41.6"
           Id="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG"
           TopLeft="314.4,76.8" />
         <NodeLayout
-          Size="197,42"
+          Size="196.8,41.6"
           Id="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_TRGT"
           TopLeft="302.4,246.4" />
         <EdgeLayout
@@ -18303,7 +18327,7 @@
     design-time-name="Package\TransactionBalance STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="223,42"
           Id="Package\TransactionBalance STG to STG\Transaction_Balance_Prepared"
@@ -18343,7 +18367,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18381,13 +18407,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="192,42"
-          Id="Package\TransactionBalance STG to TRGT\TransactionBalance STG"
-          TopLeft="209.6,88" />
-        <NodeLayout
-          Size="199,42"
+          Size="199.2,41.6"
           Id="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT"
           TopLeft="222.4,253.6" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\TransactionBalance STG to TRGT\TransactionBalance STG"
+          TopLeft="209.6,88" />
         <EdgeLayout
           Id="Package\TransactionBalance STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="305.6,129.6">
@@ -18455,7 +18481,7 @@
     design-time-name="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="216,42"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared"
@@ -18483,7 +18509,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18521,11 +18549,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="275,42"
+          Size="275.2,41.6"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared"
           TopLeft="172.8,52" />
         <NodeLayout
-          Size="253,42"
+          Size="252.8,41.6"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions"
           TopLeft="128,208" />
         <EdgeLayout
@@ -18597,11 +18625,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="201,42"
+          Size="200.8,41.6"
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT"
           TopLeft="134,151" />
         <NodeLayout
-          Size="194,42"
+          Size="193.6,41.6"
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqests STG to TRGT\WithdrawalReqests_STG"
           TopLeft="127,55" />
         <EdgeLayout
@@ -18673,13 +18701,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="253,42"
-          Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG"
-          TopLeft="175.2,78.4" />
-        <NodeLayout
-          Size="200,42"
+          Size="200,41.6"
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT"
           TopLeft="219.2,254.4" />
+        <NodeLayout
+          Size="252.8,41.6"
+          Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG"
+          TopLeft="175.2,78.4" />
         <EdgeLayout
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="301.6,120">

@@ -7,6 +7,7 @@ import json
 import dask.dataframe as ddf
 from sqlalchemy import create_engine
 
+engine = create_engine(conn.CowPay_Production_Simulation_DB)
 
 def Apply_Fawry_Request(row):
     json_ser='''{"paymentExpiry": "1631138500000"}'''
@@ -48,45 +49,58 @@ def Apply_Meeza_Request(row):
     return json.dumps(json_des)
 
 
-# Akurateko_Transactions='''select * from Akurateko_Transactions'''
-# Bosta_Transactions= '''select * from Bosta_Transactions '''
-# Fawry_Transactions = '''select * from Fawry_Transactions'''
-Meeza_Transactions = '''select * from Meeza_Transactions'''
+Akurateko_Transactions='''select * from Akurateko_Transactions where merchantCode  
+in (select code from Staging_Migration.dbo.Migration_RollOut where is_migrated=0)'''
+
+Bosta_Transactions= '''select * from Bosta_Transactions where merchantCode  
+in (select code from Staging_Migration.dbo.Migration_RollOut where is_migrated=0) '''
+
+Fawry_Transactions = '''select * from Fawry_Transactions where merchantCode  
+in (select code from Staging_Migration.dbo.Migration_RollOut where is_migrated=0)'''
+
+Meeza_Transactions = '''select * from Meeza_Transactions where merchantCode  
+in (select code from Staging_Migration.dbo.Migration_RollOut where is_migrated=0) '''
 
 
 
 
 
 
-fawry_df = ddf.read_sql("Fawry_Transactions",conn.CowPay_Production_Simulation_DB,index_col='Transaction_ID')
-fawry_df['PGWMetaRequest']=fawry_df.apply(Apply_Fawry_Request,axis=1)
-fawry_df['PGWMetaResponse']=fawry_df.apply(Apply_Fawry_Response,axis=1)
+fawry_df = pd.read_sql(Fawry_Transactions,engine,index_col='Transaction_ID')
+if len(fawry_df)>0:
+    fawry_df['PGWMetaRequest']=fawry_df.apply(Apply_Fawry_Request,axis=1)
+    fawry_df['PGWMetaResponse']=fawry_df.apply(Apply_Fawry_Response,axis=1)
+fawry_df=ddf.from_pandas(fawry_df,npartitions=1)
 
 
 
-Bosta_df = ddf.read_sql("Bosta_Transactions",conn.CowPay_Production_Simulation_DB,index_col='Transaction_ID')
-Bosta_df['PGWMetaRequest']=Bosta_df.apply(Apply_Bosta_Request,axis=1)
-Bosta_df['PGWMetaResponse']=NaT
+Bosta_df = pd.read_sql(Bosta_Transactions,engine,index_col='Transaction_ID')
+if len(Bosta_df)>0:
+    Bosta_df['PGWMetaRequest']=Bosta_df.apply(Apply_Bosta_Request,axis=1)
+    Bosta_df['PGWMetaResponse']=NaT
+Bosta_df=ddf.from_pandas(Bosta_df,npartitions=1)
 
 
 
-
-Akurateko_df = ddf.read_sql("Akurateko_Transactions",conn.CowPay_Production_Simulation_DB,index_col='Transaction_ID')
+Akurateko_df = pd.read_sql(Akurateko_Transactions,engine,index_col='Transaction_ID')
+if len(Akurateko_df)>0:
+    Akurateko_df['PGWMetaRequest']=Akurateko_df.apply(Apply_Akurateko_Request,axis=1)
+    Akurateko_df['PGWMetaResponse']=NaT
 #Akurateko_df= pd.DataFrame(Akurateko_df.compute())
-Akurateko_df['PGWMetaRequest']=Akurateko_df.apply(Apply_Akurateko_Request,axis=1)
-Akurateko_df['PGWMetaResponse']=NaT
+Akurateko_df=ddf.from_pandas(Akurateko_df,npartitions=1)
 
 
 
 
 
-engine = create_engine(conn.CowPay_Production_Simulation_DB)
+
 Meeza_df = pd.read_sql(Meeza_Transactions,engine,index_col='Transaction_ID',)
 #Meeza_df = ddf.read_sql("Meeza_Transactions",conn.CowPay_Production_Simulation_DB,index_col='Transaction_ID',)
 #Meeza_df= pd.DataFrame(Meeza_df.compute())
 #Meeza_df.fillna(0)
-Meeza_df['PGWMetaRequest']=Meeza_df.apply(Apply_Meeza_Request,axis=1)
-Meeza_df['PGWMetaResponse']=NaT
+if len(Meeza_df)>0:
+    Meeza_df['PGWMetaRequest']=Meeza_df.apply(Apply_Meeza_Request,axis=1)
+    Meeza_df['PGWMetaResponse']=NaT
 #Meeza_df.head()
 Meeza_df=ddf.from_pandas(Meeza_df,npartitions=1)
 
