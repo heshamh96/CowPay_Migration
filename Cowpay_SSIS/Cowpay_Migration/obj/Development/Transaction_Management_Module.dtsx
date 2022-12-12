@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="148"
-  DTS:VersionGUID="{434AC7D0-B251-4EBE-81E2-CE6D1B625C66}">
+  DTS:VersionBuild="149"
+  DTS:VersionGUID="{809BC3BC-1A29-46C4-BFCB-F3DC60A46C13}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -12860,6 +12860,7 @@
       DTS:refId="Package\Update MigrationRollOut (IsMigrated) ****"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{5EC670C5-A739-4BDC-A9B3-78045A17CF9D}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"

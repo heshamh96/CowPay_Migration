@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="148"
-  DTS:VersionGUID="{434AC7D0-B251-4EBE-81E2-CE6D1B625C66}">
+  DTS:VersionBuild="150"
+  DTS:VersionGUID="{1FA009BE-2B44-4175-9479-CDE5AFCFF8F4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -12241,585 +12241,37 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\TransactionBalance STG to TRGT"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{09C3929D-E6C1-4B7F-AFCE-CC15C624A8F1}"
-      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:refId="Package\Transaction_Balance_Orders"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F4BC8A10-41BE-47E6-8A77-935F2F693643}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="TransactionBalance STG to TRGT"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      DTS:ObjectName="Transaction_Balance_Orders"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="TransactionBalance STG"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[TransactionBalance_Prepared_RollOut]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Connections[OleDbConnection]"
-                  connectionManagerID="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[TransactionManagement]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
-                      name="MerchantId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[TranxId]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[TranxId]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[TranxId]"
-                      name="TranxId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[Amount]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[Amount]"
-                      name="Amount"
-                      precision="18"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[TranxTypeId]"
-                      dataType="i2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[TranxTypeId]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[TranxTypeId]"
-                      name="TranxTypeId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[ModelTypeId]"
-                      dataType="i2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[ModelTypeId]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[ModelTypeId]"
-                      name="ModelTypeId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[ModelReferenceId]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[ModelReferenceId]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[ModelReferenceId]"
-                      name="ModelReferenceId"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[Balance]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[Balance]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[Balance]"
-                      name="Balance"
-                      precision="18"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[AvailableBalance]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[AvailableBalance]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[AvailableBalance]"
-                      name="AvailableBalance"
-                      precision="18"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
-                      name="CreatedDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
-                      name="UpdatedDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
-                      name="DeletedDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
-                      dataType="bool"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
-                      name="IsDeleted"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
-                      dataType="i8"
-                      name="MerchantId" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[TranxId]"
-                      dataType="i8"
-                      name="TranxId" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
-                      dataType="numeric"
-                      name="Amount"
-                      precision="18"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[TranxTypeId]"
-                      dataType="i2"
-                      name="TranxTypeId" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[ModelTypeId]"
-                      dataType="i4"
-                      name="ModelTypeId" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[ModelReferenceId]"
-                      dataType="i8"
-                      name="ModelReferenceId" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[Balance]"
-                      dataType="numeric"
-                      name="Balance"
-                      precision="38"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[AvailableBalance]"
-                      dataType="i4"
-                      name="AvailableBalance" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
-                      dataType="dbTimeStamp"
-                      name="CreatedDate" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
-                      dataType="dbTimeStamp"
-                      name="UpdatedDate" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
-                      dataType="dbTimeStamp"
-                      name="DeletedDate" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
-                      dataType="bool"
-                      name="IsDeleted" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
-                      dataType="i8"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
-                      name="MerchantId" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[TranxId]"
-                      dataType="i8"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[TranxId]"
-                      name="TranxId" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[Amount]"
-                      dataType="numeric"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[Amount]"
-                      name="Amount"
-                      precision="18"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[TranxTypeId]"
-                      dataType="i2"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[TranxTypeId]"
-                      name="TranxTypeId" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[ModelTypeId]"
-                      dataType="i4"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[ModelTypeId]"
-                      name="ModelTypeId" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[ModelReferenceId]"
-                      dataType="i8"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[ModelReferenceId]"
-                      name="ModelReferenceId" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[Balance]"
-                      dataType="numeric"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[Balance]"
-                      name="Balance"
-                      precision="38"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[AvailableBalance]"
-                      dataType="i4"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[AvailableBalance]"
-                      name="AvailableBalance" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
-                      name="CreatedDate" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
-                      name="UpdatedDate" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
-                      name="DeletedDate" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
-                      dataType="bool"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
-                      name="IsDeleted" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="TransactionBalance TRGT"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[TransactionBalance]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Connections[OleDbConnection]"
-                  connectionManagerID="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[TransactionManagement]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[MerchantId]"
-                      cachedDataType="i8"
-                      cachedName="MerchantId"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[MerchantId]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[TranxId]"
-                      cachedDataType="i8"
-                      cachedName="TranxId"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TranxId]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[TranxId]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[Amount]"
-                      cachedDataType="numeric"
-                      cachedName="Amount"
-                      cachedPrecision="18"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[Amount]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[TranxTypeId]"
-                      cachedDataType="i2"
-                      cachedName="TranxTypeId"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TranxTypeId]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[TranxTypeId]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[ModelTypeId]"
-                      cachedDataType="i2"
-                      cachedName="ModelTypeId"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[ModelTypeId]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[ModelTypeId]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[ModelReferenceId]"
-                      cachedDataType="i8"
-                      cachedName="ModelReferenceId"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[ModelReferenceId]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[ModelReferenceId]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[Balance]"
-                      cachedDataType="numeric"
-                      cachedName="Balance"
-                      cachedPrecision="18"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Balance]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[Balance]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[AvailableBalance]"
-                      cachedDataType="numeric"
-                      cachedName="AvailableBalance"
-                      cachedPrecision="18"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AvailableBalance]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[AvailableBalance]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="CreatedDate"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="UpdatedDate"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="DeletedDate"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
-                    <inputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
-                      cachedDataType="bool"
-                      cachedName="IsDeleted"
-                      externalMetadataColumnId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
-                      dataType="i8"
-                      name="Id" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
-                      dataType="i8"
-                      name="MerchantId" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TranxId]"
-                      dataType="i8"
-                      name="TranxId" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
-                      dataType="numeric"
-                      name="Amount"
-                      precision="18"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TranxTypeId]"
-                      dataType="i2"
-                      name="TranxTypeId" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[ModelTypeId]"
-                      dataType="i2"
-                      name="ModelTypeId" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[ModelReferenceId]"
-                      dataType="i8"
-                      name="ModelReferenceId" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Balance]"
-                      dataType="numeric"
-                      name="Balance"
-                      precision="18"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AvailableBalance]"
-                      dataType="numeric"
-                      name="AvailableBalance"
-                      precision="18"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
-                      dataType="dbTimeStamp"
-                      name="CreatedDate" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
-                      dataType="dbTimeStamp"
-                      name="UpdatedDate" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
-                      dataType="dbTimeStamp"
-                      name="DeletedDate" />
-                    <externalMetadataColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
-                      dataType="bool"
-                      name="IsDeleted" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\TransactionBalance STG to TRGT.Paths[OLE DB Source Output]"
-              endId="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\TransactionBalance STG to TRGT\TransactionBalance STG.Outputs[OLE DB Source Output]" />
-          </paths>
-        </pipeline>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[TransactionBalance_Prepared_RollOut_Orders_Insertions] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transaction_Balance_Withdrawals"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{38416ED2-43E7-4961-B55A-57498E98F24D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transaction_Balance_Withdrawals"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[TransactionBalance_Prepared_RollOut_Withdrawals_Insertions]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -12860,6 +12312,7 @@
       DTS:refId="Package\Update MigrationRollOut (IsMigrated) ****"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{5EC670C5-A739-4BDC-A9B3-78045A17CF9D}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -16110,6 +15563,14 @@
       DTS:ObjectName="Constraint 10"
       DTS:To="Package\Drop_Banks_Accounts_Constraints" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{C709F351-1E1C-44B4-8731-E1313EA73D70}"
+      DTS:From="Package\Transaction_Balance_Orders"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 11"
+      DTS:To="Package\Transaction_Balance_Withdrawals" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{F5FD9CBF-B335-4AD4-8DF9-FEAC50344038}"
@@ -16136,11 +15597,11 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
-      DTS:DTSID="{29D312E2-6222-4719-9554-A1A131A7717F}"
+      DTS:DTSID="{60D93F62-5DEB-40F0-9561-79A18EBC154B}"
       DTS:From="Package\Orders Stuff STG to TRGT"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
-      DTS:To="Package\TransactionBalance STG to TRGT" />
+      DTS:To="Package\Transaction_Balance_Orders" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
       DTS:CreationName=""
@@ -16177,7 +15638,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="256,42"
           Id="Package\Customers-Cards-Accounts STG to STG\Bank_Accounts_Prepared STG to STG"
@@ -16691,10 +16152,6 @@
           Id="Package\TransactionBalance STG to STG"
           TopLeft="811.514297936887,1052.71765443743" />
         <NodeLayout
-          Size="234.4,41.6"
-          Id="Package\TransactionBalance STG to TRGT"
-          TopLeft="122.342863293084,752.670590328757" />
-        <NodeLayout
           Size="145.6,41.6"
           Id="Package\Truncate_STG"
           TopLeft="1137.54287426034,51.8000002917122" />
@@ -17180,32 +16637,74 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Transaction_Balance_Orders"
+          TopLeft="152.571431169705,873.741178907243" />
+        <NodeLayout
+          Size="238.4,41.6"
+          Id="Package\Transaction_Balance_Withdrawals"
+          TopLeft="210.285717866859,945.317650499311" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 11]"
+          TopLeft="258.971431169705,915.341178907243">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.5142866971541,29.9764715920682"
+              Start="0,0"
+              End="70.5142866971541,22.4764715920682">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.9882357960341" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.9882357960341"
+                    Point2="0,14.9882357960341"
+                    Point3="4,14.9882357960341" />
+                  <mssgle:LineSegment
+                    End="66.5142866971541,14.9882357960341" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.5142866971541,14.9882357960341"
+                    Point2="70.5142866971541,14.9882357960341"
+                    Point3="70.5142866971541,18.9882357960341" />
+                  <mssgle:LineSegment
+                    End="70.5142866971541,22.4764715920682" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="228.714291193047,497.905884326288">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="10.8285721000367,254.764706002469"
+              EndConnector="30.2571399766576,375.835294580955"
               Start="0,0"
-              End="10.8285721000367,247.264706002469">
+              End="30.2571399766576,368.335294580955">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,123.382353001235" />
+                    End="0,183.917647290477" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,123.382353001235"
-                    Point2="0,127.382353001235"
-                    Point3="4,127.382353001235" />
+                    Point1="0,183.917647290477"
+                    Point2="0,187.917647290477"
+                    Point3="4,187.917647290477" />
                   <mssgle:LineSegment
-                    End="6.82857210003669,127.382353001235" />
+                    End="26.2571399766576,187.917647290477" />
                   <mssgle:CubicBezierSegment
-                    Point1="6.82857210003669,127.382353001235"
-                    Point2="10.8285721000367,127.382353001235"
-                    Point3="10.8285721000367,131.382353001235" />
+                    Point1="26.2571399766576,187.917647290477"
+                    Point2="30.2571399766576,187.917647290477"
+                    Point3="30.2571399766576,191.917647290477" />
                   <mssgle:LineSegment
-                    End="10.8285721000367,247.264706002469" />
+                    End="30.2571399766576,368.335294580955" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -18398,82 +17897,6 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\TransactionBalance STG to TRGT">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="199.2,41.6"
-          Id="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT"
-          TopLeft="222.4,253.6" />
-        <NodeLayout
-          Size="192,41.6"
-          Id="Package\TransactionBalance STG to TRGT\TransactionBalance STG"
-          TopLeft="209.6,88" />
-        <EdgeLayout
-          Id="Package\TransactionBalance STG to TRGT.Paths[OLE DB Source Output]"
-          TopLeft="305.6,129.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="16.4,124"
-              Start="0,0"
-              End="16.4,116.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,58"
-                    Point2="0,62"
-                    Point3="4,62" />
-                  <mssgle:LineSegment
-                    End="12.4,62" />
-                  <mssgle:CubicBezierSegment
-                    Point1="12.4,62"
-                    Point2="16.4,62"
-                    Point3="16.4,66" />
-                  <mssgle:LineSegment
-                    End="16.4,116.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\TransactionBalance STG to TRGT\TransactionBalance STG">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\TransactionBalance STG to TRGT\TransactionBalance TRGT">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
