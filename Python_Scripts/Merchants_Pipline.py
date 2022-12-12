@@ -63,11 +63,10 @@ for row in result:
                                          {"payMethodType":5,"fixedVal":row[18],"percentage":row[17],"isEnabled":True},
                                          {"payMethodType":7,"fixedVal":row[20],"percentage":row[19],"isEnabled":True}
                                         ]),
-        "autoWithdrawal":{"isEnabled":"","peroidType":"","monthDay":"","daysValue":"","day":""},
-        "b2b":{"isEnabled":"","fixedVal":"","percentage":""},
-        "chashout":{"isEnabled":"","values":[]}},
-         "balanceConfiguration":{"AvailableBalanceThresholdDays":row[21]}
-         }
+        "autoWithdrawal":{"isEnabled":False,"peroidType":"","monthDay":"","daysValue":"","day":""},
+        "b2b":{"isEnabled":False,"fixedVal":"","percentage":""},
+        "chashout":{"isEnabled":False,"values":[]}},
+         "balanceConfiguration":{"AvailableBalanceThresholdDays":row[21]}  }
     settings_dict['id'].append(settings_id)
     #class DecimalEncoder(json.JSONEncoder):
         #def default(self, obj):
