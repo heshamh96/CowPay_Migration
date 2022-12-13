@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AA_Deployment_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="38"
-  DTS:VersionGUID="{061CAED7-FB90-4FFA-B677-01670AFEF411}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{474A9A18-EADF-498E-8DB9-D004C40CD226}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -145,7 +145,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-              SQLTask:SqlStatementSource="USE [Staging_Migration]&#xA;GO&#xA;&#xA;/****** Object:  Table [dbo].[Merchants]    Script Date: 12/13/2022 3:11:04 PM ******/&#xA;SET ANSI_NULLS ON&#xA;GO&#xA;&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Merchants](&#xA;&#x9;[Id] [bigint] NOT NULL,&#xA;&#x9;[MasterMerchantId] [bigint] NULL,&#xA;&#x9;[MerchantCode] [uniqueidentifier] NOT NULL,&#xA;&#x9;[UserId] [uniqueidentifier] NULL,&#xA;&#x9;[Name] [nvarchar](150) NOT NULL,&#xA;&#x9;[Mobile] [nvarchar](20) NULL,&#xA;&#x9;[Email] [nvarchar](100) NULL,&#xA;&#x9;[CountryId] [smallint] NOT NULL,&#xA;&#x9;[CityId] [smallint] NOT NULL,&#xA;&#x9;[Address] [nvarchar](250) NULL,&#xA;&#x9;[OptionalAddress] [nvarchar](250) NULL,&#xA;&#x9;[NationalId] [nchar](14) NULL,&#xA;&#x9;[CommercialRegistrationNum] [nvarchar](50) NULL,&#xA;&#x9;[TaxId] [nchar](50) NULL,&#xA;&#x9;[AttachamentImages] [nvarchar](max) NULL,&#xA;&#x9;[SocialLinks] [nvarchar](max) NULL,&#xA;&#x9;[StatusTypeId] [smallint] NOT NULL,&#xA;&#x9;[Settings] [nvarchar](max) NULL,&#xA;&#x9;[IsWebsite] [bit] NULL,&#xA;&#x9;[CreatedDate] [datetime] NULL,&#xA;&#x9;[UpdatedDate] [datetime] NULL,&#xA;&#x9;[DeletedDate] [datetime] NULL,&#xA;&#x9;[IsDeleted] [bit] NULL,&#xA;&#x9;[Logo] [nvarchar](max) NULL,&#xA;&#x9;[AboutUs] [nvarchar](max) NULL,&#xA;&#x9;[TermsAndConditions] [nvarchar](max) NULL,&#xA;&#x9;[old_id] [bigint] NULL,&#xA;&#x9;[Is_Old_System] [bit] NULL,&#xA;&#x9;[old_code] [varchar](50) NULL,&#xA; CONSTRAINT [PK_Merchants] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[Id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]&#xA;GO&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="USE [Staging_Migration]&#xA;GO&#xA;&#xA;/****** Object:  Table [dbo].[Merchants]    Script Date: 12/13/2022 3:49:27 PM ******/&#xA;SET ANSI_NULLS ON&#xA;GO&#xA;&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Merchants](&#xA;&#x9;[Id] [bigint] NULL,&#xA;&#x9;[MasterMerchantId] [bigint] NULL,&#xA;&#x9;[MerchantCode] [uniqueidentifier] NOT NULL,&#xA;&#x9;[UserId] [uniqueidentifier] NULL,&#xA;&#x9;[Name] [nvarchar](150) NOT NULL,&#xA;&#x9;[Mobile] [nvarchar](20) NULL,&#xA;&#x9;[Email] [nvarchar](100) NULL,&#xA;&#x9;[CountryId] [smallint] NOT NULL,&#xA;&#x9;[CityId] [smallint] NOT NULL,&#xA;&#x9;[Address] [nvarchar](250) NULL,&#xA;&#x9;[OptionalAddress] [nvarchar](250) NULL,&#xA;&#x9;[NationalId] [nchar](14) NULL,&#xA;&#x9;[CommercialRegistrationNum] [nvarchar](50) NULL,&#xA;&#x9;[TaxId] [nchar](50) NULL,&#xA;&#x9;[AttachamentImages] [nvarchar](max) NULL,&#xA;&#x9;[SocialLinks] [nvarchar](max) NULL,&#xA;&#x9;[StatusTypeId] [smallint] NOT NULL,&#xA;&#x9;[Settings] [nvarchar](max) NULL,&#xA;&#x9;[IsWebsite] [bit] NULL,&#xA;&#x9;[CreatedDate] [datetime] NULL,&#xA;&#x9;[UpdatedDate] [datetime] NULL,&#xA;&#x9;[DeletedDate] [datetime] NULL,&#xA;&#x9;[IsDeleted] [bit] NULL,&#xA;&#x9;[Logo] [nvarchar](max) NULL,&#xA;&#x9;[AboutUs] [nvarchar](max) NULL,&#xA;&#x9;[TermsAndConditions] [nvarchar](max) NULL,&#xA;&#x9;[old_id] [bigint] NULL,&#xA;&#x9;[Is_Old_System] [bit] NULL,&#xA;&#x9;[old_code] [varchar](50) NULL,&#xA; CONSTRAINT [PK_Merchants_1] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[MerchantCode] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]&#xA;GO&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -181,6 +181,7 @@
       DTS:refId="Package\Truncate_Every_Thing (First_Time_Only)"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{D88B3E33-7895-4ED9-937E-0EF76D6040D1}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -264,7 +265,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="223.2,41.6"
           Id="Package\Apply Data Cleansing Activities"
@@ -308,9 +309,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout

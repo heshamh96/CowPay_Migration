@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AA_Deployment_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="39"
-  DTS:VersionGUID="{91672EC0-42C1-4345-A43A-AAB9D17C3F95}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{474A9A18-EADF-498E-8DB9-D004C40CD226}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -181,6 +181,7 @@
       DTS:refId="Package\Truncate_Every_Thing (First_Time_Only)"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{D88B3E33-7895-4ED9-937E-0EF76D6040D1}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
