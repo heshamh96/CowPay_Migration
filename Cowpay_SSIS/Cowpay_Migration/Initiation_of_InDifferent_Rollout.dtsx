@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Initiation_of_InDifferent_Rollout"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{FC76442D-C237-43FA-BD05-FA7D29BA75E7}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{A124C39D-F609-4AA0-ACAF-E760D251FC3F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -650,16 +650,16 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Truncate The TransactionManagement_DB (TRGT).PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{6ECBF0AE-9DE6-4A18-A73C-4B79C9F58E43}"
-          DTS:From="Package\Truncate The TransactionManagement_DB (TRGT)\Truncate_TRGT (First_Time_only then Disable)"
+          DTS:DTSID="{F6BD1FB5-D50C-4638-9AE6-870B2408A1FA}"
+          DTS:From="Package\Truncate The TransactionManagement_DB (TRGT)\Drop_Banks_Accounts_Constraints"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\Truncate The TransactionManagement_DB (TRGT)\Drop_Banks_Accounts_Constraints" />
+          DTS:To="Package\Truncate The TransactionManagement_DB (TRGT)\Truncate_TRGT (First_Time_only then Disable)" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Truncate The TransactionManagement_DB (TRGT).PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{911CEAED-691B-4102-8551-26219C4221B8}"
-          DTS:From="Package\Truncate The TransactionManagement_DB (TRGT)\Drop_Banks_Accounts_Constraints"
+          DTS:DTSID="{A3C2361A-FDEC-467A-9D4A-596B4D526FEB}"
+          DTS:From="Package\Truncate The TransactionManagement_DB (TRGT)\Truncate_TRGT (First_Time_only then Disable)"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Truncate The TransactionManagement_DB (TRGT)\Transfer Banks_LKP   (First_Time_only then Disable)" />
@@ -903,65 +903,15 @@
         <NodeLayout
           Size="300,41.6"
           Id="Package\Truncate The TransactionManagement_DB (TRGT)\Truncate_TRGT (First_Time_only then Disable)"
-          TopLeft="5.5,5.5" />
+          TopLeft="22.6428574347982,69.7352950185228" />
         <NodeLayout
           Size="241.6,41.6"
           Id="Package\Truncate The TransactionManagement_DB (TRGT)\Drop_Banks_Accounts_Constraints"
-          TopLeft="38.3143010022672,69.776470279364" />
-        <EdgeLayout
-          Id="Package\Truncate The TransactionManagement_DB (TRGT).PrecedenceConstraints[Constraint]"
-          TopLeft="157.307150501134,47.1">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,22.676470279364"
-              Start="0,0"
-              End="0,15.176470279364">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.176470279364" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="50.3143012066259,5.5" />
         <NodeLayout
           Size="326.4,41.6"
           Id="Package\Truncate The TransactionManagement_DB (TRGT)\Transfer Banks_LKP   (First_Time_only then Disable)"
           TopLeft="5.5,133.694122966516" />
-        <EdgeLayout
-          Id="Package\Truncate The TransactionManagement_DB (TRGT).PrecedenceConstraints[Constraint 1]"
-          TopLeft="38.3143010022672,90.576470279364">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="130.385698997733,43.1176526871516"
-              Start="0,0"
-              End="130.385698997733,35.6176526871516">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="126.385698997733,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="126.385698997733,0"
-                    Point2="130.385698997733,0"
-                    Point3="130.385698997733,4" />
-                  <mssgle:LineSegment
-                    End="130.385698997733,35.6176526871516" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="185.6,41.6"
           Id="Package\Truncate The TransactionManagement_DB (TRGT)\Create The Constraints"
@@ -988,39 +938,83 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="460.8,332"
-          Size="340.8,43.2"
-          Id="Package\Truncate The TransactionManagement_DB (TRGT)"
-          TopLeft="97.1428587971902,351.24706177497" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="325.428574484222,251.200002917121">
+          Id="Package\Truncate The TransactionManagement_DB (TRGT).PrecedenceConstraints[Constraint]"
+          TopLeft="171.878579320712,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-57.8857156870317,100.047058857849"
+              EndConnector="0,22.6352950185228"
               Start="0,0"
-              End="-57.8857156870317,92.5470588578487">
+              End="0,15.1352950185228">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.0235294289243" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,46.0235294289243"
-                    Point2="0,50.0235294289243"
-                    Point3="-4,50.0235294289243" />
+                    End="0,15.1352950185228" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Truncate The TransactionManagement_DB (TRGT).PrecedenceConstraints[Constraint 1]"
+          TopLeft="322.642857434798,90.5352950185228">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.25714256520178,63.9588279479929"
+              Start="0,0"
+              End="16.7571425652018,63.9588279479929">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-53.8857156870317,50.0235294289243" />
+                    End="27.7571425652018,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-53.8857156870317,50.0235294289243"
-                    Point2="-57.8857156870317,50.0235294289243"
-                    Point3="-57.8857156870317,54.0235294289243" />
+                    Point1="27.7571425652018,0"
+                    Point2="31.7571425652018,0"
+                    Point3="31.7571425652018,4" />
                   <mssgle:LineSegment
-                    End="-57.8857156870317,92.5470588578487" />
+                    End="31.7571425652018,59.9588279479929" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.7571425652018,59.9588279479929"
+                    Point2="31.7571425652018,63.9588279479929"
+                    Point3="27.7571425652018,63.9588279479929" />
+                  <mssgle:LineSegment
+                    End="16.7571425652018,63.9588279479929" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="460.8,332"
+          Size="460.8,43.2"
+          Id="Package\Truncate The TransactionManagement_DB (TRGT)"
+          TopLeft="97.1428587971902,351.24706177497" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="326.485716640706,251.200002917121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,100.047058857849"
+              Start="0,0"
+              End="0,92.5470588578487">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.5470588578487" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

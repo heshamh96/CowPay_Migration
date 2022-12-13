@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="92"
-  DTS:VersionGUID="{5BEEB866-DDA5-4367-B368-1C9FA2E5EE4C}">
+  DTS:VersionBuild="93"
+  DTS:VersionGUID="{5D5E0911-EA0B-4ADB-BCA5-90737B237068}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -27,7 +27,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Execute Process Task"
       DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecuteProcessData
@@ -45,7 +45,7 @@
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Script Task"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -2070,7 +2070,7 @@ where mr.is_migrated=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate_STG_Merchants (First_time and Always)"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2087,7 +2087,7 @@ where mr.is_migrated=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Update_The Settings_Json (id, mechantCode, StatusTypeId)"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2125,42 +2125,6 @@ where mr.is_migrated=0</property>
       DTS:ObjectName="TRGT_Loading">
       <DTS:Variables />
       <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\TRGT_Loading\Create_Merchant_Constraints"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
-          DTS:DTSID="{16EC8515-49DF-4277-8E15-9DEACC90E4D8}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Create_Merchant_Constraints"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
-              SQLTask:SqlStatementSource="USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_Cities] FOREIGN KEY([CityId])&#xA;REFERENCES [dbo].[Cities] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_Cities]&#xA;GO&#xA;&#xA;&#xA;--===========================&#xA;&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_Countries] FOREIGN KEY([CountryId])&#xA;REFERENCES [dbo].[Countries] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_Countries]&#xA;GO&#xA;&#xA;&#xA;--============================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_StatusTypes] FOREIGN KEY([StatusTypeId])&#xA;REFERENCES [dbo].[StatusTypes] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_StatusTypes]&#xA;GO&#xA;&#xA;--========================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks]  WITH CHECK ADD  CONSTRAINT [FK_MerchantSocialLinks_Merchants] FOREIGN KEY([MerchantId])&#xA;REFERENCES [dbo].[Merchants] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks] CHECK CONSTRAINT [FK_MerchantSocialLinks_Merchants]&#xA;GO&#xA;&#xA;--===========================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments]  WITH CHECK ADD  CONSTRAINT [FK_MerchantAttachments_Merchants] FOREIGN KEY([MerchantId])&#xA;REFERENCES [dbo].[Merchants] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments] CHECK CONSTRAINT [FK_MerchantAttachments_Merchants]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\TRGT_Loading\Drop_Merchant_Constraints"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
-          DTS:DTSID="{2E53A6C5-788C-4CB8-AE7A-F4B58B475855}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Drop_Merchant_Constraints"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
-              SQLTask:SqlStatementSource="USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_Cities]&#xA;GO&#xA;&#xA;---======================================&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_Countries]&#xA;GO&#xA;&#xA;&#xA;--========================&#xA;&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_StatusTypes]&#xA;GO&#xA;&#xA;&#xA;--==================================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks] DROP CONSTRAINT [FK_MerchantSocialLinks_Merchants]&#xA;GO&#xA;&#xA;&#xA;--======================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments] DROP CONSTRAINT [FK_MerchantAttachments_Merchants]&#xA;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\TRGT_Loading\Stg to Trgt Merchants"
           DTS:CreationName="Microsoft.Pipeline"
@@ -3205,51 +3169,7 @@ where mr.is_migrated=0</property>
             </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\TRGT_Loading\Truncate Trgt_Merchants"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
-          DTS:DTSID="{8A3DB7DB-759F-4FCD-A60C-0583B58129FF}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Truncate Trgt_Merchants"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
-              SQLTask:SqlStatementSource="truncate table [dbo].[Merchants]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
       </DTS:Executables>
-      <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\TRGT_Loading.PrecedenceConstraints[Constraint]"
-          DTS:CreationName=""
-          DTS:DTSID="{493BC446-F7DC-41D4-9142-21BAB69ABADF}"
-          DTS:From="Package\TRGT_Loading\Drop_Merchant_Constraints"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\TRGT_Loading\Truncate Trgt_Merchants" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\TRGT_Loading.PrecedenceConstraints[Constraint 1]"
-          DTS:CreationName=""
-          DTS:DTSID="{90CBE97E-E5BA-4C1D-8DF7-8800428F7F7B}"
-          DTS:From="Package\TRGT_Loading\Stg to Trgt Merchants"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 1"
-          DTS:To="Package\TRGT_Loading\Create_Merchant_Constraints" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\TRGT_Loading.PrecedenceConstraints[Constraint 4]"
-          DTS:CreationName=""
-          DTS:DTSID="{D11B7E4F-9EF7-4762-B964-F597B4F3C33D}"
-          DTS:From="Package\TRGT_Loading\Truncate Trgt_Merchants"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 4"
-          DTS:To="Package\TRGT_Loading\Stg to Trgt Merchants" />
-      </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
@@ -3281,7 +3201,7 @@ where mr.is_migrated=0</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="351.2,41.6"
           Id="Package\Execute Process Task"
@@ -3378,130 +3298,16 @@ where mr.is_migrated=0</property>
           Id="Package\Staging_Activities"
           TopLeft="928.060323941411,15.576472321348" />
         <NodeLayout
-          Size="216.8,41.6"
-          Id="Package\TRGT_Loading\Create_Merchant_Constraints"
-          TopLeft="38.1714301479106,228.800005542531" />
-        <NodeLayout
-          Size="208.8,41.6"
-          Id="Package\TRGT_Loading\Drop_Merchant_Constraints"
-          TopLeft="44.557144200072,2.48235635592465" />
-        <NodeLayout
           Size="182.4,51.2"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants"
           TopLeft="22.8571407940923,142.176475967751" />
-        <NodeLayout
-          Size="196.8,41.6"
-          Id="Package\TRGT_Loading\Truncate Trgt_Merchants"
-          TopLeft="24.7142856753603,71.7647131494175" />
-        <EdgeLayout
-          Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint]"
-          TopLeft="149.057144200072,44.4823563559247">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-25.8428585247117,27.2823567934929"
-              Start="0,0"
-              End="-25.8428585247117,19.7823567934929">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,9.64117839674643" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.64117839674643"
-                    Point2="0,13.6411783967464"
-                    Point3="-4,13.6411783967464" />
-                  <mssgle:LineSegment
-                    End="-21.8428585247117,13.6411783967464" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-21.8428585247117,13.6411783967464"
-                    Point2="-25.8428585247117,13.6411783967464"
-                    Point3="-25.8428585247117,17.6411783967464" />
-                  <mssgle:LineSegment
-                    End="-25.8428585247117,19.7823567934929" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 1]"
-          TopLeft="113.857140794092,193.176475967751">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="32.8142893538183,35.62352957478"
-              Start="0,0"
-              End="32.8142893538183,28.12352957478">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.81176478739" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.81176478739"
-                    Point2="0,17.81176478739"
-                    Point3="4,17.81176478739" />
-                  <mssgle:LineSegment
-                    End="28.8142893538183,17.81176478739" />
-                  <mssgle:CubicBezierSegment
-                    Point1="28.8142893538183,17.81176478739"
-                    Point2="32.8142893538183,17.81176478739"
-                    Point3="32.8142893538183,21.81176478739" />
-                  <mssgle:LineSegment
-                    End="32.8142893538183,28.12352957478" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 4]"
-          TopLeft="123.21428567536,113.764713149418">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-9.357144881268,28.4117628183335"
-              Start="0,0"
-              End="-9.357144881268,20.9117628183335">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10.2058814091668" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10.2058814091668"
-                    Point2="0,14.2058814091668"
-                    Point3="-4,14.2058814091668" />
-                  <mssgle:LineSegment
-                    End="-5.357144881268,14.2058814091668" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5.357144881268,14.2058814091668"
-                    Point2="-9.357144881268,14.2058814091668"
-                    Point3="-9.357144881268,18.2058814091668" />
-                  <mssgle:LineSegment
-                    End="-9.357144881268,20.9117628183335" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="268.8,323.2"
-          Size="268.8,366.4"
+          Size="171.2,43.2"
           Id="Package\TRGT_Loading"
-          TopLeft="56.4571431101585,299.576473050629" />
+          TopLeft="333.02857639157,222.494119028402" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="1678.99207033322,176.200000437568">
@@ -3542,26 +3348,26 @@ where mr.is_migrated=0</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-945.603180831252,240.800000729281"
+              EndConnector="-717.83174754984,163.717646707054"
               Start="0,0"
-              End="-945.603180831252,233.300000729281">
+              End="-717.83174754984,156.217646707054">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,116.40000036464" />
+                    End="0,77.8588233535268" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,116.40000036464"
-                    Point2="0,120.40000036464"
-                    Point3="-4,120.40000036464" />
+                    Point1="0,77.8588233535268"
+                    Point2="0,81.8588233535268"
+                    Point3="-4,81.8588233535268" />
                   <mssgle:LineSegment
-                    End="-941.603180831252,120.40000036464" />
+                    End="-713.83174754984,81.8588233535268" />
                   <mssgle:CubicBezierSegment
-                    Point1="-941.603180831252,120.40000036464"
-                    Point2="-945.603180831252,120.40000036464"
-                    Point3="-945.603180831252,124.40000036464" />
+                    Point1="-713.83174754984,81.8588233535268"
+                    Point2="-717.83174754984,81.8588233535268"
+                    Point3="-717.83174754984,85.8588233535268" />
                   <mssgle:LineSegment
-                    End="-945.603180831252,233.300000729281" />
+                    End="-717.83174754984,156.217646707054" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
