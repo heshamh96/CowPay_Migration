@@ -2,18 +2,18 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Cowpay_Migration</Name>
-    <LastWriteTime>2022-11-27T14:27:07.235376Z</LastWriteTime>
+    <LastWriteTime>2022-12-13T10:49:16.4070335Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Merchants_Module.dtsx</Name>
-      <LastWriteTime>2022-12-12T12:17:33.2840608Z</LastWriteTime>
+      <LastWriteTime>2022-12-13T10:49:16.360042Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Transaction_Management_Module.dtsx</Name>
-      <LastWriteTime>2022-12-12T16:14:43.431015Z</LastWriteTime>
+      <LastWriteTime>2022-12-13T09:31:42.4422761Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -23,7 +23,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>AA_Deployment_Package.dtsx</Name>
-      <LastWriteTime>2022-12-12T12:17:33.2172478Z</LastWriteTime>
+      <LastWriteTime>2022-12-13T10:51:51.3486492Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -38,17 +38,22 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ExcelpayIdentity_Module_STG.dtsx</Name>
-      <LastWriteTime>2022-12-12T12:17:33.232415Z</LastWriteTime>
+      <LastWriteTime>2022-12-13T10:49:16.3760379Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ExcelpayIdentity_Module_TRGT.dtsx</Name>
-      <LastWriteTime>2022-12-12T12:17:33.248282Z</LastWriteTime>
+      <LastWriteTime>2022-12-13T10:39:52.3334609Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Migration_hot_Fixes.dtsx</Name>
       <LastWriteTime>2022-11-27T15:43:20.7980794Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Initiation_of_InDifferent_Rollout.dtsx</Name>
+      <LastWriteTime>2022-12-13T10:49:16.3367811Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

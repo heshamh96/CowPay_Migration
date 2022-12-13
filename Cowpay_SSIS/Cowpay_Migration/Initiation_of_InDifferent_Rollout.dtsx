@@ -1,0 +1,405 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/13/2022 12:42:42 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BI-SERVER2022"
+  DTS:CreatorName="BI-SERVER2022\admin"
+  DTS:DTSID="{5793BC8C-03A2-4AAD-99B9-B7481334AA9A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Initiation_of_InDifferent_Rollout"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{C9D7E9E2-9C0E-4D6E-8386-F882BBFFA3EE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Merchant_Management_DB"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{859169A1-901C-42FC-B418-8041072D1831}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Merchant_Management_DB">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Truncate Merchant_Management_DB\Create_Merchant_Constraints"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{b2759dd4-18b1-46b4-be7a-627b7ca02548}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create_Merchant_Constraints"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
+              SQLTask:SqlStatementSource="USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_Cities] FOREIGN KEY([CityId])&#xA;REFERENCES [dbo].[Cities] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_Cities]&#xA;GO&#xA;&#xA;&#xA;--===========================&#xA;&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_Countries] FOREIGN KEY([CountryId])&#xA;REFERENCES [dbo].[Countries] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_Countries]&#xA;GO&#xA;&#xA;&#xA;--============================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_StatusTypes] FOREIGN KEY([StatusTypeId])&#xA;REFERENCES [dbo].[StatusTypes] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_StatusTypes]&#xA;GO&#xA;&#xA;--========================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks]  WITH CHECK ADD  CONSTRAINT [FK_MerchantSocialLinks_Merchants] FOREIGN KEY([MerchantId])&#xA;REFERENCES [dbo].[Merchants] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks] CHECK CONSTRAINT [FK_MerchantSocialLinks_Merchants]&#xA;GO&#xA;&#xA;--===========================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments]  WITH CHECK ADD  CONSTRAINT [FK_MerchantAttachments_Merchants] FOREIGN KEY([MerchantId])&#xA;REFERENCES [dbo].[Merchants] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments] CHECK CONSTRAINT [FK_MerchantAttachments_Merchants]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Truncate Merchant_Management_DB\Drop_Merchant_Constraints"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ff20fa95-289a-4ed9-911c-d586c2c60873}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Drop_Merchant_Constraints"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
+              SQLTask:SqlStatementSource="USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_Cities]&#xA;GO&#xA;&#xA;---======================================&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_Countries]&#xA;GO&#xA;&#xA;&#xA;--========================&#xA;&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_StatusTypes]&#xA;GO&#xA;&#xA;&#xA;--==================================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks] DROP CONSTRAINT [FK_MerchantSocialLinks_Merchants]&#xA;GO&#xA;&#xA;&#xA;--======================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments] DROP CONSTRAINT [FK_MerchantAttachments_Merchants]&#xA;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Truncate Merchant_Management_DB\Truncate Trgt_Merchants"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{bc218afe-0830-4624-8d2b-23dd64257edd}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Trgt_Merchants"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
+              SQLTask:SqlStatementSource="truncate table [dbo].[Merchants]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Truncate Merchant_Management_DB.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{B339AE31-5E5F-402C-B3DA-E50A6CB3BE07}"
+          DTS:From="Package\Truncate Merchant_Management_DB\Drop_Merchant_Constraints"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Truncate Merchant_Management_DB\Truncate Trgt_Merchants" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Truncate Merchant_Management_DB.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{31F6BC4D-A42B-4205-BCF9-39B88FFA1696}"
+          DTS:From="Package\Truncate Merchant_Management_DB\Truncate Trgt_Merchants"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Truncate Merchant_Management_DB\Create_Merchant_Constraints" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate The Excel_Identity_DB"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{314764EF-86E0-441E-962C-685B11807B27}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate The Excel_Identity_DB">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Truncate The Excel_Identity_DB\Create DB Constraints"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3ee4206d-f0cc-4760-9724-15bc62592376}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create DB Constraints"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}"
+              SQLTask:SqlStatementSource="--Identity Creats&#xA;USE [ExcelpayIdentity_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY([UserId])&#xA;REFERENCES [dbo].[AspNetUsers] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY([RoleId])&#xA;REFERENCES [dbo].[AspNetRoles] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId]&#xA;GO&#xA;&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY([UserId])&#xA;REFERENCES [dbo].[AspNetUsers] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY([UserId])&#xA;REFERENCES [dbo].[AspNetUsers] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserTokens]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY([UserId])&#xA;REFERENCES [dbo].[AspNetUsers] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;&#xA;--CREATE UNIQUE NONCLUSTERED INDEX [UserNameIndex] ON [dbo].[AspNetUsers]&#xA;--(&#xA;-- [NormalizedUserName] ASC&#xA;--)&#xA;--WHERE ([NormalizedUserName] IS NOT NULL)&#xA;--WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;--GO&#xA;&#xA;&#xA;--CREATE NONCLUSTERED INDEX [EmailIndex] ON [dbo].[AspNetUsers]&#xA;--(&#xA;-- [NormalizedEmail] ASC&#xA;--)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;--GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Truncate The Excel_Identity_DB\Drop DB Constraints"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{883e6303-9fea-4001-9d01-98ac0e5b939b}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Drop DB Constraints"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}"
+              SQLTask:SqlStatementSource="USE [ExcelpayIdentity_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserTokens] DROP CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserClaims] DROP CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserLogins] DROP CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]&#xA;GO&#xA;&#xA;--DROP INDEX [EmailIndex] ON [dbo].[AspNetUsers]&#xA;--GO&#xA;&#xA;--DROP INDEX [UserNameIndex] ON [dbo].[AspNetUsers]&#xA;--GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Truncate The Excel_Identity_DB\Truncate TRGT"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{bb802fa8-20ae-4327-b7df-ca2c2019ef84}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate TRGT"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}"
+              SQLTask:SqlStatementSource="truncate table [dbo].[AspNetUserRoles]&#xA;truncate table [dbo].[AspNetUsers]&#xA;truncate table.[dbo].[AspNetUserClaims]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Truncate The Excel_Identity_DB.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9430F514-1E59-4E88-92AC-52456E54F3B5}"
+          DTS:From="Package\Truncate The Excel_Identity_DB\Drop DB Constraints"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Truncate The Excel_Identity_DB\Truncate TRGT" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Truncate The Excel_Identity_DB.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{833FB0AF-192B-486A-A191-48BAEDDBF3A5}"
+          DTS:From="Package\Truncate The Excel_Identity_DB\Truncate TRGT"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Truncate The Excel_Identity_DB\Create DB Constraints" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2AD7E80-64C8-4AE7-ADB4-AF1382AFA7C2}"
+      DTS:From="Package\Truncate Merchant_Management_DB"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Truncate The Excel_Identity_DB" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Truncate The Excel_Identity_DB\Drop DB Constraints"
+          TopLeft="71.7857154145536,10.5882380568033" />
+        <EdgeLayout
+          Id="Package\Truncate The Excel_Identity_DB.PrecedenceConstraints[Constraint]"
+          TopLeft="158.985715414554,52.1882380568033">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-78.2857154145536,43.435295310235"
+              Start="0,0"
+              End="-78.2857154145536,35.935295310235">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.7176476551175" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.7176476551175"
+                    Point2="0,21.7176476551175"
+                    Point3="-4,21.7176476551175" />
+                  <mssgle:LineSegment
+                    End="-74.2857154145536,21.7176476551175" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.2857154145536,21.7176476551175"
+                    Point2="-78.2857154145536,21.7176476551175"
+                    Point3="-78.2857154145536,25.7176476551175" />
+                  <mssgle:LineSegment
+                    End="-78.2857154145536,35.935295310235" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Truncate The Excel_Identity_DB\Truncate TRGT"
+          TopLeft="5.5,95.6235333670383" />
+        <EdgeLayout
+          Id="Package\Truncate The Excel_Identity_DB.PrecedenceConstraints[Constraint 1]"
+          TopLeft="80.7,137.223533367038">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.7142850622838,66.3058840345755"
+              Start="0,0"
+              End="23.7142850622838,58.8058840345755">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1529420172878" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1529420172878"
+                    Point2="0,33.1529420172878"
+                    Point3="4,33.1529420172878" />
+                  <mssgle:LineSegment
+                    End="19.7142850622838,33.1529420172878" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.7142850622838,33.1529420172878"
+                    Point2="23.7142850622838,33.1529420172878"
+                    Point3="23.7142850622838,37.1529420172878" />
+                  <mssgle:LineSegment
+                    End="23.7142850622838,58.8058840345755" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Truncate The Excel_Identity_DB\Create DB Constraints"
+          TopLeft="13.2142850622838,203.529417401614" />
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="251.2,300"
+          Size="254.4,43.2"
+          Id="Package\Truncate The Excel_Identity_DB"
+          TopLeft="179.428574484222,208.000002917121" />
+        <NodeLayout
+          Size="208.8,41.6"
+          Id="Package\Truncate Merchant_Management_DB\Drop_Merchant_Constraints"
+          TopLeft="33.2142903756123,10.1647071693183" />
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\Truncate Merchant_Management_DB\Truncate Trgt_Merchants"
+          TopLeft="13.9428604320605,81.2823581061976" />
+        <NodeLayout
+          Size="216.8,41.6"
+          Id="Package\Truncate Merchant_Management_DB\Create_Merchant_Constraints"
+          TopLeft="6.25714740169286,163.07059062047" />
+        <EdgeLayout
+          Id="Package\Truncate Merchant_Management_DB.PrecedenceConstraints[Constraint]"
+          TopLeft="137.614290375612,51.7647071693183">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-25.2714299435518,29.5176509368792"
+              Start="0,0"
+              End="-25.2714299435518,22.0176509368792">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.7588254684396" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.7588254684396"
+                    Point2="0,14.7588254684396"
+                    Point3="-4,14.7588254684396" />
+                  <mssgle:LineSegment
+                    End="-21.2714299435518,14.7588254684396" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.2714299435518,14.7588254684396"
+                    Point2="-25.2714299435518,14.7588254684396"
+                    Point3="-25.2714299435518,18.7588254684396" />
+                  <mssgle:LineSegment
+                    End="-25.2714299435518,22.0176509368792" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Truncate Merchant_Management_DB.PrecedenceConstraints[Constraint 1]"
+          TopLeft="113.500003916877,122.882358106198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.1882325142721"
+              Start="0,0"
+              End="0,32.6882325142721">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.6882325142721" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="False"
+          PanelSize="336.8,360.8"
+          Size="276.8,43.2"
+          Id="Package\Truncate Merchant_Management_DB"
+          TopLeft="179.428574484222,38.5411770111137" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="317.828574484222,81.7411770111137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.2,126.258825906008"
+              Start="0,0"
+              End="-11.2,118.758825906008">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.1294129530038" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.1294129530038"
+                    Point2="0,63.1294129530038"
+                    Point3="-4,63.1294129530038" />
+                  <mssgle:LineSegment
+                    End="-7.20000000000005,63.1294129530038" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.20000000000005,63.1294129530038"
+                    Point2="-11.2,63.1294129530038"
+                    Point3="-11.2,67.1294129530038" />
+                  <mssgle:LineSegment
+                    End="-11.2,118.758825906008" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
