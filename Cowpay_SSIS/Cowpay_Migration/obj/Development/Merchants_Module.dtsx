@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="93"
-  DTS:VersionGUID="{5D5E0911-EA0B-4ADB-BCA5-90737B237068}">
+  DTS:VersionBuild="96"
+  DTS:VersionGUID="{B88EF61D-CCB6-4700-8C63-5F4BD449C6CB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2126,6 +2126,23 @@ where mr.is_migrated=0</property>
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{657FD817-41DC-48C5-A103-105A96FC7A8B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Fetch IDs from Merchant in The TRGT to the STG"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
+              SQLTask:SqlStatementSource="update src&#xA;set src.Id=trgt.Id&#xA;--select * &#xA;from Staging_Migration.dbo.Merchants src join Merchants trgt on src.MerchantCode=trgt.MerchantCode  " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\TRGT_Loading\Stg to Trgt Merchants"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
@@ -3170,6 +3187,16 @@ where mr.is_migrated=0</property>
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\TRGT_Loading.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{DF6556C4-4B14-4C15-BB30-DAFA4D59A037}"
+          DTS:From="Package\TRGT_Loading\Stg to Trgt Merchants"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
@@ -3201,7 +3228,7 @@ where mr.is_migrated=0</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="351.2,41.6"
           Id="Package\Execute Process Task"
@@ -3253,7 +3280,9 @@ where mr.is_migrated=0</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3287,7 +3316,9 @@ where mr.is_migrated=0</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -3298,16 +3329,54 @@ where mr.is_migrated=0</property>
           Id="Package\Staging_Activities"
           TopLeft="928.060323941411,15.576472321348" />
         <NodeLayout
+          Size="312,41.6"
+          Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG"
+          TopLeft="16.114286220317,229.270592370743" />
+        <NodeLayout
           Size="182.4,51.2"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants"
           TopLeft="22.8571407940923,142.176475967751" />
+        <EdgeLayout
+          Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint]"
+          TopLeft="114.057140794092,193.376475967751">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.0571454262247,35.8941164029918"
+              Start="0,0"
+              End="58.0571454262247,28.3941164029918">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.9470582014959" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.9470582014959"
+                    Point2="0,17.9470582014959"
+                    Point3="4,17.9470582014959" />
+                  <mssgle:LineSegment
+                    End="54.0571454262247,17.9470582014959" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.0571454262247,17.9470582014959"
+                    Point2="58.0571454262247,17.9470582014959"
+                    Point3="58.0571454262247,21.9470582014959" />
+                  <mssgle:LineSegment
+                    End="58.0571454262247,28.3941164029918" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="268.8,323.2"
-          Size="171.2,43.2"
+          IsExpanded="True"
+          PanelSize="331.2,336.8"
+          Size="331.2,380"
           Id="Package\TRGT_Loading"
-          TopLeft="333.02857639157,222.494119028402" />
+          TopLeft="333.02857639157,221.88235431394" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="1678.99207033322,176.200000437568">
@@ -3348,26 +3417,26 @@ where mr.is_migrated=0</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-717.83174754984,163.717646707054"
+              EndConnector="-637.831747549841,163.105881992592"
               Start="0,0"
-              End="-717.83174754984,156.217646707054">
+              End="-637.831747549841,155.605881992592">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,77.8588233535268" />
+                    End="0,77.552940996296" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,77.8588233535268"
-                    Point2="0,81.8588233535268"
-                    Point3="-4,81.8588233535268" />
+                    Point1="0,77.552940996296"
+                    Point2="0,81.552940996296"
+                    Point3="-4,81.552940996296" />
                   <mssgle:LineSegment
-                    End="-713.83174754984,81.8588233535268" />
+                    End="-633.831747549841,81.552940996296" />
                   <mssgle:CubicBezierSegment
-                    Point1="-713.83174754984,81.8588233535268"
-                    Point2="-717.83174754984,81.8588233535268"
-                    Point3="-717.83174754984,85.8588233535268" />
+                    Point1="-633.831747549841,81.552940996296"
+                    Point2="-637.831747549841,81.552940996296"
+                    Point3="-637.831747549841,85.552940996296" />
                   <mssgle:LineSegment
-                    End="-717.83174754984,156.217646707054" />
+                    End="-637.831747549841,155.605881992592" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
