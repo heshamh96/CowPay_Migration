@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="120"
-  DTS:VersionGUID="{7E76BC33-84E8-4978-9AC4-674749F9F3E2}">
+  DTS:VersionBuild="123"
+  DTS:VersionGUID="{85569F44-0704-4D96-B936-8C0C04D071EC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5759,7 +5759,56 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
+null as ID
+,NEWID() as   O_OrderCode 
+,m.Id O_MerchantId 
+,m.MerchantCode  O_MerchantCode 
+,ord.merchant_reference_id O_MerchantRefId 
+,null O_OrderMetaId 
+,ord.customer_merchant_profile_id O_CustomerRefId   
+,(select c.Id from Customers c where c.Old_id=ord.customer_id) O_CustomerId  
+,ord.amount  O_OrderAmount 
+,ord.fees_amount  O_FeesAmount
+,ord.vat_amount  O_VatAmount
+,0  O_CustomerAmount 
+,0  O_MerchantAmount 
+,1  O_CurrencyId 
+,N'EG'  O_Currency 
+,try_convert(nvarchar(1000),ord.description)  O_Description 
+,null  O_OrderDetails
+,ord.paid_at  O_PaidDate 
+,ord.expires_at  O_ExpiredDate
+,null  O_ActionDate 
+,ord.created_at  O_CreatedDate
+,ord.updated_at  O_UpdatedDate
+,ord.deleted_at  O_DeletedDate
+,null  O_IsDeleted 
+,try_convert(int,ord.payment_status)  O_PaymentStatusTypeId
+--  FROM TransactionManagement.dbo.Orders
+-------------------------
+--,NULL  OM_ID
+,try_convert(int,ord.payment_gateway)  OM_PGWTypeId
+,TRY_CONVERT(int,ord.channel)  OM_ChannelTypeId
+,TRY_CONVERT(int,ord.payment_link_type) OM_PaymentLinkTypeId
+, null OM_PaymentLinkId
+, try_convert(int,ord.payment_method) OM_PaymentMethodTypeId
+, ord.card_number OM_CardNumber
+, ord.token OM_Token
+, null OM_ExtraData
+--,  OM_PGWMetaRequest
+--,  OM_PGWMetaResponse
+,pc.name  OM_PromoCode
+,ord.payment_gateway_reference_id  OM_PGWRefId
+,try_convert(nvarchar(1000),(select m_callback_url from Staging_Merchant where id=m.old_id))  OM_ReturnURL
+, ord.created_at OM_CreatedDate
+, ord.updated_at OM_UpdatedDate
+, ord.deleted_at OM_DeletedDate
+, null OM_IsDeleted
+,ord.id  Old_Id
+,NEWID() as Migration_Key
+from CowPay_Production_Simulation.dbo.Orders ord join Merchants m on ord.merchant_code=m.old_code
+left join CowPay_Production_Simulation.[dbo].[promo_codes] pc on ord.promo_code_id=pc.id</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -5776,7 +5825,7 @@
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">0</property>
+                      typeConverter="AccessMode">2</property>
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
@@ -7264,34 +7313,26 @@
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[OrderId]" />
                         <inputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[Amount]"
-                          cachedDataType="numeric"
+                          cachedDataType="r8"
                           cachedName="Amount"
-                          cachedPrecision="14"
-                          cachedScale="2"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]" />
                         <inputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[FeesAmount]"
-                          cachedDataType="numeric"
+                          cachedDataType="r8"
                           cachedName="FeesAmount"
-                          cachedPrecision="14"
-                          cachedScale="2"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[FeesAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[FeesAmount]" />
                         <inputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[VatAmount]"
-                          cachedDataType="numeric"
+                          cachedDataType="r8"
                           cachedName="VatAmount"
-                          cachedPrecision="14"
-                          cachedScale="2"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[VatAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[VatAmount]" />
                         <inputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].Columns[CustomerAmount]"
-                          cachedDataType="numeric"
+                          cachedDataType="r8"
                           cachedName="CustomerAmount"
-                          cachedPrecision="16"
-                          cachedScale="2"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\OrderTransactions.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]" />
                         <inputColumn
@@ -7559,7 +7600,116 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">with Fullfillied_Order_Transactions as (
+select 
+--Null   as [Id]
+NEWID()   as [TranxCode]
+,t.transaction_number  as [TranxNumber]
+,m.Id    as [MerchantId]
+,m.MerchantCode    as [MerchantCode]
+,o.ID   as [OrderId]
+, t.amount  as [Amount]
+, t.fees_amount  as [FeesAmount]
+, t.vat_amount  as [VatAmount]
+,case 
+when  t.merchant_net_amount &gt;= amount then 1 else 0 end as [IsFeesOnCustomer]
+
+--,Case 
+--when isnull(t.IsFeesOnCustomer,0)=1 then amount+(fees_amount+vat_amount) else amount end 
+,case when  t.amount &lt;= t.merchant_net_amount then t.amount +(t.fees_amount+t.vat_amount) else  t.amount end as [CustomerAmount]
+--,Case
+--when isnull(t.IsFeesOnCustomer,0)=1 then amount else amount-(fees_amount+vat_amount) end 
+, t.merchant_net_amount as [MerchantAmount]
+,  1 as [CurrencyId]
+,  N'EGP' as [Currency]
+,  case when t.type='OUT' then 2 else 1 end  as [TransactionTypeId]
+, case when t.type='OUT' then 4 else 1 end  as [OperationTypeId]
+, t.created_at  as [CreatedDate]
+, t.updated_at  as [UpdatedDate]
+, t.deleted_at  as [DeletedDate]
+, null  as [IsDeleted]
+,  1 as [TransactionStatusId]
+,  try_convert(nvarchar(max),(select j.PGWMetaRequest from OrderTransactions_jsons_Staging j where j.Transaction_ID=t.id)) as [PGWMetaRequest]
+,  try_convert(nvarchar(max),(select j.PGWMetaResponse from OrderTransactions_jsons_Staging j where j.Transaction_ID=t.id)) as [PGWMetaResponse]
+
+
+
+--,  (select p.fees_amount_on_customer 
+--from CowPay_Production_Simulation.dbo.payment_links p 
+--join CowPay_Production_Simulation.dbo.Order_Transaction_SRC o on p.id=o.payment_link_id  
+--where o.Transaction_ID=t.id ) 
+--isnull(t.IsFeesOnCustomer,0) as [IsFeesOnCustomer] ---&gt; this will be replaced when we play with derby's Module (will fetch the FK Paymentlink ID from The STG_Orders)
+
+
+
+,  1 as [IsSuccess]
+,  t.id as old_id
+, o. Migration_Key as FK_Migration_Key_Orders
+
+ 
+from CowPay_Production_Simulation.dbo.Transactionss t join Merchants m on m.old_code=t.merchant_code
+join [Orders-Meta] o on o.Old_Id=t.model_id
+--where t.model in ('App\Models\Order','App\Modules\Order\Models\Order') 
+)
+
+
+--=============================================================================
+
+, Non_Fullfilled_Order_Transactions as (
+
+
+
+
+select 
+
+NEWID()   as [TranxCode]
+,Null  as [TranxNumber]
+,m.Id    as [MerchantId]
+,m.MerchantCode    as [MerchantCode]
+,o.ID   as [OrderId]
+,o.O_OrderAmount  as [Amount]
+,o.O_FeesAmount  as [FeesAmount]
+,o.O_VatAmount  as [VatAmount]
+,case 
+when  o.O_MerchantAmount &gt;= o.O_OrderAmount then 1 else 0 end as [IsFeesOnCustomer]
+
+
+,case when  o.O_OrderAmount &lt;= o.O_MerchantAmount then o.O_OrderAmount +(o.O_FeesAmount+o.O_VatAmount) else o.O_OrderAmount end as [CustomerAmount]
+
+, o.O_MerchantAmount as [MerchantAmount]
+,  1 as [CurrencyId]
+,  N'EGP' as [Currency]
+,  1 as [TransactionTypeId]
+, 1  as [OperationTypeId]
+, o.O_CreatedDate  as [CreatedDate]
+, o.O_UpdatedDate  as [UpdatedDate]
+, o.O_DeletedDate  as [DeletedDate]
+, null  as [IsDeleted]
+,  2 as [TransactionStatusId]
+,  null as [PGWMetaRequest]
+,  null as [PGWMetaResponse]
+,  0 as [IsSuccess]
+,  null as old_id
+, o. Migration_Key as FK_Migration_Key_Orders
+
+
+from [Orders-Meta] o left join Merchants m on m.MerchantCode=o.O_MerchantCode
+ left join (select model_id from CowPay_Production_Simulation.dbo.Transactionss) as t  on t.model_id=o.Old_Id
+where t.model_id is null
+ 
+--from [Orders-Meta] o join Merchants m on m.MerchantCode=o.O_MerchantCode
+--where o.Old_Id not in ( select  t.model_id from  CowPay_Production_Simulation.dbo.Transactionss t)
+
+
+
+)
+
+
+
+
+select * from Fullfillied_Order_Transactions
+union 
+select * from Non_Fullfilled_Order_Transactions</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -7576,7 +7726,7 @@
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">0</property>
+                      typeConverter="AccessMode">2</property>
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
@@ -7643,47 +7793,39 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]"
-                          dataType="numeric"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]"
                           name="Amount"
-                          precision="14"
-                          scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[FeesAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FeesAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[FeesAmount]"
                           name="FeesAmount"
-                          precision="14"
-                          scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[VatAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[VatAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[VatAmount]"
                           name="VatAmount"
-                          precision="14"
-                          scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]"
                           name="CustomerAmount"
-                          precision="16"
-                          scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantAmount]"
@@ -7858,28 +8000,20 @@
                           name="OrderId" />
                         <externalMetadataColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
-                          dataType="numeric"
-                          name="Amount"
-                          precision="14"
-                          scale="2" />
+                          dataType="r8"
+                          name="Amount" />
                         <externalMetadataColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FeesAmount]"
-                          dataType="numeric"
-                          name="FeesAmount"
-                          precision="14"
-                          scale="2" />
+                          dataType="r8"
+                          name="FeesAmount" />
                         <externalMetadataColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[VatAmount]"
-                          dataType="numeric"
-                          name="VatAmount"
-                          precision="14"
-                          scale="2" />
+                          dataType="r8"
+                          name="VatAmount" />
                         <externalMetadataColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
-                          dataType="numeric"
-                          name="CustomerAmount"
-                          precision="16"
-                          scale="2" />
+                          dataType="r8"
+                          name="CustomerAmount" />
                         <externalMetadataColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantAmount]"
                           dataType="numeric"
@@ -7982,32 +8116,24 @@
                           name="OrderId" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[Amount]"
-                          dataType="numeric"
+                          dataType="r8"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[Amount]"
-                          name="Amount"
-                          precision="14"
-                          scale="2" />
+                          name="Amount" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[FeesAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[FeesAmount]"
-                          name="FeesAmount"
-                          precision="14"
-                          scale="2" />
+                          name="FeesAmount" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[VatAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[VatAmount]"
-                          name="VatAmount"
-                          precision="14"
-                          scale="2" />
+                          name="VatAmount" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CustomerAmount]"
-                          dataType="numeric"
+                          dataType="r8"
                           lineageId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CustomerAmount]"
-                          name="CustomerAmount"
-                          precision="16"
-                          scale="2" />
+                          name="CustomerAmount" />
                         <outputColumn
                           refId="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantAmount]"
                           dataType="numeric"
@@ -12970,7 +13096,7 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].Columns[Amount]"
                           cachedDataType="numeric"
                           cachedName="Amount"
-                          cachedPrecision="14"
+                          cachedPrecision="18"
                           cachedScale="2"
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[Amount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]" />
@@ -12994,7 +13120,7 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].Columns[CustomerAmount]"
                           cachedDataType="numeric"
                           cachedName="CustomerAmount"
-                          cachedPrecision="14"
+                          cachedPrecision="18"
                           cachedScale="2"
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[CustomerAmount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]" />
@@ -13002,7 +13128,7 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].Columns[MerchantAmount]"
                           cachedDataType="numeric"
                           cachedName="MerchantAmount"
-                          cachedPrecision="14"
+                          cachedPrecision="18"
                           cachedScale="2"
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[MerchantAmount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantAmount]" />
@@ -13067,6 +13193,12 @@
                           cachedName="TranxCode"
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[TranxCode]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[TranxCode]" />
+                        <inputColumn
+                          refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].Columns[IsSuccess]"
+                          cachedDataType="i4"
+                          cachedName="IsSuccess"
+                          externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                          lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[IsSuccess]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -13166,6 +13298,10 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[FK_Migration_key_WithdrawalRequests]"
                           dataType="guid"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <externalMetadataColumn
+                          refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                          dataType="bool"
+                          name="IsSuccess" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -13219,7 +13355,149 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">with Fullfilled_WithdrawalTransactions as (
+select
+ NEWID() as TranxCode
+,wrt.transaction_number as TranxNumber
+,m.Id  as MerchantId
+,m.MerchantCode as MerchantCode
+,wr.Id as WithdrawalRequestId
+,wrt.amount as Amount
+,wrt.fees_amount as FeesAmount
+,wrt.vat_amount  as VatAmount
+--,wrt.fees_amount*.14
+,wrt.amount as CustomerAmount
+,wrt.amount as MerchantAmount
+,1 as CurrencyId
+,N'EGP' as Currency
+,case when wrt.type='OUT' then 2 else 1 end  as TransactionTypeId
+,case when wrt.type='OUT' then 1 else 4 end  as  OperationTypeId
+,wrt.created_at    as CreatedDate
+,wrt.updated_at    as UpdatedDate
+,wrt.deleted_at    as DeletedDate
+,null  as IsDeleted
+,wrt.id as old_Transaction_Id
+,wr.Migration_key_WithdrawalRequests as FK_Migration_key_WithdrawalRequests
+
+from CowPay_Production_Simulation.dbo.vw_WRT_Withdrawal_Requests_Transactions_SRC as wrt
+ join Merchants m on wrt.merchant_code=m.old_code 
+ join WithdrawalRequests wr on wr.Old_Withdrawal_Request_ID=wrt.model_id and wr.WithdrawalTypeId=1
+
+union all
+
+select
+ NEWID() as TranxCode
+,cot.transaction_number as TranxNumber
+,m.Id  as MerchantId
+,m.MerchantCode as MerchantCode
+,wr.Id as WithdrawalRequestId
+,cot.amount as Amount
+,cot.fees_amount as FeesAmount
+,cot.vat_amount  as VatAmount
+--,cot.fees_amount*.14
+,cot.amount as CustomerAmount
+,cot.amount as MerchantAmount
+,1 as CurrencyId
+,N'EGP' as Currency
+,case when cot.type='OUT' then 2 else 1 end  as TransactionTypeId
+,case when cot.type='OUT' then 1 else 4 end  as  OperationTypeId
+,cot.created_at as CreatedDate
+,cot.updated_at as UpdatedDate
+,cot.deleted_at as DeletedDate
+,null  as IsDeleted
+,cot.id as old_Transaction_Id
+
+,wr.Migration_key_WithdrawalRequests  as FK_Migration_key_WithdrawalRequests
+
+from CowPay_Production_Simulation.dbo.vw_WRT_Cashouts_Transactions_SRC as cot
+join Merchants m on cot.merchant_code=m.old_code 
+join WithdrawalRequests wr on wr.Old_Withdrawal_Request_ID=cot.model_id and wr.WithdrawalTypeId=2
+)
+--=================================================================================================================================================================
+
+
+
+,Non_Fullfiled_Withdrawal_Transactions as (
+
+select
+ NEWID() as TranxCode
+,null as TranxNumber
+,m.Id  as MerchantId
+,m.MerchantCode as MerchantCode
+,wr.Id as WithdrawalRequestId
+,wr.Amount as Amount
+,0 as FeesAmount
+,0  as VatAmount
+--,wrt.fees_amount*.14
+,wr.Amount as CustomerAmount
+,wr.amount as MerchantAmount
+,1 as CurrencyId
+,N'EGP' as Currency
+, 2  as TransactionTypeId
+,1   as  OperationTypeId
+,wr.CreatedDate    as CreatedDate
+,wr.UpdatedDate    as UpdatedDate
+,wr.DeletedDate    as DeletedDate
+,null  as IsDeleted
+,null as old_Transaction_Id
+,wr.Migration_key_WithdrawalRequests as FK_Migration_key_WithdrawalRequests
+
+from WithdrawalRequests wr
+ join Merchants m on wr.MerchantCode=m.MerchantCode 
+
+ where wr.Old_Withdrawal_Request_ID  not in (select  wrt.model_id from CowPay_Production_Simulation.dbo.vw_WRT_Withdrawal_Requests_Transactions_SRC as wrt)
+ and wr.WithdrawalTypeId=1
+
+
+--implement cashouts
+
+union 
+
+
+
+select
+ NEWID() as TranxCode
+,null as TranxNumber
+,m.Id  as MerchantId
+,m.MerchantCode as MerchantCode
+,wr.Id as WithdrawalRequestId
+,wr.amount as Amount
+,0 as FeesAmount
+,0 as VatAmount
+--,cot.fees_amount*.14
+,wr.amount as CustomerAmount
+,wr.amount as MerchantAmount
+,1 as CurrencyId
+,N'EGP' as Currency
+, 2 as TransactionTypeId
+, 1  as  OperationTypeId
+,wr.CreatedDate as CreatedDate
+,wr.UpdatedDate as UpdatedDate
+,wr.DeletedDate as DeletedDate
+,null  as IsDeleted
+,null as old_Transaction_Id
+
+,wr.Migration_key_WithdrawalRequests  as FK_Migration_key_WithdrawalRequests
+
+
+
+
+from WithdrawalRequests wr
+ join Merchants m on wr.MerchantCode=m.MerchantCode 
+
+ where wr.Old_Withdrawal_Request_ID  not in (select  cot.model_id from CowPay_Production_Simulation.dbo.vw_WRT_Cashouts_Transactions_SRC as cot)
+ and wr.WithdrawalTypeId=2
+
+
+)
+
+
+
+
+
+select *,1 as IsSuccess from Fullfilled_WithdrawalTransactions
+union
+select *,0 as IsSuccess from Non_Fullfiled_Withdrawal_Transactions</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -13236,7 +13514,7 @@
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">0</property>
+                      typeConverter="AccessMode">2</property>
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
@@ -13300,7 +13578,7 @@
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[Amount]"
                           name="Amount"
-                          precision="14"
+                          precision="18"
                           scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
@@ -13333,7 +13611,7 @@
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[CustomerAmount]"
                           name="CustomerAmount"
-                          precision="14"
+                          precision="18"
                           scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
@@ -13344,7 +13622,7 @@
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantAmount]"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[MerchantAmount]"
                           name="MerchantAmount"
-                          precision="14"
+                          precision="18"
                           scale="2"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
@@ -13447,6 +13725,15 @@
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[FK_Migration_key_WithdrawalRequests]"
                           name="FK_Migration_key_WithdrawalRequests"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                          lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                          name="IsSuccess"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -13471,7 +13758,7 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
                           dataType="numeric"
                           name="Amount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <externalMetadataColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FeesAmount]"
@@ -13489,13 +13776,13 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CustomerAmount]"
                           dataType="numeric"
                           name="CustomerAmount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <externalMetadataColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[MerchantAmount]"
                           dataType="numeric"
                           name="MerchantAmount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <externalMetadataColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[CurrencyId]"
@@ -13542,6 +13829,10 @@
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[FK_Migration_key_WithdrawalRequests]"
                           dataType="guid"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <externalMetadataColumn
+                          refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                          dataType="i4"
+                          name="IsSuccess" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -13580,7 +13871,7 @@
                           dataType="numeric"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[Amount]"
                           name="Amount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <outputColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[FeesAmount]"
@@ -13601,14 +13892,14 @@
                           dataType="numeric"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CustomerAmount]"
                           name="CustomerAmount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <outputColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantAmount]"
                           dataType="numeric"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[MerchantAmount]"
                           name="MerchantAmount"
-                          precision="14"
+                          precision="18"
                           scale="2" />
                         <outputColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[CurrencyId]"
@@ -13661,6 +13952,11 @@
                           dataType="guid"
                           lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[FK_Migration_key_WithdrawalRequests]"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <outputColumn
+                          refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                          dataType="i4"
+                          lineageId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                          name="IsSuccess" />
                         <outputColumn
                           refId="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -13988,7 +14284,106 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
+m.id as MerchantId
+
+,m.MerchantCode as MerchantCode
+,wr.amount as amount
+,1 as AccountTypeId
+,a.Id as AccountId
+, 1 as WithdrawalTypeId
+,convert(int,wr.status) as status
+,case when convert(int,wr.status) in (2,3) then convert(uniqueidentifier,isnull((select id from AspNetUsers anu where anu.old_id=wr.handled_by),N'C0DCA7B9-BB9B-438B-B839-A6F135838C90')) else convert(uniqueidentifier,(select id from AspNetUsers anu where anu.old_id=wr.handled_by)) end as HandledBy
+,wr.handled_at as HandledDate
+,wr.created_at as CreatedDate
+,wr.updated_at as UpdatedDate
+,null as DeletedDate
+,null as IsDeleted
+,wr.id as old_id
+,a.Migration_Key_Bank_Accounts as FK_Account_Migration_Key
+
+,NEWID() as Migration_key_WithdrawalRequests
+
+
+from CowPay_Production_Simulation.dbo.vw_WR_Withdrawal_Requests_SRC wr
+ --join Staging_Migration.dbo.AspNetUsers anu on anu.old_id=wr.handled_by
+ join Staging_Migration.dbo.Merchants m on wr.merchant_id=m.old_id
+ left join Staging_Migration.dbo.BankAccounts a on wr.account_id=a.old_bank_id
+ --join LKP_DB.dbo.StatusTypes_SRC s on wr.status=s.name --collate database_default
+
+union all
+
+
+select 
+
+m.id as MerchantId
+
+,m.MerchantCode as MerchantCode
+,c.amount as amount
+,1 as AccountTypeId
+,a.Id as AccountId
+, 2 as WithdrawalTypeId
+,convert(int,c.status) as status
+,case when convert(int,c.status) in (2,3) then convert(uniqueidentifier,isnull((select anu.id from AspNetUsers anu where anu.old_id=c.handled_by),N'C0DCA7B9-BB9B-438B-B839-A6F135838C90')) else convert(uniqueidentifier,(select anu.id from AspNetUsers anu where anu.old_id=c.handled_by)) end  as HandledBy
+,c.handled_at as HandledDate
+,c.created_at as CreatedDate
+,c.updated_at as UpdatedDate
+,null as DeletedDate
+,null as IsDeleted
+,c.id as old_id
+,a.Migration_Key_Bank_Accounts as FK_Account_Migration_Key
+
+,NEWID() as Migration_key_WithdrawalRequests
+
+from
+(
+select * from 
+[CowPay_Production_Simulation].[dbo].[vw_WR_Cashouts_SRC] 
+
+where
+[cashoutable_type]='App\Models\BankAccount') as c
+
+left join Staging_Migration.dbo.BankAccounts a
+on c.[cashoutable_id]=a.old_bank_id
+join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
+-- join LKP_DB.dbo.StatusTypes_SRC s on c.status=s.name --collate database_default
+
+
+union 
+
+select 
+
+m.id as MerchantId
+
+,m.MerchantCode as MerchantCode
+,c.amount as amount
+,2 as AccountTypeId
+,a.Id as AccountId
+, 2 as WithdrawalTypeId
+,convert(int,c.status) as status
+,case when convert(int,c.status) in (2,3) then convert(uniqueidentifier,isnull((select id from AspNetUsers anu where anu.old_id=c.handled_by),N'C0DCA7B9-BB9B-438B-B839-A6F135838C90')) else convert(uniqueidentifier,(select id from AspNetUsers anu where anu.old_id=c.handled_by)) end as HandledBy
+,c.handled_at as HandledDate
+,c.created_at as CreatedDate
+,c.updated_at as UpdatedDate
+,null as DeletedDate
+,null as IsDeleted
+,c.id as old_id
+,a.Migration_Key_Mobile_Wallets as FK_Account_Migration_Key 
+
+,NEWID() as Migration_key_WithdrawalRequests
+
+from
+(
+select * from 
+[CowPay_Production_Simulation].[dbo].[vw_WR_Cashouts_SRC] 
+
+where
+[cashoutable_type]='App\Models\MobileWallet') as c
+
+left join Staging_Migration.dbo.MobileWallets a
+on c.[cashoutable_id]=a.old_wallet_ID
+join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
+-- join LKP_DB.dbo.StatusTypes_SRC s on c.status=s.name --collate database_default</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -14005,7 +14400,7 @@
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">0</property>
+                      typeConverter="AccessMode">2</property>
                     <property
                       dataType="System.String"
                       description="The mappings between the parameters in the SQL command and variables."
@@ -16015,7 +16410,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="256,41.6"
           Id="Package\Customers-Cards-Accounts STG to STG\Bank_Accounts_Prepared STG to STG"
@@ -16190,7 +16585,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16224,7 +16621,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16246,7 +16645,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16274,7 +16675,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16302,7 +16705,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -16400,7 +16805,7 @@
           HeaderHeight="43.2"
           IsExpanded="False"
           PanelSize="336,339.2"
-          Size="336,43.2"
+          Size="264.8,43.2"
           Id="Package\Orders &amp; Transactions STG to STG"
           TopLeft="754.914298073126,643.85882765628" />
         <NodeLayout
@@ -16446,7 +16851,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16480,7 +16887,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -16550,9 +16959,9 @@
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="344.8,212.8"
-          Size="344.8,256"
+          Size="344.8,43.2"
           Id="Package\Withdrawals Stuff STG to STG"
           TopLeft="772.857155576044,394.870588724341" />
         <NodeLayout
@@ -16582,7 +16991,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -16628,24 +17039,24 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="1080.57144166012,265.639215180069">
+          TopLeft="1080.97144166012,265.505881846735">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-135.214286084079,129.231373544272"
+              EndConnector="-135.714286084079,129.364706877606"
               Start="0,0"
-              End="-135.214286084079,121.731373544272">
+              End="-135.714286084079,121.864706877606">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-131.214286084079,0" />
+                    End="-131.714286084079,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-131.214286084079,0"
-                    Point2="-135.214286084079,0"
-                    Point3="-135.214286084079,4" />
+                    Point1="-131.714286084079,0"
+                    Point2="-135.714286084079,0"
+                    Point3="-135.714286084079,4" />
                   <mssgle:LineSegment
-                    End="-135.214286084079,121.731373544272" />
+                    End="-135.714286084079,121.864706877606" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -16724,13 +17135,13 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="922.914298073126,687.05882765628">
+          TopLeft="887.314298073126,687.05882765628">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="19.7333331970943,88.658826781145"
+              EndConnector="55.3333331970944,88.658826781145"
               Start="0,0"
-              End="19.7333331970943,81.158826781145">
+              End="55.3333331970944,81.158826781145">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -16741,13 +17152,13 @@
                     Point2="0,52.8233009912836"
                     Point3="4,52.8233009912836" />
                   <mssgle:LineSegment
-                    End="15.7333331970943,52.8233009912836" />
+                    End="51.3333331970944,52.8233009912836" />
                   <mssgle:CubicBezierSegment
-                    Point1="15.7333331970943,52.8233009912836"
-                    Point2="19.7333331970943,52.8233009912836"
-                    Point3="19.7333331970943,56.8233009912836" />
+                    Point1="51.3333331970944,52.8233009912836"
+                    Point2="55.3333331970944,52.8233009912836"
+                    Point3="55.3333331970944,56.8233009912836" />
                   <mssgle:LineSegment
-                    End="19.7333331970943,81.158826781145" />
+                    End="55.3333331970944,81.158826781145" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -16826,24 +17237,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="945.257155576044,650.870588724341">
+          TopLeft="945.257155576044,438.070588724341">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="145.657142497082,14.588238931939"
+              EndConnector="-57.9428575029179,205.788238931939"
               Start="0,0"
-              End="138.157142497082,14.588238931939">
+              End="-57.9428575029179,198.288238931939">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,10.588238931939" />
+                    End="0,98.8941194659695" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,10.588238931939"
-                    Point2="0,14.588238931939"
-                    Point3="4,14.588238931939" />
+                    Point1="0,98.8941194659695"
+                    Point2="0,102.89411946597"
+                    Point3="-4,102.89411946597" />
                   <mssgle:LineSegment
-                    End="138.157142497082,14.588238931939" />
+                    End="-53.9428575029179,102.89411946597" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-53.9428575029179,102.89411946597"
+                    Point2="-57.9428575029179,102.89411946597"
+                    Point3="-57.9428575029179,106.89411946597" />
+                  <mssgle:LineSegment
+                    End="-57.9428575029179,198.288238931939" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17613,13 +18030,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="155.2,41.6"
-          Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders Prepared"
-          TopLeft="280,71.2" />
-        <NodeLayout
           Size="136.8,41.6"
           Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders-Meta"
           TopLeft="332.8,236" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders Prepared"
+          TopLeft="280,71.2" />
         <EdgeLayout
           Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG.Paths[OLE DB Source Output]"
           TopLeft="357.6,112.8">
@@ -17848,7 +18265,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_SRC">
+    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -17861,7 +18278,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT">
+    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_SRC">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -18171,13 +18588,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="216,41.6"
-          Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared"
-          TopLeft="94,36" />
-        <NodeLayout
           Size="193.6,41.6"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests"
           TopLeft="110,123" />
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared"
+          TopLeft="94,36" />
         <EdgeLayout
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG.Paths[OLE DB Source Output]"
           TopLeft="204.4,77.6">
