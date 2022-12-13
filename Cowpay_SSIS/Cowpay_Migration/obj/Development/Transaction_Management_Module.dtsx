@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="156"
-  DTS:VersionGUID="{AC218BC6-4AEA-4147-A7B5-3D92682B7F0E}">
+  DTS:VersionBuild="157"
+  DTS:VersionGUID="{29D4F119-B445-4728-A301-3C6EBC096EAC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
