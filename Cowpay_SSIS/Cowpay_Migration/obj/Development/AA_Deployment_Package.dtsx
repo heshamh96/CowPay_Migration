@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AA_Deployment_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{54730C65-F81F-45D7-BFB2-F89B6A750ABC}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{BCF6AF8C-13A9-453E-9276-B5A7E9C4C490}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,6 +21,7 @@
       DTS:refId="Package\Apply Data Cleansing Activities"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{E7327544-3A74-4422-9C2F-B2ADE7B5C431}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -120,6 +121,62 @@
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{a8609be1-df04-4c0d-b6a4-498815a35d63}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)\Create The Merchants in STG"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{c576e289-60ed-4c98-bf6a-f97feabcf60d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create The Merchants in STG"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+              SQLTask:SqlStatementSource="USE [Staging_Migration]&#xA;GO&#xA;&#xA;/****** Object:  Table [dbo].[Merchants]    Script Date: 12/13/2022 3:07:04 PM ******/&#xA;SET ANSI_NULLS ON&#xA;GO&#xA;&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Merchants](&#xA; [Id] [bigint] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,&#xA; [MasterMerchantId] [bigint] NULL,&#xA; [MerchantCode] [uniqueidentifier] NOT NULL,&#xA; [UserId] [uniqueidentifier] NULL,&#xA; [Name] [nvarchar](150) NOT NULL,&#xA; [Mobile] [nvarchar](20) NULL,&#xA; [Email] [nvarchar](100) NULL,&#xA; [CountryId] [smallint] NOT NULL,&#xA; [CityId] [smallint] NOT NULL,&#xA; [Address] [nvarchar](250) NULL,&#xA; [OptionalAddress] [nvarchar](250) NULL,&#xA; [NationalId] [nchar](14) NULL,&#xA; [CommercialRegistrationNum] [nvarchar](50) NULL,&#xA; [TaxId] [nchar](50) NULL,&#xA; [AttachamentImages] [nvarchar](max) NULL,&#xA; [SocialLinks] [nvarchar](max) NULL,&#xA; [StatusTypeId] [smallint] NOT NULL,&#xA; [Settings] [nvarchar](max) NULL,&#xA; [IsWebsite] [bit] NULL,&#xA; [CreatedDate] [datetime] NULL,&#xA; [UpdatedDate] [datetime] NULL,&#xA; [DeletedDate] [datetime] NULL,&#xA; [IsDeleted] [bit] NULL,&#xA; [Logo] [nvarchar](max) NULL,&#xA; [AboutUs] [nvarchar](max) NULL,&#xA; [TermsAndConditions] [nvarchar](max) NULL,&#xA; [old_id] [bigint] NULL,&#xA; [Is_Old_System] [bit] NULL,&#xA; [old_code] [varchar](50) NULL,&#xA; CONSTRAINT [PK_Merchants] PRIMARY KEY CLUSTERED &#xA;(&#xA; [Id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]&#xA;GO&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)\Drop The Merchants in STG"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{88c0d910-97bc-4a26-9303-ff37a66a84cc}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Drop The Merchants in STG"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+              SQLTask:SqlStatementSource="USE [Staging_Migration]&#xA;GO&#xA;&#xA;/****** Object:  Table [dbo].[Merchants]    Script Date: 12/13/2022 3:07:57 PM ******/&#xA;IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Merchants]') AND type in (N'U'))&#xA;DROP TABLE [dbo].[Merchants]&#xA;GO&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG).PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2b285f00-b3ce-49d7-89da-b74a022e9ca8}"
+          DTS:From="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)\Drop The Merchants in STG"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)\Create The Merchants in STG" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -162,6 +219,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\Migrate Transactions" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{819623F7-197D-4348-A67F-42318596F1FC}"
+      DTS:From="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Fetch from Production" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -199,6 +264,55 @@
           Size="176,42"
           Id="Package\Migrate Transactions"
           TopLeft="120.000002043588,462.494124133364" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)\Create The Merchants in STG"
+          TopLeft="18.6285757103746,70.5411778862502" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)\Drop The Merchants in STG"
+          TopLeft="4.92857141884002,4.88823528553787" />
+        <EdgeLayout
+          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG).PrecedenceConstraints[Constraint]"
+          TopLeft="108.92857141884,46.4882352855379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.7000042915346,24.0529426007123"
+              Start="0,0"
+              End="17.7000042915346,16.5529426007123">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.02647130035614" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.02647130035614"
+                    Point2="0,12.0264713003561"
+                    Point3="4,12.0264713003561" />
+                  <mssgle:LineSegment
+                    End="13.7000042915346,12.0264713003561" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.7000042915346,12.0264713003561"
+                    Point2="17.7000042915346,12.0264713003561"
+                    Point3="17.7000042915346,16.0264713003561" />
+                  <mssgle:LineSegment
+                    End="17.7000042915346,16.5529426007123" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="467,167"
+          Size="467,43"
+          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)"
+          TopLeft="396.571435325,36.0941181532652" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="230.928573803026,103.176471446212">
@@ -361,6 +475,40 @@
                     Point3="-199.542859887103,27.7647068776063" />
                   <mssgle:LineSegment
                     End="-199.542859887103,40.0294137552125" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="396.571435325,57.5941181532652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-74.1428615219741,24.582353292947"
+              Start="0,0"
+              End="-66.6428615219741,24.582353292947">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-33.071430760987,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-33.071430760987,0"
+                    Point2="-37.071430760987,0"
+                    Point3="-37.071430760987,4" />
+                  <mssgle:LineSegment
+                    End="-37.071430760987,20.582353292947" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-37.071430760987,20.582353292947"
+                    Point2="-37.071430760987,24.582353292947"
+                    Point3="-41.071430760987,24.582353292947" />
+                  <mssgle:LineSegment
+                    End="-66.6428615219741,24.582353292947" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

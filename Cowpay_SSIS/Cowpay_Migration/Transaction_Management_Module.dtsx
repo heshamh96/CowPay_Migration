@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="123"
-  DTS:VersionGUID="{85569F44-0704-4D96-B936-8C0C04D071EC}">
+  DTS:VersionBuild="124"
+  DTS:VersionGUID="{44335127-8A1C-4D8B-AAFF-DA39CB98BA24}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -15732,6 +15732,15 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
                           lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].Columns[FK_Migration_key_WithdrawalRequests]"
                           name="FK_Migration_key_WithdrawalRequests"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                          lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].Columns[IsSuccess]"
+                          name="IsSuccess"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -15831,6 +15840,10 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
                           refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[FK_Migration_key_WithdrawalRequests]"
                           dataType="guid"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <externalMetadataColumn
+                          refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].ExternalColumns[IsSuccess]"
+                          dataType="bool"
+                          name="IsSuccess" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -15955,6 +15968,11 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
                           dataType="guid"
                           lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Error Output].Columns[FK_Migration_key_WithdrawalRequests]"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <outputColumn
+                          refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                          dataType="bool"
+                          lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Error Output].Columns[IsSuccess]"
+                          name="IsSuccess" />
                         <outputColumn
                           refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -16170,6 +16188,12 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
                           cachedName="IsDeleted"
                           externalMetadataColumnId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
                           lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                        <inputColumn
+                          refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].Columns[IsSuccess]"
+                          cachedDataType="bool"
+                          cachedName="IsSuccess"
+                          externalMetadataColumnId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                          lineageId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG.Outputs[OLE DB Source Output].Columns[IsSuccess]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -16265,6 +16289,10 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
                           refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[FK_Migration_key_WithdrawalRequests]"
                           dataType="guid"
                           name="FK_Migration_key_WithdrawalRequests" />
+                        <externalMetadataColumn
+                          refId="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsSuccess]"
+                          dataType="bool"
+                          name="IsSuccess" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -16412,19 +16440,19 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="256,41.6"
+          Size="256,42"
           Id="Package\Customers-Cards-Accounts STG to STG\Bank_Accounts_Prepared STG to STG"
           TopLeft="21.071436687392,197.841178761387" />
         <NodeLayout
-          Size="211.2,41.6"
+          Size="211,42"
           Id="Package\Customers-Cards-Accounts STG to STG\Cards_Prepared STG to STG"
           TopLeft="5.5,126.394116257136" />
         <NodeLayout
-          Size="233.6,41.6"
+          Size="234,42"
           Id="Package\Customers-Cards-Accounts STG to STG\Customers_Prepared STG to STG"
           TopLeft="36.357151080151,72.2058833052953" />
         <NodeLayout
-          Size="248.8,41.6"
+          Size="249,42"
           Id="Package\Customers-Cards-Accounts STG to STG\MobileWallets_Prepared STG to STG"
           TopLeft="5.785721817796,5.5" />
         <EdgeLayout
@@ -16526,8 +16554,8 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="True"
-          PanelSize="286.4,294.4"
-          Size="286.4,336.8"
+          PanelSize="286,294"
+          Size="286,337"
           Id="Package\Customers-Cards-Accounts STG to STG"
           TopLeft="794.571441660123,42.3058818467354" />
         <NodeLayout
@@ -16714,11 +16742,11 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
           HeaderHeight="48"
           IsExpanded="False"
           PanelSize="473.6,471.2"
-          Size="293.6,48"
+          Size="294,48"
           Id="Package\Customers-Cards-Accounts STG to TRGT"
           TopLeft="103.571430897226,36.5647067317495" />
         <NodeLayout
-          Size="241.6,41.6"
+          Size="242,42"
           Id="Package\Drop_Banks_Accounts_Constraints"
           TopLeft="537.085722975828,182.729412296652" />
         <NodeLayout
@@ -16764,7 +16792,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16798,26 +16828,28 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
           PanelSize="336,339.2"
-          Size="264.8,43.2"
+          Size="265,43"
           Id="Package\Orders &amp; Transactions STG to STG"
           TopLeft="754.914298073126,643.85882765628" />
         <NodeLayout
-          Size="174.4,41.6"
+          Size="174,42"
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT"
           TopLeft="65.5000010217937,112.517652833008" />
         <NodeLayout
-          Size="207.2,41.6"
+          Size="207,42"
           Id="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT"
           TopLeft="69.5000010899138,22.7294171099023" />
         <NodeLayout
-          Size="230.4,41.6"
+          Size="230,42"
           Id="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT"
           TopLeft="59.7857152101945,246.023536138304" />
         <EdgeLayout
@@ -16851,9 +16883,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16887,40 +16917,38 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="False"
-          PanelSize="372,294.4"
-          Size="224,43.2"
+          PanelSize="372,294"
+          Size="224,43"
           Id="Package\Orders Stuff STG to TRGT"
           TopLeft="269.714291193047,514.705884326288" />
         <NodeLayout
-          Size="227.2,41.6"
+          Size="227,42"
           Id="Package\TransactionBalance STG to STG"
           TopLeft="792.514297936887,775.717654437425" />
         <NodeLayout
-          Size="233.6,41.6"
+          Size="234,42"
           Id="Package\TransactionBalance STG to TRGT"
           TopLeft="373.485720727882,887.623533804606" />
         <NodeLayout
-          Size="144.8,41.6"
+          Size="145,42"
           Id="Package\Truncate_STG"
           TopLeft="1137.54287426034,48.8000002917122" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Truncate_TRGT"
           TopLeft="636.857153259978,28" />
         <NodeLayout
-          Size="273.6,41.6"
+          Size="274,42"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG"
           TopLeft="39.6428487836096,34.2529415797197" />
         <NodeLayout
-          Size="334.4,41.6"
+          Size="334,42"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG"
           TopLeft="10.0714286492796,116.547064400379" />
         <EdgeLayout
@@ -16960,16 +16988,16 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="344.8,212.8"
-          Size="344.8,43.2"
+          PanelSize="345,213"
+          Size="243,43"
           Id="Package\Withdrawals Stuff STG to STG"
           TopLeft="772.857155576044,394.870588724341" />
         <NodeLayout
-          Size="232.8,41.6"
+          Size="233,42"
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqests STG to TRGT"
           TopLeft="39.3571420883644,3.82353278361438" />
         <NodeLayout
-          Size="292,41.6"
+          Size="292,42"
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT"
           TopLeft="5.5,72.8000086055083" />
         <EdgeLayout
@@ -16991,16 +17019,14 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="False"
-          PanelSize="302.4,169.6"
-          Size="250.4,43.2"
+          PanelSize="302,170"
+          Size="250,43"
           Id="Package\Withdrawals Stuff STG to TRGT"
           TopLeft="0.571434507565016,282.200000437568" />
         <EdgeLayout
@@ -17039,24 +17065,24 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="1080.97144166012,265.505881846735">
+          TopLeft="937.571441660123,379.305881846735">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-135.714286084079,129.364706877606"
+              EndConnector="78.285713915921,37.0647068776056"
               Start="0,0"
-              End="-135.714286084079,121.864706877606">
+              End="70.785713915921,37.0647068776056">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-131.714286084079,0" />
+                    End="0,33.0647068776056" />
                   <mssgle:CubicBezierSegment
-                    Point1="-131.714286084079,0"
-                    Point2="-135.714286084079,0"
-                    Point3="-135.714286084079,4" />
+                    Point1="0,33.0647068776056"
+                    Point2="0,37.0647068776056"
+                    Point3="4,37.0647068776056" />
                   <mssgle:LineSegment
-                    End="-135.714286084079,121.864706877606" />
+                    End="70.785713915921,37.0647068776056" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17101,30 +17127,30 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="250.371430897226,84.5647067317495">
+          TopLeft="250.571430897226,84.5647067317495">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-124.599996389661,197.635293705819"
+              EndConnector="-124.999996389661,197.635293705818"
               Start="0,0"
-              End="-124.599996389661,190.135293705819">
+              End="-124.999996389661,190.135293705818">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,94.8176468529093" />
+                    End="0,94.8176468529092" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,94.8176468529093"
-                    Point2="0,98.8176468529093"
-                    Point3="-4,98.8176468529093" />
+                    Point1="0,94.8176468529092"
+                    Point2="0,98.8176468529092"
+                    Point3="-4,98.8176468529092" />
                   <mssgle:LineSegment
-                    End="-120.599996389661,98.8176468529093" />
+                    End="-120.999996389661,98.8176468529092" />
                   <mssgle:CubicBezierSegment
-                    Point1="-120.599996389661,98.8176468529093"
-                    Point2="-124.599996389661,98.8176468529093"
-                    Point3="-124.599996389661,102.817646852909" />
+                    Point1="-120.999996389661,98.8176468529092"
+                    Point2="-124.999996389661,98.8176468529092"
+                    Point3="-124.999996389661,102.817646852909" />
                   <mssgle:LineSegment
-                    End="-124.599996389661,190.135293705819" />
+                    End="-124.999996389661,190.135293705818" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17169,30 +17195,30 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="381.714291193047,557.905884326288">
+          TopLeft="381.714291193047,557.705884326288">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="108.571429534835,329.717649478318"
+              EndConnector="108.771429534835,329.917649478318"
               Start="0,0"
-              End="108.571429534835,322.217649478318">
+              End="108.771429534835,322.417649478318">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,160.858824739159" />
+                    End="0,160.958824739159" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,160.858824739159"
-                    Point2="0,164.858824739159"
-                    Point3="4,164.858824739159" />
+                    Point1="0,160.958824739159"
+                    Point2="0,164.958824739159"
+                    Point3="4,164.958824739159" />
                   <mssgle:LineSegment
-                    End="104.571429534835,164.858824739159" />
+                    End="104.771429534835,164.958824739159" />
                   <mssgle:CubicBezierSegment
-                    Point1="104.571429534835,164.858824739159"
-                    Point2="108.571429534835,164.858824739159"
-                    Point3="108.571429534835,168.858824739159" />
+                    Point1="104.771429534835,164.958824739159"
+                    Point2="108.771429534835,164.958824739159"
+                    Point3="108.771429534835,168.958824739159" />
                   <mssgle:LineSegment
-                    End="108.571429534835,322.217649478318" />
+                    End="108.771429534835,322.417649478318" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17237,30 +17263,18 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="945.257155576044,438.070588724341">
+          TopLeft="890.885726824585,437.870588724341">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-57.9428575029179,205.788238931939"
+              EndConnector="0,205.988238931939"
               Start="0,0"
-              End="-57.9428575029179,198.288238931939">
+              End="0,198.488238931939">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,98.8941194659695" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,98.8941194659695"
-                    Point2="0,102.89411946597"
-                    Point3="-4,102.89411946597" />
-                  <mssgle:LineSegment
-                    End="-53.9428575029179,102.89411946597" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-53.9428575029179,102.89411946597"
-                    Point2="-57.9428575029179,102.89411946597"
-                    Point3="-57.9428575029179,106.89411946597" />
-                  <mssgle:LineSegment
-                    End="-57.9428575029179,198.288238931939" />
+                    End="0,198.488238931939" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17271,30 +17285,30 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="125.771434507565,325.400000437568">
+          TopLeft="125.571434507565,325.200000437568">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="255.942856685482,189.30588388872"
+              EndConnector="256.142856685482,189.50588388872"
               Start="0,0"
-              End="255.942856685482,181.80588388872">
+              End="256.142856685482,182.00588388872">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,90.65294194436" />
+                    End="0,90.75294194436" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,90.65294194436"
-                    Point2="0,94.65294194436"
-                    Point3="4,94.65294194436" />
+                    Point1="0,90.75294194436"
+                    Point2="0,94.75294194436"
+                    Point3="4,94.75294194436" />
                   <mssgle:LineSegment
-                    End="251.942856685482,94.65294194436" />
+                    End="252.142856685482,94.75294194436" />
                   <mssgle:CubicBezierSegment
-                    Point1="251.942856685482,94.65294194436"
-                    Point2="255.942856685482,94.65294194436"
-                    Point3="255.942856685482,98.65294194436" />
+                    Point1="252.142856685482,94.75294194436"
+                    Point2="256.142856685482,94.75294194436"
+                    Point3="256.142856685482,98.75294194436" />
                   <mssgle:LineSegment
-                    End="255.942856685482,181.80588388872" />
+                    End="256.142856685482,182.00588388872" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17344,7 +17358,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Customers-Cards-Accounts STG to STG\Bank_Accounts_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="211.2,41.6"
           Id="Package\Customers-Cards-Accounts STG to STG\Bank_Accounts_Prepared STG to STG\vw_BankAccounts_Prepared"
@@ -17384,7 +17398,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17420,7 +17436,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Customers-Cards-Accounts STG to STG\Cards_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156,41.6"
           Id="Package\Customers-Cards-Accounts STG to STG\Cards_Prepared STG to STG\Data Conversion"
@@ -17458,7 +17474,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17492,7 +17510,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17528,7 +17548,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Customers-Cards-Accounts STG to STG\Customers_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="195.2,41.6"
           Id="Package\Customers-Cards-Accounts STG to STG\Customers_Prepared STG to STG\vw_Customers_Prepared"
@@ -17568,7 +17588,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17604,7 +17626,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Customers-Cards-Accounts STG to STG\MobileWallets_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="174.4,41.6"
           Id="Package\Customers-Cards-Accounts STG to STG\MobileWallets_Prepared STG to STG\STG_Mobile_Wallets"
@@ -17632,7 +17654,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17668,7 +17692,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\BankAccounts STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="176,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\BankAccounts STG to TRGT\BankAccounts_TRGT"
@@ -17708,7 +17732,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17744,7 +17770,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="138,42"
           Id="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT\Cards_TRGT"
@@ -17772,7 +17798,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17886,15 +17914,15 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="175.2,41.6"
-          Id="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT\MobileWallets_TRGT"
-          TopLeft="278.4,239.2" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="168,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT\MobileWallets_STG"
           TopLeft="274.4,64.8" />
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT\MobileWallets_TRGT"
+          TopLeft="278.4,239.2" />
         <EdgeLayout
           Id="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="362.2,106.4">
@@ -17914,7 +17942,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18028,7 +18058,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="136.8,41.6"
           Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders-Meta"
@@ -18068,7 +18098,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18104,7 +18136,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="217.6,41.6"
           Id="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG\Order_Transactions_Prepared"
@@ -18144,7 +18176,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18180,53 +18214,19 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="134.4,41.6"
-          Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_SRC"
-          TopLeft="68.8,60" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="141.6,41.6"
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT"
           TopLeft="57.6,220" />
         <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_SRC"
+          TopLeft="68.8,60" />
+        <NodeLayout
           Size="151.2,41.6"
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\fk_metadata_id"
           TopLeft="248.8,137.6" />
-        <EdgeLayout
-          Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT.Paths[Derived Column Output]"
-          TopLeft="324.4,179.2">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-196,40.8"
-              Start="0,0"
-              End="-196,33.3">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.4"
-                    Point2="0,20.4"
-                    Point3="-4,20.4" />
-                  <mssgle:LineSegment
-                    End="-192,20.4" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-192,20.4"
-                    Point2="-196,20.4"
-                    Point3="-196,24.4" />
-                  <mssgle:LineSegment
-                    End="-196,33.3" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="136,101.6">
@@ -18258,7 +18258,45 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT.Paths[Derived Column Output]"
+          TopLeft="324.4,179.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-196,40.8"
+              Start="0,0"
+              End="-196,33.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4"
+                    Point2="0,20.4"
+                    Point3="-4,20.4" />
+                  <mssgle:LineSegment
+                    End="-192,20.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-192,20.4"
+                    Point2="-196,20.4"
+                    Point3="-196,24.4" />
+                  <mssgle:LineSegment
+                    End="-196,33.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18294,15 +18332,15 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="158.4,41.6"
-          Id="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT\OrdersMeta_SRC"
-          TopLeft="140.57142858116,48" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT\OrdersMeta_TRGT"
           TopLeft="137.6,202.4" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT\OrdersMeta_SRC"
+          TopLeft="140.57142858116,48" />
         <EdgeLayout
           Id="Package\Orders Stuff STG to TRGT\Orders_Meta  STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="219.68571429058,89.6">
@@ -18322,7 +18360,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18360,13 +18400,13 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="189.6,41.6"
-          Id="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG"
-          TopLeft="314.4,76.8" />
-        <NodeLayout
-          Size="196.8,41.6"
+          Size="197,42"
           Id="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_TRGT"
           TopLeft="302.4,246.4" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_STG"
+          TopLeft="314.4,76.8" />
         <EdgeLayout
           Id="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="409.2,118.4">
@@ -18436,11 +18476,11 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="223.2,41.6"
+          Size="223,42"
           Id="Package\TransactionBalance STG to STG\Transaction_Balance_Prepared"
           TopLeft="301.6,84" />
         <NodeLayout
-          Size="192,41.6"
+          Size="192,42"
           Id="Package\TransactionBalance STG to STG\TransactionBalance STG"
           TopLeft="305.6,345.6" />
         <EdgeLayout
@@ -18510,7 +18550,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\TransactionBalance STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="192,41.6"
           Id="Package\TransactionBalance STG to TRGT\TransactionBalance STG"
@@ -18550,7 +18590,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18586,7 +18628,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="193.6,41.6"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG\STG_WithdrawalReqests"
@@ -18614,7 +18656,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18652,11 +18696,11 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="275.2,41.6"
+          Size="275,42"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\WithdrawalReqestsTransactions_Prepared"
           TopLeft="172.8,52" />
         <NodeLayout
-          Size="252.8,41.6"
+          Size="253,42"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqestsTransactions_Prepared STG to STG\STG_WithdrawalReqestsTransactions"
           TopLeft="128,208" />
         <EdgeLayout
@@ -18726,7 +18770,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
     design-time-name="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqests STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="200.8,41.6"
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqests STG to TRGT\WithdrawalReqests_TRGT"
@@ -18766,7 +18810,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -18804,13 +18850,13 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="252.8,41.6"
-          Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG"
-          TopLeft="175.2,78.4" />
-        <NodeLayout
-          Size="200,41.6"
+          Size="200,42"
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT"
           TopLeft="219.2,254.4" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqestsTransactions_STG"
+          TopLeft="175.2,78.4" />
         <EdgeLayout
           Id="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="301.6,120">

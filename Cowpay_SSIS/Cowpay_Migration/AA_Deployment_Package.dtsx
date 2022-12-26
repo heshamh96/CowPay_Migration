@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AA_Deployment_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{4903469A-2488-49B2-804F-2A0677BA50C8}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{BCF6AF8C-13A9-453E-9276-B5A7E9C4C490}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,6 +21,7 @@
       DTS:refId="Package\Apply Data Cleansing Activities"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{E7327544-3A74-4422-9C2F-B2ADE7B5C431}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -38,6 +39,7 @@
       DTS:refId="Package\Fetch from Production"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
+      DTS:Disabled="True"
       DTS:DTSID="{5D9D09DC-1EB5-4453-BF4F-7D228B70B0B1}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -239,29 +241,78 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="223.2,41.6"
+          Size="223,42"
           Id="Package\Apply Data Cleansing Activities"
           TopLeft="141.714288127666,148.658825614296" />
         <NodeLayout
-          Size="183.2,41.6"
+          Size="183,42"
           Id="Package\Fetch from Production"
           TopLeft="139.428573803026,61.1764714462122" />
         <NodeLayout
-          Size="246.4,41.6"
+          Size="246,42"
           Id="Package\Migrate Excel_Identity SRC_to_STG"
           TopLeft="480.000008174351,176.047060899834" />
         <NodeLayout
-          Size="252.8,41.6"
+          Size="253,42"
           Id="Package\Migrate Excel_Identity STG_to_TRGT"
           TopLeft="281.142861930692,373.364710378152" />
         <NodeLayout
-          Size="166.4,41.6"
+          Size="166,42"
           Id="Package\Migrate Merchants"
           TopLeft="285.142861998811,283.858827510425" />
         <NodeLayout
-          Size="176,41.6"
+          Size="176,42"
           Id="Package\Migrate Transactions"
           TopLeft="120.000002043588,462.494124133364" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)\Create The Merchants in STG"
+          TopLeft="18.6285757103746,70.5411778862502" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)\Drop The Merchants in STG"
+          TopLeft="4.92857141884002,4.88823528553787" />
+        <EdgeLayout
+          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG).PrecedenceConstraints[Constraint]"
+          TopLeft="108.92857141884,46.4882352855379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.7000042915346,24.0529426007123"
+              Start="0,0"
+              End="17.7000042915346,16.5529426007123">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.02647130035614" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.02647130035614"
+                    Point2="0,12.0264713003561"
+                    Point3="4,12.0264713003561" />
+                  <mssgle:LineSegment
+                    End="13.7000042915346,12.0264713003561" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.7000042915346,12.0264713003561"
+                    Point2="17.7000042915346,12.0264713003561"
+                    Point3="17.7000042915346,16.0264713003561" />
+                  <mssgle:LineSegment
+                    End="17.7000042915346,16.5529426007123" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="467,167"
+          Size="467,43"
+          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)"
+          TopLeft="396.571435325,36.0941181532652" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="230.928573803026,103.176471446212">
@@ -432,81 +483,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="216,41.6"
-          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)\Create The Merchants in STG"
-          TopLeft="18.6285757103746,70.5411778862502" />
-        <NodeLayout
-          Size="208,41.6"
-          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)\Drop The Merchants in STG"
-          TopLeft="4.92857141884002,4.88823528553787" />
-        <EdgeLayout
-          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG).PrecedenceConstraints[Constraint]"
-          TopLeft="108.92857141884,46.4882352855379">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="17.7000042915346,24.0529426007123"
-              Start="0,0"
-              End="17.7000042915346,16.5529426007123">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,8.02647130035614" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,8.02647130035614"
-                    Point2="0,12.0264713003561"
-                    Point3="4,12.0264713003561" />
-                  <mssgle:LineSegment
-                    End="13.7000042915346,12.0264713003561" />
-                  <mssgle:CubicBezierSegment
-                    Point1="13.7000042915346,12.0264713003561"
-                    Point2="17.7000042915346,12.0264713003561"
-                    Point3="17.7000042915346,16.0264713003561" />
-                  <mssgle:LineSegment
-                    End="17.7000042915346,16.5529426007123" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="464,167.2"
-          Size="467.2,43.2"
-          Id="Package\Prepare fot the All in All Migration  (Drop Then Create The Merchants in STG)"
-          TopLeft="396.571435325,36.0941181532652" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="396.571435325,57.6941181532652">
+          TopLeft="396.571435325,57.5941181532652">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-73.9428615219739,24.282353292947"
+              EndConnector="-74.1428615219741,24.582353292947"
               Start="0,0"
-              End="-66.4428615219739,24.282353292947">
+              End="-66.6428615219741,24.582353292947">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-32.9714307609869,0" />
+                    End="-33.071430760987,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-32.9714307609869,0"
-                    Point2="-36.9714307609869,0"
-                    Point3="-36.9714307609869,4" />
+                    Point1="-33.071430760987,0"
+                    Point2="-37.071430760987,0"
+                    Point3="-37.071430760987,4" />
                   <mssgle:LineSegment
-                    End="-36.9714307609869,20.282353292947" />
+                    End="-37.071430760987,20.582353292947" />
                   <mssgle:CubicBezierSegment
-                    Point1="-36.9714307609869,20.282353292947"
-                    Point2="-36.9714307609869,24.282353292947"
-                    Point3="-40.9714307609869,24.282353292947" />
+                    Point1="-37.071430760987,20.582353292947"
+                    Point2="-37.071430760987,24.582353292947"
+                    Point3="-41.071430760987,24.582353292947" />
                   <mssgle:LineSegment
-                    End="-66.4428615219739,24.282353292947" />
+                    End="-66.6428615219741,24.582353292947" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
