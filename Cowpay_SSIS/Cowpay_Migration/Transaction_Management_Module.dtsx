@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="124"
-  DTS:VersionGUID="{44335127-8A1C-4D8B-AAFF-DA39CB98BA24}">
+  DTS:VersionBuild="125"
+  DTS:VersionGUID="{0E1EC4CC-C458-4C44-96D9-E445AA7CA216}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -16553,9 +16553,9 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="286,294"
-          Size="286,337"
+          Size="286,43"
           Id="Package\Customers-Cards-Accounts STG to STG"
           TopLeft="794.571441660123,42.3058818467354" />
         <NodeLayout
@@ -16750,15 +16750,15 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
           Id="Package\Drop_Banks_Accounts_Constraints"
           TopLeft="537.085722975828,182.729412296652" />
         <NodeLayout
-          Size="316.8,41.6"
+          Size="317,42"
           Id="Package\Orders &amp; Transactions STG to STG\fetch OrderTransactions_Jsons  from_SRC_to_STG"
           TopLeft="8.92857148695953,143.435300123485" />
         <NodeLayout
-          Size="246.4,41.6"
+          Size="246,42"
           Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG"
           TopLeft="26.0714289217574,54.0235373051526" />
         <NodeLayout
-          Size="222.4,41.6"
+          Size="222,42"
           Id="Package\Orders &amp; Transactions STG to STG\OrderTransactions STG to STG"
           TopLeft="28.3571432463976,235.152949893516" />
         <EdgeLayout
@@ -16792,9 +16792,7 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16828,15 +16826,13 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="False"
-          PanelSize="336,339.2"
+          PanelSize="336,339"
           Size="265,43"
           Id="Package\Orders &amp; Transactions STG to STG"
           TopLeft="754.914298073126,643.85882765628" />
@@ -17031,30 +17027,18 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
           TopLeft="0.571434507565016,282.200000437568" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="1137.54287426034,69.8000002917122">
+          TopLeft="1137.54287426034,66.8029410692238">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-56.971432600217,141.005881555023"
+              EndConnector="-56.971432600217,0"
               Start="0,0"
-              End="-49.471432600217,141.005881555023">
+              End="-49.471432600217,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-24.4857163001085,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-24.4857163001085,0"
-                    Point2="-28.4857163001085,0"
-                    Point3="-28.4857163001085,4" />
-                  <mssgle:LineSegment
-                    End="-28.4857163001085,137.005881555023" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-28.4857163001085,137.005881555023"
-                    Point2="-28.4857163001085,141.005881555023"
-                    Point3="-32.4857163001085,141.005881555023" />
-                  <mssgle:LineSegment
-                    End="-49.471432600217,141.005881555023" />
+                    End="-49.471432600217,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17065,24 +17049,30 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="937.571441660123,379.305881846735">
+          TopLeft="937.571441660123,85.3058818467354">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="78.285713915921,37.0647068776056"
+              EndConnector="-43.214286084079,309.564706877606"
               Start="0,0"
-              End="70.785713915921,37.0647068776056">
+              End="-43.214286084079,302.064706877606">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.0647068776056" />
+                    End="0,150.782353438803" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,33.0647068776056"
-                    Point2="0,37.0647068776056"
-                    Point3="4,37.0647068776056" />
+                    Point1="0,150.782353438803"
+                    Point2="0,154.782353438803"
+                    Point3="-4,154.782353438803" />
                   <mssgle:LineSegment
-                    End="70.785713915921,37.0647068776056" />
+                    End="-39.214286084079,154.782353438803" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-39.214286084079,154.782353438803"
+                    Point2="-43.214286084079,154.782353438803"
+                    Point3="-43.214286084079,158.782353438803" />
+                  <mssgle:LineSegment
+                    End="-43.214286084079,302.064706877606" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -17161,30 +17151,30 @@ join Staging_Migration.dbo.Merchants m on c.merchant_code=m.old_code
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="887.314298073126,687.05882765628">
+          TopLeft="887.414298073126,686.85882765628">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="55.3333331970944,88.658826781145"
+              EndConnector="55.099999863761,88.858826781145"
               Start="0,0"
-              End="55.3333331970944,81.158826781145">
+              End="55.099999863761,81.358826781145">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.8233009912836" />
+                    End="0,48.9421356412596" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,48.8233009912836"
-                    Point2="0,52.8233009912836"
-                    Point3="4,52.8233009912836" />
+                    Point1="0,48.9421356412596"
+                    Point2="0,52.9421356412596"
+                    Point3="4,52.9421356412596" />
                   <mssgle:LineSegment
-                    End="51.3333331970944,52.8233009912836" />
+                    End="51.099999863761,52.9421356412596" />
                   <mssgle:CubicBezierSegment
-                    Point1="51.3333331970944,52.8233009912836"
-                    Point2="55.3333331970944,52.8233009912836"
-                    Point3="55.3333331970944,56.8233009912836" />
+                    Point1="51.099999863761,52.9421356412596"
+                    Point2="55.099999863761,52.9421356412596"
+                    Point3="55.099999863761,56.9421356412596" />
                   <mssgle:LineSegment
-                    End="55.3333331970944,81.158826781145" />
+                    End="55.099999863761,81.358826781145" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
