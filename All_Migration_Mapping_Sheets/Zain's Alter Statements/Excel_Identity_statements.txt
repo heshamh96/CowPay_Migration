@@ -1,0 +1,6 @@
+GO
+ALTER TABLE [dbo].[AspNetUsers] ALTER COLUMN [DeletedDate] DATETIME2 (7) NULL;
+
+ALTER TABLE [dbo].[AspNetUsers] ALTER COLUMN [IsDeleted] BIT NULL;
+
+ALTER TABLE [dbo].[AspNetUsers] ALTER COLUMN [UpdatedDate] DATETIME2 (7) NULL;

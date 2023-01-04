@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="90"
-  DTS:VersionGUID="{3EF654A4-DF56-4F39-951D-78A3AAEAC45D}">
+  DTS:VersionBuild="91"
+  DTS:VersionGUID="{A4829771-9647-42E3-A894-34EF04DE38E0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2129,6 +2129,7 @@ where mr.is_migrated=0</property>
           DTS:refId="Package\TRGT_Loading\Create_Merchant_Constraints"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{16EC8515-49DF-4277-8E15-9DEACC90E4D8}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -2146,6 +2147,7 @@ where mr.is_migrated=0</property>
           DTS:refId="Package\TRGT_Loading\Drop_Merchant_Constraints"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{2E53A6C5-788C-4CB8-AE7A-F4B58B475855}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -3545,9 +3547,9 @@ where mr.is_migrated=0</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-602.603180831253,290.000000729281"
+              EndConnector="-602.603180831252,290.000000729281"
               Start="0,0"
-              End="-595.103180831253,290.000000729281">
+              End="-595.103180831252,290.000000729281">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3564,7 +3566,7 @@ where mr.is_migrated=0</property>
                     Point2="-301.301590415626,290.000000729281"
                     Point3="-305.301590415626,290.000000729281" />
                   <mssgle:LineSegment
-                    End="-595.103180831253,290.000000729281" />
+                    End="-595.103180831252,290.000000729281" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
