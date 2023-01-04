@@ -1,0 +1,256 @@
+
+GO
+ALTER TABLE [dbo].[BankAccounts]
+    ADD [Migration_Key_Bank_Accounts] UNIQUEIDENTIFIER NULL;
+
+
+GO
+PRINT N'Altering SqlTable [dbo].[MobileWallets]...';
+
+
+GO
+ALTER TABLE [dbo].[MobileWallets]
+    ADD [Migration_Key_Mobile_Wallets] UNIQUEIDENTIFIER NULL;
+
+
+GO
+PRINT N'Altering SqlTable [dbo].[OrderMeta]...';
+
+
+GO
+ALTER TABLE [dbo].[OrderMeta]
+    ADD [Migration_Key] UNIQUEIDENTIFIER NULL;
+
+
+GO
+PRINT N'Altering SqlTable [dbo].[Orders]...';
+
+
+GO
+ALTER TABLE [dbo].[Orders]
+    ADD [FK_migration_Key] UNIQUEIDENTIFIER NULL;
+
+
+GO
+PRINT N'Altering SqlTable [dbo].[OrderTransactions]...';
+
+
+GO
+ALTER TABLE [dbo].[OrderTransactions]
+    ADD [FK_Migration_Key_Orders] UNIQUEIDENTIFIER NULL;
+
+
+GO
+PRINT N'Altering SqlTable [dbo].[WithdrawalRequests]...';
+
+
+GO
+ALTER TABLE [dbo].[WithdrawalRequests]
+    ADD [FK_Account_Migration_Key]         UNIQUEIDENTIFIER NULL,
+        [Migration_key_WithdrawalRequests] UNIQUEIDENTIFIER NULL;
+
+
+GO
+PRINT N'Altering SqlTable [dbo].[WithdrawalRequestTransactions]...';
+
+
+GO
+ALTER TABLE [dbo].[WithdrawalRequestTransactions]
+    ADD [FK_Migration_key_WithdrawalRequests] UNIQUEIDENTIFIER NULL,
+        [IsSuccess]                           BIT              NULL;
+
+
+GO
+
+
+
+
+
+
+
+
+
+CREATE Procedure [dbo].[TransactionBalance_Prepared_RollOut_Orders_Insertions] as 
+with OrderTransaction_Data as(
+select 
+[MerchantId]				as [MerchantId]
+,Id						as TranxId
+,MerchantAmount					as [Amount]
+,[TransactionTypeId]		as [TranxTypeId]
+,1							as [ModelTypeId]
+,OrderId						as [ModelReferenceId]
+--,calculated					as 
+,null						as [AvailableBalance]
+,[CreatedDate]				as [CreatedDate]	
+,[UpdatedDate]				as [UpdatedDate]	
+,[DeletedDate]				as [DeletedDate]	
+,[IsDeleted]				as [IsDeleted]	
+from dbo.[OrderTransactions]
+where IsSuccess=1
+),
+
+
+
+
+WithdrawalRequestTransactions_Data AS (
+select 
+[MerchantId]				as [MerchantId]
+,Id						    as TranxId
+,MerchantAmount			    as [Amount]
+,[TransactionTypeId]		as [TranxTypeId]
+,2							as [ModelTypeId]
+,WithdrawalRequestId		as [ModelReferenceId]
+--,calculated					as 
+,null						as [AvailableBalance]
+,[CreatedDate]				as [CreatedDate]	
+,[UpdatedDate]				as [UpdatedDate]	
+,[DeletedDate]				as [DeletedDate]	
+,[IsDeleted]				as [IsDeleted]	
+from dbo.WithdrawalRequestTransactions
+where IsSuccess=1
+)
+, All_New_Transaction_Balance as (
+select 
+*	
+,sum(case when [TranxTypeId]=1 then [Amount] else Amount*-1 end) over (partition by [MerchantId] order by  createddate) as [Balance]
+
+
+from (
+select 
+*
+from OrderTransaction_Data
+union all
+select 
+*
+from WithdrawalRequestTransactions_Data) as a )
+
+
+
+
+insert into TransactionBalance (
+[MerchantId]
+,TranxId
+,[Amount]
+,[TranxTypeId]
+,[ModelTypeId]
+,[ModelReferenceId]
+,[AvailableBalance]
+,[CreatedDate]	
+,[UpdatedDate]	
+,[DeletedDate]	
+,[IsDeleted]
+,Balance)
+select 
+ anb.[MerchantId]
+,anb.TranxId
+,anb.[Amount]
+,anb.[TranxTypeId]
+,anb.[ModelTypeId]
+,anb.[ModelReferenceId]
+,anb.[AvailableBalance]
+,anb.[CreatedDate]	
+,anb.[UpdatedDate]	
+,anb.[DeletedDate]	
+,anb.[IsDeleted]
+,anb.Balance
+from All_New_Transaction_Balance anb left join (select TranxId from dbo.TransactionBalance where ModelTypeId=1 ) as tmp on anb.TranxId =tmp.TranxId
+where anb.ModelTypeId=1 and tmp.TranxId is null
+GO
+PRINT N'Creating SqlProcedure [dbo].[TransactionBalance_Prepared_RollOut_Withdrawals_Insertions]...';
+
+
+GO
+
+
+
+
+
+=========================================================================================================================================================================
+
+
+CREATE Procedure [dbo].[TransactionBalance_Prepared_RollOut_Withdrawals_Insertions] as 
+with OrderTransaction_Data as(
+select 
+[MerchantId]				as [MerchantId]
+,Id						as TranxId
+,MerchantAmount					as [Amount]
+,[TransactionTypeId]		as [TranxTypeId]
+,1							as [ModelTypeId]
+,OrderId						as [ModelReferenceId]
+--,calculated					as 
+,null						as [AvailableBalance]
+,[CreatedDate]				as [CreatedDate]	
+,[UpdatedDate]				as [UpdatedDate]	
+,[DeletedDate]				as [DeletedDate]	
+,[IsDeleted]				as [IsDeleted]	
+from dbo.[OrderTransactions]
+where IsSuccess=1
+),
+
+
+
+
+WithdrawalRequestTransactions_Data AS (
+select 
+[MerchantId]				as [MerchantId]
+,Id						    as TranxId
+,MerchantAmount			    as [Amount]
+,[TransactionTypeId]		as [TranxTypeId]
+,2							as [ModelTypeId]
+,WithdrawalRequestId		as [ModelReferenceId]
+--,calculated					as 
+,null						as [AvailableBalance]
+,[CreatedDate]				as [CreatedDate]	
+,[UpdatedDate]				as [UpdatedDate]	
+,[DeletedDate]				as [DeletedDate]	
+,[IsDeleted]				as [IsDeleted]	
+from dbo.WithdrawalRequestTransactions
+where IsSuccess=1
+)
+, All_New_Transaction_Balance as (
+select 
+*	
+,sum(case when [TranxTypeId]=1 then [Amount] else Amount*-1 end) over (partition by [MerchantId] order by  createddate) as [Balance]
+
+
+from (
+select 
+*
+from OrderTransaction_Data
+union all
+select 
+*
+from WithdrawalRequestTransactions_Data) as a )
+
+
+
+
+insert into TransactionBalance (
+[MerchantId]
+,TranxId
+,[Amount]
+,[TranxTypeId]
+,[ModelTypeId]
+,[ModelReferenceId]
+,[AvailableBalance]
+,[CreatedDate]	
+,[UpdatedDate]	
+,[DeletedDate]	
+,[IsDeleted]
+,Balance)
+select 
+ anb.[MerchantId]
+,anb.TranxId
+,anb.[Amount]
+,anb.[TranxTypeId]
+,anb.[ModelTypeId]
+,anb.[ModelReferenceId]
+,anb.[AvailableBalance]
+,anb.[CreatedDate]	
+,anb.[UpdatedDate]	
+,anb.[DeletedDate]	
+,anb.[IsDeleted]
+,anb.Balance
+from All_New_Transaction_Balance anb left join (select TranxId from dbo.TransactionBalance where ModelTypeId=2 ) as tmp2 on anb.TranxId =tmp2.TranxId
+where anb.ModelTypeId=2 and tmp2.TranxId is null
+GO
