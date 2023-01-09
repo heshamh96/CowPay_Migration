@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AA_Deployment_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{474A9A18-EADF-498E-8DB9-D004C40CD226}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{70D2508F-EA45-479F-A4D6-C1F13843A13E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -181,7 +181,6 @@
       DTS:refId="Package\Truncate_Every_Thing (First_Time_Only)"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:Disabled="True"
       DTS:DTSID="{D88B3E33-7895-4ED9-937E-0EF76D6040D1}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -265,11 +264,31 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="223.2,41.6"
+          Size="223,42"
           Id="Package\Apply Data Cleansing Activities"
           TopLeft="8.57142871739947,246.258826781145" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Fetch from Production"
+          TopLeft="31.428571963797,158.776472613061" />
+        <NodeLayout
+          Size="246,42"
+          Id="Package\Migrate Excel_Identity SRC_to_STG"
+          TopLeft="480.000008174351,309.741180219948" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Migrate Excel_Identity STG_to_TRGT"
+          TopLeft="281.142861930692,507.058829698266" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Migrate Merchants"
+          TopLeft="285.142861998811,417.552946830539" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Migrate Transactions"
+          TopLeft="120.000002043588,596.188243453477" />
         <NodeLayout
           Size="216,41.6"
           Id="Package\Prepare for the Indeiifernt Roll Out Mogration (Drop Then Create The Merchants in STG)\Create The Merchants in STG"
@@ -309,38 +328,20 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="False"
-          PanelSize="293.6,167.2"
-          Size="519.2,43.2"
+          PanelSize="519.2,167.2"
+          Size="519,43"
           Id="Package\Prepare for the Indeiifernt Roll Out Mogration (Drop Then Create The Merchants in STG)"
           TopLeft="233.142861113257,1.4210854715202E-14" />
         <NodeLayout
-          Size="183.2,41.6"
-          Id="Package\Fetch from Production"
-          TopLeft="31.428571963797,158.776472613061" />
-        <NodeLayout
-          Size="246.4,41.6"
-          Id="Package\Migrate Excel_Identity SRC_to_STG"
-          TopLeft="480.000008174351,309.741180219948" />
-        <NodeLayout
-          Size="252.8,41.6"
-          Id="Package\Migrate Excel_Identity STG_to_TRGT"
-          TopLeft="281.142861930692,507.058829698266" />
-        <NodeLayout
-          Size="166.4,41.6"
-          Id="Package\Migrate Merchants"
-          TopLeft="285.142861998811,417.552946830539" />
-        <NodeLayout
-          Size="176,41.6"
-          Id="Package\Migrate Transactions"
-          TopLeft="120.000002043588,596.188243453477" />
-        <NodeLayout
-          Size="272,41.6"
+          Size="272,42"
           Id="Package\Truncate_Every_Thing (First_Time_Only)"
           TopLeft="403.428578298919,202.164708190311" />
         <EdgeLayout
