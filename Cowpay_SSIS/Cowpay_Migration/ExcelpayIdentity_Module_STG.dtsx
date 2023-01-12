@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_STG"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{17DA5F07-6CBB-4C74-AB43-2EC806F41D62}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{7C7D5B51-88D8-4AB8-B89F-A5EEFD92603E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -427,6 +427,7 @@
           DTS:refId="Package\UserClaims STG_to_STG\Remove Spaces from USer Claims"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{93C78ACC-3625-4D7E-ADD0-07FF4B08E538}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -1965,27 +1966,27 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="319.2,41.6"
+          Size="319,42"
           Id="Package\fetch_Merchants_from_SRC_to_Staging_Merchants"
           TopLeft="440.742862816246,75.4470582744241" />
         <NodeLayout
-          Size="188,41.6"
+          Size="188,42"
           Id="Package\remove_curly_Brackets"
           TopLeft="465,255" />
         <NodeLayout
-          Size="142.4,41.6"
+          Size="142,42"
           Id="Package\Truncate STG"
           TopLeft="593.14286724402,15.9058825760152" />
         <NodeLayout
-          Size="281.6,41.6"
+          Size="282,42"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims (Merchants) STG_to_STG"
           TopLeft="43.9999997275216,21.4588229888863" />
         <NodeLayout
-          Size="284.8,41.6"
+          Size="285,42"
           Id="Package\UserClaims STG_to_STG\Merchant_Claims to STG_AspNetUserClaims"
           TopLeft="55.085721340958,88.3176533435044" />
         <NodeLayout
-          Size="238.4,41.6"
+          Size="238,42"
           Id="Package\UserClaims STG_to_STG\Remove Spaces from USer Claims"
           TopLeft="110,165" />
         <EdgeLayout
@@ -2059,16 +2060,16 @@
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="True"
-          PanelSize="384,262.4"
-          Size="384,305.6"
+          PanelSize="384,262"
+          Size="384,306"
           Id="Package\UserClaims STG_to_STG"
           TopLeft="258.857147265454,422.070593245879" />
         <NodeLayout
-          Size="188,41.6"
+          Size="188,42"
           Id="Package\UserRoles STG_to_STG"
           TopLeft="431,332" />
         <NodeLayout
-          Size="171.2,41.6"
+          Size="171,42"
           Id="Package\Users STG_To_STG"
           TopLeft="462.285720319164,193.658827072856" />
         <EdgeLayout
@@ -2239,7 +2240,7 @@
           Text="Staging_Merchants acts as our Src for Merchants"
           ParentId="Package"
           FontInfo="{assembly:Null}"
-          Size="286.4,40"
+          Size="286,40"
           Id="2af22d61-2683-4c61-8cde-8153d7359fdc"
           TopLeft="95,71" />
       </GraphLayout>
