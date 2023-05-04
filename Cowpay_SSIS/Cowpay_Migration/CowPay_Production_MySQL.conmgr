@@ -5,6 +5,10 @@
   DTS:CreationName="ODBC">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Dsn=CowPay_Production;" />
+      DTS:ConnectionString="uid=Excel;Dsn=CowPay_Production;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAy2XG3aT1C068+lR9/CtHqgAAAAACAAAAAAAQZgAAAAEAACAAAADb/bklLB3z+pMfAm8/jSsZqh2mD/ZxCkXBRfHFKOPaKQAAAAAOgAAAAAIAACAAAACJ6dg6/lK6ugcIo9DOuSYO5Fc4pH9DkttD7oAW1w/pAIAAAADSwX4uBbNMyLm7jP4A9IEOCMVZgw1eG/CiQeVE6jrWumScsqxazHWxeAmSR2/Skl5rOGRJjv3KIEivyAUh941jPp0gpM/EUS0qtQz6T43u/PZ3TbMT5ebnO8NUlavZor4YARI/ldX+8X9qdQWK80clclqin0wVn4ngQ140pAcqbUAAAAAVokBZkYEeCKc01zW74FndZnYrwHBIxj9DaYAoZrJxg8xkfq191yHSjLAnMnU4tfOKJnozBOQMak+fS1AGkKE2</DTS:Password>
+    </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

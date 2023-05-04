@@ -1,0 +1,1570 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/4/2023 11:10:13 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BI-SERVER2022"
+  DTS:CreatorName="BI-SERVER2022\Menna"
+  DTS:DTSID="{5672E5DA-5C83-4D9A-8819-11EC2E10D95C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{165DE08E-772A-4FF6-BB36-AC195C2675CB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Merchants_To_Be_Migrated"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F2F4FA98-71FF-43B0-9018-2D0DFD350BE7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Merchants_To_Be_Migrated"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Merchants_To_Be_Migrated\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Merchants_To_Be_Migrated\OLE DB Destination.Connections[OleDbConnection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Merchants_To_Be_Migrated\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Merchants_To_Be_Migrated\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Merchants_To_Be_Migrated\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Merchants_To_Be_Migrated\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Merchants_To_be_Migrated]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[parent_id]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[parent_id]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[parent_id]"
+                      name="parent_id"
+                      precision="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="50"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      length="50"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[email]"
+                      name="email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[phone]"
+                      length="20"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[phone]"
+                      name="phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[password]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[password]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[password]"
+                      name="password"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[api_token]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[api_token]"
+                      length="100"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[api_token]"
+                      name="api_token"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[remember_token]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remember_token]"
+                      length="100"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[remember_token]"
+                      name="remember_token"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[created_at]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[created_at]"
+                      name="created_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[updated_at]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[updated_at]"
+                      name="updated_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_merchant]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[is_merchant]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[is_merchant]"
+                      name="is_merchant"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_sms_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_sms_id]"
+                      length="256"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_sms_id]"
+                      name="m_sms_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_payments_notification]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_payments_notification]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_payments_notification]"
+                      name="m_payments_notification"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_orders_notification]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_orders_notification]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_orders_notification]"
+                      name="m_orders_notification"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_country_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_country_id]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_country_id]"
+                      name="m_country_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_city_id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_city_id]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_city_id]"
+                      name="m_city_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_facebook]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_facebook]"
+                      length="100"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_facebook]"
+                      name="m_facebook"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_twitter]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_twitter]"
+                      length="100"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_twitter]"
+                      name="m_twitter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_linked_in]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_linked_in]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_linked_in]"
+                      name="m_linked_in"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_instagram]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_instagram]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_instagram]"
+                      name="m_instagram"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_about]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_about]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_about]"
+                      name="m_about"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_website]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_website]"
+                      length="100"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_website]"
+                      name="m_website"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_logo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_logo]"
+                      length="1024"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_logo]"
+                      name="m_logo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_code]"
+                      length="200"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_code]"
+                      name="m_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_hash_key]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_hash_key]"
+                      length="200"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_hash_key]"
+                      name="m_hash_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_address]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_address]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_address]"
+                      name="m_address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_invoices]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_invoices]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_invoices]"
+                      name="m_invoices"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_balance]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_balance]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_balance]"
+                      name="m_balance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_available_balance]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_available_balance]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_available_balance]"
+                      name="m_available_balance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_min_payout_threshold]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_min_payout_threshold]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_min_payout_threshold]"
+                      name="m_min_payout_threshold"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_name]"
+                      length="50"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_name]"
+                      name="m_bank_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_address]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_address]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_address]"
+                      name="m_bank_address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_account_num]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_account_num]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_account_num]"
+                      name="m_bank_account_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_account_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_account_name]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_account_name]"
+                      name="m_bank_account_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_account_holder_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_account_holder_name]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_account_holder_name]"
+                      name="m_bank_account_holder_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_account_swift_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_account_swift_code]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_bank_account_swift_code]"
+                      name="m_bank_account_swift_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_callback_url]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_callback_url]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_callback_url]"
+                      name="m_callback_url"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_ipn_listener_url]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_ipn_listener_url]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_ipn_listener_url]"
+                      name="m_ipn_listener_url"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_total_received_amount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_total_received_amount]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_total_received_amount]"
+                      name="m_total_received_amount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_commission]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_commission]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_commission]"
+                      name="m_cowpay_commission"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_payatfawry_percentage_commission]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_payatfawry_percentage_commission]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_payatfawry_percentage_commission]"
+                      name="m_cowpay_payatfawry_percentage_commission"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_payatfawry_fixed_commission]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_payatfawry_fixed_commission]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_payatfawry_fixed_commission]"
+                      name="m_cowpay_payatfawry_fixed_commission"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_credit_card_percentage_commission]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_credit_card_percentage_commission]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_credit_card_percentage_commission]"
+                      name="m_cowpay_credit_card_percentage_commission"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_credit_card_fixed_commission]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_credit_card_fixed_commission]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_credit_card_fixed_commission]"
+                      name="m_cowpay_credit_card_fixed_commission"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_collect_percentage_commission]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_collect_percentage_commission]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_collect_percentage_commission]"
+                      name="m_cowpay_collect_percentage_commission"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_collect_fixed_commission]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_collect_fixed_commission]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_cowpay_collect_fixed_commission]"
+                      name="m_cowpay_collect_fixed_commission"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_commercial_registry_file]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_commercial_registry_file]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_commercial_registry_file]"
+                      name="m_commercial_registry_file"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_tax_id_file]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_tax_id_file]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_tax_id_file]"
+                      name="m_tax_id_file"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_personal_id_file]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_personal_id_file]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_personal_id_file]"
+                      name="m_personal_id_file"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_commercial_registry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_commercial_registry]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_commercial_registry]"
+                      name="m_commercial_registry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_tax_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_tax_id]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_tax_id]"
+                      name="m_tax_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_personal_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_personal_id]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_personal_id]"
+                      name="m_personal_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_total_sales_per_year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_total_sales_per_year]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_total_sales_per_year]"
+                      name="m_total_sales_per_year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_added_by]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_added_by]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_added_by]"
+                      name="m_added_by"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_added_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_added_at]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_added_at]"
+                      name="m_added_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_approved_by]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_approved_by]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_approved_by]"
+                      name="m_approved_by"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_approved_at]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_approved_at]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[m_approved_at]"
+                      name="m_approved_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[environment]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[environment]"
+                      length="10"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[environment]"
+                      name="environment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[block]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[block]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[block]"
+                      name="block"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[name_ar]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[name_ar]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[name_ar]"
+                      name="name_ar"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[category]"
+                      name="category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[mid_category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[mid_category]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[mid_category]"
+                      name="mid_category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[contract_file]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[contract_file]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[contract_file]"
+                      name="contract_file"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[authorize_signatory_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[authorize_signatory_name]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[authorize_signatory_name]"
+                      name="authorize_signatory_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[fawry_sub_merchant]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fawry_sub_merchant]"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[fawry_sub_merchant]"
+                      name="fawry_sub_merchant"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[cowpay_fees]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cowpay_fees]"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].Columns[cowpay_fees]"
+                      name="cowpay_fees"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[parent_id]"
+                      dataType="numeric"
+                      name="parent_id"
+                      precision="20" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="50"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      dataType="wstr"
+                      length="50"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[phone]"
+                      dataType="wstr"
+                      length="20"
+                      name="phone" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[password]"
+                      dataType="wstr"
+                      length="191"
+                      name="password" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[api_token]"
+                      dataType="wstr"
+                      length="100"
+                      name="api_token" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[remember_token]"
+                      dataType="wstr"
+                      length="100"
+                      name="remember_token" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp"
+                      name="created_at" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[updated_at]"
+                      dataType="dbTimeStamp"
+                      name="updated_at" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[is_merchant]"
+                      dataType="i2"
+                      name="is_merchant" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_sms_id]"
+                      dataType="wstr"
+                      length="256"
+                      name="m_sms_id" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_payments_notification]"
+                      dataType="i2"
+                      name="m_payments_notification" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_orders_notification]"
+                      dataType="i2"
+                      name="m_orders_notification" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_country_id]"
+                      dataType="i4"
+                      name="m_country_id" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_city_id]"
+                      dataType="i8"
+                      name="m_city_id" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_facebook]"
+                      dataType="wstr"
+                      length="100"
+                      name="m_facebook" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_twitter]"
+                      dataType="wstr"
+                      length="100"
+                      name="m_twitter" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_linked_in]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_linked_in" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_instagram]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_instagram" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_about]"
+                      dataType="nText"
+                      name="m_about" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_website]"
+                      dataType="wstr"
+                      length="100"
+                      name="m_website" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_logo]"
+                      dataType="wstr"
+                      length="1024"
+                      name="m_logo" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_code]"
+                      dataType="wstr"
+                      length="200"
+                      name="m_code" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_hash_key]"
+                      dataType="wstr"
+                      length="200"
+                      name="m_hash_key" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_address]"
+                      dataType="nText"
+                      name="m_address" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_invoices]"
+                      dataType="i8"
+                      name="m_invoices" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_balance]"
+                      dataType="r4"
+                      name="m_balance" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_available_balance]"
+                      dataType="r4"
+                      name="m_available_balance" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_min_payout_threshold]"
+                      dataType="r8"
+                      name="m_min_payout_threshold" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="m_bank_name" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_address]"
+                      dataType="nText"
+                      name="m_bank_address" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_account_num]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_bank_account_num" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_account_name]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_bank_account_name" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_account_holder_name]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_bank_account_holder_name" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_bank_account_swift_code]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_bank_account_swift_code" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_callback_url]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_callback_url" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_ipn_listener_url]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_ipn_listener_url" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_total_received_amount]"
+                      dataType="r8"
+                      name="m_total_received_amount" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_commission]"
+                      dataType="r8"
+                      name="m_cowpay_commission" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_payatfawry_percentage_commission]"
+                      dataType="r8"
+                      name="m_cowpay_payatfawry_percentage_commission" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_payatfawry_fixed_commission]"
+                      dataType="r8"
+                      name="m_cowpay_payatfawry_fixed_commission" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_credit_card_percentage_commission]"
+                      dataType="r8"
+                      name="m_cowpay_credit_card_percentage_commission" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_credit_card_fixed_commission]"
+                      dataType="r8"
+                      name="m_cowpay_credit_card_fixed_commission" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_collect_percentage_commission]"
+                      dataType="r8"
+                      name="m_cowpay_collect_percentage_commission" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_cowpay_collect_fixed_commission]"
+                      dataType="r8"
+                      name="m_cowpay_collect_fixed_commission" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_commercial_registry_file]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_commercial_registry_file" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_tax_id_file]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_tax_id_file" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_personal_id_file]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_personal_id_file" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_commercial_registry]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_commercial_registry" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_tax_id]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_tax_id" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_personal_id]"
+                      dataType="wstr"
+                      length="191"
+                      name="m_personal_id" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_total_sales_per_year]"
+                      dataType="r8"
+                      name="m_total_sales_per_year" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_added_by]"
+                      dataType="i8"
+                      name="m_added_by" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_added_at]"
+                      dataType="dbTimeStamp"
+                      name="m_added_at" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_approved_by]"
+                      dataType="i8"
+                      name="m_approved_by" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[m_approved_at]"
+                      dataType="dbTimeStamp"
+                      name="m_approved_at" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[environment]"
+                      dataType="wstr"
+                      length="10"
+                      name="environment" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[block]"
+                      dataType="i2"
+                      name="block" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[name_ar]"
+                      dataType="wstr"
+                      length="191"
+                      name="name_ar" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category]"
+                      dataType="wstr"
+                      length="191"
+                      name="category" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[mid_category]"
+                      dataType="wstr"
+                      length="191"
+                      name="mid_category" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[contract_file]"
+                      dataType="wstr"
+                      length="191"
+                      name="contract_file" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[authorize_signatory_name]"
+                      dataType="wstr"
+                      length="191"
+                      name="authorize_signatory_name" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[fawry_sub_merchant]"
+                      dataType="wstr"
+                      length="191"
+                      name="fawry_sub_merchant" />
+                    <externalMetadataColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cowpay_fees]"
+                      dataType="r8"
+                      name="cowpay_fees" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[parent_id]"
+                      dataType="numeric"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[parent_id]"
+                      name="parent_id"
+                      precision="20" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[email]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[email]"
+                      name="email" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[phone]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[phone]"
+                      name="phone" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[password]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[password]"
+                      name="password" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[api_token]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[api_token]"
+                      name="api_token" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remember_token]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[remember_token]"
+                      name="remember_token" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[created_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[created_at]"
+                      name="created_at" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[updated_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[updated_at]"
+                      name="updated_at" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[is_merchant]"
+                      dataType="i2"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[is_merchant]"
+                      name="is_merchant" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_sms_id]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_sms_id]"
+                      name="m_sms_id" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_payments_notification]"
+                      dataType="i2"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_payments_notification]"
+                      name="m_payments_notification" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_orders_notification]"
+                      dataType="i2"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_orders_notification]"
+                      name="m_orders_notification" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_country_id]"
+                      dataType="i4"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_country_id]"
+                      name="m_country_id" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_city_id]"
+                      dataType="i8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_city_id]"
+                      name="m_city_id" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_facebook]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_facebook]"
+                      name="m_facebook" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_twitter]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_twitter]"
+                      name="m_twitter" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_linked_in]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_linked_in]"
+                      name="m_linked_in" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_instagram]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_instagram]"
+                      name="m_instagram" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_about]"
+                      dataType="nText"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_about]"
+                      name="m_about" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_website]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_website]"
+                      name="m_website" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_logo]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_logo]"
+                      name="m_logo" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_code]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_code]"
+                      name="m_code" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_hash_key]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_hash_key]"
+                      name="m_hash_key" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_address]"
+                      dataType="nText"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_address]"
+                      name="m_address" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_invoices]"
+                      dataType="i8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_invoices]"
+                      name="m_invoices" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_balance]"
+                      dataType="r4"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_balance]"
+                      name="m_balance" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_available_balance]"
+                      dataType="r4"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_available_balance]"
+                      name="m_available_balance" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_min_payout_threshold]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_min_payout_threshold]"
+                      name="m_min_payout_threshold" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_name]"
+                      name="m_bank_name" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_address]"
+                      dataType="nText"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_address]"
+                      name="m_bank_address" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_account_num]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_account_num]"
+                      name="m_bank_account_num" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_account_name]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_account_name]"
+                      name="m_bank_account_name" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_account_holder_name]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_account_holder_name]"
+                      name="m_bank_account_holder_name" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_account_swift_code]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_bank_account_swift_code]"
+                      name="m_bank_account_swift_code" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_callback_url]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_callback_url]"
+                      name="m_callback_url" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_ipn_listener_url]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_ipn_listener_url]"
+                      name="m_ipn_listener_url" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_total_received_amount]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_total_received_amount]"
+                      name="m_total_received_amount" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_commission]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_commission]"
+                      name="m_cowpay_commission" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_payatfawry_percentage_commission]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_payatfawry_percentage_commission]"
+                      name="m_cowpay_payatfawry_percentage_commission" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_payatfawry_fixed_commission]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_payatfawry_fixed_commission]"
+                      name="m_cowpay_payatfawry_fixed_commission" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_credit_card_percentage_commission]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_credit_card_percentage_commission]"
+                      name="m_cowpay_credit_card_percentage_commission" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_credit_card_fixed_commission]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_credit_card_fixed_commission]"
+                      name="m_cowpay_credit_card_fixed_commission" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_collect_percentage_commission]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_collect_percentage_commission]"
+                      name="m_cowpay_collect_percentage_commission" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_collect_fixed_commission]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_cowpay_collect_fixed_commission]"
+                      name="m_cowpay_collect_fixed_commission" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_commercial_registry_file]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_commercial_registry_file]"
+                      name="m_commercial_registry_file" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_tax_id_file]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_tax_id_file]"
+                      name="m_tax_id_file" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_personal_id_file]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_personal_id_file]"
+                      name="m_personal_id_file" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_commercial_registry]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_commercial_registry]"
+                      name="m_commercial_registry" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_tax_id]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_tax_id]"
+                      name="m_tax_id" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_personal_id]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_personal_id]"
+                      name="m_personal_id" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_total_sales_per_year]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_total_sales_per_year]"
+                      name="m_total_sales_per_year" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_added_by]"
+                      dataType="i8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_added_by]"
+                      name="m_added_by" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_added_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_added_at]"
+                      name="m_added_at" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_approved_by]"
+                      dataType="i8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_approved_by]"
+                      name="m_approved_by" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_approved_at]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[m_approved_at]"
+                      name="m_approved_at" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[environment]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[environment]"
+                      name="environment" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[block]"
+                      dataType="i2"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[block]"
+                      name="block" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[name_ar]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[name_ar]"
+                      name="name_ar" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category]"
+                      name="category" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[mid_category]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[mid_category]"
+                      name="mid_category" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[contract_file]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[contract_file]"
+                      name="contract_file" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[authorize_signatory_name]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[authorize_signatory_name]"
+                      name="authorize_signatory_name" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fawry_sub_merchant]"
+                      dataType="wstr"
+                      length="191"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[fawry_sub_merchant]"
+                      name="fawry_sub_merchant" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cowpay_fees]"
+                      dataType="r8"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cowpay_fees]"
+                      name="cowpay_fees" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Merchants_To_Be_Migrated\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Merchants_To_Be_Migrated"
+          TopLeft="262.857147333573,22.0235297206364" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Merchants_To_Be_Migrated">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Merchants_To_Be_Migrated\OLE DB Source"
+          TopLeft="278.285719024892,51.3882360148182" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Merchants_To_Be_Migrated\OLE DB Destination"
+          TopLeft="290.285719229251,141.31764904075" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Merchants_To_Be_Migrated\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

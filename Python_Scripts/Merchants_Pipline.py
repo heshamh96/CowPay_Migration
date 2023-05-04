@@ -23,6 +23,14 @@ def fix_Dict(comessions):
             arr.append(element)
     return arr
 
+
+def fix_Url(url_data):
+    arr = []
+    for element in url_data :
+        if element['SocialUrl'] != None:
+           arr.append(element) 
+    return arr
+
 class create_dict(dict): 
   
     # __init__ function 
@@ -53,7 +61,7 @@ for row in result:
      "id": "",
         "merchantCode": '' if row[1] is None else row[1],
         "StatusTypeId": '' if row[2] is None else row[2],
-        "moreSetting": {"callbackURL":'' if row[4] is None else row[4] ,"allowPaymentNotify":False if row[5] is 0 else True,"allowOrderNotify":False if row[6] is 0 else True},
+        "moreSetting": {"NotificationSetting":{"callbackURL":'' if row[4] is None else row[4] ,"allowPaymentNotify":False if row[5] is 0 else True,"allowOrderNotify":False if row[6] is 0 else True, "SMSSetting":{"EnableSendSMS":False,"QuotaSMS":0,"ConsumedSMS":0,"RemainingSMS":0}}},
         "limitationNBlocking":[],
         "financialConfig":{"comessions":fix_Dict([{"payMethodType":2,"fixedVal":row[8],"percentage":row[7],"isEnabled":True},
                                          {"payMethodType":1,"fixedVal":row[10],"percentage":row[9],"isEnabled":True},
@@ -63,7 +71,7 @@ for row in result:
                                          {"payMethodType":5,"fixedVal":row[18],"percentage":row[17],"isEnabled":True},
                                          {"payMethodType":7,"fixedVal":row[20],"percentage":row[19],"isEnabled":True}
                                         ]),
-        "autoWithdrawal":{"isEnabled":False,"peroidType":"","monthDay":"","daysValue":"","day":""},
+        "autoWithdrawal":{"isEnabled":False,"peroidType":"Days","peroidValue":"0"},
         "b2b":{"isEnabled":False,"fixedVal":"","percentage":""},
         "chashout":{"isEnabled":False,"values":[]}},
          "balanceConfiguration":{"AvailableBalanceThresholdDays":row[21]}  }
@@ -94,6 +102,12 @@ s_json =pd.DataFrame(settings_dict)
 #display(df.hide_index())
 #df2
 
+#def fix_Url(url_data):
+#    arr = []
+#    for element in url_data :
+#        if element['SocialUrl'] == None:
+#           arr.append(element) 
+#    return arr
 
 select_Users = """SELECT id,m_facebook,m_twitter,m_linked_in,m_instagram,m_website FROM CowPay_Production_Simulation.dbo.users where is_merchant=1"""
 cursor = c.cnxn.cursor()
@@ -102,7 +116,7 @@ result = cursor.fetchall()
 Urls_dict={'id':[],'Urls_settings':[]}
 for row in result:
     url_id=row[0]
-    url_data = [
+    url_data = fix_Url( [
       {      
     
         "SocialUrl": row[1],
@@ -128,7 +142,7 @@ for row in result:
         "SocialType": {"id": "4", "Name": "Website","Icon":""},
     }
       
-        ]
+        ])
   
     Urls_dict['id'].append(url_id)
     Urls_dict['Urls_settings'].append(json.dumps(url_data).replace('null', '[]'))

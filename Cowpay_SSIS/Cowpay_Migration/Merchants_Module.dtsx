@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="97"
-  DTS:VersionGUID="{40E1AC5C-E09C-4E3D-978D-4B33BFD44926}">
+  DTS:VersionBuild="100"
+  DTS:VersionGUID="{1E3B9BC9-4B98-42F1-8AC1-F170102E8232}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2126,6 +2126,42 @@ where mr.is_migrated=0</property>
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\TRGT_Loading\Create_Merchants_Constraints"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{FA6252F0-5B65-4B34-95E4-2D42E93A9F9A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create_Merchants_Constraints"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
+              SQLTask:SqlStatementSource="&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_Cities] FOREIGN KEY([CityId])&#xA;REFERENCES [dbo].[Cities] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_Cities]&#xA;GO&#xA;&#xA;&#xA;--===========================&#xA;&#xA;&#xA;--USE [MerchantManagement_Stage]&#xA;--GO&#xA;&#xA;--ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_Countries] FOREIGN KEY([CountryId])&#xA;--REFERENCES [dbo].[Countries] ([Id])&#xA;--GO&#xA;&#xA;--ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_Countries]&#xA;--GO&#xA;&#xA;&#xA;--============================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_StatusTypes] FOREIGN KEY([StatusTypeId])&#xA;REFERENCES [dbo].[StatusTypes] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_StatusTypes]&#xA;GO&#xA;&#xA;--========================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks]  WITH CHECK ADD  CONSTRAINT [FK_MerchantSocialLinks_Merchants] FOREIGN KEY([MerchantId])&#xA;REFERENCES [dbo].[Merchants] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks] CHECK CONSTRAINT [FK_MerchantSocialLinks_Merchants]&#xA;GO&#xA;&#xA;--===========================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments]  WITH CHECK ADD  CONSTRAINT [FK_MerchantAttachments_Merchants] FOREIGN KEY([MerchantId])&#xA;REFERENCES [dbo].[Merchants] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments] CHECK CONSTRAINT [FK_MerchantAttachments_Merchants]&#xA;GO&#xA;&#xA;&#xA;---==========================================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants]  WITH CHECK ADD  CONSTRAINT [FK_Merchants_StatusTypes_StatusTypeId1] FOREIGN KEY([StatusTypeId1])&#xA;REFERENCES [dbo].[StatusTypes] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] CHECK CONSTRAINT [FK_Merchants_StatusTypes_StatusTypeId1]&#xA;GO&#xA;&#xA;---============================================================&#xA;&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Cities]  WITH CHECK ADD  CONSTRAINT [FK_Cities_Countries] FOREIGN KEY([CountryId])&#xA;REFERENCES [dbo].[Countries] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Cities] CHECK CONSTRAINT [FK_Cities_Countries]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\TRGT_Loading\Drop_Merchants_Constraints"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{61B372C7-85B8-4BA3-93DC-2531027ECBE1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Drop_Merchants_Constraints"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{548222E3-535D-4CEE-8B01-802402102276}"
+              SQLTask:SqlStatementSource="&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_Cities]&#xA;GO&#xA;&#xA;--=====================================================================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Cities]DROP CONSTRAINT [FK_Cities_Countries]&#xA;GO&#xA;&#xA;&#xA;---======================================&#xA;--USE [MerchantManagement_Stage]&#xA;--GO&#xA;&#xA;--ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_Countries]&#xA;--GO&#xA;&#xA;&#xA;--========================&#xA;&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_StatusTypes]&#xA;GO&#xA;&#xA;&#xA;--==================================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantSocialLinks] DROP CONSTRAINT [FK_MerchantSocialLinks_Merchants]&#xA;GO&#xA;&#xA;&#xA;--======================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[MerchantAttachments] DROP CONSTRAINT [FK_MerchantAttachments_Merchants]&#xA;GO&#xA;&#xA;--============================================&#xA;&#xA;USE [MerchantManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Merchants] DROP CONSTRAINT [FK_Merchants_StatusTypes_StatusTypeId1]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -2908,12 +2944,6 @@ where mr.is_migrated=0</property>
                           externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[Email]" />
                         <inputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[CountryId]"
-                          cachedDataType="i2"
-                          cachedName="CountryId"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[CountryId]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[CountryId]" />
-                        <inputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[CityId]"
                           cachedDataType="i2"
                           cachedName="CityId"
@@ -3061,10 +3091,6 @@ where mr.is_migrated=0</property>
                           length="100"
                           name="Email" />
                         <externalMetadataColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[CountryId]"
-                          dataType="i2"
-                          name="CountryId" />
-                        <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
                           dataType="i2"
                           name="CityId" />
@@ -3143,10 +3169,16 @@ where mr.is_migrated=0</property>
                           name="TermsAndConditions" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[HashKey]"
-                          codePage="1256"
-                          dataType="str"
-                          length="500"
+                          dataType="nText"
                           name="HashKey" />
+                        <externalMetadataColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[NotificationSettings]"
+                          dataType="nText"
+                          name="NotificationSettings" />
+                        <externalMetadataColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[StatusTypeId1]"
+                          dataType="i2"
+                          name="StatusTypeId1" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -3196,6 +3228,22 @@ where mr.is_migrated=0</property>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\TRGT_Loading.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{B85E07B7-B53F-4389-9A3F-C202A6FF5DBA}"
+          DTS:From="Package\TRGT_Loading\Drop_Merchants_Constraints"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\TRGT_Loading\Stg to Trgt Merchants" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\TRGT_Loading.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{B357BA06-792E-4F81-AE2A-7FE0F832AD19}"
+          DTS:From="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\TRGT_Loading\Create_Merchants_Constraints" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -3228,7 +3276,7 @@ where mr.is_migrated=0</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="351.2,41.6"
           Id="Package\Execute Process Task"
@@ -3366,11 +3414,75 @@ where mr.is_migrated=0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="213.6,41.6"
+          Id="Package\TRGT_Loading\Drop_Merchants_Constraints"
+          TopLeft="65.0285766640489,52.8470601705531" />
+        <EdgeLayout
+          Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 1]"
+          TopLeft="171.828576664049,94.4470601705531">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-57.7714358699566,47.7294157971979"
+              Start="0,0"
+              End="-57.7714358699566,40.2294157971979">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.864707898599" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.864707898599"
+                    Point2="0,23.864707898599"
+                    Point3="-4,23.864707898599" />
+                  <mssgle:LineSegment
+                    End="-53.7714358699566,23.864707898599" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-53.7714358699566,23.864707898599"
+                    Point2="-57.7714358699566,23.864707898599"
+                    Point3="-57.7714358699566,27.864707898599" />
+                  <mssgle:LineSegment
+                    End="-57.7714358699566,40.2294157971979" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="221.6,41.6"
+          Id="Package\TRGT_Loading\Create_Merchants_Constraints"
+          TopLeft="68.9142909886886,302.023532054334" />
+        <EdgeLayout
+          Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 2]"
+          TopLeft="175.914288604503,270.870592370743">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.1529396835905"
+              Start="0,0"
+              End="0,23.6529396835905">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.6529396835905" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="False"
-          PanelSize="331.2,336.8"
-          Size="171.2,43.2"
+          IsExpanded="True"
+          PanelSize="331.2,398.4"
+          Size="331.2,441.6"
           Id="Package\TRGT_Loading"
           TopLeft="333.02857639157,221.88235431394" />
         <EdgeLayout
@@ -3413,26 +3525,26 @@ where mr.is_migrated=0</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-423.831747549841,50.705881992592"
+              EndConnector="-263.831747549841,249.905881992592"
               Start="0,0"
-              End="-416.331747549841,50.705881992592">
+              End="-256.331747549841,249.905881992592">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-207.91587377492,0" />
+                    End="-127.91587377492,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-207.91587377492,0"
-                    Point2="-211.91587377492,0"
-                    Point3="-211.91587377492,4" />
+                    Point1="-127.91587377492,0"
+                    Point2="-131.91587377492,0"
+                    Point3="-131.91587377492,4" />
                   <mssgle:LineSegment
-                    End="-211.91587377492,46.705881992592" />
+                    End="-131.91587377492,245.905881992592" />
                   <mssgle:CubicBezierSegment
-                    Point1="-211.91587377492,46.705881992592"
-                    Point2="-211.91587377492,50.705881992592"
-                    Point3="-215.91587377492,50.705881992592" />
+                    Point1="-131.91587377492,245.905881992592"
+                    Point2="-131.91587377492,249.905881992592"
+                    Point3="-135.91587377492,249.905881992592" />
                   <mssgle:LineSegment
-                    End="-416.331747549841,50.705881992592" />
+                    End="-256.331747549841,249.905881992592" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3448,7 +3560,7 @@ where mr.is_migrated=0</property>
     design-time-name="Package\Staging_Activities\Merchats prep Stg to Stg">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="184.8,41.6"
           Id="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT"
@@ -3476,7 +3588,9 @@ where mr.is_migrated=0</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3512,7 +3626,7 @@ where mr.is_migrated=0</property>
     design-time-name="Package\TRGT_Loading\Stg to Trgt Merchants">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants"
@@ -3540,7 +3654,9 @@ where mr.is_migrated=0</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

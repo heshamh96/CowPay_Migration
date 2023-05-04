@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_STG"
   DTS:PackageType="5"
-  DTS:VersionBuild="78"
-  DTS:VersionGUID="{1C22C2D4-9D1B-40F0-9557-021691C472D1}">
+  DTS:VersionBuild="80"
+  DTS:VersionGUID="{52B83E5B-28E2-44B1-8E40-28B4EF895B47}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1172,8 +1172,7 @@
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[EmailConfirmed]" />
                     <inputColumn
                       refId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].Columns[PasswordHash]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
+                      cachedDataType="i4"
                       cachedName="PasswordHash"
                       externalMetadataColumnId="Package\Users STG_To_STG\Users.Inputs[OLE DB Destination Input].ExternalColumns[PasswordHash]"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[PasswordHash]" />
@@ -1518,11 +1517,10 @@ where is_migrated=0</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[PasswordHash]"
-                      dataType="wstr"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[PasswordHash]"
-                      length="50"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[PasswordHash]"
                       name="PasswordHash"
                       truncationRowDisposition="FailComponent" />
@@ -1578,10 +1576,12 @@ where is_migrated=0</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[LockoutEnd]"
-                      dataType="i4"
+                      codePage="1256"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[LockoutEnd]"
+                      length="31"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].Columns[LockoutEnd]"
                       name="LockoutEnd"
                       truncationRowDisposition="FailComponent" />
@@ -1685,8 +1685,7 @@ where is_migrated=0</property>
                       name="EmailConfirmed" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[PasswordHash]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="i4"
                       name="PasswordHash" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[SecurityStamp]"
@@ -1715,7 +1714,9 @@ where is_migrated=0</property>
                       name="TwoFactorEnabled" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[LockoutEnd]"
-                      dataType="i4"
+                      codePage="1256"
+                      dataType="str"
+                      length="31"
                       name="LockoutEnd" />
                     <externalMetadataColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Output].ExternalColumns[LockoutEnabled]"
@@ -1811,8 +1812,7 @@ where is_migrated=0</property>
                       name="EmailConfirmed" />
                     <outputColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Error Output].Columns[PasswordHash]"
-                      dataType="wstr"
-                      length="50"
+                      dataType="i4"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Error Output].Columns[PasswordHash]"
                       name="PasswordHash" />
                     <outputColumn
@@ -1847,7 +1847,9 @@ where is_migrated=0</property>
                       name="TwoFactorEnabled" />
                     <outputColumn
                       refId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Error Output].Columns[LockoutEnd]"
-                      dataType="i4"
+                      codePage="1256"
+                      dataType="str"
+                      length="31"
                       lineageId="Package\Users STG_To_STG\Users_SRC.Outputs[OLE DB Source Error Output].Columns[LockoutEnd]"
                       name="LockoutEnd" />
                     <outputColumn
@@ -2060,7 +2062,7 @@ where is_migrated=0</property>
           HeaderHeight="43.2"
           IsExpanded="True"
           PanelSize="384,262.4"
-          Size="384,304.8"
+          Size="384,305.6"
           Id="Package\UserClaims STG_to_STG"
           TopLeft="258.857147265454,422.070593245879" />
         <NodeLayout
@@ -2197,30 +2199,30 @@ where is_migrated=0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="525,374">
+          TopLeft="525,373.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-74.142852734546,48.0705932458791"
+              EndConnector="-74.142852734546,48.470593245879"
               Start="0,0"
-              End="-74.142852734546,40.5705932458791">
+              End="-74.142852734546,40.970593245879">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.0352966229395" />
+                    End="0,20.2352966229395" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.0352966229395"
-                    Point2="0,24.0352966229395"
-                    Point3="-4,24.0352966229395" />
+                    Point1="0,20.2352966229395"
+                    Point2="0,24.2352966229395"
+                    Point3="-4,24.2352966229395" />
                   <mssgle:LineSegment
-                    End="-70.142852734546,24.0352966229395" />
+                    End="-70.142852734546,24.2352966229395" />
                   <mssgle:CubicBezierSegment
-                    Point1="-70.142852734546,24.0352966229395"
-                    Point2="-74.142852734546,24.0352966229395"
-                    Point3="-74.142852734546,28.0352966229395" />
+                    Point1="-70.142852734546,24.2352966229395"
+                    Point2="-74.142852734546,24.2352966229395"
+                    Point3="-74.142852734546,28.2352966229395" />
                   <mssgle:LineSegment
-                    End="-74.142852734546,40.5705932458791" />
+                    End="-74.142852734546,40.970593245879" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
