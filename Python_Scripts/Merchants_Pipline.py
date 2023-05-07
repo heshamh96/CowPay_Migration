@@ -72,7 +72,7 @@ for row in result:
                                          {"payMethodType":7,"fixedVal":row[20],"percentage":row[19],"isEnabled":True}
                                         ]),
         "autoWithdrawal":{"isEnabled":False,"peroidType":"Days","peroidValue":"0"},
-        "b2b":{"isEnabled":False,"fixedVal":"","percentage":""},
+        "b2b":{"isEnabled":False,"fixedVal":0,"percentage":0},
         "chashout":{"isEnabled":False,"values":[]}},
          "balanceConfiguration":{"AvailableBalanceThresholdDays":row[21]}  }
     settings_dict['id'].append(settings_id)

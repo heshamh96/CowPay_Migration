@@ -1,0 +1,744 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/7/2023 12:04:27 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BI-SERVER2022"
+  DTS:CreatorName="BI-SERVER2022\Menna"
+  DTS:DTSID="{E88327AB-A0D3-41AF-8388-023F1CFA7689}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PaymentIntegrationManagement_Module"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{AA24D172-EAB2-4DF9-9603-DEE9B7BD465C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create Default Iframe"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{59F00790-B14F-42CF-A57F-F6DB8A1ACAE4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Default Iframe"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+          SQLTask:SqlStatementSource="INSERT INTO PaymentIntegrationManagement_Stage.dbo.IFrames &#xA;SELECT Id,MerchantCode, NEWID(),'default iframe','this is default iframe',NULL, CreatedDate,NULL,NULL,0,1&#xA;FROM [Staging_Migration].dbo.Merchants M&#xA;WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagement_Stage.dbo.IFrames where IsDefault=1) --and [old_code]='qJw60A7uR1Ij'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\IFrames STG_TRGT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{ADAA3284-911A-4A29-B55C-E5EDD01052F3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="IFrames STG_TRGT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\IFrames STG_TRGT\IFrames STG"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="IFrames STG"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[IFrames]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO PaymentIntegrationManagement_Stage.dbo.IFrames 
+SELECT Id,MerchantCode, NEWID(),'default iframe','this is default iframe',NULL, CreatedDate,NULL,NULL,0,1
+FROM [Staging_Migration].dbo.Merchants M
+WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagement_Stage.dbo.IFrames where IsDefault=1) and MerchantCode='76'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\IFrames STG_TRGT\IFrames STG.Connections[OleDbConnection]"
+                  connectionManagerID="{6A74C615-7150-44A0-97E3-E20E8299383D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Staging_Migration]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[MerchantId]"
+                      name="MerchantId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[MerchantCode]"
+                      name="MerchantCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[FrameCode]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[FrameCode]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[FrameCode]"
+                      name="FrameCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      length="250"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[StyleConfig]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[StyleConfig]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[StyleConfig]"
+                      name="StyleConfig"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[IsDefault]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[IsDefault]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[IsDefault]"
+                      name="IsDefault"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[FrameCode]"
+                      dataType="guid"
+                      name="FrameCode" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="250"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[StyleConfig]"
+                      dataType="nText"
+                      name="StyleConfig" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="CreatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="UpdatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp2"
+                      name="DeletedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].ExternalColumns[IsDefault]"
+                      dataType="bool"
+                      name="IsDefault" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      dataType="i8"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[MerchantId]"
+                      name="MerchantId" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      dataType="guid"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[MerchantCode]"
+                      name="MerchantCode" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[FrameCode]"
+                      dataType="guid"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[FrameCode]"
+                      name="FrameCode" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[StyleConfig]"
+                      dataType="nText"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[StyleConfig]"
+                      name="StyleConfig" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
+                      name="UpdatedDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[DeletedDate]"
+                      name="DeletedDate"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
+                      name="IsDeleted" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[IsDefault]"
+                      dataType="bool"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[IsDefault]"
+                      name="IsDefault" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\IFrames STG_TRGT\IFrames TRGT"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="IFrames TRGT"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[IFrames]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\IFrames STG_TRGT\IFrames TRGT.Connections[OleDbConnection]"
+                  connectionManagerID="{6566AD5C-5B3C-4EF7-B903-65D5E70BA762}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PaymentIntegrationManagement_Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[MerchantId]"
+                      cachedDataType="i8"
+                      cachedName="MerchantId"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[MerchantId]" />
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[MerchantCode]"
+                      cachedDataType="guid"
+                      cachedName="MerchantCode"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[MerchantCode]" />
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[FrameCode]"
+                      cachedDataType="guid"
+                      cachedName="FrameCode"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[FrameCode]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[FrameCode]" />
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[StyleConfig]"
+                      cachedDataType="nText"
+                      cachedName="StyleConfig"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[StyleConfig]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[StyleConfig]" />
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="CreatedDate"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="UpdatedDate"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[UpdatedDate]" />
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[DeletedDate]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="DeletedDate"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[DeletedDate]" />
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].Columns[IsDefault]"
+                      cachedDataType="bool"
+                      cachedName="IsDefault"
+                      externalMetadataColumnId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDefault]"
+                      lineageId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output].Columns[IsDefault]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantId]"
+                      dataType="i8"
+                      name="MerchantId" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MerchantCode]"
+                      dataType="guid"
+                      name="MerchantCode" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[FrameCode]"
+                      dataType="guid"
+                      name="FrameCode" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="250"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[StyleConfig]"
+                      dataType="nText"
+                      name="StyleConfig" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="CreatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="UpdatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[DeletedDate]"
+                      dataType="dbTimeStamp2"
+                      name="DeletedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input].ExternalColumns[IsDefault]"
+                      dataType="bool"
+                      name="IsDefault" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\IFrames STG_TRGT\IFrames TRGT.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IFrames STG_TRGT\IFrames TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IFrames STG_TRGT\IFrames TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IFrames STG_TRGT\IFrames TRGT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\IFrames STG_TRGT.Paths[OLE DB Source Output]"
+              endId="Package\IFrames STG_TRGT\IFrames TRGT.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\IFrames STG_TRGT\IFrames STG.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D4A4E116-3880-4F43-AA9F-0E210FDCB28C}"
+      DTS:From="Package\Create Default Iframe"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\IFrames STG_TRGT" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\IFrames STG_TRGT"
+          TopLeft="269.714290307493,141.929413755212" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Create Default Iframe"
+          TopLeft="294.85714787853,28.7529415797197" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="385.25714787853,70.3529415797197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29.9428575710375,71.5764721754926"
+              Start="0,0"
+              End="-29.9428575710375,64.0764721754926">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7882360877463" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.7882360877463"
+                    Point2="0,35.7882360877463"
+                    Point3="-4,35.7882360877463" />
+                  <mssgle:LineSegment
+                    End="-25.9428575710375,35.7882360877463" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25.9428575710375,35.7882360877463"
+                    Point2="-29.9428575710375,35.7882360877463"
+                    Point3="-29.9428575710375,39.7882360877463" />
+                  <mssgle:LineSegment
+                    End="-29.9428575710375,64.0764721754926" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\IFrames STG_TRGT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\IFrames STG_TRGT\IFrames STG"
+          TopLeft="296.57143362201,39.7647064400379" />
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\IFrames STG_TRGT\IFrames TRGT"
+          TopLeft="296.57143362201,142.541178469674" />
+        <EdgeLayout
+          Id="Package\IFrames STG_TRGT.Paths[OLE DB Source Output]"
+          TopLeft="367.97143362201,81.3647064400379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.1764720296365"
+              Start="0,0"
+              End="0,53.6764720296365">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.6764720296365" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\IFrames STG_TRGT\IFrames STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\IFrames STG_TRGT\IFrames TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

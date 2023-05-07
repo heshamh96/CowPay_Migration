@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Initiation_of_InDifferent_Rollout"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{9EEC4A85-A48B-4F71-8AFC-6D7E1BE6E19F}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{B8B142B6-D065-42C6-82B8-8819D18E3EBE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -203,7 +203,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{001D93D3-B1B1-4DA8-B011-E71BC2F4A7B5}"
-              SQLTask:SqlStatementSource="&#xA;&#xA;--USE [TransactionManagement_Stage]&#xA;--GO&#xA;&#xA;--ALTER TABLE [dbo].[BankAccounts]  WITH CHECK ADD  CONSTRAINT [FK__BankAccou__BankI__30C33EC3] FOREIGN KEY([BankId])&#xA;--REFERENCES [dbo].[Banks] ([Id])&#xA;--GO&#xA;&#xA;--ALTER TABLE [dbo].[BankAccounts] CHECK CONSTRAINT [FK__BankAccou__BankI__30C33EC3]&#xA;--GO&#xA;&#xA;&#xA;----==========================&#xA;&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[BankAccounts]  WITH CHECK ADD  CONSTRAINT [FK_BankAccounts_Banks_BankId] FOREIGN KEY([BankId])&#xA;REFERENCES [dbo].[Banks] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[BankAccounts] CHECK CONSTRAINT [FK_BankAccounts_Banks_BankId]&#xA;GO&#xA;&#xA;----===========================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Customers]  WITH CHECK ADD  CONSTRAINT [FK_Customers_CardMetaData_CardMetaDataId] FOREIGN KEY([CardMetaDataId])&#xA;REFERENCES [dbo].[CardMetaData] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Customers] CHECK CONSTRAINT [FK_Customers_CardMetaData_CardMetaDataId]&#xA;GO&#xA;&#xA;----=====================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_Customers_CustomerId] FOREIGN KEY([CustomerId])&#xA;REFERENCES [dbo].[Customers] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_Customers_CustomerId]&#xA;GO&#xA;&#xA;&#xA;&#xA;----========================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests]  WITH CHECK ADD  CONSTRAINT [FK_WithdrawalRequests_AccountTypes_AccountTypeId] FOREIGN KEY([AccountTypeId])&#xA;REFERENCES [dbo].[AccountTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests] CHECK CONSTRAINT [FK_WithdrawalRequests_AccountTypes_AccountTypeId]&#xA;GO&#xA;----==========================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests]  WITH CHECK ADD  CONSTRAINT [FK_WithdrawalRequests_StatusTypes_Status] FOREIGN KEY([Status])&#xA;REFERENCES [dbo].[StatusTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests] CHECK CONSTRAINT [FK_WithdrawalRequests_StatusTypes_Status]&#xA;GO&#xA;&#xA;-----======================================================================&#xA;&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests]  WITH CHECK ADD  CONSTRAINT [FK_WithdrawalRequests_WithdrawalTypes_WithdrawalTypeId] FOREIGN KEY([WithdrawalTypeId])&#xA;REFERENCES [dbo].[WithdrawalTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests] CHECK CONSTRAINT [FK_WithdrawalRequests_WithdrawalTypes_WithdrawalTypeId]&#xA;GO&#xA;&#xA;-----======================================================================&#xA;&#xA;&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequestTransactions]  WITH CHECK ADD  CONSTRAINT [FK_WithdrawalRequestTransactions_WithdrawalRequests_WithdrawalRequestId] FOREIGN KEY([WithdrawalRequestId])&#xA;REFERENCES [dbo].[WithdrawalRequests] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequestTransactions] CHECK CONSTRAINT [FK_WithdrawalRequestTransactions_WithdrawalRequests_WithdrawalRequestId]&#xA;GO&#xA;&#xA;---=========================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta]  WITH CHECK ADD  CONSTRAINT [FK_OrderMeta_ChannelTypes_ChannelTypeId] FOREIGN KEY([ChannelTypeId])&#xA;REFERENCES [dbo].[ChannelTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta] CHECK CONSTRAINT [FK_OrderMeta_ChannelTypes_ChannelTypeId]&#xA;GO&#xA;&#xA;---=======================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta]  WITH CHECK ADD  CONSTRAINT [FK_OrderMeta_PaymentMethodTypes_PaymentMethodTypeId] FOREIGN KEY([PaymentMethodTypeId])&#xA;REFERENCES [dbo].[PaymentMethodTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta] CHECK CONSTRAINT [FK_OrderMeta_PaymentMethodTypes_PaymentMethodTypeId]&#xA;GO&#xA;--=======================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta]  WITH CHECK ADD  CONSTRAINT [FK_OrderMeta_PGWTypes_PGWTypeId] FOREIGN KEY([PGWTypeId])&#xA;REFERENCES [dbo].[PGWTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta] CHECK CONSTRAINT [FK_OrderMeta_PGWTypes_PGWTypeId]&#xA;GO&#xA;&#xA;--===================================================&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_OrderMeta_OrderMetaId] FOREIGN KEY([OrderMetaId])&#xA;REFERENCES [dbo].[OrderMeta] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_OrderMeta_OrderMetaId]&#xA;GO&#xA;-----------=====================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderTransactions]  WITH CHECK ADD  CONSTRAINT [FK_OrderTransactions_Orders_OrderId] FOREIGN KEY([OrderId])&#xA;REFERENCES [dbo].[Orders] ([Id])&#xA;--ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderTransactions] CHECK CONSTRAINT [FK_OrderTransactions_Orders_OrderId]&#xA;GO&#xA;&#xA;&#xA;----=================================================================&#xA;&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequestTransactions]  WITH CHECK ADD  CONSTRAINT [FK_WithdrawalRequestTransactions_WithdrawalRequests_WithdrawalRequestId] FOREIGN KEY([WithdrawalRequestId])&#xA;REFERENCES [dbo].[WithdrawalRequests] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequestTransactions] CHECK CONSTRAINT [FK_WithdrawalRequestTransactions_WithdrawalRequests_WithdrawalRequestId]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="&#xA;&#xA;--USE [TransactionManagement_Stage]&#xA;--GO&#xA;&#xA;--ALTER TABLE [dbo].[BankAccounts]  WITH CHECK ADD  CONSTRAINT [FK__BankAccou__BankI__30C33EC3] FOREIGN KEY([BankId])&#xA;--REFERENCES [dbo].[Banks] ([Id])&#xA;--GO&#xA;&#xA;--ALTER TABLE [dbo].[BankAccounts] CHECK CONSTRAINT [FK__BankAccou__BankI__30C33EC3]&#xA;--GO&#xA;&#xA;&#xA;----==========================&#xA;&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[BankAccounts]  WITH CHECK ADD  CONSTRAINT [FK_BankAccounts_Banks_BankId] FOREIGN KEY([BankId])&#xA;REFERENCES [dbo].[Banks] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[BankAccounts] CHECK CONSTRAINT [FK_BankAccounts_Banks_BankId]&#xA;GO&#xA;&#xA;----===========================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Customers]  WITH CHECK ADD  CONSTRAINT [FK_Customers_CardMetaData_CardMetaDataId] FOREIGN KEY([CardMetaDataId])&#xA;REFERENCES [dbo].[CardMetaData] ([Id])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Customers] CHECK CONSTRAINT [FK_Customers_CardMetaData_CardMetaDataId]&#xA;GO&#xA;&#xA;----=====================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_Customers_CustomerId] FOREIGN KEY([CustomerId])&#xA;REFERENCES [dbo].[Customers] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_Customers_CustomerId]&#xA;GO&#xA;&#xA;&#xA;&#xA;----========================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests]  WITH CHECK ADD  CONSTRAINT [FK_WithdrawalRequests_AccountTypes_AccountTypeId] FOREIGN KEY([AccountTypeId])&#xA;REFERENCES [dbo].[AccountTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests] CHECK CONSTRAINT [FK_WithdrawalRequests_AccountTypes_AccountTypeId]&#xA;GO&#xA;----==========================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests]  WITH CHECK ADD  CONSTRAINT [FK_WithdrawalRequests_StatusTypes_Status] FOREIGN KEY([Status])&#xA;REFERENCES [dbo].[StatusTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests] CHECK CONSTRAINT [FK_WithdrawalRequests_StatusTypes_Status]&#xA;GO&#xA;&#xA;-----======================================================================&#xA;&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests]  WITH CHECK ADD  CONSTRAINT [FK_WithdrawalRequests_WithdrawalTypes_WithdrawalTypeId] FOREIGN KEY([WithdrawalTypeId])&#xA;REFERENCES [dbo].[WithdrawalTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequests] CHECK CONSTRAINT [FK_WithdrawalRequests_WithdrawalTypes_WithdrawalTypeId]&#xA;GO&#xA;&#xA;&#xA;&#xA;---=========================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta]  WITH CHECK ADD  CONSTRAINT [FK_OrderMeta_ChannelTypes_ChannelTypeId] FOREIGN KEY([ChannelTypeId])&#xA;REFERENCES [dbo].[ChannelTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta] CHECK CONSTRAINT [FK_OrderMeta_ChannelTypes_ChannelTypeId]&#xA;GO&#xA;&#xA;---=======================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta]  WITH CHECK ADD  CONSTRAINT [FK_OrderMeta_PaymentMethodTypes_PaymentMethodTypeId] FOREIGN KEY([PaymentMethodTypeId])&#xA;REFERENCES [dbo].[PaymentMethodTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta] CHECK CONSTRAINT [FK_OrderMeta_PaymentMethodTypes_PaymentMethodTypeId]&#xA;GO&#xA;--=======================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta]  WITH CHECK ADD  CONSTRAINT [FK_OrderMeta_PGWTypes_PGWTypeId] FOREIGN KEY([PGWTypeId])&#xA;REFERENCES [dbo].[PGWTypes] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderMeta] CHECK CONSTRAINT [FK_OrderMeta_PGWTypes_PGWTypeId]&#xA;GO&#xA;&#xA;--===================================================&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_OrderMeta_OrderMetaId] FOREIGN KEY([OrderMetaId])&#xA;REFERENCES [dbo].[OrderMeta] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_OrderMeta_OrderMetaId]&#xA;GO&#xA;-----------=====================================================================&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderTransactions]  WITH CHECK ADD  CONSTRAINT [FK_OrderTransactions_Orders_OrderId] FOREIGN KEY([OrderId])&#xA;REFERENCES [dbo].[Orders] ([Id])&#xA;--ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[OrderTransactions] CHECK CONSTRAINT [FK_OrderTransactions_Orders_OrderId]&#xA;GO&#xA;&#xA;&#xA;----=================================================================&#xA;&#xA;&#xA;USE [TransactionManagement_Stage]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequestTransactions]  WITH CHECK ADD  CONSTRAINT [FK_WithdrawalRequestTransactions_WithdrawalRequests_WithdrawalRequestId] FOREIGN KEY([WithdrawalRequestId])&#xA;REFERENCES [dbo].[WithdrawalRequests] ([Id])&#xA;ON DELETE CASCADE&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[WithdrawalRequestTransactions] CHECK CONSTRAINT [FK_WithdrawalRequestTransactions_WithdrawalRequests_WithdrawalRequestId]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -703,7 +703,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="216.8,41.6"
           Id="Package\Truncate Merchant_Management_DB (TRGT)\Create_Merchant_Constraints"
@@ -747,7 +747,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -769,7 +771,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -822,7 +826,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -856,7 +862,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -867,7 +875,7 @@
           Id="Package\Truncate The Excel_Identity_DB (TRGT)"
           TopLeft="179.428574484222,208.000002917121" />
         <NodeLayout
-          Size="185.6,41.6"
+          Size="186.4,41.6"
           Id="Package\Truncate The TransactionManagement_DB (TRGT)\Create The Constraints"
           TopLeft="70.0714296710735,213.270593245879" />
         <NodeLayout
@@ -952,18 +960,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Truncate The TransactionManagement_DB (TRGT).PrecedenceConstraints[Constraint 2]"
-          TopLeft="165.785714835537,175.294122966516">
+          TopLeft="165.985714835537,175.294122966516">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37.9764702793636"
+              EndConnector="0,37.976470279363"
               Start="0,0"
-              End="0,30.4764702793636">
+              End="0,30.476470279363">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.4764702793636" />
+                    End="0,30.476470279363" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

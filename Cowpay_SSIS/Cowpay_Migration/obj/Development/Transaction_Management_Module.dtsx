@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Transaction_Management_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="178"
-  DTS:VersionGUID="{2BDCAA44-3472-4458-ABA4-19808FD2FEB6}">
+  DTS:VersionBuild="180"
+  DTS:VersionGUID="{21C5CC05-B03F-427E-BD65-9721668D0967}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -15383,7 +15383,7 @@ isnull(c.[MerchantId],16) as  MerchantId
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="256,41.6"
           Id="Package\Customers-Cards-Accounts STG to STG\Bank_Accounts_Prepared STG to STG"
@@ -15431,7 +15431,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15465,7 +15467,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15493,7 +15497,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -15550,7 +15556,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15572,7 +15580,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15600,7 +15610,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -15692,9 +15704,9 @@ isnull(c.[MerchantId],16) as  MerchantId
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="336,332"
-          Size="336,374.4"
+          Size="264.8,43.2"
           Id="Package\Orders &amp; Transactions STG to STG"
           TopLeft="776.914298073126,707.176475092613" />
         <NodeLayout
@@ -15736,7 +15748,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15758,7 +15772,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15780,7 +15796,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15802,7 +15820,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -15871,7 +15891,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -15928,7 +15950,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15962,7 +15986,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15996,7 +16022,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -16178,24 +16206,30 @@ isnull(c.[MerchantId],16) as  MerchantId
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="776.914298073126,894.376475092613">
+          TopLeft="909.314298073126,750.376475092613">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-50.7809647397927,-110.05882765628"
+              EndConnector="-183.180964739793,33.9411723437199"
               Start="0,0"
-              End="-50.7809647397927,-102.55882765628">
+              End="-183.180964739793,26.4411723437199">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-46.7809647397927,0" />
+                    End="0,16.2518795646462" />
                   <mssgle:CubicBezierSegment
-                    Point1="-46.7809647397927,0"
-                    Point2="-50.7809647397927,0"
-                    Point3="-50.7809647397927,-4" />
+                    Point1="0,16.2518795646462"
+                    Point2="0,20.2518795646462"
+                    Point3="-4,20.2518795646462" />
                   <mssgle:LineSegment
-                    End="-50.7809647397927,-102.55882765628" />
+                    End="-179.180964739793,20.2518795646462" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-179.180964739793,20.2518795646462"
+                    Point2="-183.180964739793,20.2518795646462"
+                    Point3="-183.180964739793,24.2518795646462" />
+                  <mssgle:LineSegment
+                    End="-183.180964739793,26.4411723437199" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -16244,9 +16278,9 @@ isnull(c.[MerchantId],16) as  MerchantId
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="12.171427559366,220.505885930704"
+              EndConnector="-23.4285724406341,220.505885930704"
               Start="0,0"
-              End="12.171427559366,213.005885930704">
+              End="-23.4285724406341,213.005885930704">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -16255,15 +16289,15 @@ isnull(c.[MerchantId],16) as  MerchantId
                   <mssgle:CubicBezierSegment
                     Point1="0,106.252942965352"
                     Point2="0,110.252942965352"
-                    Point3="4,110.252942965352" />
+                    Point3="-4,110.252942965352" />
                   <mssgle:LineSegment
-                    End="8.17142755936595,110.252942965352" />
+                    End="-19.4285724406341,110.252942965352" />
                   <mssgle:CubicBezierSegment
-                    Point1="8.17142755936595,110.252942965352"
-                    Point2="12.171427559366,110.252942965352"
-                    Point3="12.171427559366,114.252942965352" />
+                    Point1="-19.4285724406341,110.252942965352"
+                    Point2="-23.4285724406341,110.252942965352"
+                    Point3="-23.4285724406341,114.252942965352" />
                   <mssgle:LineSegment
-                    End="12.171427559366,213.005885930704" />
+                    End="-23.4285724406341,213.005885930704" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -16510,7 +16544,7 @@ isnull(c.[MerchantId],16) as  MerchantId
     design-time-name="Package\Customers-Cards-Accounts STG to STG\Customers_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="195.2,41.6"
           Id="Package\Customers-Cards-Accounts STG to STG\Customers_Prepared STG to STG\vw_Customers_Prepared"
@@ -16550,7 +16584,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -16586,7 +16622,7 @@ isnull(c.[MerchantId],16) as  MerchantId
     design-time-name="Package\Customers-Cards-Accounts STG to STG\MobileWallets_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="209.6,41.6"
           Id="Package\Customers-Cards-Accounts STG to STG\MobileWallets_Prepared STG to STG\vw_MobileWallets_Prepared"
@@ -16614,7 +16650,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -16650,7 +16688,7 @@ isnull(c.[MerchantId],16) as  MerchantId
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\BankAccounts STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="176,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\BankAccounts STG to TRGT\BankAccounts_TRGT"
@@ -16690,7 +16728,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -16726,7 +16766,11 @@ isnull(c.[MerchantId],16) as  MerchantId
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT\Data Conversion"
+          TopLeft="360.8,103.2" />
         <NodeLayout
           Size="136.8,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT\Cards_TRGT"
@@ -16735,10 +16779,6 @@ isnull(c.[MerchantId],16) as  MerchantId
           Size="130.4,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT\Cards_STG"
           TopLeft="146.4,36" />
-        <NodeLayout
-          Size="155.2,41.6"
-          Id="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT\Data Conversion"
-          TopLeft="360.8,103.2" />
         <EdgeLayout
           Id="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="211.6,77.6">
@@ -16770,7 +16810,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -16804,7 +16846,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -16812,6 +16856,19 @@ isnull(c.[MerchantId],16) as  MerchantId
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT\Cards_TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT\Cards_STG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -16905,7 +16962,7 @@ isnull(c.[MerchantId],16) as  MerchantId
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="175.2,41.6"
           Id="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT\MobileWallets_TRGT"
@@ -16945,12 +17002,27 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT\MobileWallets_STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT\MobileWallets_TRGT">
     <Properties>
@@ -16968,7 +17040,7 @@ isnull(c.[MerchantId],16) as  MerchantId
     design-time-name="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="136.8,41.6"
           Id="Package\Orders &amp; Transactions STG to STG\Orders &amp; Orders_Meta  STG to STG\Orders-Meta"
@@ -17008,7 +17080,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17122,11 +17196,7 @@ isnull(c.[MerchantId],16) as  MerchantId
     design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="142.4,41.6"
-          Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT"
-          TopLeft="57.6,219.2" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="134.4,41.6"
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_SRC"
@@ -17135,6 +17205,10 @@ isnull(c.[MerchantId],16) as  MerchantId
           Size="151.2,41.6"
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\fk_metadata_id"
           TopLeft="248.8,137.6" />
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT"
+          TopLeft="57.6,219.2" />
         <EdgeLayout
           Id="Package\Orders Stuff STG to TRGT\Orders STG to TRGT.Paths[OLE DB Source Output]"
           TopLeft="136,101.6">
@@ -17166,7 +17240,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -17200,14 +17276,16 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT">
+    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_SRC">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -17220,7 +17298,7 @@ isnull(c.[MerchantId],16) as  MerchantId
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_SRC">
+    design-time-name="Package\Orders Stuff STG to TRGT\Orders STG to TRGT\Orders_TRGT">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -17302,7 +17380,7 @@ isnull(c.[MerchantId],16) as  MerchantId
     design-time-name="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="196.8,41.6"
           Id="Package\Orders Stuff STG to TRGT\OrderTransactions STG to TRGT\OrderTransactions_TRGT"
@@ -17342,7 +17420,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17456,7 +17536,7 @@ isnull(c.[MerchantId],16) as  MerchantId
     design-time-name="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="216,41.6"
           Id="Package\Withdrawals Stuff STG to STG\WithdrawalReqests_Prepared STG to STG\WithdrawalReqests_Prepared"
@@ -17484,7 +17564,9 @@ isnull(c.[MerchantId],16) as  MerchantId
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -17739,32 +17821,6 @@ isnull(c.[MerchantId],16) as  MerchantId
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Withdrawals Stuff STG to TRGT\WithdrawalReqestsTransactions STG to TRGT\WithdrawalReqests_TRGT">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Customers-Cards-Accounts STG to TRGT\Cards STG to TRGT\Cards_STG">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Customers-Cards-Accounts STG to TRGT\MobileWallets STG to TRGT\MobileWallets_STG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

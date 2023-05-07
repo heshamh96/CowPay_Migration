@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">BI-SERVER2022</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAy2XG3aT1C068+lR9/CtHqgAAAAACAAAAAAAQZgAAAAEAACAAAABaryMHkOzbSg+/6QZO4b8IAETbNDUto/nxW8SvS4CTTAAAAAAOgAAAAAIAACAAAAAAiHQFOqmApvZ2CZK1xSWEN9icd9eaQi+SAgxm8dA1c5AAAAC0zCGKIDlBscZ396fVLAy/MPhHSgnZyWdzZwBcGrl0RzLF8D7E6r/wkJDXPNYvLFhXdALCtz5KRDzB13JcrieHk2x8N26qeQ1fvPMpB0zx912kmXMJ00tNGTzV/GXU4wRVkESFtHvR5gIzLqtSwS0uzmtOp+jPJr/gD92Nb6RTNqCuUQwdMhO4vPqHL31h2t5AAAAAvDmN47XK8r8UzB23O20M4ER4jxlsphFst7O4iZup83hqiF/wjVGSfh7VK45nQGho3+LIFES+q2m+76kDtwQBww==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAy2XG3aT1C068+lR9/CtHqgAAAAACAAAAAAAQZgAAAAEAACAAAAD0jDGSMDfreKbX4iggNTaS2t4YWwWBDkoTkuWU3itkJwAAAAAOgAAAAAIAACAAAADdWKg4LPegiMWvqngqaNLmHl1DO/LWuebeAwke/XXXVJAAAADEYSEH7Q4DjgFpp2JdMV3PGemEl/SPQlDbntnaMD59p4ZwDdL5S3WLm0YdIu0MFAsRxLsHIkN6/0f571mXYuzDKxieCJmV00W3Vx9BqLuFo+NcrHBPFIoLdMSFSrL8vVojoRu7SOtkgmbEq04QzhFB8I5ZwfjdAknLAdGozx0KbbaKiMaEQi1/nlWCvhlCMplAAAAAdoTqxGlz3k+jacc7BjDKB0mkA9kBDmb/S6WL2LkqSgA6qeZEuJQaYvI4kz4025XyYclPD0GX2akATWOPiWq0fw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -41,6 +41,7 @@
           <SSIS:Package SSIS:Name="Migration_hot_Fixes.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Initiation_of_InDifferent_Rollout.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Package1.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="PaymentIntegrationManagement_Module.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="LKP_DB.conmgr" />
@@ -51,6 +52,7 @@
           <SSIS:ConnectionManager SSIS:Name="CowPay_Production_MySQL.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="ExcelpayIdentity.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="MerchantManagement.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="PaymentIntegrationManagement_Stage.conmgr" />
         </SSIS:ConnectionManagers>
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters>
@@ -756,6 +758,94 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.PaymentIntegrationManagement_Stage.ConnectionString">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=BI-SERVER2022;Initial Catalog=PaymentIntegrationManagement_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.PaymentIntegrationManagement_Stage.InitialCatalog">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">PaymentIntegrationManagement_Stage</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.PaymentIntegrationManagement_Stage.Password">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.PaymentIntegrationManagement_Stage.RetainSameConnection">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.PaymentIntegrationManagement_Stage.ServerName">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">BI-SERVER2022</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.PaymentIntegrationManagement_Stage.UserName">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
             <SSIS:PackageMetaData SSIS:Name="Merchants_Module.dtsx">
@@ -764,10 +854,10 @@
                 <SSIS:Property SSIS:Name="Name">Merchants_Module</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">100</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">106</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1E3B9BC9-4B98-42F1-8AC1-F170102E8232}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{946B76A1-F92B-41CA-AC15-76597825DCAE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -781,10 +871,10 @@
                 <SSIS:Property SSIS:Name="Name">Transaction_Management_Module</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">178</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">180</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2BDCAA44-3472-4458-ABA4-19808FD2FEB6}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{21C5CC05-B03F-427E-BD65-9721668D0967}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -815,10 +905,10 @@
                 <SSIS:Property SSIS:Name="Name">AA_Deployment_Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">45</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">46</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{23042902-ED00-4C03-8300-569A27CF5E9F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C3806166-0156-491E-B43F-649BA46058EF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -866,10 +956,10 @@
                 <SSIS:Property SSIS:Name="Name">ExcelpayIdentity_Module_STG</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">80</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">81</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{52B83E5B-28E2-44B1-8E40-28B4EF895B47}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{93323EE0-AE5C-4379-8D37-878AE61C6740}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -900,10 +990,10 @@
                 <SSIS:Property SSIS:Name="Name">Migration_hot_Fixes</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{83DE2C56-0B5B-4DFF-A366-5D5857C80F5A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DCAEEA9A-D091-4E6B-B3FE-0188BB5CC895}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -917,10 +1007,10 @@
                 <SSIS:Property SSIS:Name="Name">Initiation_of_InDifferent_Rollout</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">14</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9EEC4A85-A48B-4F71-8AFC-6D7E1BE6E19F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B8B142B6-D065-42C6-82B8-8819D18E3EBE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -938,6 +1028,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{165DE08E-772A-4FF6-BB36-AC195C2675CB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="PaymentIntegrationManagement_Module.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{E88327AB-A0D3-41AF-8388-023F1CFA7689}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">PaymentIntegrationManagement_Module</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{AA24D172-EAB2-4DF9-9603-DEE9B7BD465C}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

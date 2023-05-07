@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="100"
-  DTS:VersionGUID="{1E3B9BC9-4B98-42F1-8AC1-F170102E8232}">
+  DTS:VersionBuild="106"
+  DTS:VersionGUID="{946B76A1-F92B-41CA-AC15-76597825DCAE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -27,7 +27,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Execute Process Task"
       DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecuteProcessData
@@ -45,7 +45,7 @@
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Script Task"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -65,6 +65,23 @@
       DTS:ObjectName="Staging_Activities">
       <DTS:Variables />
       <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Staging_Activities\Create Merchant Hash Key"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{4117ead5-b931-4b02-a196-a60ac2a9cf4d}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Merchant Hash Key"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+              SQLTask:SqlStatementSource="DECLARE @input varchar(36);&#xA;DECLARE @hash varchar(36);&#xA;&#xA;DECLARE myCursor CURSOR FOR &#xA;SELECT MerchantCode FROM Staging_Migration.dbo.Merchants where  [old_code]='qJw60A7uR1Ij' ;&#xA;--MerchantCode=''&#xA;OPEN myCursor;&#xA;&#xA;FETCH NEXT FROM myCursor INTO @input;&#xA;&#xA;WHILE @@FETCH_STATUS = 0&#xA;BEGIN&#xA;--select convert (varchar(36),@input),CONVERT(VARCHAR(36), HASHBYTES('SHA2_256', ''+@input+''),2);&#xA;--select '0A733D87-0E83-4EDB-9266-89439680D2C6',CONVERT(VARCHAR(36), HASHBYTES('SHA2_256', '0A733D87-0E83-4EDB-9266-89439680D2C6'),2);&#xA;&#xA;    SET @hash = lower(CONVERT(VARCHAR(36), HASHBYTES('SHA2_256', ''+@input+''),2));&#xA;&#xA;    UPDATE Merchants&#xA;    SET HashKey = @hash&#xA;    WHERE CURRENT OF myCursor;&#xA;&#xA;    FETCH NEXT FROM myCursor INTO @input;&#xA;END&#xA;&#xA;CLOSE myCursor;&#xA;DEALLOCATE myCursor;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Staging_Activities\Merchats prep Stg to Stg"
           DTS:CreationName="Microsoft.Pipeline"
@@ -2070,12 +2087,29 @@ where mr.is_migrated=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate_STG_Merchants (First_time and Always)"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
               SQLTask:SqlStatementSource="truncate table [dbo].[Merchants]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging_Activities\Update BalanceThresholdDays"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1b29e1bf-b3cf-49c5-9402-d25306204fce}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update BalanceThresholdDays"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+              SQLTask:SqlStatementSource="&#xA;update Merchants  set BalanceThresholdDays=IsNULL(JSON_VALUE(Settings, '$.balanceConfiguration.AvailableBalanceThresholdDays'),7)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -2087,7 +2121,7 @@ where mr.is_migrated=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Update_The Settings_Json (id, mechantCode, StatusTypeId)"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2113,6 +2147,22 @@ where mr.is_migrated=0</property>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Staging_Activities\Update_The Settings_Json (id, mechantCode, StatusTypeId)" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging_Activities.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4D741BDF-8115-437F-9EC6-35A701AB9800}"
+          DTS:From="Package\Staging_Activities\Update_The Settings_Json (id, mechantCode, StatusTypeId)"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Staging_Activities\Update BalanceThresholdDays" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging_Activities.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{2C67BFDC-7066-44A3-9308-49F7110926F9}"
+          DTS:From="Package\Staging_Activities\Update BalanceThresholdDays"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Staging_Activities\Create Merchant Hash Key" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -2135,7 +2185,7 @@ where mr.is_migrated=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Create_Merchants_Constraints"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2153,7 +2203,7 @@ where mr.is_migrated=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Drop_Merchants_Constraints"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2170,7 +2220,7 @@ where mr.is_migrated=0</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Fetch IDs from Merchant in The TRGT to the STG"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3365,13 +3415,73 @@ where mr.is_migrated=0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="220.8,41.6"
+          Id="Package\Staging_Activities\Update BalanceThresholdDays"
+          TopLeft="86.0714299435517,289.570589307765" />
+        <EdgeLayout
+          Id="Package\Staging_Activities.PrecedenceConstraints[Constraint 2]"
+          TopLeft="199.571429500774,258.323530887485">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.2470584202803"
+              Start="0,0"
+              End="0,23.7470584202803">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.7470584202803" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\Staging_Activities\Create Merchant Hash Key"
+          TopLeft="102.07143021603,372.817647873902" />
+        <EdgeLayout
+          Id="Package\Staging_Activities.PrecedenceConstraints[Constraint 3]"
+          TopLeft="200.071430079791,331.170589307765">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.6470585661363"
+              Start="0,0"
+              End="0,34.1470585661363">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1470585661363" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="416.8,311.2"
-          Size="416.8,354.4"
+          PanelSize="416.8,488"
+          Size="416.8,531.2"
           Id="Package\Staging_Activities"
           TopLeft="928.060323941411,15.576472321348" />
+        <NodeLayout
+          Size="221.6,41.6"
+          Id="Package\TRGT_Loading\Create_Merchants_Constraints"
+          TopLeft="68.9142909886886,302.023532054334" />
+        <NodeLayout
+          Size="213.6,41.6"
+          Id="Package\TRGT_Loading\Drop_Merchants_Constraints"
+          TopLeft="65.0285766640489,52.8470601705531" />
         <NodeLayout
           Size="312,41.6"
           Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG"
@@ -3414,10 +3524,6 @@ where mr.is_migrated=0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="213.6,41.6"
-          Id="Package\TRGT_Loading\Drop_Merchants_Constraints"
-          TopLeft="65.0285766640489,52.8470601705531" />
         <EdgeLayout
           Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 1]"
           TopLeft="171.828576664049,94.4470601705531">
@@ -3452,10 +3558,6 @@ where mr.is_migrated=0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="221.6,41.6"
-          Id="Package\TRGT_Loading\Create_Merchants_Constraints"
-          TopLeft="68.9142909886886,302.023532054334" />
         <EdgeLayout
           Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 2]"
           TopLeft="175.914288604503,270.870592370743">
@@ -3481,8 +3583,8 @@ where mr.is_migrated=0</property>
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="True"
-          PanelSize="331.2,398.4"
-          Size="331.2,441.6"
+          PanelSize="331.2,544.8"
+          Size="331.2,588"
           Id="Package\TRGT_Loading"
           TopLeft="333.02857639157,221.88235431394" />
         <EdgeLayout
@@ -3521,13 +3623,13 @@ where mr.is_migrated=0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="928.060323941411,192.776472321348">
+          TopLeft="928.060323941411,281.176472321348">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-263.831747549841,249.905881992592"
+              EndConnector="-263.831747549841,234.705881992592"
               Start="0,0"
-              End="-256.331747549841,249.905881992592">
+              End="-256.331747549841,234.705881992592">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3538,13 +3640,13 @@ where mr.is_migrated=0</property>
                     Point2="-131.91587377492,0"
                     Point3="-131.91587377492,4" />
                   <mssgle:LineSegment
-                    End="-131.91587377492,245.905881992592" />
+                    End="-131.91587377492,230.705881992592" />
                   <mssgle:CubicBezierSegment
-                    Point1="-131.91587377492,245.905881992592"
-                    Point2="-131.91587377492,249.905881992592"
-                    Point3="-135.91587377492,249.905881992592" />
+                    Point1="-131.91587377492,230.705881992592"
+                    Point2="-131.91587377492,234.705881992592"
+                    Point3="-135.91587377492,234.705881992592" />
                   <mssgle:LineSegment
-                    End="-256.331747549841,249.905881992592" />
+                    End="-256.331747549841,234.705881992592" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
