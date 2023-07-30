@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="PaymentIntegrationManagement_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{AA24D172-EAB2-4DF9-9603-DEE9B7BD465C}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{ACB45D5A-0F8F-44F2-81B5-EC9647BE3A88}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -632,13 +632,13 @@ WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagem
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\IFrames STG_TRGT"
-          TopLeft="269.714290307493,141.929413755212" />
-        <NodeLayout
           Size="180.8,41.6"
           Id="Package\Create Default Iframe"
           TopLeft="294.85714787853,28.7529415797197" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\IFrames STG_TRGT"
+          TopLeft="269.714290307493,141.929413755212" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="385.25714787853,70.3529415797197">
@@ -682,13 +682,13 @@ WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagem
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="139.2,41.6"
-          Id="Package\IFrames STG_TRGT\IFrames STG"
-          TopLeft="296.57143362201,39.7647064400379" />
-        <NodeLayout
           Size="146.4,41.6"
           Id="Package\IFrames STG_TRGT\IFrames TRGT"
           TopLeft="296.57143362201,142.541178469674" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\IFrames STG_TRGT\IFrames STG"
+          TopLeft="296.57143362201,39.7647064400379" />
         <EdgeLayout
           Id="Package\IFrames STG_TRGT.Paths[OLE DB Source Output]"
           TopLeft="367.97143362201,81.3647064400379">

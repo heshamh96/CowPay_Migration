@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="106"
-  DTS:VersionGUID="{946B76A1-F92B-41CA-AC15-76597825DCAE}">
+  DTS:VersionBuild="108"
+  DTS:VersionGUID="{8CE5C86C-8E69-43A7-B617-69F701AB25E5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -266,13 +266,13 @@
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_address]" />
                         <inputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[m_city_id]"
-                          cachedDataType="i4"
+                          cachedDataType="r8"
                           cachedName="m_city_id"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_city_id]" />
                         <inputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[m_country_id]"
-                          cachedDataType="i4"
+                          cachedDataType="r8"
                           cachedName="m_country_id"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CountryId]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_country_id]" />
@@ -698,7 +698,7 @@ where mr.is_migrated=0</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_country_id]"
-                          dataType="i4"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_country_id]"
@@ -707,7 +707,7 @@ where mr.is_migrated=0</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_city_id]"
-                          dataType="i4"
+                          dataType="r8"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_city_id]"
@@ -1349,11 +1349,11 @@ where mr.is_migrated=0</property>
                           name="m_orders_notification" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_country_id]"
-                          dataType="i4"
+                          dataType="r8"
                           name="m_country_id" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_city_id]"
-                          dataType="i4"
+                          dataType="r8"
                           name="m_city_id" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_facebook]"
@@ -1731,12 +1731,12 @@ where mr.is_migrated=0</property>
                           name="m_orders_notification" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[m_country_id]"
-                          dataType="i4"
+                          dataType="r8"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[m_country_id]"
                           name="m_country_id" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[m_city_id]"
-                          dataType="i4"
+                          dataType="r8"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[m_city_id]"
                           name="m_city_id" />
                         <outputColumn
@@ -3336,6 +3336,10 @@ where mr.is_migrated=0</property>
           Id="Package\Script Task"
           TopLeft="1656.15873699988,198.709805946394" />
         <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\Staging_Activities\Create Merchant Hash Key"
+          TopLeft="102.07143021603,372.817647873902" />
+        <NodeLayout
           Size="196,41.6"
           Id="Package\Staging_Activities\Merchats prep Stg to Stg"
           TopLeft="5.5,146.052942600712" />
@@ -3343,6 +3347,10 @@ where mr.is_migrated=0</property>
           Size="314.4,41.6"
           Id="Package\Staging_Activities\Truncate_STG_Merchants (First_time and Always)"
           TopLeft="61.7857171856627,5.5" />
+        <NodeLayout
+          Size="220.8,41.6"
+          Id="Package\Staging_Activities\Update BalanceThresholdDays"
+          TopLeft="86.0714299435517,289.570589307765" />
         <NodeLayout
           Size="363.2,41.6"
           Id="Package\Staging_Activities\Update_The Settings_Json (id, mechantCode, StatusTypeId)"
@@ -3415,10 +3423,6 @@ where mr.is_migrated=0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="220.8,41.6"
-          Id="Package\Staging_Activities\Update BalanceThresholdDays"
-          TopLeft="86.0714299435517,289.570589307765" />
         <EdgeLayout
           Id="Package\Staging_Activities.PrecedenceConstraints[Constraint 2]"
           TopLeft="199.571429500774,258.323530887485">
@@ -3441,10 +3445,6 @@ where mr.is_migrated=0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="203.2,41.6"
-          Id="Package\Staging_Activities\Create Merchant Hash Key"
-          TopLeft="102.07143021603,372.817647873902" />
         <EdgeLayout
           Id="Package\Staging_Activities.PrecedenceConstraints[Constraint 3]"
           TopLeft="200.071430079791,331.170589307765">
@@ -3469,15 +3469,15 @@ where mr.is_migrated=0</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="416.8,488"
-          Size="416.8,531.2"
+          Size="416.8,43.2"
           Id="Package\Staging_Activities"
           TopLeft="928.060323941411,15.576472321348" />
         <NodeLayout
           Size="221.6,41.6"
           Id="Package\TRGT_Loading\Create_Merchants_Constraints"
-          TopLeft="68.9142909886886,302.023532054334" />
+          TopLeft="68.9142909886886,315.482355772501" />
         <NodeLayout
           Size="213.6,41.6"
           Id="Package\TRGT_Loading\Drop_Merchants_Constraints"
@@ -3485,37 +3485,37 @@ where mr.is_migrated=0</property>
         <NodeLayout
           Size="312,41.6"
           Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG"
-          TopLeft="16.114286220317,229.270592370743" />
+          TopLeft="14.9714290579973,240.282357231061" />
         <NodeLayout
           Size="182.4,51.2"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants"
-          TopLeft="22.8571407940923,142.176475967751" />
+          TopLeft="27.9999980245317,117.705887389266" />
         <EdgeLayout
           Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint]"
-          TopLeft="114.057140794092,193.376475967751">
+          TopLeft="119.199998024532,168.905887389266">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="58.0571454262247,35.8941164029918"
+              EndConnector="51.7714310334655,71.3764698417952"
               Start="0,0"
-              End="58.0571454262247,28.3941164029918">
+              End="51.7714310334655,63.8764698417952">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.9470582014959" />
+                    End="0,31.6882349208976" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.9470582014959"
-                    Point2="0,17.9470582014959"
-                    Point3="4,17.9470582014959" />
+                    Point1="0,31.6882349208976"
+                    Point2="0,35.6882349208976"
+                    Point3="4,35.6882349208976" />
                   <mssgle:LineSegment
-                    End="54.0571454262247,17.9470582014959" />
+                    End="47.7714310334655,35.6882349208976" />
                   <mssgle:CubicBezierSegment
-                    Point1="54.0571454262247,17.9470582014959"
-                    Point2="58.0571454262247,17.9470582014959"
-                    Point3="58.0571454262247,21.9470582014959" />
+                    Point1="47.7714310334655,35.6882349208976"
+                    Point2="51.7714310334655,35.6882349208976"
+                    Point3="51.7714310334655,39.6882349208976" />
                   <mssgle:LineSegment
-                    End="58.0571454262247,28.3941164029918" />
+                    End="51.7714310334655,63.8764698417952" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3530,26 +3530,26 @@ where mr.is_migrated=0</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-57.7714358699566,47.7294157971979"
+              EndConnector="-52.6285786395172,23.258827218713"
               Start="0,0"
-              End="-57.7714358699566,40.2294157971979">
+              End="-52.6285786395172,15.758827218713">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.864707898599" />
+                    End="0,7.62941360935652" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.864707898599"
-                    Point2="0,23.864707898599"
-                    Point3="-4,23.864707898599" />
+                    Point1="0,7.62941360935652"
+                    Point2="0,11.6294136093565"
+                    Point3="-4,11.6294136093565" />
                   <mssgle:LineSegment
-                    End="-53.7714358699566,23.864707898599" />
+                    End="-48.6285786395172,11.6294136093565" />
                   <mssgle:CubicBezierSegment
-                    Point1="-53.7714358699566,23.864707898599"
-                    Point2="-57.7714358699566,23.864707898599"
-                    Point3="-57.7714358699566,27.864707898599" />
+                    Point1="-48.6285786395172,11.6294136093565"
+                    Point2="-52.6285786395172,11.6294136093565"
+                    Point3="-52.6285786395172,15.6294136093565" />
                   <mssgle:LineSegment
-                    End="-57.7714358699566,40.2294157971979" />
+                    End="-52.6285786395172,15.758827218713" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3560,18 +3560,30 @@ where mr.is_migrated=0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 2]"
-          TopLeft="175.914288604503,270.870592370743">
+          TopLeft="170.971429057997,281.882357231061">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31.1529396835905"
+              EndConnector="8.74286193069133,33.5999985414393"
               Start="0,0"
-              End="0,23.6529396835905">
+              End="8.74286193069133,26.0999985414393">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.6529396835905" />
+                    End="0,12.7999992707196" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.7999992707196"
+                    Point2="0,16.7999992707196"
+                    Point3="4,16.7999992707196" />
+                  <mssgle:LineSegment
+                    End="4.74286193069133,16.7999992707196" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.74286193069133,16.7999992707196"
+                    Point2="8.74286193069133,16.7999992707196"
+                    Point3="8.74286193069133,20.7999992707196" />
+                  <mssgle:LineSegment
+                    End="8.74286193069133,26.0999985414393" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3623,30 +3635,30 @@ where mr.is_migrated=0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="928.060323941411,281.176472321348">
+          TopLeft="1136.46032394141,58.776472321348">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-263.831747549841,234.705881992592"
+              EndConnector="-637.831747549841,163.105881992592"
               Start="0,0"
-              End="-256.331747549841,234.705881992592">
+              End="-637.831747549841,155.605881992592">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-127.91587377492,0" />
+                    End="0,77.552940996296" />
                   <mssgle:CubicBezierSegment
-                    Point1="-127.91587377492,0"
-                    Point2="-131.91587377492,0"
-                    Point3="-131.91587377492,4" />
+                    Point1="0,77.552940996296"
+                    Point2="0,81.552940996296"
+                    Point3="-4,81.552940996296" />
                   <mssgle:LineSegment
-                    End="-131.91587377492,230.705881992592" />
+                    End="-633.831747549841,81.552940996296" />
                   <mssgle:CubicBezierSegment
-                    Point1="-131.91587377492,230.705881992592"
-                    Point2="-131.91587377492,234.705881992592"
-                    Point3="-135.91587377492,234.705881992592" />
+                    Point1="-633.831747549841,81.552940996296"
+                    Point2="-637.831747549841,81.552940996296"
+                    Point3="-637.831747549841,85.552940996296" />
                   <mssgle:LineSegment
-                    End="-256.331747549841,234.705881992592" />
+                    End="-637.831747549841,155.605881992592" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3662,7 +3674,7 @@ where mr.is_migrated=0</property>
     design-time-name="Package\Staging_Activities\Merchats prep Stg to Stg">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="184.8,41.6"
           Id="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT"
@@ -3690,9 +3702,7 @@ where mr.is_migrated=0</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3728,7 +3738,7 @@ where mr.is_migrated=0</property>
     design-time-name="Package\TRGT_Loading\Stg to Trgt Merchants">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants"
@@ -3756,9 +3766,7 @@ where mr.is_migrated=0</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

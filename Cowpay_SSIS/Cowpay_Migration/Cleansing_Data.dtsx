@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Cleansing_Data"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{6C5DDB56-495D-42E3-B06F-F34ED88146ED}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{9F539FB6-3E08-46A3-AAB4-1AE25370C3ED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -319,11 +319,11 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="202,42"
+          Size="201.6,41.6"
           Id="Package\Merchants_Cleansing_Activities\Cleanse Users (m_Tax_id)"
           TopLeft="28.571436142435,71.8588276562807" />
         <NodeLayout
-          Size="394,42"
+          Size="393.6,41.6"
           Id="Package\Merchants_Cleansing_Activities\Cleansing Users (m_tax_id,m_commercial_number,m_personal_id)"
           TopLeft="10.9714294667147,11.7176478739016" />
         <EdgeLayout
@@ -356,45 +356,45 @@
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43.2"
-          IsExpanded="True"
-          PanelSize="410,168"
-          Size="410,211"
+          IsExpanded="False"
+          PanelSize="409.6,168"
+          Size="409.6,43.2"
           Id="Package\Merchants_Cleansing_Activities"
           TopLeft="27.4285708738833,23.9058818467348" />
         <NodeLayout
-          Size="224,42"
+          Size="224,41.6"
           Id="Package\Transactions_Cleanseing Activities\Cleanse WR_Cashouts (Status)"
           TopLeft="36.8000049727303,88.376471008644" />
         <NodeLayout
-          Size="277,42"
+          Size="276.8,41.6"
           Id="Package\Transactions_Cleanseing Activities\Cleanse WR_WithdrawalRequests (Status)"
           TopLeft="21.9428618625719,11.858824301591" />
         <NodeLayout
-          Size="256,42"
+          Size="256,41.6"
           Id="Package\Transactions_Cleanseing Activities\Cleanse_Bank_Accounts(Bank_Name)"
           TopLeft="42.6285757103745,155.247061629114" />
         <NodeLayout
-          Size="202,42"
+          Size="201.6,41.6"
           Id="Package\Transactions_Cleanseing Activities\Cleanse_Orders_(channel)"
           TopLeft="79.7714362786741,373.741181386796" />
         <NodeLayout
-          Size="258,42"
+          Size="257.6,41.6"
           Id="Package\Transactions_Cleanseing Activities\Cleanse_Orders_(payment_link_Type)"
           TopLeft="50.6285786395172,443.294122528947" />
         <NodeLayout
-          Size="278,42"
+          Size="278.4,41.6"
           Id="Package\Transactions_Cleanseing Activities\Cleanse_Orders_(payment_method_Type)"
           TopLeft="80.3428648598342,512.423534971455" />
         <NodeLayout
-          Size="241,42"
+          Size="240.8,41.6"
           Id="Package\Transactions_Cleanseing Activities\Cleanse_Orders_(Payment_status)"
           TopLeft="24.80000674384,234.447063816955" />
         <NodeLayout
-          Size="218,42"
+          Size="217.6,41.6"
           Id="Package\Transactions_Cleanseing Activities\Cleanse_Orders_(PGW_Type)"
           TopLeft="60.3428645192362,302.682357814485" />
         <NodeLayout
-          Size="172,42"
+          Size="172,41.6"
           Id="Package\Transactions_Cleanseing Activities\Execute SQL Task 1"
           TopLeft="64.9142931685157,581.411769527713" />
         <EdgeLayout
@@ -626,30 +626,36 @@
         <ContainerLayout
           HeaderHeight="43.2"
           IsExpanded="True"
-          PanelSize="363,689"
-          Size="363,732"
+          PanelSize="363.2,688.8"
+          Size="363.2,732"
           Id="Package\Transactions_Cleanseing Activities"
           TopLeft="374.28571950173,186.44705914956" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="437.428570873883,129.405881846735">
+          TopLeft="232.228570873883,67.1058818467348">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="118.357148627847,57.0411773028252"
+              EndConnector="323.657148627847,119.341177302825"
               Start="0,0"
-              End="118.357148627847,49.5411773028252">
+              End="323.657148627847,111.841177302825">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="114.357148627847,0" />
+                    End="0,55.6705886514126" />
                   <mssgle:CubicBezierSegment
-                    Point1="114.357148627847,0"
-                    Point2="118.357148627847,0"
-                    Point3="118.357148627847,4" />
+                    Point1="0,55.6705886514126"
+                    Point2="0,59.6705886514126"
+                    Point3="4,59.6705886514126" />
                   <mssgle:LineSegment
-                    End="118.357148627847,49.5411773028252" />
+                    End="319.657148627847,59.6705886514126" />
+                  <mssgle:CubicBezierSegment
+                    Point1="319.657148627847,59.6705886514126"
+                    Point2="323.657148627847,59.6705886514126"
+                    Point3="323.657148627847,63.6705886514126" />
+                  <mssgle:LineSegment
+                    End="323.657148627847,111.841177302825" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
