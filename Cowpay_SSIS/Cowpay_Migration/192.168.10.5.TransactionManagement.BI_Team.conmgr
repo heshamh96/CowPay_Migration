@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="192.168.10.5.TransactionManagement.BI_Team"
+  DTS:DTSID="{007F3F04-8492-44E4-970D-2A89613EF316}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=192.168.10.5;User ID=BI_Team;Initial Catalog=TransactionManagement;Provider=SQLNCLI11.1;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAB6pywgBDS0+7CB+50/ntKAAAAAACAAAAAAAQZgAAAAEAACAAAAC0ybrchPFK6zyBAd3+Nf+0FPZuHeC6rtOp0NjS2XrcIQAAAAAOgAAAAAIAACAAAABefYekCg6hW9Y7JqiC2vNQvCq3vRYVCM0rB6EpKnnBgIAAAADedWKO2ripJi0B+HmlODKsJOAF1ZmcoimJuqfPXFsLmHbI/mz/T9PB//2Wi0ZMAnx9WKjl+1YsTF4mG4QEpnM+rXLFDcyELF5hRUX1+PTkoV0LUaOq0jJmmG+hPbom5CNDARB4+ekyX7QQ+LLMnOjgJvIf4iXG+b50GxkxrZp3/kAAAADMktXe/XV1i77aKc6GA/A+jqCHKRd89FCvBJmkVqLKHnjblV2psnCumXufthLBa4HeRhmEw2pPyD5CHQ0hJfSD</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

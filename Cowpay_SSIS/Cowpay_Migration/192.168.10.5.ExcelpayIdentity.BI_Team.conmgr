@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="192.168.10.5.ExcelpayIdentity.BI_Team"
+  DTS:DTSID="{F81EF049-A894-46D2-908D-C476782951FB}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=192.168.10.5;User ID=BI_Team;Initial Catalog=ExcelpayIdentity;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAB6pywgBDS0+7CB+50/ntKAAAAAACAAAAAAAQZgAAAAEAACAAAACu3PaG+t675oZgB21IIrnBSmswbGpuOrA8GrudaVeMEQAAAAAOgAAAAAIAACAAAAB5NAfOopzzCy+r9pyT3Ew2ySNx0408GFGSUow3Rezg5YAAAAAjX5Rnhm54axjhZ8JVpWq0Q5qbRDDh2yW5dLa2420KUGJ7DzyJrG374VUK35kc5LGwJs2xD/x6LE67Cq50pTpUY2pJ6COEV15DhlIsgvi8yw9jbRtty9IXbQpVntUbmqUCcndPjqCSnBw+Qk1unu/PzsYH8lsPISdZXaGnTp/DUkAAAACw578XKgTsFZhil9Rn1vyTaTKJx+0t9j0kpDFMqLK3OcBqWftIRdOy3wI9Vk5HdXQxjPytAveJDQIc8UwNQTQm</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="108"
-  DTS:VersionGUID="{8CE5C86C-8E69-43A7-B617-69F701AB25E5}">
+  DTS:VersionBuild="152"
+  DTS:VersionGUID="{DA1F4337-71A4-43BB-A9CA-FB393A20157B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -66,20 +66,20 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Staging_Activities\Create Merchant Hash Key"
+          DTS:refId="Package\Staging_Activities\Create HashKey"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{4117ead5-b931-4b02-a196-a60ac2a9cf4d}"
+          DTS:DTSID="{ee016275-9cc5-4b2f-8677-c6d8d58ee63c}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Create Merchant Hash Key"
+          DTS:ObjectName="Create HashKey"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-              SQLTask:SqlStatementSource="DECLARE @input varchar(36);&#xA;DECLARE @hash varchar(36);&#xA;&#xA;DECLARE myCursor CURSOR FOR &#xA;SELECT MerchantCode FROM Staging_Migration.dbo.Merchants where  [old_code]='qJw60A7uR1Ij' ;&#xA;--MerchantCode=''&#xA;OPEN myCursor;&#xA;&#xA;FETCH NEXT FROM myCursor INTO @input;&#xA;&#xA;WHILE @@FETCH_STATUS = 0&#xA;BEGIN&#xA;--select convert (varchar(36),@input),CONVERT(VARCHAR(36), HASHBYTES('SHA2_256', ''+@input+''),2);&#xA;--select '0A733D87-0E83-4EDB-9266-89439680D2C6',CONVERT(VARCHAR(36), HASHBYTES('SHA2_256', '0A733D87-0E83-4EDB-9266-89439680D2C6'),2);&#xA;&#xA;    SET @hash = lower(CONVERT(VARCHAR(36), HASHBYTES('SHA2_256', ''+@input+''),2));&#xA;&#xA;    UPDATE Merchants&#xA;    SET HashKey = @hash&#xA;    WHERE CURRENT OF myCursor;&#xA;&#xA;    FETCH NEXT FROM myCursor INTO @input;&#xA;END&#xA;&#xA;CLOSE myCursor;&#xA;DEALLOCATE myCursor;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="DECLARE @input varchar(36);&#xA;DECLARE @hash varchar(36);&#xA;&#xA;DECLARE myCursor CURSOR FOR &#xA;SELECT MerchantCode FROM Merchants --where MerchantCode='';&#xA;&#xA;OPEN myCursor;&#xA;&#xA;FETCH NEXT FROM myCursor INTO @input;&#xA;&#xA;WHILE @@FETCH_STATUS = 0&#xA;BEGIN&#xA;--select convert (varchar(36),@input),CONVERT(VARCHAR(36), HASHBYTES('SHA2_256', ''+@input+''),2);&#xA;--select '0A733D87-0E83-4EDB-9266-89439680D2C6',CONVERT(VARCHAR(36), HASHBYTES('SHA2_256', '0A733D87-0E83-4EDB-9266-89439680D2C6'),2);&#xA;&#xA;    SET @hash = lower(CONVERT(VARCHAR(36), HASHBYTES('SHA2_256', ''+@input+''),2));&#xA;&#xA;    UPDATE Merchants&#xA;    SET HashKey = @hash&#xA;    WHERE CURRENT OF myCursor;&#xA;&#xA;    FETCH NEXT FROM myCursor INTO @input;&#xA;END&#xA;&#xA;CLOSE myCursor;&#xA;DEALLOCATE myCursor;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -96,6 +96,172 @@
             <pipeline
               version="1">
               <components>
+                <component
+                  refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Inputs[Derived Column Input].Columns[m_logo]"
+                          cachedDataType="nText"
+                          cachedName="m_logo"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_logo]" />
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Inputs[Derived Column Input].Columns[m_hash_key]"
+                          cachedDataType="wstr"
+                          cachedLength="70"
+                          cachedName="m_hash_key"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_hash_key]" />
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Inputs[Derived Column Input].Columns[json_settings]"
+                          cachedDataType="nText"
+                          cachedName="json_settings"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[json_settings]" />
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Inputs[Derived Column Input].Columns[Urls_settings]"
+                          cachedDataType="nText"
+                          cachedName="Urls_settings"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[Urls_settings]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_Logo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4000"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_Logo]"
+                          name="New_Logo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,4000)((DT_NTEXT)#{Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_logo]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,4000)((DT_NTEXT)m_logo)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_URLs]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4000"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_URLs]"
+                          name="New_URLs"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,4000)((DT_NTEXT)#{Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[Urls_settings]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,4000)((DT_NTEXT)Urls_settings)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_Settings]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4000"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_Settings]"
+                          name="New_Settings"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,4000)((DT_NTEXT)#{Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[json_settings]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,4000)((DT_NTEXT)json_settings)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_Hash]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4000"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_Hash]"
+                          name="New_Hash"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,4000)((DT_NTEXT)#{Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_hash_key]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,4000)((DT_NTEXT)m_hash_key)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
                 <component
                   refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT"
                   componentClassID="Microsoft.OLEDBDestination"
@@ -195,12 +361,6 @@
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AboutUs]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_about]" />
                         <inputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[m_logo]"
-                          cachedDataType="nText"
-                          cachedName="m_logo"
-                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Logo]"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_logo]" />
-                        <inputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[updated_at]"
                           cachedDataType="dbTimeStamp"
                           cachedName="updated_at"
@@ -213,23 +373,11 @@
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[created_at]" />
                         <inputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[json_settings]"
-                          cachedDataType="nText"
-                          cachedName="json_settings"
-                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Settings]"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[json_settings]" />
-                        <inputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[status]"
                           cachedDataType="i4"
                           cachedName="status"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[StatusTypeId]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[status]" />
-                        <inputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[Urls_settings]"
-                          cachedDataType="nText"
-                          cachedName="Urls_settings"
-                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[SocialLinks]"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[Urls_settings]" />
                         <inputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[json_image]"
                           cachedDataType="nText"
@@ -271,12 +419,6 @@
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_city_id]" />
                         <inputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[m_country_id]"
-                          cachedDataType="r8"
-                          cachedName="m_country_id"
-                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CountryId]"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_country_id]" />
-                        <inputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[phone]"
                           cachedDataType="wstr"
                           cachedLength="20"
@@ -284,11 +426,45 @@
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[phone]" />
                         <inputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[is_old_System]"
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[MasterMerchantId]"
                           cachedDataType="i4"
-                          cachedName="is_old_System"
-                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Is_Old_System]"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[is_old_System]" />
+                          cachedName="MasterMerchantId"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MasterMerchantId]"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[MasterMerchantId]" />
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[UserId]"
+                          cachedDataType="guid"
+                          cachedName="UserId"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[UserId]" />
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[New_URLs]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="New_URLs"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[SocialLinks]"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_URLs]" />
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[New_Settings]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="New_Settings"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Settings]"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_Settings]" />
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[New_Logo]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="New_Logo"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Logo]"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_Logo]" />
+                        <inputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[New_Hash]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="New_Hash"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[HashKey]"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output].Columns[New_Hash]" />
                         <inputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[old_code]"
                           cachedCodepage="1256"
@@ -298,23 +474,11 @@
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[old_code]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[old_code]" />
                         <inputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[MasterMerchantId]"
-                          cachedDataType="i4"
-                          cachedName="MasterMerchantId"
-                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[MasterMerchantId]"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[MasterMerchantId]" />
-                        <inputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[old_id]"
                           cachedDataType="i8"
                           cachedName="old_id"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[old_id]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[old_id]" />
-                        <inputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[UserId]"
-                          cachedDataType="guid"
-                          cachedName="UserId"
-                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[UserId]"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[UserId]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -350,10 +514,6 @@
                           length="100"
                           name="Email" />
                         <externalMetadataColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CountryId]"
-                          dataType="i2"
-                          name="CountryId" />
-                        <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
                           dataType="i2"
                           name="CityId" />
@@ -375,12 +535,12 @@
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CommercialRegistrationNum]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="CommercialRegistrationNum" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TaxId]"
                           dataType="wstr"
-                          length="50"
+                          length="9"
                           name="TaxId" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AttachamentImages]"
@@ -420,7 +580,8 @@
                           name="IsDeleted" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Logo]"
-                          dataType="nText"
+                          dataType="wstr"
+                          length="150"
                           name="Logo" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[AboutUs]"
@@ -428,22 +589,36 @@
                           name="AboutUs" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[TermsAndConditions]"
-                          dataType="nText"
+                          dataType="wstr"
+                          length="1000"
                           name="TermsAndConditions" />
                         <externalMetadataColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[old_id]"
-                          dataType="i8"
-                          name="old_id" />
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[BalanceThresholdDays]"
+                          dataType="i2"
+                          name="BalanceThresholdDays" />
                         <externalMetadataColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[Is_Old_System]"
-                          dataType="bool"
-                          name="Is_Old_System" />
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[HashKey]"
+                          dataType="wstr"
+                          length="70"
+                          name="HashKey" />
+                        <externalMetadataColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[NotificationSettings]"
+                          dataType="nText"
+                          name="NotificationSettings" />
+                        <externalMetadataColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[StatusTypeId1]"
+                          dataType="i2"
+                          name="StatusTypeId1" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[old_code]"
                           codePage="1256"
                           dataType="str"
                           length="50"
                           name="old_code" />
+                        <externalMetadataColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[old_id]"
+                          dataType="i8"
+                          name="old_id" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -488,7 +663,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[dbo].[Staging_Merchants_Prepared]</property>
+                      name="OpenRowset"></property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -497,7 +672,84 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select m.* from Staging_Migration.[dbo].Staging_Merchants_Prepared m join Migration_RollOut mr on m.old_id=mr.id and m.old_code=mr.code 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select m.[New_id]
+      ,[MasterMerchantId]
+      ,[name]
+      ,[email]
+      ,[phone]
+      ,[m_address]
+      ,[index]
+      ,[parent_id]
+      ,[status]
+      ,[password]
+      ,[api_token]
+      ,[remember_token]
+      ,[created_at]
+      ,[updated_at]
+      ,[is_merchant]
+      ,[m_sms_id]
+      ,[m_payments_notification]
+      ,[m_orders_notification]
+      ,[m_country_id]
+      ,[m_city_id]
+      ,[m_facebook]
+      ,[m_twitter]
+      ,[m_linked_in]
+      ,[m_instagram]
+      ,[m_about]
+      ,[m_website]
+      ,[m_logo]
+      ,[m_code]
+      ,CAST([m_hash_key] as nvarchar(70)) as m_hash_key
+      ,[m_invoices]
+      ,[m_balance]
+      ,[m_available_balance]
+      ,[m_min_payout_threshold]
+      ,[m_bank_name]
+      ,[m_bank_address]
+      ,[m_bank_account_num]
+      ,[m_bank_account_name]
+      ,[m_bank_account_holder_name]
+      ,[m_bank_account_swift_code]
+      ,[m_callback_url]
+      ,[m_ipn_listener_url]
+      ,[m_total_received_amount]
+      ,[m_cowpay_commission]
+      ,[m_cowpay_payatfawry_percentage_commission]
+      ,[m_cowpay_payatfawry_fixed_commission]
+      ,[m_cowpay_credit_card_percentage_commission]
+      ,[m_cowpay_credit_card_fixed_commission]
+      ,[m_cowpay_collect_percentage_commission]
+      ,[m_cowpay_collect_fixed_commission]
+      ,[m_commercial_registry_file]
+      ,[m_tax_id_file]
+      ,[m_personal_id_file]
+      ,[m_commercial_registry]
+      ,[m_tax_id]
+      ,[m_personal_id]
+      ,[m_total_sales_per_year]
+      ,[m_added_by]
+      ,[m_added_at]
+      ,[m_approved_by]
+      ,[m_approved_at]
+      ,[environment]
+      ,[block]
+      ,[name_ar]
+      ,[category]
+      ,[mid_category]
+      ,[contract_file]
+      ,[authorize_signatory_name]
+      ,[fawry_sub_merchant]
+      ,[cowpay_fees]
+      ,[old_status]
+      ,[json_settings]
+      ,[Urls_settings]
+      ,[json_image]
+      ,[is_old_System]
+      ,[old_code]
+      ,[old_id]
+      ,m.[UserId] 
+from Staging_Migration.[dbo].Staging_Merchants_Prepared m join Migration_RollOut mr on m.old_id=mr.id and m.old_code=mr.code 
 where mr.is_migrated=0</property>
                     <property
                       dataType="System.String"
@@ -542,6 +794,15 @@ where mr.is_migrated=0</property>
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[New_id]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[New_id]"
                           name="New_id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[MasterMerchantId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[MasterMerchantId]"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[MasterMerchantId]"
+                          name="MasterMerchantId"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[name]"
@@ -794,11 +1055,11 @@ where mr.is_migrated=0</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_hash_key]"
-                          codePage="1256"
-                          dataType="text"
+                          dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_hash_key]"
+                          length="70"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_hash_key]"
                           name="m_hash_key"
                           truncationRowDisposition="FailComponent" />
@@ -1241,15 +1502,6 @@ where mr.is_migrated=0</property>
                           name="old_code"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[MasterMerchantId]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[MasterMerchantId]"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[MasterMerchantId]"
-                          name="MasterMerchantId"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[old_id]"
                           dataType="i8"
                           errorOrTruncationOperation="Conversion"
@@ -1274,6 +1526,10 @@ where mr.is_migrated=0</property>
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[New_id]"
                           dataType="guid"
                           name="New_id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[MasterMerchantId]"
+                          dataType="i4"
+                          name="MasterMerchantId" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[name]"
                           dataType="wstr"
@@ -1395,8 +1651,8 @@ where mr.is_migrated=0</property>
                           name="m_code" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_hash_key]"
-                          codePage="1256"
-                          dataType="text"
+                          dataType="wstr"
+                          length="70"
                           name="m_hash_key" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_invoices]"
@@ -1607,10 +1863,6 @@ where mr.is_migrated=0</property>
                           length="50"
                           name="old_code" />
                         <externalMetadataColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[MasterMerchantId]"
-                          dataType="i4"
-                          name="MasterMerchantId" />
-                        <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
                           dataType="i8"
                           name="old_id" />
@@ -1664,11 +1916,6 @@ where mr.is_migrated=0</property>
                           dataType="i8"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[index]"
                           name="index" />
-                        <outputColumn
-                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[old_id]"
-                          dataType="i8"
-                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[old_id]"
-                          name="old_id" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[parent_id]"
                           codePage="1256"
@@ -1787,8 +2034,8 @@ where mr.is_migrated=0</property>
                           name="m_code" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[m_hash_key]"
-                          codePage="1256"
-                          dataType="text"
+                          dataType="wstr"
+                          length="70"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[m_hash_key]"
                           name="m_hash_key" />
                         <outputColumn
@@ -2046,6 +2293,11 @@ where mr.is_migrated=0</property>
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[old_code]"
                           name="old_code" />
                         <outputColumn
+                          refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                          dataType="i8"
+                          lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                          name="old_id" />
+                        <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[UserId]"
                           dataType="guid"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[UserId]"
@@ -2070,8 +2322,13 @@ where mr.is_migrated=0</property>
               </components>
               <paths>
                 <path
-                  refId="Package\Staging_Activities\Merchats prep Stg to Stg.Paths[OLE DB Source Output]"
+                  refId="Package\Staging_Activities\Merchats prep Stg to Stg.Paths[Derived Column Output]"
                   endId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Staging_Activities\Merchats prep Stg to Stg.Paths[OLE DB Source Output]"
+                  endId="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column.Inputs[Derived Column Input]"
                   name="OLE DB Source Output"
                   startId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output]" />
               </paths>
@@ -2099,7 +2356,7 @@ where mr.is_migrated=0</property>
           DTS:refId="Package\Staging_Activities\Update BalanceThresholdDays"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{1b29e1bf-b3cf-49c5-9402-d25306204fce}"
+          DTS:DTSID="{f27f1731-c205-492d-92b6-da5a5e139b3c}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Update BalanceThresholdDays"
@@ -2109,7 +2366,7 @@ where mr.is_migrated=0</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-              SQLTask:SqlStatementSource="&#xA;update Merchants  set BalanceThresholdDays=IsNULL(JSON_VALUE(Settings, '$.balanceConfiguration.AvailableBalanceThresholdDays'),7)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="UPDATE    Merchants&#xA;SET           BalanceThresholdDays = ISNULL(JSON_VALUE(Settings, '$.balanceConfiguration.AvailableBalanceThresholdDays'), 7)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -2150,7 +2407,7 @@ where mr.is_migrated=0</property>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Staging_Activities.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{4D741BDF-8115-437F-9EC6-35A701AB9800}"
+          DTS:DTSID="{7ADE297A-7E70-417A-9F11-5D3B264ED3C7}"
           DTS:From="Package\Staging_Activities\Update_The Settings_Json (id, mechantCode, StatusTypeId)"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
@@ -2158,11 +2415,11 @@ where mr.is_migrated=0</property>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Staging_Activities.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
-          DTS:DTSID="{2C67BFDC-7066-44A3-9308-49F7110926F9}"
+          DTS:DTSID="{CC2BDF9D-976B-4CBE-BAD7-7F58EF95006E}"
           DTS:From="Package\Staging_Activities\Update BalanceThresholdDays"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
-          DTS:To="Package\Staging_Activities\Create Merchant Hash Key" />
+          DTS:To="Package\Staging_Activities\Create HashKey" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -2242,6 +2499,172 @@ where mr.is_migrated=0</property>
             <pipeline
               version="1">
               <components>
+                <component
+                  refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Inputs[Derived Column Input].Columns[SocialLinks]"
+                          cachedDataType="nText"
+                          cachedName="SocialLinks"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[SocialLinks]" />
+                        <inputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Inputs[Derived Column Input].Columns[Settings]"
+                          cachedDataType="nText"
+                          cachedName="Settings"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[Settings]" />
+                        <inputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Inputs[Derived Column Input].Columns[AboutUs]"
+                          cachedDataType="nText"
+                          cachedName="AboutUs"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[AboutUs]" />
+                        <inputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Inputs[Derived Column Input].Columns[HashKey]"
+                          cachedDataType="wstr"
+                          cachedLength="70"
+                          cachedName="HashKey"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[HashKey]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_AboutUs]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4000"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_AboutUs]"
+                          name="New_AboutUs"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,4000)((DT_NTEXT)#{Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[AboutUs]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,4000)((DT_NTEXT)AboutUs)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_Hash]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="70"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_Hash]"
+                          name="New_Hash"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,70)((DT_NTEXT)#{Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[HashKey]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,70)((DT_NTEXT)HashKey)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_Social]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4000"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_Social]"
+                          name="New_Social"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,4000)((DT_NTEXT)#{Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[SocialLinks]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,4000)((DT_NTEXT)SocialLinks)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_Settings]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4000"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_Settings]"
+                          name="New_Settings"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,4000)((DT_NTEXT)#{Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[Settings]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,4000)((DT_NTEXT)Settings)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
                 <component
                   refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants"
                   componentClassID="Microsoft.OLEDBSource"
@@ -2368,15 +2791,6 @@ where mr.is_migrated=0</property>
                           length="100"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[Email]"
                           name="Email"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[CountryId]"
-                          dataType="i2"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[CountryId]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[CountryId]"
-                          name="CountryId"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[CityId]"
@@ -2519,15 +2933,6 @@ where mr.is_migrated=0</property>
                           name="IsDeleted"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[Logo]"
-                          dataType="nText"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[Logo]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[Logo]"
-                          name="Logo"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[AboutUs]"
                           dataType="nText"
                           errorOrTruncationOperation="Conversion"
@@ -2537,42 +2942,41 @@ where mr.is_migrated=0</property>
                           name="AboutUs"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[TermsAndConditions]"
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[BalanceThresholdDays]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[BalanceThresholdDays]"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[BalanceThresholdDays]"
+                          name="BalanceThresholdDays"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[HashKey]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[HashKey]"
+                          length="70"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[HashKey]"
+                          name="HashKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[NotificationSettings]"
                           dataType="nText"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[TermsAndConditions]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[TermsAndConditions]"
-                          name="TermsAndConditions"
+                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[NotificationSettings]"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[NotificationSettings]"
+                          name="NotificationSettings"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[old_id]"
-                          dataType="i8"
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[StatusTypeId1]"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[old_id]"
-                          name="old_id"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[Is_Old_System]"
-                          dataType="bool"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[Is_Old_System]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[Is_Old_System]"
-                          name="Is_Old_System"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[old_code]"
-                          codePage="1256"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[old_code]"
-                          length="50"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[old_code]"
-                          name="old_code"
+                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[StatusTypeId1]"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[StatusTypeId1]"
+                          name="StatusTypeId1"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -2609,10 +3013,6 @@ where mr.is_migrated=0</property>
                           length="100"
                           name="Email" />
                         <externalMetadataColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[CountryId]"
-                          dataType="i2"
-                          name="CountryId" />
-                        <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[CityId]"
                           dataType="i2"
                           name="CityId" />
@@ -2634,12 +3034,12 @@ where mr.is_migrated=0</property>
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[CommercialRegistrationNum]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="CommercialRegistrationNum" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[TaxId]"
                           dataType="wstr"
-                          length="50"
+                          length="9"
                           name="TaxId" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[AttachamentImages]"
@@ -2679,7 +3079,8 @@ where mr.is_migrated=0</property>
                           name="IsDeleted" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[Logo]"
-                          dataType="nText"
+                          dataType="wstr"
+                          length="150"
                           name="Logo" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[AboutUs]"
@@ -2687,22 +3088,26 @@ where mr.is_migrated=0</property>
                           name="AboutUs" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[TermsAndConditions]"
-                          dataType="nText"
+                          dataType="wstr"
+                          length="1000"
                           name="TermsAndConditions" />
                         <externalMetadataColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
-                          dataType="i8"
-                          name="old_id" />
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[BalanceThresholdDays]"
+                          dataType="i2"
+                          name="BalanceThresholdDays" />
                         <externalMetadataColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[Is_Old_System]"
-                          dataType="bool"
-                          name="Is_Old_System" />
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[HashKey]"
+                          dataType="wstr"
+                          length="70"
+                          name="HashKey" />
                         <externalMetadataColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[old_code]"
-                          codePage="1256"
-                          dataType="str"
-                          length="50"
-                          name="old_code" />
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[NotificationSettings]"
+                          dataType="nText"
+                          name="NotificationSettings" />
+                        <externalMetadataColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[StatusTypeId1]"
+                          dataType="i2"
+                          name="StatusTypeId1" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -2749,11 +3154,6 @@ where mr.is_migrated=0</property>
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[Email]"
                           name="Email" />
                         <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[CountryId]"
-                          dataType="i2"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[CountryId]"
-                          name="CountryId" />
-                        <outputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[CityId]"
                           dataType="i2"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[CityId]"
@@ -2779,13 +3179,13 @@ where mr.is_migrated=0</property>
                         <outputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[CommercialRegistrationNum]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[CommercialRegistrationNum]"
                           name="CommercialRegistrationNum" />
                         <outputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[TaxId]"
                           dataType="wstr"
-                          length="50"
+                          length="9"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[TaxId]"
                           name="TaxId" />
                         <outputColumn
@@ -2814,6 +3214,11 @@ where mr.is_migrated=0</property>
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[IsWebsite]"
                           name="IsWebsite" />
                         <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[NotificationSettings]"
+                          dataType="nText"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[NotificationSettings]"
+                          name="NotificationSettings" />
+                        <outputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
                           dataType="dbTimeStamp"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
@@ -2834,37 +3239,26 @@ where mr.is_migrated=0</property>
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[IsDeleted]"
                           name="IsDeleted" />
                         <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[Logo]"
-                          dataType="nText"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[Logo]"
-                          name="Logo" />
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[StatusTypeId1]"
+                          dataType="i2"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[StatusTypeId1]"
+                          name="StatusTypeId1" />
                         <outputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[AboutUs]"
                           dataType="nText"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[AboutUs]"
                           name="AboutUs" />
                         <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[TermsAndConditions]"
-                          dataType="nText"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[TermsAndConditions]"
-                          name="TermsAndConditions" />
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[BalanceThresholdDays]"
+                          dataType="i2"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[BalanceThresholdDays]"
+                          name="BalanceThresholdDays" />
                         <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[old_id]"
-                          dataType="i8"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[old_id]"
-                          name="old_id" />
-                        <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[Is_Old_System]"
-                          dataType="bool"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[Is_Old_System]"
-                          name="Is_Old_System" />
-                        <outputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[old_code]"
-                          codePage="1256"
-                          dataType="str"
-                          length="50"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[old_code]"
-                          name="old_code" />
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[HashKey]"
+                          dataType="wstr"
+                          length="70"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[HashKey]"
+                          name="HashKey" />
                         <outputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -2889,6 +3283,7 @@ where mr.is_migrated=0</property>
                   description="OLE DB Destination"
                   name="Trgt Merchants"
                   usesDispositions="true"
+                  validateExternalMetadata="False"
                   version="4">
                   <properties>
                     <property
@@ -3041,23 +3436,11 @@ where mr.is_migrated=0</property>
                           externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[AttachamentImages]"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[AttachamentImages]" />
                         <inputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[SocialLinks]"
-                          cachedDataType="nText"
-                          cachedName="SocialLinks"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[SocialLinks]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[SocialLinks]" />
-                        <inputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[StatusTypeId]"
                           cachedDataType="i2"
                           cachedName="StatusTypeId"
                           externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[StatusTypeId]"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[StatusTypeId]" />
-                        <inputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[Settings]"
-                          cachedDataType="nText"
-                          cachedName="Settings"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[Settings]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[Settings]" />
                         <inputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[IsWebsite]"
                           cachedDataType="bool"
@@ -3089,23 +3472,32 @@ where mr.is_migrated=0</property>
                           externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[IsDeleted]"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[IsDeleted]" />
                         <inputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[Logo]"
-                          cachedDataType="nText"
-                          cachedName="Logo"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[Logo]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[Logo]" />
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[BalanceThresholdDays]"
+                          cachedDataType="i2"
+                          cachedName="BalanceThresholdDays"
+                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[BalanceThresholdDays]"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[BalanceThresholdDays]" />
                         <inputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[AboutUs]"
-                          cachedDataType="nText"
-                          cachedName="AboutUs"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[AboutUs]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[AboutUs]" />
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[New_Hash]"
+                          cachedDataType="wstr"
+                          cachedLength="70"
+                          cachedName="New_Hash"
+                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[HashKey]"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_Hash]" />
                         <inputColumn
-                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[TermsAndConditions]"
-                          cachedDataType="nText"
-                          cachedName="TermsAndConditions"
-                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[TermsAndConditions]"
-                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[TermsAndConditions]" />
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[New_Social]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="New_Social"
+                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[SocialLinks]"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_Social]" />
+                        <inputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[New_Settings]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="New_Settings"
+                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[Settings]"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output].Columns[New_Settings]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -3207,7 +3599,8 @@ where mr.is_migrated=0</property>
                           name="IsDeleted" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[Logo]"
-                          dataType="nText"
+                          dataType="wstr"
+                          length="150"
                           name="Logo" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[AboutUs]"
@@ -3215,11 +3608,13 @@ where mr.is_migrated=0</property>
                           name="AboutUs" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[TermsAndConditions]"
-                          dataType="nText"
+                          dataType="wstr"
+                          length="1000"
                           name="TermsAndConditions" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[HashKey]"
-                          dataType="nText"
+                          dataType="wstr"
+                          length="70"
                           name="HashKey" />
                         <externalMetadataColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[NotificationSettings]"
@@ -3229,6 +3624,10 @@ where mr.is_migrated=0</property>
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[StatusTypeId1]"
                           dataType="i2"
                           name="StatusTypeId1" />
+                        <externalMetadataColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[BalanceThresholdDays]"
+                          dataType="i2"
+                          name="BalanceThresholdDays" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -3260,8 +3659,13 @@ where mr.is_migrated=0</property>
               </components>
               <paths>
                 <path
-                  refId="Package\TRGT_Loading\Stg to Trgt Merchants.Paths[OLE DB Source Output]"
+                  refId="Package\TRGT_Loading\Stg to Trgt Merchants.Paths[Derived Column Output]"
                   endId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\TRGT_Loading\Stg to Trgt Merchants.Paths[OLE DB Source Output]"
+                  endId="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column.Inputs[Derived Column Input]"
                   name="OLE DB Source Output"
                   startId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output]" />
               </paths>
@@ -3336,10 +3740,6 @@ where mr.is_migrated=0</property>
           Id="Package\Script Task"
           TopLeft="1656.15873699988,198.709805946394" />
         <NodeLayout
-          Size="203.2,41.6"
-          Id="Package\Staging_Activities\Create Merchant Hash Key"
-          TopLeft="102.07143021603,372.817647873902" />
-        <NodeLayout
           Size="196,41.6"
           Id="Package\Staging_Activities\Merchats prep Stg to Stg"
           TopLeft="5.5,146.052942600712" />
@@ -3347,10 +3747,6 @@ where mr.is_migrated=0</property>
           Size="314.4,41.6"
           Id="Package\Staging_Activities\Truncate_STG_Merchants (First_time and Always)"
           TopLeft="61.7857171856627,5.5" />
-        <NodeLayout
-          Size="220.8,41.6"
-          Id="Package\Staging_Activities\Update BalanceThresholdDays"
-          TopLeft="86.0714299435517,289.570589307765" />
         <NodeLayout
           Size="363.2,41.6"
           Id="Package\Staging_Activities\Update_The Settings_Json (id, mechantCode, StatusTypeId)"
@@ -3423,20 +3819,24 @@ where mr.is_migrated=0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="220.8,41.6"
+          Id="Package\Staging_Activities\Update BalanceThresholdDays"
+          TopLeft="94.071430079791,300.676469258372" />
         <EdgeLayout
           Id="Package\Staging_Activities.PrecedenceConstraints[Constraint 2]"
-          TopLeft="199.571429500774,258.323530887485">
+          TopLeft="203.571429568894,258.323530887485">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31.2470584202803"
+              EndConnector="0,42.3529383708866"
               Start="0,0"
-              End="0,23.7470584202803">
+              End="0,34.8529383708866">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.7470584202803" />
+                    End="0,34.8529383708866" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3445,20 +3845,30 @@ where mr.is_migrated=0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Staging_Activities\Create HashKey"
+          TopLeft="129.714292146722,362.070590037046" />
         <EdgeLayout
           Id="Package\Staging_Activities.PrecedenceConstraints[Constraint 3]"
-          TopLeft="200.071430079791,331.170589307765">
+          TopLeft="204.471430079791,342.276469258372">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,41.6470585661363"
+              EndConnector="78.0428620669308,40.5941207786739"
               Start="0,0"
-              End="0,34.1470585661363">
+              End="70.5428620669308,40.5941207786739">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.1470585661363" />
+                    End="0,36.5941207786739" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.5941207786739"
+                    Point2="0,40.5941207786739"
+                    Point3="4,40.5941207786739" />
+                  <mssgle:LineSegment
+                    End="70.5428620669308,40.5941207786739" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3470,8 +3880,8 @@ where mr.is_migrated=0</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="False"
-          PanelSize="416.8,488"
-          Size="416.8,43.2"
+          PanelSize="416.8,571.2"
+          Size="184.8,43.2"
           Id="Package\Staging_Activities"
           TopLeft="928.060323941411,15.576472321348" />
         <NodeLayout
@@ -3487,35 +3897,35 @@ where mr.is_migrated=0</property>
           Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG"
           TopLeft="14.9714290579973,240.282357231061" />
         <NodeLayout
-          Size="182.4,51.2"
+          Size="180.8,41.6"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants"
           TopLeft="27.9999980245317,117.705887389266" />
         <EdgeLayout
           Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint]"
-          TopLeft="119.199998024532,168.905887389266">
+          TopLeft="118.399998024532,159.305887389266">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="51.7714310334655,71.3764698417952"
+              EndConnector="52.5714310334656,80.976469841795"
               Start="0,0"
-              End="51.7714310334655,63.8764698417952">
+              End="52.5714310334656,73.476469841795">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.6882349208976" />
+                    End="0,36.4882349208975" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.6882349208976"
-                    Point2="0,35.6882349208976"
-                    Point3="4,35.6882349208976" />
+                    Point1="0,36.4882349208975"
+                    Point2="0,40.4882349208975"
+                    Point3="4,40.4882349208975" />
                   <mssgle:LineSegment
-                    End="47.7714310334655,35.6882349208976" />
+                    End="48.5714310334656,40.4882349208975" />
                   <mssgle:CubicBezierSegment
-                    Point1="47.7714310334655,35.6882349208976"
-                    Point2="51.7714310334655,35.6882349208976"
-                    Point3="51.7714310334655,39.6882349208976" />
+                    Point1="48.5714310334656,40.4882349208975"
+                    Point2="52.5714310334656,40.4882349208975"
+                    Point3="52.5714310334656,44.4882349208975" />
                   <mssgle:LineSegment
-                    End="51.7714310334655,63.8764698417952" />
+                    End="52.5714310334656,73.476469841795" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3530,26 +3940,26 @@ where mr.is_migrated=0</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-52.6285786395172,23.258827218713"
+              EndConnector="-53.4285786395172,23.2588272187129"
               Start="0,0"
-              End="-52.6285786395172,15.758827218713">
+              End="-53.4285786395172,15.7588272187129">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,7.62941360935652" />
+                    End="0,7.62941360935645" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,7.62941360935652"
+                    Point1="0,7.62941360935645"
                     Point2="0,11.6294136093565"
                     Point3="-4,11.6294136093565" />
                   <mssgle:LineSegment
-                    End="-48.6285786395172,11.6294136093565" />
+                    End="-49.4285786395172,11.6294136093565" />
                   <mssgle:CubicBezierSegment
-                    Point1="-48.6285786395172,11.6294136093565"
-                    Point2="-52.6285786395172,11.6294136093565"
-                    Point3="-52.6285786395172,15.6294136093565" />
+                    Point1="-49.4285786395172,11.6294136093565"
+                    Point2="-53.4285786395172,11.6294136093565"
+                    Point3="-53.4285786395172,15.6294136093565" />
                   <mssgle:LineSegment
-                    End="-52.6285786395172,15.758827218713" />
+                    End="-53.4285786395172,15.7588272187129" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3635,13 +4045,13 @@ where mr.is_migrated=0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="1136.46032394141,58.776472321348">
+          TopLeft="1020.46032394141,58.776472321348">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-637.831747549841,163.105881992592"
+              EndConnector="-521.831747549841,163.105881992592"
               Start="0,0"
-              End="-637.831747549841,155.605881992592">
+              End="-521.831747549841,155.605881992592">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3652,13 +4062,13 @@ where mr.is_migrated=0</property>
                     Point2="0,81.552940996296"
                     Point3="-4,81.552940996296" />
                   <mssgle:LineSegment
-                    End="-633.831747549841,81.552940996296" />
+                    End="-517.831747549841,81.552940996296" />
                   <mssgle:CubicBezierSegment
-                    Point1="-633.831747549841,81.552940996296"
-                    Point2="-637.831747549841,81.552940996296"
-                    Point3="-637.831747549841,85.552940996296" />
+                    Point1="-517.831747549841,81.552940996296"
+                    Point2="-521.831747549841,81.552940996296"
+                    Point3="-521.831747549841,85.552940996296" />
                   <mssgle:LineSegment
-                    End="-637.831747549841,155.605881992592" />
+                    End="-521.831747549841,155.605881992592" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3674,29 +4084,79 @@ where mr.is_migrated=0</property>
     design-time-name="Package\Staging_Activities\Merchats prep Stg to Stg">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="184.8,41.6"
+          Size="184,41.6"
           Id="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT"
-          TopLeft="437,160" />
+          TopLeft="203.857138886744,155.105882284303" />
         <NodeLayout
           Size="260.8,41.6"
           Id="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC"
-          TopLeft="398,40" />
+          TopLeft="125.142859274027,45.7882358689622" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Staging_Activities\Merchats prep Stg to Stg\Derived Column"
+          TopLeft="433.142864519236,107.058825030871" />
         <EdgeLayout
           Id="Package\Staging_Activities\Merchats prep Stg to Stg.Paths[OLE DB Source Output]"
-          TopLeft="529,82">
+          TopLeft="385.942859274027,66.5882358689622">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,78"
+              EndConnector="47.2000052452088,61.2705891619092"
               Start="0,0"
-              End="0,70.5">
+              End="39.7000052452088,61.2705891619092">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.5" />
+                    End="19.6000026226044,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.6000026226044,0"
+                    Point2="23.6000026226044,0"
+                    Point3="23.6000026226044,4" />
+                  <mssgle:LineSegment
+                    End="23.6000026226044,57.2705891619092" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.6000026226044,57.2705891619092"
+                    Point2="23.6000026226044,61.2705891619092"
+                    Point3="27.6000026226044,61.2705891619092" />
+                  <mssgle:LineSegment
+                    End="39.7000052452088,61.2705891619092" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging_Activities\Merchats prep Stg to Stg.Paths[Derived Column Output]"
+          TopLeft="433.142864519236,133.458825030871">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-45.2857256324925,42.4470572534317"
+              Start="0,0"
+              End="-37.7857256324925,42.4470572534317">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-15.1206397114969,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.1206397114969,0"
+                    Point2="-19.1206397114969,0"
+                    Point3="-19.1206397114969,4" />
+                  <mssgle:LineSegment
+                    End="-19.1206397114969,38.4470572534317" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19.1206397114969,38.4470572534317"
+                    Point2="-19.1206397114969,42.4470572534317"
+                    Point3="-23.1206397114969,42.4470572534317" />
+                  <mssgle:LineSegment
+                    End="-37.7857256324925,42.4470572534317" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3721,46 +4181,83 @@ where mr.is_migrated=0</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\TRGT_Loading\Stg to Trgt Merchants">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="149.6,41.6"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants"
           TopLeft="109,107" />
         <NodeLayout
           Size="145.6,41.6"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants"
           TopLeft="113,23" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\TRGT_Loading\Stg to Trgt Merchants\Derived Column"
+          TopLeft="424,96" />
         <EdgeLayout
           Id="Package\TRGT_Loading\Stg to Trgt Merchants.Paths[OLE DB Source Output]"
-          TopLeft="185,65">
+          TopLeft="185.8,64.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42"
+              EndConnector="314.6,31.4"
               Start="0,0"
-              End="0,34.5">
+              End="314.6,23.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
+                    End="0,11.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.7"
+                    Point2="0,15.7"
+                    Point3="4,15.7" />
+                  <mssgle:LineSegment
+                    End="310.6,15.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="310.6,15.7"
+                    Point2="314.6,15.7"
+                    Point3="314.6,19.7" />
+                  <mssgle:LineSegment
+                    End="314.6,23.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\TRGT_Loading\Stg to Trgt Merchants.Paths[Derived Column Output]"
+          TopLeft="424,116.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-165.4,11"
+              Start="0,0"
+              End="-157.9,11">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-78.7,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-78.7,0"
+                    Point2="-82.7,0"
+                    Point3="-82.7,4" />
+                  <mssgle:LineSegment
+                    End="-82.7,7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82.7,7"
+                    Point2="-82.7,11"
+                    Point3="-86.7,11" />
+                  <mssgle:LineSegment
+                    End="-157.9,11" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3795,6 +4292,14 @@ where mr.is_migrated=0</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

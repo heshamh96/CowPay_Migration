@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="192.168.10.5.PaymentIntegrationManagement.BI_Team"
+  DTS:DTSID="{BACACAA5-7767-4AA6-9B22-6FCBF1549B5F}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=192.168.10.5;User ID=BI_Team;Initial Catalog=PaymentIntegrationManagement;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAB6pywgBDS0+7CB+50/ntKAAAAAACAAAAAAAQZgAAAAEAACAAAADqPtKkUrIhcvmOQK1fOIdgNzoDmiSwGZCXCC/wt3WVAAAAAAAOgAAAAAIAACAAAAA1ZLeXN60o+Spq+vcrEauHs2OmjaTB6zbfcERRroAVXoAAAACEoMwcDRfTpRy4qxdeK9EBBJytnU6TAk2Yak07gputkyz6rH2IZdJO7FBzzbgjxuhu4734sRmjt4VGWKGvTGxnPT+ulQqaECy7fcs9Bqr6+XFciuUX0RAaKLJqmGfWgK0XfpJW9rgj+GR8IO3rPCyTZ8B7T9Avh87WBV2j0K5oT0AAAAAhO9c9sUL3Yy+mSkFAglVKDqzwiWFaCu2kFgAgb3/TkcMj8DWEN/Va1RHV07O7EmBKxqcyrMAPva2+0rar40o1</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

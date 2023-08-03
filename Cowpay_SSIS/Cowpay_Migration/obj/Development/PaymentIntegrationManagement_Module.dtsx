@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="PaymentIntegrationManagement_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{ACB45D5A-0F8F-44F2-81B5-EC9647BE3A88}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{FB81A621-95F1-4EB8-9FF9-1A8654619860}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,7 +31,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
-          SQLTask:SqlStatementSource="INSERT INTO PaymentIntegrationManagement_Stage.dbo.IFrames &#xA;SELECT Id,MerchantCode, NEWID(),'default iframe','this is default iframe',NULL, CreatedDate,NULL,NULL,0,1&#xA;FROM [Staging_Migration].dbo.Merchants M&#xA;WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagement_Stage.dbo.IFrames where IsDefault=1) --and [old_code]='qJw60A7uR1Ij'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="/*and [old_code]='qJw60A7uR1Ij'*/&#xA;INSERT INTO IFrames&#xA;SELECT     Id, MerchantCode, NEWID() AS Expr1, 'default iframe' AS Expr2, 'this is default iframe' AS Expr3, NULL AS Expr4, CreatedDate, NULL AS Expr5, NULL AS Expr6, 0 AS Expr7, 1 AS Expr8&#xA;FROM        Merchants AS M&#xA;WHERE     (MerchantCode NOT IN&#xA;                      (SELECT     MerchantCode&#xA;                       FROM        PaymentIntegrationManagement_Stage.dbo.IFrames AS IFrames_1&#xA;                       WHERE     (IsDefault = 1)))" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -412,7 +412,7 @@ WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagem
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">true</property>
+                  name="FastLoadKeepIdentity">false</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."

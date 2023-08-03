@@ -1,0 +1,18 @@
+WithdrawalRequests
+FK_Account_Migration_Key             uniquIdentifier
+Migration_key_WithdrawalRequests     uniquIdentifier
+
+
+WithdrawalRequestsTransactions
+FK_Migration_key_WithdrawalRequests  uniquIdentifier
+IsSuccess                            bit
+
+Orders
+FK_Migration_Key                         uniquIdentifier
+
+Orders_Meta
+Migration_Key                          uniquIdentifier
+
+
+OrderTransactions
+FK_Migration_Key_Orders               uniquIdentifier
