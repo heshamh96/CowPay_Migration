@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="AA_Deployment_Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="72"
-  DTS:VersionGUID="{6582F05A-36C8-44E0-AEBE-CCAF3E29F028}">
+  DTS:VersionBuild="73"
+  DTS:VersionGUID="{3EE172E5-60FC-4A75-B3CA-7263AE96C91F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -288,7 +288,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="223.2,41.6"
           Id="Package\Apply Data Cleansing Activities"
@@ -356,7 +356,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -376,14 +378,14 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45.8823541680838"
+              EndConnector="0,45.882354168084"
               Start="0,0"
-              End="0,38.3823541680838">
+              End="0,38.382354168084">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.3823541680838" />
+                    End="0,38.382354168084" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -398,9 +400,9 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="171.08572100036,-43.4823538763719"
+              EndConnector="171.08572100036,-43.482353876372"
               Start="0,0"
-              End="163.58572100036,-43.4823538763719">
+              End="163.58572100036,-43.482353876372">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -411,13 +413,13 @@
                     Point2="85.5428605001798,0"
                     Point3="85.5428605001798,-4" />
                   <mssgle:LineSegment
-                    End="85.5428605001798,-39.4823538763719" />
+                    End="85.5428605001798,-39.482353876372" />
                   <mssgle:CubicBezierSegment
-                    Point1="85.5428605001798,-39.4823538763719"
-                    Point2="85.5428605001798,-43.4823538763719"
-                    Point3="89.5428605001798,-43.4823538763719" />
+                    Point1="85.5428605001798,-39.482353876372"
+                    Point2="85.5428605001798,-43.482353876372"
+                    Point3="89.5428605001798,-43.482353876372" />
                   <mssgle:LineSegment
-                    End="163.58572100036,-43.4823538763719" />
+                    End="163.58572100036,-43.482353876372" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

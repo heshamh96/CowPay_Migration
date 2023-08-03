@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="PaymentIntegrationManagement_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{FB81A621-95F1-4EB8-9FF9-1A8654619860}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{79304458-8C25-4840-A255-9DECCEB5CBAE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -429,8 +429,8 @@ WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagem
               <connections>
                 <connection
                   refId="Package\IFrames STG_TRGT\IFrames TRGT.Connections[OleDbConnection]"
-                  connectionManagerID="{6566AD5C-5B3C-4EF7-B903-65D5E70BA762}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[PaymentIntegrationManagement_Stage]"
+                  connectionManagerID="{BACACAA5-7767-4AA6-9B22-6FCBF1549B5F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[192.168.10.5.PaymentIntegrationManagement.BI_Team]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

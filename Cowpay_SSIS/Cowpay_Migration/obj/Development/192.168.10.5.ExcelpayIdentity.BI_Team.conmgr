@@ -8,7 +8,7 @@
       DTS:ConnectionString="Data Source=192.168.10.5;User ID=BI_Team;Initial Catalog=ExcelpayIdentity;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAB6pywgBDS0+7CB+50/ntKAAAAAACAAAAAAAQZgAAAAEAACAAAACHyCW64BvifP3XnkxBQBS3aWt+5+agki6GiCSAfa4I9AAAAAAOgAAAAAIAACAAAACJfTolDYR4N7p8BIfm24z4TdztY7bm32BjPjcRn7OISYAAAABpgUnmNjGEEiClffYNku7Ylo7wmsN003z30Un+5K2eOgVUGgAUPryjHFcEmjygnNdRyqpBwc/M1lwvqprmllTiqDz4nb1r/5VxSb27sylToOmIzlTdi559w7+xBjAEazdu0/22Gh1QUf+EUONncjeVWI3yqP+/t7Y9wakIwy+iwkAAAACqmsBNj6t1IXT6KgAXXNbK3k+MvSlVOvkZXQ+By+Uv6OEHnRfqsVAjQD6vpAjkmRKoZ7E8ihBpWW/KNfQMjhj9</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAB6pywgBDS0+7CB+50/ntKAAAAAACAAAAAAAQZgAAAAEAACAAAACzesrNShKBbVxQUYwvtudoaMWxI58MMQzG9x3h+RhfFwAAAAAOgAAAAAIAACAAAAAdHsVl1ggO8+RuTb1+TNUmtYZJNSD1J3lsAUPsW0yQ34AAAACH28Lr69+LIdA5GOdoUK7xtT33HzX6hZTpvghwyk6cUYDlw38fOMOmCnns/RcyeJrDRSy1bvjW6DPXwOBPU7q2c2B7gVAVwUOXKyZxth2WPIJ7oB5IB5+j7N4ES4V+yrOs+p/R95lFXfNabo5QveaELQAqDtWtetaXqCV7IPMRYUAAAAASibN0i37U7iaSdonfopWMIxj7rcwLvUatACt3yJPUVIdKkBY2AUTHJNJeFpFxLG9XHVPETGkLH3iTnYFdKVs3</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

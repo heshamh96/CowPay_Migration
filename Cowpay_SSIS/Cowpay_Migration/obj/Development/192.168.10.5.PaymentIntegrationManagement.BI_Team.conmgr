@@ -8,7 +8,7 @@
       DTS:ConnectionString="Data Source=192.168.10.5;User ID=BI_Team;Initial Catalog=PaymentIntegrationManagement;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAB6pywgBDS0+7CB+50/ntKAAAAAACAAAAAAAQZgAAAAEAACAAAADeKbEk0thu4MGDP/6YJRSfId6K00KwgEqUUaWmmqjbjgAAAAAOgAAAAAIAACAAAADTzXbA49tem7m/TJHXbBA2SYipjFJZHwd1JTNRpAMl8YAAAADeT+7n8iiH3O37OrYXPEDoNcmk+jW0LIxulkvBDxxOQ3g6bbc2HFFmDApKenRuetNuVSgnadpLkzlLHL4oT+/4x7FSSZwvRggoAVgYznBQrQrqGehcq02aQmgnoUHFXFCBHZPMR6xpKGgyqLNXSla/AHB60mc0lhQxlH95kId+SUAAAAAsa7LCYu/WG/jvMLxWcibsVCeRLnFSNqovpWgLDsjAnm124ueOHoEvsSUDkn8T7qke0dSkqw5K2a+TAMwPNjkg</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAB6pywgBDS0+7CB+50/ntKAAAAAACAAAAAAAQZgAAAAEAACAAAACObmPvxh8ygZq8KTUzGN8AhcCULoJiCQAwDz5i9cOEoAAAAAAOgAAAAAIAACAAAABhaW4l+WbXKp1w0EKLl8xdwAduYQGZKmoecjbOCk4euoAAAABbkeu3BRJoA+BhLiiRH5lOIP0Q6MhvaY1ZmzN4aKLrNfECrjUtl5TqwAgWsReW6FwzkKUP4yV6ewMwbdKAsGanL8v1mT8pGx9lbAsB8/bG+D2wwc9ZCV995D05wzqNCy+u1jpbG7zcGQ1CKasAV3XdDltnYuNWU3eD9g8fdzeEK0AAAABtW27byGpM2xiMb/9lY2bbhNcipujAkMRKwO5FOFOQ33/xSeOVhLlymlg/+DOe6Af3BA+cDeBnpjkEZe7hfiWI</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

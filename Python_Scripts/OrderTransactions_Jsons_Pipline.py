@@ -74,11 +74,11 @@ fawry_df=ddf.from_pandas(fawry_df,npartitions=1)
 
 
 
-Bosta_df = pd.read_sql(Bosta_Transactions,engine,index_col='Transaction_ID')
-if len(Bosta_df)>0:
-    Bosta_df['PGWMetaRequest']=Bosta_df.apply(Apply_Bosta_Request,axis=1)
-    Bosta_df['PGWMetaResponse']=NaT
-Bosta_df=ddf.from_pandas(Bosta_df,npartitions=1)
+# Bosta_df = pd.read_sql(Bosta_Transactions,engine,index_col='Transaction_ID')
+# if len(Bosta_df.index)>0:
+#      Bosta_df['PGWMetaRequest']=Bosta_df.apply(Apply_Bosta_Request,axis=1)
+#      Bosta_df['PGWMetaResponse']=NaT
+# Bosta_df=ddf.from_pandas(Bosta_df,npartitions=1)
 
 
 
@@ -94,23 +94,23 @@ Akurateko_df=ddf.from_pandas(Akurateko_df,npartitions=1)
 
 
 
-Meeza_df = pd.read_sql(Meeza_Transactions,engine,index_col='Transaction_ID',)
-#Meeza_df = ddf.read_sql("Meeza_Transactions",conn.CowPay_Production_Simulation_DB,index_col='Transaction_ID',)
-#Meeza_df= pd.DataFrame(Meeza_df.compute())
-#Meeza_df.fillna(0)
-if len(Meeza_df)>0:
-    Meeza_df['PGWMetaRequest']=Meeza_df.df.apply(Apply_Meeza_Request,axis=1)
-    Meeza_df['PGWMetaResponse']=NaT
-#Meeza_df.head()
-Meeza_df=ddf.from_pandas(Meeza_df,npartitions=1)
+# Meeza_df = pd.read_sql(Meeza_Transactions,engine,index_col='Transaction_ID',)
+# #Meeza_df = ddf.read_sql("Meeza_Transactions",conn.CowPay_Production_Simulation_DB,index_col='Transaction_ID',)
+# #Meeza_df= pd.DataFrame(Meeza_df.compute())
+# #Meeza_df.fillna(0)
+# if len(Meeza_df)>0:
+#     Meeza_df['PGWMetaRequest']=Meeza_df.df.apply(Apply_Meeza_Request,axis=1)
+#     Meeza_df['PGWMetaResponse']=NaT
+# #Meeza_df.head()
+# Meeza_df=ddf.from_pandas(Meeza_df,npartitions=1)
 
 
 
 df1= fawry_df[['PGWMetaRequest','PGWMetaResponse']]
 df2= Akurateko_df[['PGWMetaRequest','PGWMetaResponse']]
-df3= Meeza_df[['PGWMetaRequest','PGWMetaResponse']]
-df4= Bosta_df[['PGWMetaRequest','PGWMetaResponse']]
-print(df1) 
+# df3= Meeza_df[['PGWMetaRequest','PGWMetaResponse']]
+# df4= Bosta_df[['PGWMetaRequest','PGWMetaResponse']]
 
-all_data = ddf.concat([df1,df2,df3,df4],sort=False)
+
+all_data = ddf.concat([df1,df2],sort=False)
 all_data.to_sql("OrderTransactions_jsons_Staging",conn.Staging_Migration_DB,if_exists='replace')

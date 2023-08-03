@@ -2,48 +2,48 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Cowpay_Migration</Name>
-    <LastWriteTime>2023-07-30T16:36:40.5812298Z</LastWriteTime>
+    <LastWriteTime>2023-08-03T08:32:03.5386959Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Merchants_Module.dtsx</Name>
-      <LastWriteTime>2023-08-02T12:25:45.5386889Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T15:46:55.9757962Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Transaction_Management_Module.dtsx</Name>
-      <LastWriteTime>2023-08-03T06:03:57.8614867Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T22:40:56.1960747Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Populate Cowpay_Production_Simulation_DB.dtsx</Name>
-      <LastWriteTime>2023-08-03T04:12:47.2574352Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T08:32:03.5544565Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>AA_Deployment_Package.dtsx</Name>
-      <LastWriteTime>2023-08-02T17:26:12.3830838Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T15:08:12.8040582Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Cleansing_Data.dtsx</Name>
-      <LastWriteTime>2023-07-30T14:29:58.9542047Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T16:47:27.8214032Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Z_Pre_Executions.dtsx</Name>
-      <LastWriteTime>2023-07-30T14:29:59.001576Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T08:32:03.5697587Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ExcelpayIdentity_Module_STG.dtsx</Name>
-      <LastWriteTime>2023-07-31T09:15:24.2421382Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T14:48:16.7043167Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ExcelpayIdentity_Module_TRGT.dtsx</Name>
-      <LastWriteTime>2023-08-02T12:12:11.7259154Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T14:49:34.7080534Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -53,17 +53,17 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Initiation_of_InDifferent_Rollout.dtsx</Name>
-      <LastWriteTime>2023-08-02T16:54:25.7730792Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T08:32:03.5386959Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Package1.dtsx</Name>
-      <LastWriteTime>2023-07-30T14:29:58.969952Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T08:32:03.5386959Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>PaymentIntegrationManagement_Module.dtsx</Name>
-      <LastWriteTime>2023-08-02T16:26:32.3828563Z</LastWriteTime>
+      <LastWriteTime>2023-08-03T22:51:43.5078592Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
