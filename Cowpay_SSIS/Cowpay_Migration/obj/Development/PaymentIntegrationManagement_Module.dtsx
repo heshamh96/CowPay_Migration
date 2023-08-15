@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="PaymentIntegrationManagement_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{79304458-8C25-4840-A255-9DECCEB5CBAE}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{49A2B081-8699-44DE-89A8-F2B1116F8871}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -429,8 +429,8 @@ WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagem
               <connections>
                 <connection
                   refId="Package\IFrames STG_TRGT\IFrames TRGT.Connections[OleDbConnection]"
-                  connectionManagerID="{BACACAA5-7767-4AA6-9B22-6FCBF1549B5F}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[192.168.10.5.PaymentIntegrationManagement.BI_Team]"
+                  connectionManagerID="{6566AD5C-5B3C-4EF7-B903-65D5E70BA762}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PaymentIntegrationManagement_Stage]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -608,6 +608,23 @@ WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagem
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A294BD1E-2CB7-48C8-BAF8-FB72BD1CF60D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+          SQLTask:SqlStatementSource="  truncate table [Staging_Migration].[dbo].[IFrames]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -618,6 +635,14 @@ WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagem
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\IFrames STG_TRGT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5748C3E6-FBEE-4AD7-B186-D6DF50D04CAC}"
+      DTS:From="Package\Truncate STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Create Default Iframe" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -630,41 +655,79 @@ WHERE M.MerchantCode not in (select MerchantCode  from PaymentIntegrationManagem
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\Create Default Iframe"
-          TopLeft="294.85714787853,28.7529415797197" />
+          TopLeft="245.142861317615,77.6941187366895" />
         <NodeLayout
           Size="171.2,41.6"
           Id="Package\IFrames STG_TRGT"
-          TopLeft="269.714290307493,141.929413755212" />
+          TopLeft="269.714290307493,144.37647261306" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="385.25714787853,70.3529415797197">
+          TopLeft="335.542861317615,119.294118736689">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-29.9428575710375,71.5764721754926"
+              EndConnector="19.771428989878,25.082353876371"
               Start="0,0"
-              End="-29.9428575710375,64.0764721754926">
+              End="19.771428989878,17.582353876371">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.7882360877463" />
+                    End="0,8.54117693818552" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.7882360877463"
-                    Point2="0,35.7882360877463"
-                    Point3="-4,35.7882360877463" />
+                    Point1="0,8.54117693818552"
+                    Point2="0,12.5411769381855"
+                    Point3="4,12.5411769381855" />
                   <mssgle:LineSegment
-                    End="-25.9428575710375,35.7882360877463" />
+                    End="15.771428989878,12.5411769381855" />
                   <mssgle:CubicBezierSegment
-                    Point1="-25.9428575710375,35.7882360877463"
-                    Point2="-29.9428575710375,35.7882360877463"
-                    Point3="-29.9428575710375,39.7882360877463" />
+                    Point1="15.771428989878,12.5411769381855"
+                    Point2="19.771428989878,12.5411769381855"
+                    Point3="19.771428989878,16.5411769381855" />
                   <mssgle:LineSegment
-                    End="-29.9428575710375,64.0764721754926" />
+                    End="19.771428989878,17.582353876371" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\Truncate STG"
+          TopLeft="234.285718275576,1.06581410364015E-14" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="305.485718275576,41.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30.0571430420387,36.0941187366895"
+              Start="0,0"
+              End="30.0571430420387,28.5941187366895">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.0470593683447" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.0470593683447"
+                    Point2="0,18.0470593683447"
+                    Point3="4,18.0470593683447" />
+                  <mssgle:LineSegment
+                    End="26.0571430420387,18.0470593683447" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26.0571430420387,18.0470593683447"
+                    Point2="30.0571430420387,18.0470593683447"
+                    Point3="30.0571430420387,22.0470593683447" />
+                  <mssgle:LineSegment
+                    End="30.0571430420387,28.5941187366895" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

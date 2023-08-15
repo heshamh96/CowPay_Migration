@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Merchants_Module"
   DTS:PackageType="5"
-  DTS:VersionBuild="162"
-  DTS:VersionGUID="{5EB6457F-3932-4108-8702-E7F26BDDBE31}">
+  DTS:VersionBuild="186"
+  DTS:VersionGUID="{F0056C68-22B5-4C8A-A016-B30B9C7942E7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -414,7 +414,7 @@
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_address]" />
                         <inputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].Columns[m_city_id]"
-                          cachedDataType="r8"
+                          cachedDataType="i4"
                           cachedName="m_city_id"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Merchants_TRGT.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_city_id]" />
@@ -674,7 +674,7 @@
                       name="SqlCommand"
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select m.[New_id]
       ,[MasterMerchantId]
-      ,[name]
+      ,m.[name]
       ,[email]
       ,[phone]
       ,[m_address]
@@ -959,7 +959,7 @@ where mr.is_migrated=0</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_country_id]"
-                          dataType="r8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_country_id]"
@@ -968,7 +968,7 @@ where mr.is_migrated=0</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].Columns[m_city_id]"
-                          dataType="r8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_city_id]"
@@ -1605,11 +1605,11 @@ where mr.is_migrated=0</property>
                           name="m_orders_notification" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_country_id]"
-                          dataType="r8"
+                          dataType="i4"
                           name="m_country_id" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_city_id]"
-                          dataType="r8"
+                          dataType="i4"
                           name="m_city_id" />
                         <externalMetadataColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Output].ExternalColumns[m_facebook]"
@@ -1978,12 +1978,12 @@ where mr.is_migrated=0</property>
                           name="m_orders_notification" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[m_country_id]"
-                          dataType="r8"
+                          dataType="i4"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[m_country_id]"
                           name="m_country_id" />
                         <outputColumn
                           refId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[m_city_id]"
-                          dataType="r8"
+                          dataType="i4"
                           lineageId="Package\Staging_Activities\Merchats prep Stg to Stg\STG_Staging_Migration_Prepared_SRC.Outputs[OLE DB Source Error Output].Columns[m_city_id]"
                           name="m_city_id" />
                         <outputColumn
@@ -2533,8 +2533,8 @@ where mr.is_migrated=0</property>
                   <connections>
                     <connection
                       refId="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG\IDS From TRGT.Connections[OleDbConnection]"
-                      connectionManagerID="{5343EAA4-0EBA-431E-A4E9-5A9720A999D1}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[192.168.10.5.MerchantManagement.BI_Team]"
+                      connectionManagerID="{548222E3-535D-4CEE-8B01-802402102276}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[MerchantManagement]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3903,7 +3903,7 @@ where mr.is_migrated=0</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[CommercialRegistrationNum]"
-                          length="50"
+                          length="20"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[CommercialRegistrationNum]"
                           name="CommercialRegistrationNum"
                           truncationRowDisposition="FailComponent" />
@@ -3913,7 +3913,7 @@ where mr.is_migrated=0</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[TaxId]"
-                          length="50"
+                          length="9"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[TaxId]"
                           name="TaxId"
                           truncationRowDisposition="FailComponent" />
@@ -4043,6 +4043,26 @@ where mr.is_migrated=0</property>
                           externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[StatusTypeId1]"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[StatusTypeId1]"
                           name="StatusTypeId1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[old_code]"
+                          codePage="1256"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[old_code]"
+                          length="50"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[old_code]"
+                          name="old_code"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[old_id]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[old_id]"
+                          name="old_id"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -4174,6 +4194,16 @@ where mr.is_migrated=0</property>
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[StatusTypeId1]"
                           dataType="i2"
                           name="StatusTypeId1" />
+                        <externalMetadataColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[old_code]"
+                          codePage="1256"
+                          dataType="str"
+                          length="50"
+                          name="old_code" />
+                        <externalMetadataColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].ExternalColumns[old_id]"
+                          dataType="i8"
+                          name="old_id" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -4337,6 +4367,18 @@ where mr.is_migrated=0</property>
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[old_code]"
+                          codePage="1256"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[old_code]"
+                          name="old_code" />
+                        <outputColumn
+                          refId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                          dataType="i8"
+                          lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Error Output].Columns[old_id]"
+                          name="old_id" />
                       </outputColumns>
                       <externalMetadataColumns />
                     </output>
@@ -4402,8 +4444,8 @@ where mr.is_migrated=0</property>
                   <connections>
                     <connection
                       refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Connections[OleDbConnection]"
-                      connectionManagerID="{5343EAA4-0EBA-431E-A4E9-5A9720A999D1}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[192.168.10.5.MerchantManagement.BI_Team]"
+                      connectionManagerID="{548222E3-535D-4CEE-8B01-802402102276}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[MerchantManagement]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -4484,14 +4526,14 @@ where mr.is_migrated=0</property>
                         <inputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[CommercialRegistrationNum]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="CommercialRegistrationNum"
                           externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[CommercialRegistrationNum]"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[CommercialRegistrationNum]" />
                         <inputColumn
                           refId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].Columns[TaxId]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="9"
                           cachedName="TaxId"
                           externalMetadataColumnId="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants.Inputs[OLE DB Destination Input].ExternalColumns[TaxId]"
                           lineageId="Package\TRGT_Loading\Stg to Trgt Merchants\Stg Merchants.Outputs[OLE DB Source Output].Columns[TaxId]" />
@@ -4751,8 +4793,8 @@ where mr.is_migrated=0</property>
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{5343EAA4-0EBA-431E-A4E9-5A9720A999D1}"
-              SQLTask:SqlStatementSource="&#xA;--  UPDATE    src&#xA;--SET           src.Id = trgt.Id&#xA;--FROM        Staging_Migration.dbo.Merchants AS src INNER JOIN&#xA;--                  Merchants AS trgt ON src.MerchantCode = trgt.MerchantCode CROSS JOIN&#xA;--                  src&#xA;&#xA;&#xA;UPDATE    src&#xA;SET           src.Id = trgt.Id&#xA;&#xA;FROM        Staging_Migration.dbo.Merchants AS src INNER JOIN&#xA;                  [dbo].[Merchant IDS Fetched] AS trgt ON src.MerchantCode = trgt.MerchantCode CROSS JOIN&#xA;                  src" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:Connection="{6A74C615-7150-44A0-97E3-E20E8299383D}"
+              SQLTask:SqlStatementSource="&#xA;--  UPDATE    src&#xA;--SET           src.Id = trgt.Id&#xA;--FROM        Staging_Migration.dbo.Merchants AS src INNER JOIN&#xA;--                  Merchants AS trgt ON src.MerchantCode = trgt.MerchantCode CROSS JOIN&#xA;--                  src&#xA;&#xA;&#xA;UPDATE    src&#xA;SET           src.Id = trgt.Id&#xA;&#xA;FROM        Staging_Migration.dbo.Merchants AS src INNER JOIN&#xA;                  [dbo].[Merchant IDS Fetched] AS trgt ON src.MerchantCode = trgt.MerchantCode" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -4940,9 +4982,9 @@ where mr.is_migrated=0</property>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="374.4,508.8"
-          Size="374.4,552"
+          Size="184.8,43.2"
           Id="Package\Staging_Activities"
           TopLeft="416.9,5.5" />
         <NodeLayout
@@ -4954,13 +4996,39 @@ where mr.is_migrated=0</property>
           Id="Package\TRGT_Loading\Drop_Merchants_Constraints"
           TopLeft="54.7,5.50000000000007" />
         <NodeLayout
-          Size="280,41.6"
-          Id="Package\TRGT_Loading\Update Merchant the STG with TRGT's IDS"
-          TopLeft="21.5,310.3" />
+          Size="312,41.6"
+          Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG"
+          TopLeft="5.50000000000003,208.7" />
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\TRGT_Loading\Stg to Trgt Merchants"
           TopLeft="71.1,107.1" />
+        <NodeLayout
+          Size="280,41.6"
+          Id="Package\TRGT_Loading\Update Merchant the STG with TRGT's IDS"
+          TopLeft="21.5,310.3" />
+        <EdgeLayout
+          Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint]"
+          TopLeft="161.5,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 1]"
           TopLeft="161.5,47.1000000000001">
@@ -5005,32 +5073,6 @@ where mr.is_migrated=0</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="312,41.6"
-          Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG"
-          TopLeft="5.50000000000003,208.7" />
-        <EdgeLayout
-          Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint]"
-          TopLeft="161.5,148.7">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\TRGT_Loading.PrecedenceConstraints[Constraint 3]"
           TopLeft="161.5,250.3">
@@ -5059,7 +5101,7 @@ where mr.is_migrated=0</property>
           PanelSize="323.2,508.8"
           Size="323.2,552"
           Id="Package\TRGT_Loading"
-          TopLeft="270.499997070857,589.970587849205" />
+          TopLeft="439.07142851304,167.288229305439" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="181.1,302.3">
@@ -5084,30 +5126,30 @@ where mr.is_migrated=0</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="604.1,557.5">
+          TopLeft="509.3,48.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-172.000002929143,32.4705878492045"
+              EndConnector="91.3714285130399,118.588229305439"
               Start="0,0"
-              End="-172.000002929143,24.9705878492045">
+              End="91.3714285130399,111.088229305439">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.2352939246023" />
+                    End="0,55.2941146527197" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.2352939246023"
-                    Point2="0,16.2352939246023"
-                    Point3="-4,16.2352939246023" />
+                    Point1="0,55.2941146527197"
+                    Point2="0,59.2941146527197"
+                    Point3="4,59.2941146527197" />
                   <mssgle:LineSegment
-                    End="-168.000002929143,16.2352939246023" />
+                    End="87.3714285130399,59.2941146527197" />
                   <mssgle:CubicBezierSegment
-                    Point1="-168.000002929143,16.2352939246023"
-                    Point2="-172.000002929143,16.2352939246023"
-                    Point3="-172.000002929143,20.2352939246023" />
+                    Point1="87.3714285130399,59.2941146527197"
+                    Point2="91.3714285130399,59.2941146527197"
+                    Point3="91.3714285130399,63.2941146527197" />
                   <mssgle:LineSegment
-                    End="-172.000002929143,24.9705878492045" />
+                    End="91.3714285130399,111.088229305439" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5229,6 +5271,70 @@ where mr.is_migrated=0</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG\To SRC"
+          TopLeft="379.2,173.6" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG\IDS From TRGT"
+          TopLeft="354.4,52" />
+        <EdgeLayout
+          Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG.Paths[OLE DB Source Output]"
+          TopLeft="433.2,93.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG\IDS From TRGT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG\To SRC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\TRGT_Loading\Stg to Trgt Merchants">
     <LayoutInfo>
       <GraphLayout
@@ -5331,70 +5437,6 @@ where mr.is_migrated=0</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\TRGT_Loading\Stg to Trgt Merchants\Trgt Merchants">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG\IDS From TRGT"
-          TopLeft="354.4,52" />
-        <NodeLayout
-          Size="112.8,41.6"
-          Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG\To SRC"
-          TopLeft="379.2,173.6" />
-        <EdgeLayout
-          Id="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG.Paths[OLE DB Source Output]"
-          TopLeft="433.2,93.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,80"
-              Start="0,0"
-              End="0,72.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,72.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG\IDS From TRGT">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\TRGT_Loading\Fetch IDs from Merchant in The TRGT to the STG\To SRC">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

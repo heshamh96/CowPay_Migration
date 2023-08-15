@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ExcelpayIdentity_Module_TRGT"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{7C829DB3-6EA1-4498-803A-0A1466201389}">
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{CE446B52-8008-4209-9DF3-636241790EB1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -370,8 +370,8 @@
               <connections>
                 <connection
                   refId="Package\UserClaims STG_to_TRGT\UserClaims TRGT.Connections[OleDbConnection]"
-                  connectionManagerID="{F81EF049-A894-46D2-908D-C476782951FB}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[192.168.10.5.ExcelpayIdentity.BI_Team]"
+                  connectionManagerID="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ExcelpayIdentity]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -611,8 +611,8 @@
               <connections>
                 <connection
                   refId="Package\UserRoles STG_to_TRGT\UserRoles.Connections[OleDbConnection]"
-                  connectionManagerID="{F81EF049-A894-46D2-908D-C476782951FB}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[192.168.10.5.ExcelpayIdentity.BI_Team]"
+                  connectionManagerID="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ExcelpayIdentity]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -940,8 +940,8 @@
               <connections>
                 <connection
                   refId="Package\Users STG_To_TRGT\Users.Connections[OleDbConnection]"
-                  connectionManagerID="{F81EF049-A894-46D2-908D-C476782951FB}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[192.168.10.5.ExcelpayIdentity.BI_Team]"
+                  connectionManagerID="{C4593A26-DAE9-4A83-A9D3-148EAA575FCC}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ExcelpayIdentity]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1760,7 +1760,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="181.6,41.6"
           Id="Package\Create DB Constraints"
@@ -1800,7 +1800,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1822,7 +1824,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
@@ -2074,30 +2078,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\UserRoles STG_to_TRGT.Paths[Data Conversion Output]"
-          TopLeft="302,123">
+          TopLeft="302,122.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-52,22"
+              EndConnector="-52.2,22"
               Start="0,0"
-              End="-44.5,22">
+              End="-44.7,22">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-22,0" />
+                    End="-22.1,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-22,0"
-                    Point2="-26,0"
-                    Point3="-26,4" />
+                    Point1="-22.1,0"
+                    Point2="-26.1,0"
+                    Point3="-26.1,4" />
                   <mssgle:LineSegment
-                    End="-26,18" />
+                    End="-26.1,18" />
                   <mssgle:CubicBezierSegment
-                    Point1="-26,18"
-                    Point2="-26,22"
-                    Point3="-30,22" />
+                    Point1="-26.1,18"
+                    Point2="-26.1,22"
+                    Point3="-30.1,22" />
                   <mssgle:LineSegment
-                    End="-44.5,22" />
+                    End="-44.7,22" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
